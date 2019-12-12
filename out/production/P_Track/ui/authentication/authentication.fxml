@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?zml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="381.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.authentication.AuthController">
+    <children>
+        <Text layoutX="64.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P-Track Hospital Management System" wrappingWidth="585.083984375">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Text>
+        <Text layoutX="125.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" wrappingWidth="88.046875">
+            <font>
+                <Font size="29.0" />
+            </font>
+        </Text>
+        <TextField fx:id="userName" layoutX="81.0" layoutY="166.0" promptText="Username">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextField>
+        <PasswordField fx:id="password" layoutX="81.0" layoutY="213.0" prefHeight="31.0" prefWidth="187.0" promptText="Password">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </PasswordField>
+        <MenuButton fx:id="roleMenu" layoutX="84.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Role">
+            <items>
+                <MenuItem fx:id="patientSec" mnemonicParsing="false" text="Patient" />
+                <MenuItem fx:id="doctorSec" mnemonicParsing="false" text="Doctor" />
+                <MenuItem fx:id="receptionistSec" mnemonicParsing="false" text="Receptionist" />
+            </items>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </MenuButton>
+        <Button fx:id="loginButton" layoutX="226.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Log In">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor></Button>
+        <Line endX="236.0" layoutX="165.0" layoutY="156.0" startX="-100.0" />
+        <Label fx:id="errorLabel" layoutX="81.0" layoutY="297.0" prefHeight="17.0" prefWidth="358.0" />
+        <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="64.0" layoutY="103.0">
+            <image>
+                <Image url="@../icons/user (1).png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="154.0" fitWidth="154.0" layoutX="450.0" layoutY="152.0">
+            <image>
+                <Image url="@../icons/hospital.png" />
+            </image>
+        </ImageView>
+    </children>
+    <effect>
+        <Blend />
+    </effect>
+</AnchorPane>

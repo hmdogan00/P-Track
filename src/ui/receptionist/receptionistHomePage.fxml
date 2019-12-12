@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.ReceptionistController">
+    <children>
+        <JFXTabPane prefHeight="750.0" prefWidth="1008.0" stylesheets="@../../theme.css">
+            <tabs>
+                <Tab text="DASHBOARD">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="353.0">
+                            <children>
+                                <VBox layoutY="371.0" prefHeight="329.0" prefWidth="1008.0">
+                                    <children>
+                                        <Separator prefHeight="19.0" prefWidth="998.0" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="1007.447265625">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Separator prefHeight="17.0" prefWidth="1015.0" />
+                                        <AnchorPane prefHeight="293.0" prefWidth="1008.0">
+                                            <children>
+                                                <GridPane layoutX="20.0" layoutY="14.0" prefHeight="265.0" prefWidth="968.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="179.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="151.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="190.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="237.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="210.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="3.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel1" prefHeight="47.0" prefWidth="190.0" text="Bora Fatih KAZANCI" textAlignment="CENTER">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel2" prefHeight="47.0" prefWidth="187.0" text="Hami Mert DOĞAN">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel3" prefHeight="47.0" prefWidth="180.0" text="Yaren YILMAZ">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel4" prefHeight="47.0" prefWidth="184.0" text="Sıla SARAOĞLU">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel5" prefHeight="45.0" prefWidth="182.0" text="Mert Yıldırım">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="idNoLabel1" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedTimeLabel1" prefHeight="17.0" prefWidth="120.0" text="15:30" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedDateLabel1" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="idNoLabel2" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedTimeLabel2" prefHeight="17.0" prefWidth="120.0" text="15:24" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedDateLabel2" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="idNoLabel3" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedTimeLabel3" prefHeight="17.0" prefWidth="120.0" text="15:12" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedDateLabel3" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="idNoLabel4" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedTimeLabel4" prefHeight="17.0" prefWidth="120.0" text="14:58" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedDateLabel4" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="idNoLabel5" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedTimeLabel5" prefHeight="17.0" prefWidth="120.0" text="14:55" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
+                                                                                <Label fx:id="passedDateLabel5" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items></SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel1" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children></VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel2" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel3" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel4" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel5" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName1" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 1">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName1" prefHeight="35.0" prefWidth="235.0" text="Department 1">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName2" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 2">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName2" prefHeight="35.0" prefWidth="235.0" text="Department 2">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName3" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 3">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName3" prefHeight="35.0" prefWidth="235.0" text="Department 3">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName4" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 4">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName4" prefHeight="35.0" prefWidth="235.0" text="Department 4">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName5" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 5">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName5" prefHeight="35.0" prefWidth="235.0" text="Department 5">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton1" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton2" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </right></JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </right></JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton4" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </right></JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor></Button>
+                                                                    </right></JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                                <Group layoutX="169.0" layoutY="5.0">
+                                    <children>
+                                        <ImageView fitHeight="134.0" fitWidth="231.0">
+                                            <image>
+                                                <Image url="@../icons/rectangle.png" />
+                                            </image>
+                                        </ImageView>
+                                        <AnchorPane layoutX="9.0" layoutY="31.0" prefHeight="72.0" prefWidth="213.0">
+                                            <children>
+                                                <ImageView fitHeight="31.0" fitWidth="26.0" layoutX="178.0" layoutY="21.0">
+                                                    <image>
+                                                        <Image url="@../icons/tag-black-shape.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Text layoutX="4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL APPOINTMENTS" wrappingWidth="187.0">
+                                                    <font>
+                                                        <Font name="System Bold" size="15.0" />
+                                                    </font>
+                                                </Text>
+                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="14.0" layoutY="37.0" prefHeight="23.0" prefWidth="138.0" text="numberOfAppointments">
+                                                    <font>
+                                                        <Font size="11.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </Group>
+                                <Group layoutX="567.0" layoutY="5.0">
+                                    <children>
+                                        <ImageView fitHeight="134.0" fitWidth="231.0">
+                                            <image>
+                                                <Image url="@../icons/rectangle.png" />
+                                            </image>
+                                        </ImageView>
+                                        <AnchorPane layoutX="9.0" layoutY="31.0" prefHeight="72.0" prefWidth="213.0">
+                                            <children>
+                                                <Text layoutX="24.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME &amp; DATE" wrappingWidth="114.0">
+                                                    <font>
+                                                        <Font name="System Bold" size="15.0" />
+                                                    </font>
+                                                </Text>
+                                                <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="148.0" layoutY="11.0">
+                                                    <image>
+                                                        <Image url="@../icons/calendar.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label fx:id="timeLabel" layoutX="24.0" layoutY="29.0" prefHeight="15.0" prefWidth="104.0" text="time -&gt; 16:47">
+                                                    <font>
+                                                        <Font size="11.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="dateLabel" layoutX="24.0" layoutY="51.0" prefHeight="15.0" prefWidth="97.0" text="date -&gt; 9.12.2019">
+                                                    <font>
+                                                        <Font size="11.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </Group>
+                                <VBox layoutX="3.0" layoutY="118.0" prefHeight="255.0" prefWidth="1008.0">
+                                    <children>
+                                        <Separator prefHeight="11.0" prefWidth="985.0" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NOTES" textAlignment="CENTER" wrappingWidth="978.755859375">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Separator prefHeight="12.0" prefWidth="985.0" />
+                                        <TextArea fx:id="noteTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Notes can be written.">
+                                            <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                            </cursor></TextArea>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="30.0">
+                            <image>
+                                <Image url="@../icons/dashboard.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Tab>
+                <Tab text="PATIENT">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="34.0">
+                            <image>
+                                <Image url="@../icons/saline.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <AnchorPane prefHeight="703.0" prefWidth="1013.0">
+                            <children>
+                                <VBox layoutX="7.0" prefHeight="379.0" prefWidth="1008.0">
+                                    <children>
+                                        <HBox prefHeight="92.0" prefWidth="1008.0">
+                                            <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Table: " wrappingWidth="95.0">
+                                                    <font>
+                                                        <Font size="16.0" />
+                                                    </font>
+                                                </Text>
+                                                <TextField prefHeight="25.0" prefWidth="203.0" promptText="Filter">
+                                                    <cursor>
+                                                        <Cursor fx:constant="TEXT" />
+                                                    </cursor>
+                                                </TextField>
+                                                <Separator orientation="VERTICAL" prefHeight="200.0">
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" right="15.0" />
+                                                    </HBox.margin>
+                                                </Separator>
+                                                <Button mnemonicParsing="false" text="Add New Patient">
+                                                    <HBox.margin>
+                                                        <Insets />
+                                                    </HBox.margin>
+                                                </Button>
+                                                <Separator orientation="VERTICAL" prefHeight="200.0">
+                                                    <opaqueInsets>
+                                                        <Insets />
+                                                    </opaqueInsets>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" right="15.0" />
+                                                    </HBox.margin>
+                                                </Separator>
+                                                <Button mnemonicParsing="false" text="Add Appointment(eklenecek)">
+                                                    <font>
+                                                        <Font size="10.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Change Patient Info (Eklenecek)">
+                                                    <font>
+                                                        <Font size="10.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="2.0" top="4.0" />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <TableView prefHeight="414.0" prefWidth="1008.0">
+                                            <columns>
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="121.0" resizable="false" sortable="false" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="134.0" resizable="false" text="Name" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="41.0" resizable="false" text="Age" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="40.0" resizable="false" text="Sex" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="98.0" resizable="false" text="Blood Type" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="101.0" resizable="false" text="Room Number" />
+                                                <TableColumn editable="false" prefWidth="118.0" resizable="false" text="Last Appointment" />
+                                                <TableColumn editable="false" prefWidth="133.0" resizable="false" text="Doctor / Department" />
+                                                <TableColumn editable="false" prefWidth="94.0" resizable="false" text="Payment Status" />
+                                                <TableColumn editable="false" prefWidth="122.0" resizable="false" text="Emergency Contact" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                                <VBox layoutX="4.0" layoutY="374.0" prefHeight="329.0" prefWidth="1014.0">
+                                    <children>
+                                        <Separator prefHeight="19.0" prefWidth="998.0" />
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="1007.447265625">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Separator prefHeight="17.0" prefWidth="1015.0" />
+                                        <AnchorPane prefHeight="293.0" prefWidth="1008.0">
+                                            <children>
+                                                <GridPane layoutX="20.0" layoutY="14.0" prefHeight="265.0" prefWidth="968.0">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="179.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="151.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="190.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="237.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="210.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="3.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel11" prefHeight="47.0" prefWidth="190.0" text="Bora Fatih KAZANCI" textAlignment="CENTER">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel21" prefHeight="47.0" prefWidth="187.0" text="Hami Mert DOĞAN">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel31" prefHeight="47.0" prefWidth="180.0" text="Yaren YILMAZ">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel41" prefHeight="47.0" prefWidth="184.0" text="Sıla SARAOĞLU">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <Label fx:id="recentPatientLabel51" prefHeight="45.0" prefWidth="182.0" text="Mert Yıldırım">
+                                                                    <font>
+                                                                        <Font size="15.0" />
+                                                                    </font>
+                                                                </Label>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="idNoLabel11" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedTimeLabel11" prefHeight="17.0" prefWidth="120.0" text="15:30" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedDateLabel11" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="idNoLabel21" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedTimeLabel21" prefHeight="17.0" prefWidth="120.0" text="15:24" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedDateLabel21" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <padding>
+                                                                                        <Insets left="2.0" />
+                                                                                    </padding>
+                                                                                </Label>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="idNoLabel31" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedTimeLabel31" prefHeight="17.0" prefWidth="120.0" text="15:12" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedDateLabel31" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <padding>
+                                                                                        <Insets left="2.0" />
+                                                                                    </padding>
+                                                                                </Label>
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="idNoLabel41" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedTimeLabel41" prefHeight="17.0" prefWidth="120.0" text="14:58" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedDateLabel41" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <HBox prefHeight="19.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="idNoLabel51" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="15.0" prefWidth="149.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedTimeLabel51" prefHeight="17.0" prefWidth="120.0" text="14:55" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                            <children>
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                    <HBox.margin>
+                                                                                        <Insets left="2.0" />
+                                                                                    </HBox.margin>
+                                                                                </Text>
+                                                                                <Label fx:id="passedDateLabel51" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel11" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel21" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel31" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel41" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="51.0" prefWidth="208.0">
+                                                                    <children>
+                                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="188.13671875">
+                                                                            <font>
+                                                                                <Font size="14.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Text>
+                                                                        <Label fx:id="phoneNumberLabel51" prefHeight="35.0" prefWidth="189.0" text="+90-5**-*** ****">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName11" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 1">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName11" prefHeight="35.0" prefWidth="235.0" text="Department 1">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="4.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName21" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 2">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName21" prefHeight="35.0" prefWidth="235.0" text="Department 2">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="4.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName31" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 3">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName31" prefHeight="35.0" prefWidth="235.0" text="Department 3">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="4.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName41" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 4">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName41" prefHeight="35.0" prefWidth="235.0" text="Department 4">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="4.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <VBox prefHeight="200.0" prefWidth="235.0">
+                                                                    <children>
+                                                                        <Label fx:id="doctorName51" prefHeight="40.0" prefWidth="235.0" text="Doctor Name 5">
+                                                                            <font>
+                                                                                <Font size="17.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="2.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                        <Label fx:id="departmentName51" prefHeight="35.0" prefWidth="235.0" text="Department 5">
+                                                                            <font>
+                                                                                <Font size="15.0" />
+                                                                            </font>
+                                                                            <VBox.margin>
+                                                                                <Insets left="4.0" />
+                                                                            </VBox.margin>
+                                                                        </Label>
+                                                                    </children>
+                                                                </VBox>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton11" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton21" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <opaqueInsets>
+                                                                                <Insets />
+                                                                            </opaqueInsets>
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton31" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton41" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                        <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                            <items>
+                                                                <JFXToolbar prefHeight="91.0" prefWidth="149.0">
+                                                                    <left>
+                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </left>
+                                                                    <right>
+                                                                        <Button fx:id="registerButton51" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                                    </right>
+                                                                </JFXToolbar>
+                                                            </items>
+                                                        </SplitPane>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content></Tab>
+                <Tab text="DOCTOR">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
+                            <image>
+                                <Image url="@../icons/doctor.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <content>
+                        <AnchorPane prefHeight="697.0" prefWidth="1008.0" />
+                    </content></Tab>
+            </tabs>
+        </JFXTabPane>
+        <Separator layoutX="1006.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="8.0" />
+        <ToolBar layoutX="896.0" prefHeight="50.0" prefWidth="187.0" stylesheets="@../../theme.css">
+            <items>
+                <AnchorPane prefHeight="40.0" prefWidth="29.0" stylesheets="@../../theme.css">
+                    <children>
+                        <Label fx:id="receptionistUsernameLabel" prefHeight="40.0" prefWidth="114.0" text="Username">
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="logoutButton" mnemonicParsing="false" text="Logout">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </items>
+        </ToolBar>
+    </children>
+</AnchorPane>
