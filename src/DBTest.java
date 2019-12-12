@@ -8,11 +8,11 @@ public class DBTest {
         try {
             Connection myConn = DriverManager.getConnection(url, user, password);
             Statement myStmt = myConn.createStatement();
-            String sql = "SELECT * FROM patients";
+            String sql = "SELECT * FROM users";
             ResultSet rs = myStmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.print(rs.getString("patient_name") + "  ");
-                System.out.print(rs.getString("patient_address") + "\n");
+                System.out.print(rs.getString("user_name") + "  ");
+                System.out.print(rs.getString("role") + "\n");
             }
         } catch (SQLException e) {
             e.printStackTrace();
