@@ -37,13 +37,16 @@
                             <children>
                                 <VBox layoutY="371.0" prefHeight="329.0" prefWidth="1008.0">
                                     <children>
-                                        <Separator prefHeight="19.0" prefWidth="998.0" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="1007.447265625">
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                        </Text>
-                                        <Separator prefHeight="17.0" prefWidth="1015.0" />
+                              <ToolBar prefHeight="21.0" prefWidth="1008.0">
+                                 <items>
+                                    <AnchorPane prefHeight="25.0" prefWidth="351.0" />
+                                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="300.0">
+                                                  <font>
+                                                      <Font name="System Bold" size="16.0" />
+                                                  </font>
+                                              </Text>
+                                 </items>
+                              </ToolBar>
                                         <AnchorPane prefHeight="293.0" prefWidth="1008.0">
                                             <children>
                                                 <GridPane layoutX="20.0" layoutY="14.0" prefHeight="265.0" prefWidth="968.0">
@@ -504,7 +507,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -522,7 +525,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -539,7 +542,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -556,7 +559,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -573,7 +576,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -655,13 +658,16 @@
                                 </Group>
                                 <VBox layoutX="3.0" layoutY="118.0" prefHeight="255.0" prefWidth="1008.0">
                                     <children>
-                                        <Separator prefHeight="11.0" prefWidth="985.0" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NOTES" textAlignment="CENTER" wrappingWidth="978.755859375">
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                        </Text>
-                                        <Separator prefHeight="12.0" prefWidth="985.0" />
+                              <ToolBar prefHeight="21.0" prefWidth="1008.0">
+                                 <items>
+                                    <AnchorPane prefHeight="25.0" prefWidth="351.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTES" textAlignment="CENTER" wrappingWidth="300.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </items>
+                              </ToolBar>
                                         <TextArea fx:id="noteTextArea" prefHeight="200.0" prefWidth="200.0" promptText="Notes can be written.">
                                             <cursor>
                                                 <Cursor fx:constant="TEXT" />
@@ -698,21 +704,30 @@
                                                     <font>
                                                         <Font size="16.0" />
                                                     </font>
+                                       <HBox.margin>
+                                          <Insets left="4.0" top="6.0" />
+                                       </HBox.margin>
                                                 </Text>
                                                 <TextField prefHeight="25.0" prefWidth="203.0" promptText="Filter">
                                                     <cursor>
                                                         <Cursor fx:constant="TEXT" />
                                                     </cursor>
+                                       <HBox.margin>
+                                          <Insets top="2.0" />
+                                       </HBox.margin>
                                                 </TextField>
                                                 <Separator orientation="VERTICAL" prefHeight="200.0">
                                                     <HBox.margin>
                                                         <Insets left="15.0" right="15.0" />
                                                     </HBox.margin>
                                                 </Separator>
-                                                <Button mnemonicParsing="false" text="Add New Patient">
+                                                <Button fx:id="addNewPatientButton" mnemonicParsing="false" onAction="#openAddPatient" prefHeight="20.0" prefWidth="135.0" text="Add New Patient">
                                                     <HBox.margin>
-                                                        <Insets />
+                                                        <Insets bottom="2.0" top="2.0" />
                                                     </HBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                                 </Button>
                                                 <Separator orientation="VERTICAL" prefHeight="200.0">
                                                     <opaqueInsets>
@@ -726,11 +741,17 @@
                                                     <font>
                                                         <Font size="10.0" />
                                                     </font>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </HBox.margin>
                                                 </Button>
                                                 <Button mnemonicParsing="false" text="Change Patient Info (Eklenecek)">
                                                     <font>
                                                         <Font size="10.0" />
                                                     </font>
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </HBox.margin>
                                                 </Button>
                                             </children>
                                             <VBox.margin>
@@ -754,13 +775,16 @@
                                 </VBox>
                                 <VBox layoutX="4.0" layoutY="374.0" prefHeight="329.0" prefWidth="1014.0">
                                     <children>
-                                        <Separator prefHeight="19.0" prefWidth="998.0" />
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="1007.447265625">
-                                            <font>
-                                                <Font size="16.0" />
-                                            </font>
-                                        </Text>
-                                        <Separator prefHeight="17.0" prefWidth="1015.0" />
+                              <ToolBar prefHeight="15.0" prefWidth="1014.0">
+                                 <items>
+                                    <AnchorPane prefHeight="22.0" prefWidth="369.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="RECENT APPOINTMENTS" textAlignment="CENTER" wrappingWidth="300.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </items>
+                              </ToolBar>
                                         <AnchorPane prefHeight="293.0" prefWidth="1008.0">
                                             <children>
                                                 <GridPane layoutX="20.0" layoutY="14.0" prefHeight="265.0" prefWidth="968.0">
@@ -1338,7 +1362,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1358,7 +1382,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1378,7 +1402,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <opaqueInsets>
                                                                                 <Insets />
                                                                             </opaqueInsets>
@@ -1401,7 +1425,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1421,7 +1445,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1454,9 +1478,69 @@
                             </image>
                         </ImageView>
                     </graphic>
-                    <content>
-                        <AnchorPane prefHeight="697.0" prefWidth="1008.0" />
-                    </content></Tab>
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="28.0" prefWidth="1008.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Table: " wrappingWidth="95.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="4.0" top="8.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <TextField prefHeight="25.0" prefWidth="203.0" promptText="Filter">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" top="4.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <HBox.margin>
+                                    <Insets left="15.0" right="15.0" />
+                                 </HBox.margin>
+                              </Separator>
+                              <Separator orientation="VERTICAL" prefHeight="200.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="15.0" right="15.0" />
+                                 </HBox.margin>
+                              </Separator>
+                           </children>
+                        </HBox>
+                        <TableView prefHeight="272.0" prefWidth="1008.0">
+                          <columns>
+                            <TableColumn prefWidth="168.0" text="Name" />
+                            <TableColumn prefWidth="168.0" text="Room Number" />
+                              <TableColumn prefWidth="168.0" text="Department" />
+                              <TableColumn prefWidth="168.0" text="Calendar" />
+                              <TableColumn prefWidth="168.0" text="Availability" />
+                              <TableColumn prefWidth="168.0" text="Work Status" />
+                          </columns>
+                        </TableView>
+                        <VBox prefHeight="367.0" prefWidth="1008.0">
+                           <children>
+                              <ToolBar prefHeight="15.0" prefWidth="1014.0">
+                                 <items>
+                                    <AnchorPane prefHeight="22.0" prefWidth="369.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AVAILABILITY CALENDAR" textAlignment="CENTER" wrappingWidth="300.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </items>
+                              </ToolBar>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content></Tab>
             </tabs>
         </JFXTabPane>
         <Separator layoutX="1006.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="8.0" />
@@ -1471,7 +1555,7 @@
                         </Label>
                     </children>
                 </AnchorPane>
-                <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="9.0" prefWidth="73.0" text="Logout">
+                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutReceptionist" prefHeight="9.0" prefWidth="73.0" text="Logout">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor></Button>

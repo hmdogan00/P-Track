@@ -38,33 +38,73 @@ public class AuthController {
     @FXML
     private PasswordField password;
 
+    //variables
+    private int roleChooser = 0;
+
     //constructor
     public AuthController(){
 
     }
 
     @FXML
+    private void patientChoice(){
+        roleMenu.setText("Patient");
+        roleChooser = 1;
+    }
+
+    @FXML
+    private void doctorChoice(){
+        roleMenu.setText("Doctor");
+        roleChooser = 2;
+    }
+
+    @FXML
+    private void receptionistChoice(){
+        roleMenu.setText("Receptionist");
+        roleChooser = 3;
+    }
+
+    @FXML
     private void handleButtonAction(ActionEvent e) throws IOException {
-        System.out.println("click click bum");
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
-        System.out.println( loader.getLocation() );
-        Parent parent = loader.load();
-
-        //Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("receptionistHomePage.fxml")));
-        Scene scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-
-        if (isMatch()){
-            //app_stage.hide();
-            app_stage.setScene(scene);
-            app_stage.show();
+        if (roleChooser == 1){
+            System.out.println("Entered Patient");
+            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            System.out.println( loader.getLocation() );
+        }
+        else if (roleChooser == 2){
+            System.out.println("Entered Doctor");
+            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            System.out.println( loader.getLocation() );
+        }
+        else if (roleChooser == 3){
+            System.out.println("Entered Receptionist");
+            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            System.out.println( loader.getLocation() );
         }
         else{
-            userName.clear();
-            password.clear();
-            errorLabel.setText("Username or password is wrong. Try Again!");
+            errorLabel.setText("Please select a role to log in!");
             errorLabel.setTextFill(Color.RED);
+        }
+
+        try {
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+            if (isMatch()){
+                app_stage.setScene(scene);
+                app_stage.setResizable(false);
+                app_stage.show();
+            }
+            else{
+                userName.clear();
+                password.clear();
+                errorLabel.setText("Username or password is wrong. Try Again!");
+                errorLabel.setTextFill(Color.RED);
+            }
+        }catch (RuntimeException r){
+            System.out.println("Role is not selected!");
         }
 
     }

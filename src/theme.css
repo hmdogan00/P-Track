@@ -1,6 +1,5 @@
 * {
     -fx-primary : #0078D7;
-    -fx-secondary: #FFFF8D;
 }
 
 .tab{
@@ -17,3 +16,6 @@
     -fx-background-color: -fx-primary;
 }
 
+.JFX.tool-bar{
+    -fx-background-color: -fx-primary;
+}

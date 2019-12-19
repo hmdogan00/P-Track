@@ -2,9 +2,17 @@ package ui.receptionist;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import ui.authentication.Main;
 
 import java.io.IOException;
 
@@ -168,17 +176,57 @@ public class ReceptionistController {
     @FXML
     private Button registerButton5;
 
+    //add new patient
+    @FXML
+    private Button addNewPatientButton;
+
     //Patient
     //Table View Variables
 
     //constructor
-    public ReceptionistController(){
+    public ReceptionistController(){}
 
+    @FXML
+    private void openAddPatient(ActionEvent e) throws IOException{
+        System.out.println("Add patient opened!");
+        loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent e) throws IOException {}
+    private void openPatientDetails(ActionEvent e) throws IOException{
+        System.out.println("Patient details opened!");
+        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details"); //title can be change to "Bora Fatih Kazancı's Details etc."
+    }
+
+    @FXML
+    private void logoutReceptionist(ActionEvent e) throws IOException{
+        System.out.println("Logged out from Receptionist panel!");
+
+        //back to auth scene
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
+        System.out.println( loader.getLocation() );
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        app_stage.setScene(scene);
+        app_stage.setResizable(false);
+        app_stage.show();
+    }
+
+    private void loadWindow(String location, String title) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
+        Stage newStage = new Stage(StageStyle.DECORATED);
+        newStage.setTitle(title);
+        Image icon = new Image("ui/icons/hospital.png");
+        newStage.getIcons().add(icon);
+        newStage.setScene(new Scene(parent));
+        newStage.setResizable(false);
+        newStage.show();
+    }
 
     @FXML
     private void initialize(){}
+
+
 }
