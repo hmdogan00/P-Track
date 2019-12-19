@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.ReceptionistController">
+<AnchorPane prefHeight="750.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.ReceptionistController">
     <children>
         <JFXTabPane prefHeight="750.0" prefWidth="1008.0" stylesheets="@../../theme.css">
             <tabs>
@@ -108,24 +108,42 @@
                                                         </SplitPane>
                                                         <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1">
                                                             <items>
-                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                <VBox prefHeight="15.0" prefWidth="149.0">
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="idNoLabel1" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="idNoLabel1" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedTimeLabel1" prefHeight="17.0" prefWidth="120.0" text="15:30" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedTimeLabel1" prefHeight="17.0" prefWidth="120.0" text="15:30">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedDateLabel1" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedDateLabel1" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -137,20 +155,38 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="idNoLabel2" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="idNoLabel2" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedTimeLabel2" prefHeight="17.0" prefWidth="120.0" text="15:24" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedTimeLabel2" prefHeight="17.0" prefWidth="120.0" text="15:24">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedDateLabel2" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedDateLabel2" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -162,20 +198,38 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="idNoLabel3" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="idNoLabel3" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedTimeLabel3" prefHeight="17.0" prefWidth="120.0" text="15:12" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedTimeLabel3" prefHeight="17.0" prefWidth="120.0" text="15:12">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedDateLabel3" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedDateLabel3" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -187,20 +241,38 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="idNoLabel4" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="idNoLabel4" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedTimeLabel4" prefHeight="17.0" prefWidth="120.0" text="14:58" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedTimeLabel4" prefHeight="17.0" prefWidth="120.0" text="14:58">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedDateLabel4" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedDateLabel4" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -208,24 +280,42 @@
                                                             </items></SplitPane>
                                                         <SplitPane prefHeight="160.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                             <items>
-                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                <VBox maxHeight="51.0" prefHeight="51.0" prefWidth="149.0">
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="idNoLabel5" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="idNoLabel5" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedTimeLabel5" prefHeight="17.0" prefWidth="120.0" text="14:55" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedTimeLabel5" prefHeight="17.0" prefWidth="120.0" text="14:55">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0" />
-                                                                                <Label fx:id="passedDateLabel5" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Text>
+                                                                                <Label fx:id="passedDateLabel5" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -649,16 +739,15 @@
                                         </HBox>
                                         <TableView prefHeight="414.0" prefWidth="1008.0">
                                             <columns>
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="121.0" resizable="false" sortable="false" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="134.0" resizable="false" text="Name" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="41.0" resizable="false" text="Age" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="40.0" resizable="false" text="Sex" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="98.0" resizable="false" text="Blood Type" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="101.0" resizable="false" text="Room Number" />
-                                                <TableColumn editable="false" prefWidth="118.0" resizable="false" text="Last Appointment" />
-                                                <TableColumn editable="false" prefWidth="133.0" resizable="false" text="Doctor / Department" />
-                                                <TableColumn editable="false" prefWidth="94.0" resizable="false" text="Payment Status" />
-                                                <TableColumn editable="false" prefWidth="122.0" resizable="false" text="Emergency Contact" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="50.0" resizable="false" text="Age" />
+                                                <TableColumn editable="false" minWidth="19.0" prefWidth="50.0" resizable="false" text="Sex" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="105.0" resizable="false" text="Blood Type" />
+                                                <TableColumn editable="false" minWidth="20.0" prefWidth="125.0" resizable="false" text="Room Number" />
+                                                <TableColumn editable="false" prefWidth="160.0" resizable="false" text="Last Appointment" />
+                                                <TableColumn editable="false" prefWidth="185.0" resizable="false" text="Doctor / Department" />
+                                                <TableColumn editable="false" prefWidth="90.0" resizable="false" text="Payment" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -741,32 +830,50 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="idNoLabel11" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Label fx:id="idNoLabel11" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedTimeLabel11" prefHeight="17.0" prefWidth="120.0" text="15:30" />
+                                                                                <Label fx:id="passedTimeLabel11" prefHeight="17.0" prefWidth="120.0" text="15:30">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedDateLabel11" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Label fx:id="passedDateLabel11" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -779,35 +886,53 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="idNoLabel21" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Label fx:id="idNoLabel21" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedTimeLabel21" prefHeight="17.0" prefWidth="120.0" text="15:24" />
+                                                                                <Label fx:id="passedTimeLabel21" prefHeight="17.0" prefWidth="120.0" text="15:24">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
                                                                                 <Label fx:id="passedDateLabel21" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
                                                                                     <padding>
                                                                                         <Insets left="2.0" />
                                                                                     </padding>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Label>
                                                                             </children>
                                                                         </HBox>
@@ -821,35 +946,53 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="idNoLabel31" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Label fx:id="idNoLabel31" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedTimeLabel31" prefHeight="17.0" prefWidth="120.0" text="15:12" />
+                                                                                <Label fx:id="passedTimeLabel31" prefHeight="17.0" prefWidth="120.0" text="15:12">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
                                                                                 <Label fx:id="passedDateLabel31" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
                                                                                     <padding>
                                                                                         <Insets left="2.0" />
                                                                                     </padding>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Label>
                                                                             </children>
                                                                         </HBox>
@@ -863,32 +1006,47 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="idNoLabel41" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Label fx:id="idNoLabel41" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedTimeLabel41" prefHeight="17.0" prefWidth="120.0" text="14:58" />
+                                                                                <Label fx:id="passedTimeLabel41" prefHeight="17.0" prefWidth="120.0" text="14:58">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
                                                                                 </Text>
-                                                                                <Label fx:id="passedDateLabel41" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Label fx:id="passedDateLabel41" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -901,32 +1059,50 @@
                                                                     <children>
                                                                         <HBox prefHeight="19.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID: " textAlignment="CENTER" wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="idNoLabel51" prefHeight="9.0" prefWidth="118.0" text="66*********" />
+                                                                                <Label fx:id="idNoLabel51" prefHeight="9.0" prefWidth="118.0" text="66*********">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="15.0" prefWidth="149.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedTimeLabel51" prefHeight="17.0" prefWidth="120.0" text="14:55" />
+                                                                                <Label fx:id="passedTimeLabel51" prefHeight="17.0" prefWidth="120.0" text="14:55">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="35.0">
+                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
                                                                                     <HBox.margin>
                                                                                         <Insets left="2.0" />
                                                                                     </HBox.margin>
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font>
                                                                                 </Text>
-                                                                                <Label fx:id="passedDateLabel51" prefHeight="17.0" prefWidth="117.0" text="09.12.2019" />
+                                                                                <Label fx:id="passedDateLabel51" prefHeight="17.0" prefWidth="117.0" text="09.12.2019">
+                                                                                    <font>
+                                                                                        <Font size="12.0" />
+                                                                                    </font></Label>
                                                                             </children>
                                                                         </HBox>
                                                                     </children>
@@ -1284,18 +1460,18 @@
             </tabs>
         </JFXTabPane>
         <Separator layoutX="1006.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="8.0" />
-        <ToolBar layoutX="896.0" prefHeight="50.0" prefWidth="187.0" stylesheets="@../../theme.css">
+        <ToolBar layoutX="874.0" maxHeight="50.0" prefHeight="50.0" prefWidth="209.0" stylesheets="@../../theme.css">
             <items>
-                <AnchorPane prefHeight="40.0" prefWidth="29.0" stylesheets="@../../theme.css">
+                <AnchorPane prefHeight="10.0" prefWidth="114.0" stylesheets="@../../theme.css">
                     <children>
-                        <Label fx:id="receptionistUsernameLabel" prefHeight="40.0" prefWidth="114.0" text="Username">
+                        <Label fx:id="receptionistUsernameLabel" prefHeight="36.0" prefWidth="114.0" text="Username">
                             <font>
                                 <Font name="System Bold" size="17.0" />
                             </font>
                         </Label>
                     </children>
                 </AnchorPane>
-                <Button fx:id="logoutButton" mnemonicParsing="false" text="Logout">
+                <Button fx:id="logoutButton" mnemonicParsing="false" prefHeight="9.0" prefWidth="73.0" text="Logout">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor></Button>

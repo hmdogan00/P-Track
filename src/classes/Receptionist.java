@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Receptionist
 {
-    private String userword;
+    /*private String userword;
     private String password;
     private String name;
     private char gender;
@@ -48,6 +48,6 @@ public class Receptionist
     public void addMoney(double priceOfAppointment)
     {
         hospital.setTotalMoney() = hospital.getTotalMoney() + priceOfAppointment;
-    }
+    }*/
 }
 

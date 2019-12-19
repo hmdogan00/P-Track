@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="381.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.authentication.AuthController">
+<AnchorPane prefHeight="381.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.authentication.AuthController">
     <children>
         <Text layoutX="64.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P-Track Hospital Management System" wrappingWidth="585.083984375">
             <font>
