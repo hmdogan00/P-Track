@@ -8,6 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * To see beyond authentication ui, username: admin password: 123 role: receptionist.
+ * Logout button works
+ * Add Patient button works
+ */
+
 public class Main extends Application {
 
     @Override
