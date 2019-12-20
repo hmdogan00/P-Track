@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.controllers.AddPatientController">
    <children>
       <ToolBar prefHeight="0.0" prefWidth="750.0" stylesheets="@../../../theme.css">
          <items>
@@ -26,129 +26,204 @@
             </Text>
          </items>
       </ToolBar>
-      <HBox prefHeight="3.0" prefWidth="750.0">
+      <AnchorPane prefHeight="163.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="70.0">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No.">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField prefHeight="31.0" prefWidth="118.0">
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <MenuButton mnemonicParsing="false" text="Sex">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Male" />
-                <MenuItem mnemonicParsing="false" text="Female" />
-                  <MenuItem mnemonicParsing="false" text="Others" />
-              </items>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </MenuButton>
-            <MenuButton mnemonicParsing="false" text="Blood Type">
+            <VBox layoutX="3.0" prefHeight="165.0" prefWidth="591.0">
+               <children>
+                  <HBox maxWidth="-Infinity" prefHeight="33.0" prefWidth="615.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="70.0">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No.">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField prefHeight="31.0" prefWidth="118.0">
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <MenuButton mnemonicParsing="false" text="Sex">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Male" />
+                              <MenuItem mnemonicParsing="false" text="Female" />
+                              <MenuItem mnemonicParsing="false" text="Others" />
+                           </items>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                        <MenuButton mnemonicParsing="false" text="Blood Type">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="A Rh+" />
+                              <MenuItem mnemonicParsing="false" text="A Rh-" />
+                              <MenuItem mnemonicParsing="false" text="B Rh+" />
+                              <MenuItem mnemonicParsing="false" text="B Rh-" />
+                              <MenuItem mnemonicParsing="false" text="AB Rh+" />
+                              <MenuItem mnemonicParsing="false" text="AB Rh-" />
+                              <MenuItem mnemonicParsing="false" text="0 Rh+" />
+                              <MenuItem mnemonicParsing="false" text="0 Rh+" />
+                           </items>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="-Infinity" prefHeight="33.0" prefWidth="583.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname" wrappingWidth="70.0">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <DatePicker prefHeight="31.0" prefWidth="138.0">
+                           <HBox.margin>
+                              <Insets bottom="4.0" top="4.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="-Infinity" prefHeight="40.0" prefWidth="586.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="70.0">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="-Infinity" prefHeight="22.0" prefWidth="582.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No." wrappingWidth="70.0">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <MenuButton mnemonicParsing="false" text="Insurance">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="SGK" />
+                              <MenuItem mnemonicParsing="false" text="BAĞKUR" />
+                           </items>
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="16.0" prefWidth="750.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="70.0">
+                           <HBox.margin>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField prefHeight="25.0" prefWidth="207.0">
+                           <HBox.margin>
+                              <Insets bottom="4.0" right="10.0" top="4.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="136.0" prefWidth="750.0">
+         <children>
+            <ToolBar prefHeight="0.0" prefWidth="750.0" stylesheets="@../../../theme.css">
                <items>
-                  <MenuItem mnemonicParsing="false" text="A Rh+" />
-                  <MenuItem mnemonicParsing="false" text="A Rh-" />
-                  <MenuItem mnemonicParsing="false" text="B Rh+" />
-                  <MenuItem mnemonicParsing="false" text="B Rh-" />
-                  <MenuItem mnemonicParsing="false" text="AB Rh+" />
-                  <MenuItem mnemonicParsing="false" text="AB Rh-" />
-                  <MenuItem mnemonicParsing="false" text="0 Rh+" />
-                  <MenuItem mnemonicParsing="false" text="0 Rh+" />
+                  <AnchorPane prefHeight="28.0" prefWidth="255.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EMERGENCY CONTACT" wrappingWidth="345.640625">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Text>
                </items>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </MenuButton>
+            </ToolBar>
+            <HBox prefHeight="3.0" prefWidth="750.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="70.0">
+                     <HBox.margin>
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField>
+                     <HBox.margin>
+                        <Insets bottom="4.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname" wrappingWidth="70.0">
+                     <HBox.margin>
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField>
+                     <HBox.margin>
+                        <Insets bottom="4.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="1.0" prefWidth="750.0" />
+            <HBox prefHeight="16.0" prefWidth="750.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No." wrappingWidth="70.0">
+                     <HBox.margin>
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField>
+                     <HBox.margin>
+                        <Insets bottom="4.0" right="10.0" top="4.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
          </children>
-      </HBox>
-      <HBox prefHeight="1.0" prefWidth="750.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname" wrappingWidth="70.0">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <DatePicker prefHeight="31.0" prefWidth="138.0">
-               <HBox.margin>
-                  <Insets bottom="4.0" top="4.0" />
-               </HBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </DatePicker>
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="750.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="70.0">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-         </children>
-      </HBox>
-      <HBox prefHeight="16.0" prefWidth="750.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No." wrappingWidth="70.0">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
-               </HBox.margin>
-            </Text>
-            <TextField>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </TextField>
-            <MenuButton mnemonicParsing="false" text="Insurance">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="SGK" />
-                  <MenuItem mnemonicParsing="false" text="BAĞKUR" />
-               </items>
-               <HBox.margin>
-                  <Insets bottom="4.0" right="10.0" top="4.0" />
-               </HBox.margin>
-            </MenuButton>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
+      </VBox>
    </children>
 </VBox>
