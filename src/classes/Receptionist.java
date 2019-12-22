@@ -19,6 +19,7 @@ public class Receptionist
         this.password = password;
         this.name = name;
         this.gender = gender;
+        this.hospital = hospital;
         appointments = new ArrayList<Appointment>();
         patients = new ArrayList<Patient>();
     }
@@ -43,13 +44,7 @@ public class Receptionist
         patient.addAppointment(appointment);
         doctor.addAppointment(appointment);
     }
-    public void changePatientInfo(Patient patient)
-    {
 
-
-
-
-    }
     public void addMoney(double priceOfAppointment)
     {
         hospital.setTotalMoney(hospital.getTotalMoney() + priceOfAppointment);
