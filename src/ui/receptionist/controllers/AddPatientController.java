@@ -19,7 +19,9 @@ public class AddPatientController {
 
     @FXML
     private MenuButton sexMenu;
+    @FXML
     private MenuButton bloodTypeMenu;
+    @FXML
     private MenuButton insuranceMenu;
 
     //variables

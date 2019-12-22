@@ -60,10 +60,10 @@
             </MenuButton>
             <MenuButton fx:id="bloodTypeMenu" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" text="Blood Type">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#aRHpositveChoice" text="A Rh+" />
+                  <MenuItem mnemonicParsing="false" onAction="#aRHpositiveChoice" text="A Rh+" />
                   <MenuItem mnemonicParsing="false" onAction="#aRHnegativeChoice" text="A Rh-" />
                   <MenuItem mnemonicParsing="false" onAction="#bRHpositiveChoice" text="B Rh+" />
-                  <MenuItem mnemonicParsing="false" onAction="#bRHneagtiveChoice" text="B Rh-" />
+                  <MenuItem mnemonicParsing="false" onAction="#bRHnegativeChoice" text="B Rh-" />
                   <MenuItem mnemonicParsing="false" onAction="#abRHpositiveChoice" text="AB Rh+" />
                   <MenuItem mnemonicParsing="false" onAction="#abRHnegativeChoice" text="AB Rh-" />
                   <MenuItem mnemonicParsing="false" onAction="#zeroRHpositiveChoice" text="0 Rh+" />
