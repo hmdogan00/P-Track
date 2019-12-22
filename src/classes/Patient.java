@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 public class Patient
 {
-    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    /*private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
     private int age;
     private char gender;
     private ArrayList<Appointment> appointments;
@@ -135,5 +135,5 @@ public class Patient
         LocalDate now = LocalDate.now();
         Period age = Period.between(birthDate, now);
         this.age = age.getYears();
-    }
+    }*/
 }

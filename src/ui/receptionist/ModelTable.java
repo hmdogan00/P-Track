@@ -46,17 +46,11 @@ public class ModelTable {
         this.insurance = insurance;
     }
 
-    public String getSex() {
-        return sex;
-    }
+    public String getSex() {return sex;}
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+    public void setSex(String sex) {this.sex = sex;}
 
-    public String getBloodType() {
-        return bloodType;
-    }
+    public String getBloodType() {return bloodType;}
 
     public void setBloodType(String bloodType) {
         this.bloodType = bloodType;
