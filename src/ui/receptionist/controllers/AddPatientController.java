@@ -3,6 +3,7 @@ package ui.receptionist.controllers;
 import classes.Receptionist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,10 +38,8 @@ public class AddPatientController {
     private JTextField addEmergencyContactSurname;
     @FXML
     private JTextField addEmergencyContactPhoneNumber;
-
-
-
-
+@FXML
+private JButton saveButton;
     @FXML
     private MenuButton sexMenu;
     @FXML
@@ -138,9 +137,8 @@ public class AddPatientController {
     @FXML
     private void savePatient(ActionEvent e) {
        classes.Receptionist.addPatient(addPatientName.getText(),bloodTypeMenu.getText(),"",addEmergencyContactName.getText() + " " + addEmergencyContactSurname.getText() + " " + addEmergencyContactPhoneNumber.getText(),insuranceMenu.getText(),addPatientID.getText(),addPatientAddress.getText() + " " + addPatientCity.getText(),sexMenu.getText(),addPatientBirthDate.getText());
-    }
-}
 
+}
 
 
 
@@ -160,3 +158,4 @@ public class AddPatientController {
         }
     }
 }*/
+}
