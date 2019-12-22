@@ -14,7 +14,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 public class AddPatientController {
-/**
+
     private ImageView photoView; //fotograf için
 
     @FXML
@@ -107,14 +107,7 @@ public class AddPatientController {
 
     @FXML
     private void savePatient(ActionEvent e){
-        classes.Patient patient = new classes.Patient(addPatientName.getText())
-
-
-
-
-
-
-
+        //classes.Patient patient = new classes.Patient(addPatientName.getText());
     }
 
 
