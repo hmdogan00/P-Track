@@ -757,7 +757,6 @@
                                         </HBox>
                                         <TableView fx:id="patientTable" prefHeight="414.0" prefWidth="1008.0">
                                             <columns>
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
                                                 <TableColumn fx:id="colName" editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
                                                 <TableColumn fx:id="colBirthDate" editable="false" minWidth="20.0" prefWidth="114.0" resizable="false" text="Birthdate" />
                                     <TableColumn fx:id="colID" prefWidth="124.0" text="Citizenhip ID" />

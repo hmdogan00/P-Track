@@ -1,4 +1,4 @@
 package ui.receptionist.controllers;
 
-public class patientDetailsController {
+public class AddAppointmentController {
 }
