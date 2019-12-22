@@ -149,7 +149,6 @@ public class Patient
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         int birthYear = birthDate.getYear();
         int birthMonth = birthDate.getMonth();
-        int thisMonth = Calendar.getInstance().get(Calendar.MONTH);
         setAge( thisYear - birthYear );
     }
 }

@@ -32,9 +32,9 @@ public class Receptionist
     {
         return gender;
     }
-    public void addPatient(String username,String password,String name,int PatientAge, char PatientGender, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID, String address,LocalDate birthDate, int age, char gender)
+    public void addPatient(String username,String password,String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, char PatientGender, LocalDate birthDate)
     {
-        Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,age,gender);
+        Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
         patients.add(patient);
     }
     public void addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
