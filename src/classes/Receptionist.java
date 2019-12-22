@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class Receptionist
 {
-    /*private String userword;
+    private String userword;
     private String password;
     private String name;
     private char gender;
@@ -33,9 +33,9 @@ public class Receptionist
     {
         return gender;
     }
-    public void addPatient(String username,String password,String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, char PatientGender, LocalDate birthDate)
+    public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, char PatientGender, LocalDate birthDate)
     {
-        Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
+        Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
         patients.add(patient);
     }
     public int addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
@@ -55,6 +55,6 @@ public class Receptionist
     public void addMoney(double priceOfAppointment)
     {
         hospital.setTotalMoney(hospital.getTotalMoney() + priceOfAppointment);
-    }*/
+    }
 }
 
