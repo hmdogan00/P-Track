@@ -49,9 +49,9 @@
                   <Insets bottom="4.0" right="10.0" top="4.0" />
                </HBox.margin>
             </TextField>
-            <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Sex">
+            <MenuButton fx:id="sexMenu" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" text="Sex">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Male" />
+                  <MenuItem mnemonicParsing="false" onAction="#sexMaleChoice" text="Male" />
                   <MenuItem mnemonicParsing="false" text="Female" />
                   <MenuItem mnemonicParsing="false" text="Others" />
                </items>
@@ -59,7 +59,7 @@
                   <Insets bottom="4.0" right="10.0" top="4.0" />
                </HBox.margin>
             </MenuButton>
-            <MenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" text="Blood Type">
+            <MenuButton fx:id="bloodTypeMenu" mnemonicParsing="false" prefHeight="31.0" prefWidth="122.0" text="Blood Type">
                <items>
                   <MenuItem mnemonicParsing="false" text="A Rh+" />
                   <MenuItem mnemonicParsing="false" text="A Rh-" />
@@ -139,7 +139,7 @@
                   <Insets bottom="4.0" right="10.0" top="4.0" />
                </HBox.margin>
             </TextField>
-            <MenuButton mnemonicParsing="false" text="Insurance">
+            <MenuButton fx:id="insuranceMenu" mnemonicParsing="false" text="Insurance">
                <items>
                   <MenuItem mnemonicParsing="false" text="SGK" />
                   <MenuItem mnemonicParsing="false" text="BAĞKUR" />
@@ -219,7 +219,7 @@
             <HBox prefHeight="22.0" prefWidth="750.0">
                <children>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="39.0" prefWidth="685.0" />
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button fx:id="saveButton" mnemonicParsing="false" text="Save">
                      <HBox.margin>
                         <Insets bottom="4.0" right="10.0" top="4.0" />
                      </HBox.margin>
