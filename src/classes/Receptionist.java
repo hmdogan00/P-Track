@@ -8,12 +8,12 @@ public class Receptionist
     private String userword;
     private String password;
     private String name;
-    private char gender;
+    private String gender;
     private ArrayList<Appointment> appointments;
     private ArrayList<Patient> patients;
     Hospital hospital;
 
-    public Receptionist(Hospital hospital,String userword, String password, String name, char gender)
+    public Receptionist(Hospital hospital,String userword, String password, String name, String gender)
     {
         this.userword = userword;
         this.password = password;
@@ -29,11 +29,11 @@ public class Receptionist
         return name;
     }
 
-    public char getGender()
+    public String getGender()
     {
         return gender;
     }
-    public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, char PatientGender, LocalDate birthDate)
+    public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, String PatientGender, LocalDate birthDate)
     {
         Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
         patients.add(patient);
