@@ -38,8 +38,6 @@ public class patientDetailsController {
     private Label detailedEmergencyContactSurname;
     @FXML
     private Label detailedEmergencyContactPhoneNumber;
-    @FXML
-    private Button exitButton;
 
 
     }
