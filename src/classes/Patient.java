@@ -17,7 +17,7 @@ public class Patient
     private LocalDate birthDate;
     private int citizenshipID;
     private int phoneNumber;
-
+    int a = 0;
     public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, int citizenshipID, String address, String birthDate, String gender, int phoneNumber) {
 
         this.name = name;
