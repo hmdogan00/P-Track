@@ -1,8 +1,10 @@
 package classes;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Patient
 {
@@ -14,7 +16,7 @@ public class Patient
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
+    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, String birthDate, char gender) {
 
         this.name = name;
         this.bloodType = bloodType;
@@ -23,13 +25,15 @@ public class Patient
         this.insurance = insurance;
         this.citizenshipID = citizenshipID;
         this.address = address;
-        this.age = age;
         this.gender = gender;
         this.appointments = appointments;
         this.oldPrescriptions = oldPrescriptions;
         this.nextPrescriptions = nextPrescriptions;
         this.doctors = doctors;
-        this.birthDate = birthDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate localBirthDate = LocalDate.parse(birthDate, formatter);
+        this.birthDate = localBirthDate;
+        updateAge();
     }
 
 
