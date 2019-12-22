@@ -32,7 +32,7 @@ public class Patient
         this.nextPrescriptions = nextPrescriptions;
         this.doctors = doctors;
         this.phoneNumber = phoneNumber;
-        LocalDate localBirthDate = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("d/MM/yyyy"));
+        LocalDate localBirthDate = LocalDate.parse(birthDate);
         this.birthDate = localBirthDate;
         updateAge();
     }
