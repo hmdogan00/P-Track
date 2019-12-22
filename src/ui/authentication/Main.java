@@ -23,7 +23,7 @@ public class Main extends Application {
         primaryStage.setTitle("P-Track: Patient Management System");
         Image icon = new Image("ui/icons/hospital.png");
         primaryStage.getIcons().add(icon);
-        primaryStage.setScene(new Scene(root, 665, 381));
+        primaryStage.setScene(new Scene(root, 683, 390));
 
 
         primaryStage.setResizable(false);
