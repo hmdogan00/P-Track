@@ -54,7 +54,6 @@ public class Patient
         return appointments;
     }
 
-
     public String getName() {
         return name;
     }
