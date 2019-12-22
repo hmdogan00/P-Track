@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?zml version="1.0" encoding="UTF-8"?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
@@ -18,73 +20,80 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="381.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.authentication.AuthController">
+<AnchorPane prefHeight="451.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.authentication.AuthController">
     <children>
-        <Text layoutX="64.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P-Track Hospital Management System" wrappingWidth="585.083984375">
+        <Text layoutX="64.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P-Track Hospital Management System" wrappingWidth="585.083984375">
             <font>
                 <Font size="34.0" />
             </font>
         </Text>
-        <Text layoutX="125.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" wrappingWidth="88.046875">
+        <Text layoutX="126.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" wrappingWidth="88.046875">
             <font>
                 <Font size="29.0" />
             </font>
         </Text>
-        <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="64.0" layoutY="103.0">
+        <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="64.0" layoutY="141.0">
             <image>
                 <Image url="@../icons/user.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="154.0" fitWidth="154.0" layoutX="450.0" layoutY="152.0">
+        <ImageView fitHeight="154.0" fitWidth="154.0" layoutX="454.0" layoutY="152.0">
             <image>
                 <Image url="@../icons/hospital.png" />
             </image>
         </ImageView>
-      <VBox layoutX="68.0" layoutY="152.0" prefHeight="209.0" prefWidth="337.0">
+      <JFXTabPane layoutX="-1.0" prefHeight="50.0" prefWidth="692.0" stylesheets="@../../theme.css">
+         <tabs>
+            <Tab text="Patient" />
+            <Tab text="Hospital Staff" />
+         </tabs>
+      </JFXTabPane>
+      <VBox layoutX="46.0" layoutY="210.0" prefHeight="192.0" prefWidth="337.0">
          <children>
-              <Line endX="236.0" startX="-100.0">
+            <Line endX="236.0" startX="-100.0">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Line>
-              <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Username">
-                  <font>
-                      <Font size="15.0" />
-                  </font>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Username">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
-              </TextField>
-              <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Password">
-                  <font>
-                      <Font size="15.0" />
-                  </font>
+            </TextField>
+            <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
-              </PasswordField>
-              <MenuButton fx:id="roleMenu" mnemonicParsing="false" prefHeight="19.0" prefWidth="190.0" text="Role">
-                  <items>
-                      <MenuItem fx:id="patientSec" mnemonicParsing="false" onAction="#patientChoice" text="Patient" />
-                      <MenuItem fx:id="doctorSec" mnemonicParsing="false" onAction="#doctorChoice" text="Doctor" />
-                      <MenuItem fx:id="receptionistSec" mnemonicParsing="false" onAction="#receptionistChoice" text="Receptionist" />
-                  </items>
-                  <cursor>
-                      <Cursor fx:constant="DEFAULT" />
-                  </cursor>
+            </PasswordField>
+            <MenuButton fx:id="roleMenu" mnemonicParsing="false" prefHeight="19.0" prefWidth="190.0" text="Role">
+               <items>
+                  <MenuItem fx:id="patientSec" mnemonicParsing="false" onAction="#patientChoice" text="Patient" />
+                  <MenuItem fx:id="doctorSec" mnemonicParsing="false" onAction="#doctorChoice" text="Doctor" />
+                  <MenuItem fx:id="receptionistSec" mnemonicParsing="false" onAction="#receptionistChoice" text="Receptionist" />
+               </items>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
-              </MenuButton>
-              <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="80.0" text="Log In">
-                  <cursor>
-                      <Cursor fx:constant="HAND" />
-                  </cursor>
+            </MenuButton>
+            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="80.0" text="Log In">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <VBox.margin>
                   <Insets bottom="5.0" left="115.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-              <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="358.0">
+            <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="358.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>

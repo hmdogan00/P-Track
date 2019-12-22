@@ -229,7 +229,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
-        loadWindow("ui/receptionist/FXML/AddPatientScene.fxml", "Add New Patient");
+        loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
     }
 
     @FXML
@@ -278,7 +278,6 @@ public class ReceptionistController implements Initializable {
                 oblist.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
                         rs.getString("citizenship_id"), rs.getString("insurance"),
                         rs.getString("gender"), rs.getString("blood_type")));
-                System.out.println(rs.getString("name"));
             }
         }catch (SQLException ex){}
 

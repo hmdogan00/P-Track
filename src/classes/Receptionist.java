@@ -1,4 +1,6 @@
 package classes;
+import com.sun.deploy.net.MessageHeader;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,12 +10,11 @@ public class Receptionist
     private String userword;
     private String password;
     private String name;
-    private char gender;
+    private String gender;
     private ArrayList<Appointment> appointments;
-    private ArrayList<Patient> patients;
-    Hospital hospital;
+    static Hospital hospital;
 
-    public Receptionist(Hospital hospital,String userword, String password, String name, char gender)
+    public Receptionist(Hospital hospital,String userword, String password, String name, String gender)
     {
         this.userword = userword;
         this.password = password;
@@ -21,7 +22,6 @@ public class Receptionist
         this.gender = gender;
         this.hospital = hospital;
         appointments = new ArrayList<Appointment>();
-        patients = new ArrayList<Patient>();
     }
 
     public String getName()
@@ -29,14 +29,14 @@ public class Receptionist
         return name;
     }
 
-    public char getGender()
+    public String getGender()
     {
         return gender;
     }
-    public void addPatient(String username,String password,String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, char PatientGender, LocalDate birthDate)
+    public static void addPatient(String name, String bloodtype, String emergencyContact, String insurance, int citizenshipID, String address, String PatientGender, String birthDate, int phoneNumber)
     {
-        Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
-        patients.add(patient);
+        Patient patient = new Patient(name,bloodtype,emergencyContact,insurance,citizenshipID,address,birthDate,PatientGender, phoneNumber);
+        hospital.getPatientList().add(patient);
     }
     public int addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
     {

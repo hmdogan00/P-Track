@@ -1,22 +1,49 @@
 package ui.receptionist.controllers;
 
+import classes.Receptionist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 
 public class AddPatientController {
-/**
-    private ImageView photoView; //fotograf için
 
+    private ImageView photoView; //fotograf için
+    @FXML
+    private TextField addName;
+    @FXML
+    private TextField addID;
+    @FXML
+    private TextField addSurname;
+    @FXML
+    private DatePicker addBirthDate;
+    @FXML
+    private TextField addAddress;
+    @FXML
+    private TextField addCity;
+    @FXML
+    private TextField addPatientPhonenumber;
+    @FXML
+    private TextField addEmergencyName;
+    @FXML
+    private TextField addEmergencySurname;
+    @FXML
+    private TextField addEmergencyNo;
+@FXML
+private Button saveButton;
     @FXML
     private MenuButton sexMenu;
     @FXML
@@ -100,24 +127,24 @@ public class AddPatientController {
     }
 
     @FXML
-    private void bağkurChoice(ActionEvent e) {
+    private void bagkurChoice(ActionEvent e) {
         insuranceMenu.setText("BAGKUR");
         insuranceChooser = 2;
     }
 
     @FXML
-    private void savePatient(ActionEvent e){
-        classes.Patient patient = new classes.Patient(addPatientName.getText())
-
-
-
-
-
-
-
+    private void privateChoice(ActionEvent e) {
+        insuranceMenu.setText("PRIVATE");
+        insuranceChooser = 3;
     }
 
-
+    @FXML
+    private void savePatient(ActionEvent e) {
+       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),
+               addEmergencyName.getText() + " " + addEmergencySurname.getText() + " " + addEmergencyNo.getText(),
+               insuranceMenu.getText(),Integer.parseInt(addID.getText()), addAddress.getText() + " " + addCity.getText(),
+               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), Integer.parseInt(addPatientPhonenumber.getText()));
+       }
 
 
 
@@ -135,5 +162,6 @@ public class AddPatientController {
             Image image = new Image(photoFile);
             photoView.setImage(image);
         }
-    }*/
+    }
+}*/
 }
