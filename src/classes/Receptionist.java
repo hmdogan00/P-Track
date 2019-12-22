@@ -52,7 +52,7 @@ public class Receptionist
     }
     public void addMoney(double priceOfAppointment)
     {
-        hospital.setTotalMoney(hospital.totalMoney + priceOfAppointment);
+        hospital.setTotalMoney(hospital.getTotalMoney() + priceOfAppointment);
     }
 }
 
