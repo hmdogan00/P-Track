@@ -1,5 +1,7 @@
 package ui.receptionist;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -18,9 +21,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ReceptionistController {
+public class ReceptionistController implements Initializable {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -189,13 +196,16 @@ public class ReceptionistController {
     private TableView<ModelTable> patientTable;
 
     @FXML
-    private TableColumn<?,?> colID;
-
-    @FXML
     private TableColumn<ModelTable,String> colName;
 
     @FXML
-    private TableColumn<ModelTable,String> colBirthdate;
+    private TableColumn<ModelTable,String> colBirthDate;
+
+    @FXML
+    private TableColumn<ModelTable,String> colID;
+
+    @FXML
+    private TableColumn<ModelTable,String> colInsurance;
 
     @FXML
     private TableColumn<ModelTable,String> colSex;
@@ -209,8 +219,7 @@ public class ReceptionistController {
     @FXML
     private TableColumn<?,?> colLastApp;
 
-    @FXML
-    private TableColumn<ModelTable,String> colInsurance;
+
 
     //variables
 
@@ -256,9 +265,30 @@ public class ReceptionistController {
         newStage.show();
     }
 
-    /*@Override
-    public void initialize(URL location, ResourceBundle resources) {
+    ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
 
-        colID.setCellValueFactory();
-    }*/
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        System.out.println("hheyyy");
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
+
+            while (rs.next()) {
+                oblist.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
+                        rs.getString("citizenship_id"), rs.getString("insurance"),
+                        rs.getString("gender"), rs.getString("blood_type")));
+                System.out.println(rs.getString("name"));
+            }
+        }catch (SQLException ex){}
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
+        colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+        colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
+
+        patientTable.setItems(oblist);
+    }
 }
