@@ -349,8 +349,10 @@ public class ReceptionistController implements Initializable {
 
     @FXML
     private void findNameFromList(ActionEvent e) throws InvocationTargetException {
-        if (filterName.getText().equals(""))
+        if (filterName.getText().equals("")) {
             getData();
+            System.out.println("ali baba");
+        }
         else
             getFilteredData();
         patientTable.refresh();
