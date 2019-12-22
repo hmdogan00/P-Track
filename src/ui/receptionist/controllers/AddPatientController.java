@@ -155,8 +155,7 @@ public class AddPatientController {
                addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
                insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
         ((Node)(e.getSource())).getScene().getWindow().hide();
-        System.out.println();
-       }
+    }
 
 
 
