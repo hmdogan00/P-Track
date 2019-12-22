@@ -38,6 +38,9 @@ public class AuthController {
     @FXML
     private PasswordField password;
 
+    @FXML
+    private TextField citizenshipIDField;
+
     //variables
     private int roleChooser = 0;
 

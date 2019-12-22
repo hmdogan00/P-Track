@@ -2,15 +2,15 @@ package ui.receptionist.controllers;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
-
+import javafx.scene.control.Label;
 import java.awt.*;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 
-public class patientDetailsController {
+public class PatientDetailsController {
 
-    public patientDetailsController(){}
+    public PatientDetailsController(){}
 
     @FXML
     private Label detailedNameLabel;
