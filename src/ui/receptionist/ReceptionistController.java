@@ -1,8 +1,11 @@
 package ui.receptionist;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -246,15 +250,17 @@ public class ReceptionistController implements Initializable {
         app_stage.show();
     }
 
-    private void loadWindow(String location, String title) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
-        Stage newStage = new Stage(StageStyle.DECORATED);
-        newStage.setTitle(title);
-        Image icon = new Image("ui/icons/hospital.png");
-        newStage.getIcons().add(icon);
-        newStage.setScene(new Scene(parent));
-        newStage.setResizable(false);
-        newStage.show();
+    private void loadWindow(String location, String title){
+        try {
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
+            Stage newStage = new Stage(StageStyle.DECORATED);
+            newStage.setTitle(title);
+            Image icon = new Image("ui/icons/hospital.png");
+            newStage.getIcons().add(icon);
+            newStage.setScene(new Scene(parent));
+            newStage.setResizable(false);
+            newStage.show();
+        }catch (IOException exception){}
     }
 
     @FXML
@@ -263,6 +269,42 @@ public class ReceptionistController implements Initializable {
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
+
+            //add appointment button to a column
+            TableColumn<ModelTable, Boolean> col_addApp = new TableColumn<>();
+            col_addApp.setSortable(false);
+            col_addApp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_addApp.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonAddApp(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_addApp);
+
+            //change info button to a column
+            TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
+            col_changeInfo.setSortable(false);
+            col_changeInfo.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_changeInfo.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonChangeInfo(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_changeInfo);
+
+
 
             while (rs.next()) {
                 obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
@@ -300,17 +342,68 @@ public class ReceptionistController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        System.out.println("hheyyy");
+        System.out.println("All data is uploaded");
         getData();
+        patientTable.refresh();
     }
 
     @FXML
     private void findNameFromList(ActionEvent e) throws InvocationTargetException {
-        if (filterName.getText().equals("")){
+        if (filterName.getText().equals("")) {
             getData();
+            System.out.println("ali baba");
         }
-        else{
+        else
             getFilteredData();
+        patientTable.refresh();
+    }
+
+    //inner classes to add buttons to Table
+    private class ButtonAddApp extends TableCell<ModelTable, Boolean>{
+        final Button addAppointmentButton = new Button("Add Appointment");
+        ButtonAddApp(final TableView<ModelTable> tblView){
+            addAppointmentButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean check, boolean empty){
+            super.updateItem(check, empty);
+            if (!empty)
+                setGraphic(addAppointmentButton);
+            else{
+                setGraphic(null);
+                setText("");
+            }
         }
     }
+
+    private class ButtonChangeInfo extends TableCell<ModelTable, Boolean>{
+        final Button changeInfoButton = new Button("Change Info");
+        ButtonChangeInfo(final TableView<ModelTable> tblView){
+            changeInfoButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean check, boolean empty){
+            super.updateItem(check, empty);
+            if (!empty)
+                setGraphic(changeInfoButton);
+            else{
+                setGraphic(null);
+                setText("");
+            }
+        }
+    }
+
+
 }
