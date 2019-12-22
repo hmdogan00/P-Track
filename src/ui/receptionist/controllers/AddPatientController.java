@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Window;
 import ui.receptionist.ReceptionistController;
 
 import javax.swing.*;
@@ -145,7 +146,6 @@ private Button saveButton;
        database.Database.addPatient(addName.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ addBirthDate.getValue(),
                addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
                insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
-
        }
 
 
