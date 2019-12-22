@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Patient
 {
-    private String  name, bloodType, room, emergencyContact, insurance, address;
+    private String  name, bloodType, emergencyContact, insurance, address;
     private int age;
     private String gender;
     private ArrayList<Appointment> appointments;
@@ -18,11 +18,10 @@ public class Patient
     private int citizenshipID;
     private int phoneNumber;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, int citizenshipID, String address, String birthDate, String gender, int phoneNumber) {
+    public Patient(String name, String bloodType, String emergencyContact, String insurance, int citizenshipID, String address, String birthDate, String gender, int phoneNumber) {
 
         this.name = name;
         this.bloodType = bloodType;
-        this.room = room;
         this.emergencyContact = emergencyContact;
         this.insurance = insurance;
         this.citizenshipID = citizenshipID;
@@ -64,10 +63,6 @@ public class Patient
         return bloodType;
     }
 
-    public String getRoom() {
-        return room;
-    }
-
     public String getEmergencyContact() {
         return emergencyContact;
     }
@@ -97,10 +92,6 @@ public class Patient
     }
 
     public int getPhoneNumber() {return phoneNumber;}
-
-    public void setRoom(String room) {
-        this.room = room;
-    }
 
     public void setEmergencyContact(String emergencyContact) {
         this.emergencyContact = emergencyContact;
