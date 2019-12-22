@@ -758,16 +758,15 @@
                                                 <Insets left="2.0" top="4.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <TableView prefHeight="414.0" prefWidth="1008.0">
+                                        <TableView fx:id="patientTable" onSort="#initialize" prefHeight="414.0" prefWidth="1008.0">
                                             <columns>
                                                 <TableColumn fx:id="colID" editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
                                                 <TableColumn fx:id="colName" editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
-                                                <TableColumn fx:id="colBirthdate" editable="false" minWidth="20.0" prefWidth="114.0" resizable="false" text="Birthdate" />
+                                                <TableColumn fx:id="colBirthDate" editable="false" minWidth="20.0" prefWidth="114.0" resizable="false" text="Birthdate" />
+                                    <TableColumn prefWidth="124.0" text="Citizenhip ID" />
                                                 <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
                                                 <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
-                                                <TableColumn fx:id="colRoomNumber" editable="false" minWidth="15.0" prefWidth="152.0" resizable="false" text="Room Number" />
-                                                <TableColumn fx:id="colLastApp" editable="false" prefWidth="167.0" resizable="false" text="Last Appointment" />
-                                                <TableColumn fx:id="colPayment" editable="false" prefWidth="116.0" resizable="false" text="Payment" />
+                                                <TableColumn fx:id="colInsurance" editable="false" prefWidth="94.0" resizable="false" text="Insurance" />
                                             </columns>
                                         </TableView>
                                     </children>

@@ -11,7 +11,7 @@ public class Doctor {
         private String profession;
         private int availability;
 
-        public Doctor(String username,String password,String dName,char gender,String dRoom,String profession,int availability)
+        public Doctor(String username,String password,String dName,char gender,String dRoom,String profession)
         {
             this.username = username;
             this.password = password;
@@ -19,10 +19,8 @@ public class Doctor {
             this.gender = gender;
             this.dRoom = dRoom;
             this.profession = profession;
-            this.availability = availability;
             dAppointments = new ArrayList<Appointment>();
         }
-
         public String getDName()
         {
             return dName;
@@ -63,10 +61,17 @@ public class Doctor {
             dRoom = room;
         }
 
-        public void setAvailability(int availability)
-    {
-        this.availability = availability;
-    }
+        public void setAvailability(int time)
+        {
+            boolean onVacation = false;
+            boolean hasAppointment = true;
+            if(onVacation)
+                availability = -1;
+            else if (hasAppointment)
+                availability = -2;
+            else
+                availability = 1;
+        }
 
         public void addAppointment(Appointment appointment)
         {
