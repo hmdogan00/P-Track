@@ -1,10 +1,13 @@
 package database;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class Database {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        addPatient("Aynur Dayanık", 12312312, "Female","A+", "17/09/1960", "ankara",
+                01237612736, "Private", "Mustafa Can Çavdar", 0123671723);
+
+
         }
 
         public static Connection connection() throws SQLException {
@@ -14,45 +17,34 @@ public class Database {
             Connection myConn = DriverManager.getConnection(url, user, password);
             return myConn;
     }
-    private static void getPatient_Table() throws SQLException {
-        ArrayList<String> patient_name = new ArrayList<>();
-        ArrayList<String> birth_date = new ArrayList<>();
-        ArrayList<String> gender = new ArrayList<>();
-        ArrayList<String> citizenship_id = new ArrayList<>();
-        ArrayList<String> insurance = new ArrayList<>();
-        ArrayList<String> blood_type = new ArrayList<>();
-            Connection myConn = connection();
-            Statement myStmt = myConn.createStatement();
-            String sql = "SELECT * FROM patient";
-            ResultSet rs = myStmt.executeQuery(sql);
-            while (rs.next()) {
-                patient_name.add(rs.getString("name"));
-                birth_date.add(rs.getString("birth_date"));
-                gender.add(rs.getString("gender"));
-                citizenship_id.add(rs.getString("citizenship_id"));
-                insurance.add(rs.getString("insurance"));
-                blood_type.add(rs.getString("blood_type"));
-            }
-        }
+    public static void test() throws SQLException {
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        String search = "Mert";
+        String sql = "SELECT * FROM patient WHERE name LIKE '%" + search + "%' " ;
+        ResultSet rs = myStmt.executeQuery(sql);
 
-    private static void getPatient_Table_Filtered(String filterName) throws SQLException {
-        ArrayList<String> patient_name = new ArrayList<>();
-        ArrayList<String> birth_date = new ArrayList<>();
-        ArrayList<String> gender = new ArrayList<>();
-        ArrayList<String> citizenship_id = new ArrayList<>();
-        ArrayList<String> insurance = new ArrayList<>();
-        ArrayList<String> blood_type = new ArrayList<>();
-            Connection myConn = connection();
-            Statement myStmt = myConn.createStatement();
-            String sql = "SELECT * FROM patient WHERE name = 'filterName'";
-            ResultSet rs = myStmt.executeQuery(sql);
-            while (rs.next()) {
-                patient_name.add(rs.getString("name"));
-                birth_date.add(rs.getString("birth_date"));
-                gender.add(rs.getString("gender"));
-                citizenship_id.add(rs.getString("citizenship_id"));
-                insurance.add(rs.getString("insurance"));
-                blood_type.add(rs.getString("blood_type"));
-            }
+        while(rs.next()) {
+            System.out.println(rs.getString("name"));
         }
+    }
+    public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
+                                  int phoneNumber, String insurance, String emergency_name, int emergency_number ) throws SQLException{
+        Connection myConn = connection();
+        String sql = "INSERT INTO patient(name,birth_date,citizenship_id,insurance,gender,blood_type,emergency_name,emergency_number,patient_address,patient_phoneNumber) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement myStmt = myConn.prepareStatement(sql);
+        myStmt.setString(1,name);
+        myStmt.setString(2,birth_date);
+        myStmt.setString(3,"" + Id);
+        myStmt.setString(4,insurance);
+        myStmt.setString(5,sex);
+        myStmt.setString(6,blood_type);
+        myStmt.setString(7,emergency_name);
+        myStmt.setString(8, "" + emergency_number);
+        myStmt.setString(9,address);
+        myStmt.setString(10,"" + phoneNumber);
+
+        int rowsAffected = myStmt.executeUpdate();
+    }
+
     }
