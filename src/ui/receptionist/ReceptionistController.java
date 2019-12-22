@@ -219,7 +219,7 @@ public class ReceptionistController {
         app_stage.show();
     }
 
-    public void loadWindow(String location, String title) throws IOException{
+    private void loadWindow(String location, String title) throws IOException{
         Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
         Stage newStage = new Stage(StageStyle.DECORATED);
         newStage.setTitle(title);
