@@ -229,7 +229,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
-        loadWindow("ui/receptionist/FXML/AddPatientScene.fxml", "Add New Patient");
+        loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
     }
 
     @FXML

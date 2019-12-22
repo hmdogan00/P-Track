@@ -137,8 +137,7 @@ private JButton saveButton;
     @FXML
     private void savePatient(ActionEvent e) {
        classes.Receptionist.addPatient(addPatientName.getText(),bloodTypeMenu.getText(),"",addEmergencyContactName.getText() + " " + addEmergencyContactSurname.getText() + " " + addEmergencyContactPhoneNumber.getText(),insuranceMenu.getText(),addPatientID.getText(),addPatientAddress.getText() + " " + addPatientCity.getText(),sexMenu.getText(),addPatientBirthDate.getText());
-
-}
+       }
 
 
 
