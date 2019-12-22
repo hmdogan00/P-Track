@@ -15,8 +15,7 @@ public class Patient
     private LocalDate birthDate;
 
     public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
-        this.userName = userName;
-        this.password = password;
+
         this.name = name;
         this.bloodType = bloodType;
         this.room = room;
@@ -33,9 +32,6 @@ public class Patient
         this.birthDate = birthDate;
     }
 
-    public String getUserName() {
-        return userName;
-    }
 
     public ArrayList<String> getOldPrescriptions() {
         return oldPrescriptions;
@@ -53,9 +49,6 @@ public class Patient
         return appointments;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public String getName() {
         return name;
@@ -95,14 +88,6 @@ public class Patient
 
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setRoom(String room) {
