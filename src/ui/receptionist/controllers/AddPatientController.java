@@ -1,5 +1,6 @@
 package ui.receptionist.controllers;
 
+import classes.Receptionist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
@@ -13,9 +14,32 @@ import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 
-public class AddPatientController {
-/**
+public class AddPatientController { /**
+
     private ImageView photoView; //fotograf için
+    @FXML
+    private JTextField addPatientName;
+    @FXML
+    private JTextField addPatientID;
+    @FXML
+    private JTextField addPatientSurname;
+    @FXML
+    private JTextField addPatientBirthDate;
+    @FXML
+    private JTextField addPatientAddress;
+    @FXML
+    private JTextField addPatientCity;
+    @FXML
+    private JTextField addPatientPhoneNumber;
+    @FXML
+    private JTextField addEmergencyContactName;
+    @FXML
+    private JTextField addEmergencyContactSurname;
+    @FXML
+    private JTextField addEmergencyContactPhoneNumber;
+
+
+
 
     @FXML
     private MenuButton sexMenu;
@@ -100,23 +124,22 @@ public class AddPatientController {
     }
 
     @FXML
-    private void bağkurChoice(ActionEvent e) {
+    private void bagkurChoice(ActionEvent e) {
         insuranceMenu.setText("BAGKUR");
         insuranceChooser = 2;
     }
 
     @FXML
-    private void savePatient(ActionEvent e){
-        classes.Patient patient = new classes.Patient(addPatientName.getText())
-
-
-
-
-
-
-
+    private void privateChoice(ActionEvent e) {
+        insuranceMenu.setText("PRIVATE");
+        insuranceChooser = 3;
     }
 
+    @FXML
+    private void savePatient(ActionEvent e) {
+       classes.Receptionist.addPatient(addPatientName.getText(),bloodTypeMenu.getText(),"",addEmergencyContactName.getText() + " " + addEmergencyContactSurname.getText() + " " + addEmergencyContactPhoneNumber.getText(),insuranceMenu.getText(),addPatientID.getText(),addPatientAddress.getText() + " " + addPatientCity.getText(),sexMenu.getText(),addPatientBirthDate.getText());
+    }
+}
 
 
 
@@ -135,5 +158,6 @@ public class AddPatientController {
             Image image = new Image(photoFile);
             photoView.setImage(image);
         }
-    }*/
+    }
 }
+/**
