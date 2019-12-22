@@ -48,6 +48,7 @@ public class Receptionist
 
 
 
+
     }
     public void addMoney(double priceOfAppointment)
     {
