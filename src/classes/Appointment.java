@@ -3,13 +3,14 @@ package classes;
 import java.util.Calendar;
 
 public class Appointment {
-    int appointmentNo;
+    static int appointmentNo = 0;
     String patientName, doctorName, doctorRoom, doctorProfession, prescription;
     Calendar time;
     double cost;
 
-    public Appointment( String patientName, Doctor doctor, double cost, int appointmentNo, Calendar time){
-        this.appointmentNo = appointmentNo;
+    public Appointment( String patientName, Doctor doctor, double cost,Calendar time)
+    {
+        getAppointmentNo();
         this.patientName = patientName;
         doctorName = doctor.getDName();
         doctorRoom = doctor.getDRoom();
@@ -20,11 +21,7 @@ public class Appointment {
     }
 
     public int getAppointmentNo() {
-        return appointmentNo;
-    }
-
-    public void setAppointmentNo(int appointmentNo) {
-        this.appointmentNo = appointmentNo;
+        return appointmentNo + 1;
     }
 
     public String getPatientName() {
