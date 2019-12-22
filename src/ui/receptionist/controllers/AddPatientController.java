@@ -14,7 +14,7 @@ import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 
-public class AddPatientController { /**
+public class AddPatientController {
 
     private ImageView photoView; //fotograf için
     @FXML
@@ -159,5 +159,4 @@ public class AddPatientController { /**
             photoView.setImage(image);
         }
     }
-}
-/**
+}*/
