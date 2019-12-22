@@ -35,7 +35,7 @@ public class Receptionist
     }
     public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, String PatientGender, String birthDate)
     {
-        Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,PatientGender,birthDate);
+        Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientGender);
         patients.add(patient);
     }
     public int addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
