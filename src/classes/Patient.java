@@ -1,5 +1,6 @@
 package classes;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -146,8 +147,8 @@ public class Patient
 
     public void updateAge()
     {
-        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
-        int birthYear = birthDate.getYear();
-        setAge( thisYear - birthYear );
+        LocalDate now = LocalDate.now();
+        Period age = Period.between(birthDate, now);
+        this.age = age.getYears();
     }
 }

@@ -3,12 +3,11 @@ package ui.receptionist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -18,8 +17,10 @@ import ui.authentication.Main;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ReceptionistController {
+public class ReceptionistController implements Initializable {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -183,8 +184,33 @@ public class ReceptionistController {
     @FXML
     private Button addNewPatientButton;
 
-    //Patient
     //Table View Variables
+    @FXML
+    private TableView<ModelTable> patientTable;
+
+    @FXML
+    private TableColumn<?,?> colID;
+
+    @FXML
+    private TableColumn<ModelTable,String> colName;
+
+    @FXML
+    private TableColumn<ModelTable,String> colBirthdate;
+
+    @FXML
+    private TableColumn<ModelTable,String> colSex;
+
+    @FXML
+    private TableColumn<ModelTable,String> colBloodType;
+
+    @FXML
+    private TableColumn<?,?> colRoomNumber;
+
+    @FXML
+    private TableColumn<?,?> colLastApp;
+
+    @FXML
+    private TableColumn<ModelTable,String> colInsurance;
 
     //variables
 
@@ -230,8 +256,9 @@ public class ReceptionistController {
         newStage.show();
     }
 
-    @FXML
-    private void initialize(){}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-
+        colID.setCellValueFactory();
+    }
 }

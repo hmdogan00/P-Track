@@ -30,7 +30,7 @@ public abstract class Authorization
      * @param password password that is entered.
      * @return id of the user if name and pass is true, negative values if otherwise.
      */
-    public int authUser( String name, String password )
+    public int authUser( String name, String password, int role )
     {
         return 0;
     }

@@ -2,6 +2,7 @@ package ui.receptionist.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -15,11 +16,22 @@ public class AddPatientController {
     @FXML
     private ImageView photoView; //fotograf için
 
+    @FXML
+    private MenuButton sexMenu;
+
     //variables
     private String photoFile; //fotograf için
+    private int sexChooser = 0;
+    private int bloodTypeChooser = 0;
 
     //constructor
     public AddPatientController(){}
+
+    @FXML
+    private void sexMaleChoice(ActionEvent e){
+        sexMenu.setText("Male");
+        sexChooser = 1;
+    }
 
     /*@FXML
     private void choosePictureFile(ActionEvent e) throws MalformedURLException {
