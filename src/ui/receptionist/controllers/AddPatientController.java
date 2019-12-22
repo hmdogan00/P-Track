@@ -140,10 +140,10 @@ private Button saveButton;
 
     @FXML
     private void savePatient(ActionEvent e) {
-       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),"",
+       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),
                addEmergencyName.getText() + " " + addEmergencySurname.getText() + " " + addEmergencyNo.getText(),
-               insuranceMenu.getText(),addID.getText(), addAddress.getText() + " " + addCity.getText(),
-               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+               insuranceMenu.getText(),Integer.parseInt(addID.getText()), addAddress.getText() + " " + addCity.getText(),
+               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), Integer.parseInt(addPatientPhonenumber.getText()));
        }
 
 
