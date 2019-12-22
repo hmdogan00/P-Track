@@ -1,9 +1,11 @@
 package classes;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Receptionist
 {
-    /*private String userword;
+    private String userword;
     private String password;
     private String name;
     private char gender;
@@ -30,24 +32,26 @@ public class Receptionist
     {
         return gender;
     }
-    public void addPatient(String name,int age, char gender, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID, String address)
+    public void addPatient(String username,String password,String name,int PatientAge, char PatientGender, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID, String address,LocalDate birthDate, int age, char gender)
     {
-        Patient patient = new Patient(name,age,gender,bloodtype,room,emergencyContact,insurance,citizenshipID,address);
+        Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,age,gender);
         patients.add(patient);
     }
-    public void addAppointment(Patient patient)
+    public void addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
     {
-        Appointment appointment = new Appointment(patient.getName(),doctor.getName(),doctor.getDRoom(),doctor.getProfession,time,cost"");
-        patient.appointments.add(appointment);
-        doctor.appointments.add(appointment);
+        Appointment appointment = new Appointment(patient.getName(),doctor,cost,time);
+        patient.addAppointment(appointment);
+        doctor.addAppointment(appointment);
     }
     public void changePatientInfo(Patient patient)
     {
 
+
+
     }
     public void addMoney(double priceOfAppointment)
     {
-        hospital.setTotalMoney() = hospital.getTotalMoney() + priceOfAppointment;
-    }*/
+        hospital.setTotalMoney(hospital.totalMoney + priceOfAppointment);
+    }
 }
 
