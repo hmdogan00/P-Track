@@ -8,19 +8,20 @@ import java.util.Date;
 
 public class Patient
 {
-    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    private String  name, bloodType, emergencyContact, insurance, address;
     private int age;
     private String gender;
     private ArrayList<Appointment> appointments;
     private ArrayList<String> oldPrescriptions, nextPrescriptions;
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
+    private int citizenshipID;
+    private int phoneNumber;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, String birthDate, String gender) {
+    public Patient(String name, String bloodType, String emergencyContact, String insurance, int citizenshipID, String address, String birthDate, String gender, int phoneNumber) {
 
         this.name = name;
         this.bloodType = bloodType;
-        this.room = room;
         this.emergencyContact = emergencyContact;
         this.insurance = insurance;
         this.citizenshipID = citizenshipID;
@@ -30,7 +31,8 @@ public class Patient
         this.oldPrescriptions = oldPrescriptions;
         this.nextPrescriptions = nextPrescriptions;
         this.doctors = doctors;
-        LocalDate localBirthDate = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("d/MM/yyyy"));
+        this.phoneNumber = phoneNumber;
+        LocalDate localBirthDate = LocalDate.parse(birthDate);
         this.birthDate = localBirthDate;
         updateAge();
     }
@@ -61,10 +63,6 @@ public class Patient
         return bloodType;
     }
 
-    public String getRoom() {
-        return room;
-    }
-
     public String getEmergencyContact() {
         return emergencyContact;
     }
@@ -73,7 +71,7 @@ public class Patient
         return insurance;
     }
 
-    public String getCitizenshipID() {
+    public int getCitizenshipID() {
         return citizenshipID;
     }
 
@@ -93,9 +91,7 @@ public class Patient
         return birthDate;
     }
 
-    public void setRoom(String room) {
-        this.room = room;
-    }
+    public int getPhoneNumber() {return phoneNumber;}
 
     public void setEmergencyContact(String emergencyContact) {
         this.emergencyContact = emergencyContact;
@@ -133,6 +129,7 @@ public class Patient
         this.doctors = doctors;
     }
 
+    public void setPhoneNumber(int phoneNumber){this.phoneNumber = phoneNumber;}
     public void updateAge()
     {
         LocalDate now = LocalDate.now();

@@ -12,17 +12,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ui.authentication.Main;
+import database.Database;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -214,12 +211,7 @@ public class ReceptionistController implements Initializable {
     private TableColumn<ModelTable,String> colBloodType;
 
     @FXML
-    private TableColumn<?,?> colRoomNumber;
-
-    @FXML
-    private TableColumn<?,?> colLastApp;
-
-
+    private TextField filterName;
 
     //variables
 
@@ -265,17 +257,15 @@ public class ReceptionistController implements Initializable {
         newStage.show();
     }
 
-    ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        System.out.println("hheyyy");
+    @FXML
+    private void getData(){
+        ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
-                oblist.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
+                obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
                         rs.getString("citizenship_id"), rs.getString("insurance"),
                         rs.getString("gender"), rs.getString("blood_type")));
             }
@@ -288,6 +278,39 @@ public class ReceptionistController implements Initializable {
         colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
-        patientTable.setItems(oblist);
+        patientTable.setItems(obList);
+    }
+
+    private void getFilteredData(){
+        ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
+        try{
+            Connection con = Database.connection();
+            String nameFilter = filterName.getText();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
+
+            while (rs.next()) {
+                listFiltered.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
+                        rs.getString("citizenship_id"), rs.getString("insurance"),
+                        rs.getString("gender"), rs.getString("blood_type")));
+            }
+        }catch (SQLException ex){}
+
+        patientTable.setItems(listFiltered);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        System.out.println("hheyyy");
+        getData();
+    }
+
+    @FXML
+    private void findNameFromList(ActionEvent e) throws InvocationTargetException {
+        if (filterName.getText().equals("")){
+            getData();
+        }
+        else{
+            getFilteredData();
+        }
     }
 }

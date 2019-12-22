@@ -700,15 +700,7 @@
                                     <children>
                                         <HBox prefHeight="92.0" prefWidth="1008.0">
                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Table: " wrappingWidth="95.0">
-                                                    <font>
-                                                        <Font size="16.0" />
-                                                    </font>
-                                       <HBox.margin>
-                                          <Insets left="4.0" top="6.0" />
-                                       </HBox.margin>
-                                                </Text>
-                                                <TextField prefHeight="25.0" prefWidth="203.0" promptText="Filter">
+                                                <TextField fx:id="filterName" onAction="#findNameFromList" prefHeight="25.0" prefWidth="203.0" promptText="Filter by Name">
                                                     <cursor>
                                                         <Cursor fx:constant="TEXT" />
                                                     </cursor>
@@ -716,6 +708,11 @@
                                           <Insets top="2.0" />
                                        </HBox.margin>
                                                 </TextField>
+                                    <Button fx:id="findNameButton" mnemonicParsing="false" onAction="#findNameFromList" text="Filter">
+                                       <HBox.margin>
+                                          <Insets left="3.0" top="2.0" />
+                                       </HBox.margin>
+                                    </Button>
                                                 <Separator orientation="VERTICAL" prefHeight="200.0">
                                                     <HBox.margin>
                                                         <Insets left="15.0" right="15.0" />

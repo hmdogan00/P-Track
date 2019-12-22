@@ -17,6 +17,7 @@ import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
 public class AddPatientController {
@@ -139,11 +140,10 @@ private Button saveButton;
     }
 
     @FXML
-    private void savePatient(ActionEvent e) {
-       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),"",
-               addEmergencyName.getText() + " " + addEmergencySurname.getText() + " " + addEmergencyNo.getText(),
-               insuranceMenu.getText(),addID.getText(), addAddress.getText() + " " + addCity.getText(),
-               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    private void savePatient(ActionEvent e) throws SQLException {
+       database.Database.addPatient(addName.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ addBirthDate.getValue(),
+               addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
+               insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
        }
 
 
