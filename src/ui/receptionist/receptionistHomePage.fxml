@@ -758,7 +758,7 @@
                                                 <Insets left="2.0" top="4.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <TableView prefHeight="414.0" prefWidth="1008.0">
+                                        <TableView fx:id="patientTable" prefHeight="414.0" prefWidth="1008.0">
                                             <columns>
                                                 <TableColumn fx:id="colID" editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
                                                 <TableColumn fx:id="colName" editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
