@@ -6,14 +6,14 @@ import java.util.Calendar;
 
 public class Patient
 {
-    /*private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
     private int age;
     private char gender;
     private ArrayList<Appointment> appointments;
     private ArrayList<String> oldPrescriptions, nextPrescriptions;
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
-    int a = 0;
+
     public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
 
         this.name = name;
@@ -135,5 +135,5 @@ public class Patient
         LocalDate now = LocalDate.now();
         Period age = Period.between(birthDate, now);
         this.age = age.getYears();
-    }*/
+    }
 }
