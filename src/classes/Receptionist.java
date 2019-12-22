@@ -33,9 +33,9 @@ public class Receptionist
     {
         return gender;
     }
-    public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, int PatientAge, String PatientGender, LocalDate birthDate)
+    public void addPatient( String name, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID,  String address, String PatientGender, String birthDate)
     {
-        Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
+        Patient patient = new Patient(name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,PatientGender,birthDate);
         patients.add(patient);
     }
     public int addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
