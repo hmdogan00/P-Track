@@ -141,9 +141,18 @@ private Button saveButton;
         insuranceChooser = 3;
     }
 
+    public String dateValue(){
+        String date = String.valueOf(addBirthDate.getValue());
+        String year = date.substring(0,4);
+        String month = date.substring(5,7);
+        String day = date.substring(8,10);
+
+        return day+"/"+ month+"/"+ year;
+    }
+
     @FXML
     private void savePatient(ActionEvent e) throws SQLException {
-       database.Database.addPatient(addName.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ addBirthDate.getValue(),
+       database.Database.addPatient(addName.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ dateValue(),
                addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
                insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
        }
