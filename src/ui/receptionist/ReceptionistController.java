@@ -278,7 +278,6 @@ public class ReceptionistController implements Initializable {
                 oblist.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
                         rs.getString("citizenship_id"), rs.getString("insurance"),
                         rs.getString("gender"), rs.getString("blood_type")));
-                System.out.println(rs.getString("name"));
             }
         }catch (SQLException ex){}
 
