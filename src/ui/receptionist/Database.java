@@ -1,3 +1,5 @@
+package ui.receptionist;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -5,12 +7,12 @@ public class Database {
     public static void main(String[] args) {
         }
 
-        private static Connection connection() throws SQLException {
+        public static Connection connection() throws SQLException {
             String url = "jdbc:mysql://db-mysql-fra1-50385-do-user-6846837-0.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED";
             String user = "doadmin";
             String password = "ozhcj9y9h18feuqk";
-                Connection myConn = DriverManager.getConnection(url, user, password);
-                return myConn;
+            Connection myConn = DriverManager.getConnection(url, user, password);
+            return myConn;
     }
     private static void getPatient_Table() throws SQLException {
         ArrayList<String> patient_name = new ArrayList<>();
