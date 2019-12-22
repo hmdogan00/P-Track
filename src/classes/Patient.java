@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 public class Patient
 {
-    private String userName, password, name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
     private int age;
     private char gender;
     private ArrayList<Appointment> appointments;
@@ -14,7 +14,7 @@ public class Patient
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
 
-    public Patient(String userName, String password, String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
+    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
         this.userName = userName;
         this.password = password;
         this.name = name;

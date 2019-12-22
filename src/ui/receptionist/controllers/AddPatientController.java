@@ -107,6 +107,7 @@ public class AddPatientController {
 
     @FXML
     private void savePatient(ActionEvent e){
+        classes.Patient patient = new classes.Patient(addPatientName.getText())
 
 
 
