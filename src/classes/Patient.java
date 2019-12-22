@@ -8,15 +8,17 @@ import java.util.Date;
 
 public class Patient
 {
-    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    private String  name, bloodType, room, emergencyContact, insurance, address;
     private int age;
     private String gender;
     private ArrayList<Appointment> appointments;
     private ArrayList<String> oldPrescriptions, nextPrescriptions;
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
+    private int citizenshipID;
+    private int phoneNumber;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, String birthDate, String gender) {
+    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, int citizenshipID, String address, String birthDate, String gender, int phoneNumber) {
 
         this.name = name;
         this.bloodType = bloodType;
@@ -30,6 +32,7 @@ public class Patient
         this.oldPrescriptions = oldPrescriptions;
         this.nextPrescriptions = nextPrescriptions;
         this.doctors = doctors;
+        this.phoneNumber = phoneNumber;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         LocalDate localBirthDate = LocalDate.parse(birthDate, formatter);
         this.birthDate = localBirthDate;
@@ -74,7 +77,7 @@ public class Patient
         return insurance;
     }
 
-    public String getCitizenshipID() {
+    public int getCitizenshipID() {
         return citizenshipID;
     }
 
@@ -93,6 +96,8 @@ public class Patient
     public LocalDate getBirthDate() {
         return birthDate;
     }
+
+    public int getPhoneNumber() {return phoneNumber;}
 
     public void setRoom(String room) {
         this.room = room;
@@ -134,6 +139,7 @@ public class Patient
         this.doctors = doctors;
     }
 
+    public void setPhoneNumber(int phoneNumber){this.phoneNumber = phoneNumber;}
     public void updateAge()
     {
         LocalDate now = LocalDate.now();
