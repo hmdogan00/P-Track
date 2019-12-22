@@ -38,11 +38,18 @@ public class Receptionist
         Patient patient = new Patient(username,password,name,bloodtype,room,emergencyContact,insurance,citizenshipID,address,birthDate,PatientAge,PatientGender);
         patients.add(patient);
     }
-    public void addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
+    public int addAppointment(Patient patient,Doctor doctor,double cost, Calendar time)
     {
-        Appointment appointment = new Appointment(patient.getName(),doctor,cost,time);
-        patient.addAppointment(appointment);
-        doctor.addAppointment(appointment);
+        if(doctor.getAvailability() > 0) {
+            Appointment appointment = new Appointment(patient.getName(), doctor, cost, time);
+            patient.addAppointment(appointment);
+            doctor.addAppointment(appointment);
+            return 1;
+        }
+        else if(doctor.getAvailability() == -1)
+            return -1;
+        else
+            return  -2;
     }
 
     public void addMoney(double priceOfAppointment)

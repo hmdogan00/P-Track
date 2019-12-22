@@ -101,9 +101,13 @@ public class AddPatientController {
 
     @FXML
     private void bağkurChoice(ActionEvent e) {
-        insuranceMenu.setText("BAĞKUR");
+        insuranceMenu.setText("BAGKUR");
         insuranceChooser = 2;
     }
+
+    @FXML
+    private void savePatient(ActionEvent e){
+
 
 
 
