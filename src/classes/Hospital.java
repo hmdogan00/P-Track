@@ -6,9 +6,9 @@ import java.util.Calendar;
 public class Hospital {
     String hospitalName;
     ArrayList<String> rooms;
-    ArrayList<Patient> patientList;
-    ArrayList<Doctor> doctorList;
-    ArrayList<Receptionist> receptionistList;
+    static ArrayList<Patient> patientList;
+    static ArrayList<Doctor> doctorList;
+    static ArrayList<Receptionist> receptionistList;
     Calendar time;
     double totalMoney;
 

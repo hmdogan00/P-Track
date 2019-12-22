@@ -5,13 +5,13 @@ public class Doctor {
         private String username;
         private String password;
         private String dName;
-        private char gender;
+        private String gender;
         private String dRoom;
         private ArrayList<Appointment> dAppointments;
         private String profession;
         private int availability;
 
-        public Doctor(String username,String password,String dName,char gender,String dRoom,String profession)
+        public Doctor(String username,String password,String dName,String gender,String dRoom,String profession)
         {
             this.username = username;
             this.password = password;
@@ -26,7 +26,7 @@ public class Doctor {
             return dName;
         }
 
-        public char getGender()
+        public String getGender()
         {
             return gender;
         }
