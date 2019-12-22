@@ -20,7 +20,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ReceptionistController implements Initializable {
+public class ReceptionistController {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -256,9 +256,9 @@ public class ReceptionistController implements Initializable {
         newStage.show();
     }
 
-    @Override
+    /*@Override
     public void initialize(URL location, ResourceBundle resources) {
 
         colID.setCellValueFactory();
-    }
+    }*/
 }
