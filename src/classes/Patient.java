@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 public class Patient
 {
-    private String userName, password, name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
+    private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
     private int age;
     private char gender;
     private ArrayList<Appointment> appointments;
@@ -14,9 +14,9 @@ public class Patient
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender)
-    {
-
+    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
+        this.userName = userName;
+        this.password = password;
         this.name = name;
         this.bloodType = bloodType;
         this.room = room;
@@ -33,6 +33,9 @@ public class Patient
         this.birthDate = birthDate;
     }
 
+    public String getUserName() {
+        return userName;
+    }
 
     public ArrayList<String> getOldPrescriptions() {
         return oldPrescriptions;
@@ -50,6 +53,9 @@ public class Patient
         return appointments;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
     public String getName() {
         return name;
@@ -89,6 +95,14 @@ public class Patient
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setRoom(String room) {

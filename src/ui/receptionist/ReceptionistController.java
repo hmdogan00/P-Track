@@ -269,6 +269,7 @@ public class ReceptionistController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        System.out.println("hheyyy");
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");

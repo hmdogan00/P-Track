@@ -758,17 +758,15 @@
                                                 <Insets left="2.0" top="4.0" />
                                             </VBox.margin>
                                         </HBox>
-                                        <TableView prefHeight="414.0" prefWidth="1008.0">
+                                        <TableView fx:id="patientTable" prefHeight="414.0" prefWidth="1008.0">
                                             <columns>
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="50.0" resizable="false" text="Age" />
-                                                <TableColumn editable="false" minWidth="19.0" prefWidth="50.0" resizable="false" text="Sex" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="105.0" resizable="false" text="Blood Type" />
-                                                <TableColumn editable="false" minWidth="20.0" prefWidth="125.0" resizable="false" text="Room Number" />
-                                                <TableColumn editable="false" prefWidth="160.0" resizable="false" text="Last Appointment" />
-                                                <TableColumn editable="false" prefWidth="185.0" resizable="false" text="Doctor / Department" />
-                                                <TableColumn editable="false" prefWidth="90.0" resizable="false" text="Payment" />
+                                                <TableColumn fx:id="colID" editable="false" minWidth="20.0" prefWidth="100.0" resizable="false" sortable="false" />
+                                                <TableColumn fx:id="colName" editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
+                                                <TableColumn fx:id="colBirthDate" editable="false" minWidth="20.0" prefWidth="114.0" resizable="false" text="Birthdate" />
+                                    <TableColumn prefWidth="124.0" text="Citizenhip ID" />
+                                                <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
+                                                <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
+                                                <TableColumn fx:id="colInsurance" editable="false" prefWidth="94.0" resizable="false" text="Insurance" />
                                             </columns>
                                         </TableView>
                                     </children>
