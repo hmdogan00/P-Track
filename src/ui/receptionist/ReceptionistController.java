@@ -264,7 +264,7 @@ public class ReceptionistController implements Initializable {
     }
 
     @FXML
-    private void getData(){
+    public void getData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
@@ -323,7 +323,7 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(obList);
     }
 
-    private void getFilteredData(){
+    public void getFilteredData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
             Connection con = Database.connection();

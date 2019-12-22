@@ -11,12 +11,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import ui.receptionist.ReceptionistController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 
 public class AddPatientController {
@@ -138,12 +140,21 @@ private Button saveButton;
         insuranceChooser = 3;
     }
 
+    public String dateValue(){
+        String date = String.valueOf(addBirthDate.getValue());
+        String year = date.substring(0,4);
+        String month = date.substring(5,7);
+        String day = date.substring(8,10);
+
+        return day+"/"+ month+"/"+ year;
+    }
+
     @FXML
-    private void savePatient(ActionEvent e) {
-       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),
-               addEmergencyName.getText() + " " + addEmergencySurname.getText() + " " + addEmergencyNo.getText(),
-               insuranceMenu.getText(),Integer.parseInt(addID.getText()), addAddress.getText() + " " + addCity.getText(),
-               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), Integer.parseInt(addPatientPhonenumber.getText()));
+    private void savePatient(ActionEvent e) throws SQLException {
+       database.Database.addPatient(addName.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ dateValue(),
+               addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
+               insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
+
        }
 
 
