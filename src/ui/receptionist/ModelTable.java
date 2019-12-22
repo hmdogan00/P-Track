@@ -3,13 +3,14 @@ package ui.receptionist;
 import javax.jws.WebParam;
 
 public class ModelTable {
-    String name, birthDate, id, insurance, bloodType;
+    String name, birthDate, id, insurance, sex, bloodType;
 
-    public ModelTable(String name, String birthDate, String id, String insurance, String bloodType){
+    public ModelTable(String name, String birthDate, String id, String insurance, String sex, String bloodType){
         this.name = name;
         this.birthDate = birthDate;
         this.id = id;
         this.insurance = insurance;
+        this.sex = sex;
         this.bloodType = bloodType;
     }
 
@@ -43,6 +44,14 @@ public class ModelTable {
 
     public void setInsurance(String insurance) {
         this.insurance = insurance;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getBloodType() {
