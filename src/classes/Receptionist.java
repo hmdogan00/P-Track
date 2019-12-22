@@ -1,9 +1,10 @@
+
 package classes;
 import java.util.ArrayList;
 
 public class Receptionist
-{
-    /*private String userword;
+{/*
+    private String userword;
     private String password;
     private String name;
     private char gender;
@@ -30,9 +31,9 @@ public class Receptionist
     {
         return gender;
     }
-    public void addPatient(String name,int age, char gender, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID, String address)
+    public void addPatient(String username,String password, String name int age, char gender, String bloodtype, String room, String emergencyContact, String insurance, String  citizenshipID, String address)
     {
-        Patient patient = new Patient(name,age,gender,bloodtype,room,emergencyContact,insurance,citizenshipID,address);
+        Patient patient = new Patient(name,password,gender,bloodtype,room,emergencyContact,insurance,citizenshipID,address);
         patients.add(patient);
     }
     public void addAppointment(Patient patient)
@@ -48,6 +49,5 @@ public class Receptionist
     public void addMoney(double priceOfAppointment)
     {
         hospital.setTotalMoney() = hospital.getTotalMoney() + priceOfAppointment;
-    }*/
+    }/*/
 }
-
