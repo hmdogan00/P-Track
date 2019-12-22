@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args){
@@ -6,16 +7,22 @@ public class Database {
         String user = "doadmin";
         String password = "ozhcj9y9h18feuqk";
         try {
+            ArrayList<String>patient_name = new ArrayList<>();
+            ArrayList<String>birth_date = new ArrayList<>();
+            ArrayList<String>citizenship_id = new ArrayList<>();
+            ArrayList<String>insurance = new ArrayList<>();
+            ArrayList<String>blood_type = new ArrayList<>();
+
             Connection myConn = DriverManager.getConnection(url, user, password);
             Statement myStmt = myConn.createStatement();
             String sql = "SELECT * FROM patient";
             ResultSet rs = myStmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.print(rs.getString("name") + "  ");
-                System.out.print(rs.getString("birth_date") + " ");
-                System.out.print(rs.getString("citizenship_id") + " ");
-                System.out.print(rs.getString("insurance") + " ");
-                System.out.print(rs.getString("blood_type") + "\n");
+                patient_name.add(rs.getString("name"));
+                birth_date.add(rs.getString("birth_date"));
+                citizenship_id.add(rs.getString("citizenship_id"));
+                insurance.add(rs.getString("insurance"));
+                blood_type.add(rs.getString("blood_type"));
             }
 
         } catch (SQLException e) {
