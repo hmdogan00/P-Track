@@ -13,7 +13,7 @@ public class Patient
     private ArrayList<String> oldPrescriptions, nextPrescriptions;
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
-
+    int a = 0;
     public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
 
         this.name = name;
