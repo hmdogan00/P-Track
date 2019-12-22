@@ -10,11 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ui.authentication.Main;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 public class ReceptionistController {
     //Dashboard
@@ -183,13 +186,15 @@ public class ReceptionistController {
     //Patient
     //Table View Variables
 
+    //variables
+
     //constructor
     public ReceptionistController(){}
 
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
-        loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
+        loadWindow("ui/receptionist/FXML/AddPatientScene.fxml", "Add New Patient");
     }
 
     @FXML

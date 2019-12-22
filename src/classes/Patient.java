@@ -13,7 +13,7 @@ public class Patient
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
 
-    public Patient(String userName, String password, String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender, ArrayList<Appointment> appointments, ArrayList<String> oldPrescriptions, ArrayList<String> nextPrescriptions, ArrayList<Doctor> doctors) {
+    public Patient(String userName, String password, String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, LocalDate birthDate, int age, char gender) {
         this.userName = userName;
         this.password = password;
         this.name = name;
@@ -128,8 +128,8 @@ public class Patient
         this.gender = gender;
     }
 
-    public void setAppointments(ArrayList<Appointment> appointments) {
-        this.appointments = appointments;
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
     }
 
     public void setOldPrescriptions(ArrayList<String> oldPrescriptions) {

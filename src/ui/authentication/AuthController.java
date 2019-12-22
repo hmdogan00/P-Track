@@ -47,19 +47,19 @@ public class AuthController {
     }
 
     @FXML
-    private void patientChoice(){
+    private void patientChoice(ActionEvent e){
         roleMenu.setText("Patient");
         roleChooser = 1;
     }
 
     @FXML
-    private void doctorChoice(){
+    private void doctorChoice(ActionEvent e){
         roleMenu.setText("Doctor");
         roleChooser = 2;
     }
 
     @FXML
-    private void receptionistChoice(){
+    private void receptionistChoice(ActionEvent e){
         roleMenu.setText("Receptionist");
         roleChooser = 3;
     }
