@@ -12,7 +12,6 @@ public class Receptionist
     private String name;
     private String gender;
     private ArrayList<Appointment> appointments;
-    private ArrayList<Patient> patients;
     static Hospital hospital;
 
     public Receptionist(Hospital hospital,String userword, String password, String name, String gender)
@@ -23,7 +22,6 @@ public class Receptionist
         this.gender = gender;
         this.hospital = hospital;
         appointments = new ArrayList<Appointment>();
-        patients = hospital.getPatientList();
     }
 
     public String getName()

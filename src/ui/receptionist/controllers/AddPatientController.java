@@ -9,37 +9,41 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 
 public class AddPatientController {
 
     private ImageView photoView; //fotograf için
     @FXML
-    private JTextField addPatientName;
+    private TextField addName;
     @FXML
-    private JTextField addPatientID;
+    private TextField addID;
     @FXML
-    private JTextField addPatientSurname;
+    private TextField addSurname;
     @FXML
-    private JTextField addPatientBirthDate;
+    private DatePicker addBirthDate;
     @FXML
-    private JTextField addPatientAddress;
+    private TextField addAddress;
     @FXML
-    private JTextField addPatientCity;
+    private TextField addCity;
     @FXML
-    private JTextField addPatientPhoneNumber;
+    private TextField addPatientPhonenumber;
     @FXML
-    private JTextField addEmergencyContactName;
+    private TextField addEmergencyName;
     @FXML
-    private JTextField addEmergencyContactSurname;
+    private TextField addEmergencySurname;
     @FXML
-    private JTextField addEmergencyContactPhoneNumber;
+    private TextField addEmergencyNo;
 @FXML
-private JButton saveButton;
+private Button saveButton;
     @FXML
     private MenuButton sexMenu;
     @FXML
@@ -136,7 +140,10 @@ private JButton saveButton;
 
     @FXML
     private void savePatient(ActionEvent e) {
-       classes.Receptionist.addPatient(addPatientName.getText(),bloodTypeMenu.getText(),"",addEmergencyContactName.getText() + " " + addEmergencyContactSurname.getText() + " " + addEmergencyContactPhoneNumber.getText(),insuranceMenu.getText(),addPatientID.getText(),addPatientAddress.getText() + " " + addPatientCity.getText(),sexMenu.getText(),addPatientBirthDate.getText());
+       classes.Receptionist.addPatient(addName.getText(),bloodTypeMenu.getText(),"",
+               addEmergencyName.getText() + " " + addEmergencySurname.getText() + " " + addEmergencyNo.getText(),
+               insuranceMenu.getText(),addID.getText(), addAddress.getText() + " " + addCity.getText(),
+               sexMenu.getText(),addBirthDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
        }
 
 
