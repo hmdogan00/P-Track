@@ -10,13 +10,13 @@ public class Patient
 {
     private String  name, bloodType, room, emergencyContact, insurance, citizenshipID, address;
     private int age;
-    private char gender;
+    private String gender;
     private ArrayList<Appointment> appointments;
     private ArrayList<String> oldPrescriptions, nextPrescriptions;
     private ArrayList<Doctor> doctors;
     private LocalDate birthDate;
 
-    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, String birthDate, char gender) {
+    public Patient(String name, String bloodType, String room, String emergencyContact, String insurance, String citizenshipID, String address, String birthDate, String gender) {
 
         this.name = name;
         this.bloodType = bloodType;
@@ -86,7 +86,7 @@ public class Patient
         return age;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -114,7 +114,7 @@ public class Patient
         this.age = age;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
