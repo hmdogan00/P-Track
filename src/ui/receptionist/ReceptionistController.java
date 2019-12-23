@@ -358,7 +358,7 @@ public class ReceptionistController implements Initializable {
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
 
-                            //loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
 
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setContentText("click click bum" + p.getName());

@@ -24,11 +24,10 @@ public class PatientDetailsController implements Initializable {
     public PatientDetailsController() {
 
 
-
     }
 
-    public void update( String patientName ) throws SQLException {
-        int patientKey = database.Database.findPatientKey(patientName);
+    public void update( String id ) throws SQLException {
+        int patientKey = database.Database.findPatientKey(id);
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         System.out.println(infoList.toString());
         detailedNameLabel.setText(infoList.get(0));
@@ -114,9 +113,8 @@ public class PatientDetailsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         try {
-            update("Hami Mert Doğan");
+            update( "16441730544");
         } catch (SQLException e) {
             e.printStackTrace();
         }
