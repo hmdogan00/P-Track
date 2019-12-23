@@ -49,7 +49,7 @@ public class Database {
     }
 
     //Method to find patient key number on table
-    public static String patientKey (String p_name) throws SQLException {
+    public static String findPatientKey (String p_name) throws SQLException {
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT patient_id FROM patient WHERE name = " + p_name;
