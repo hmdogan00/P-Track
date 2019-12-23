@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class AuthController {
@@ -68,7 +69,7 @@ public class AuthController {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent e) throws IOException {
+    private void handleButtonAction(ActionEvent e) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 1){
             System.out.println("Entered Patient");
@@ -77,13 +78,27 @@ public class AuthController {
         }
         else if (roleChooser == 2){
             System.out.println("Entered Doctor");
-            loader.setLocation(getClass().getClassLoader().getResource("ui/doctor/doctorHomePage.fxml"));
-            System.out.println( loader.getLocation() );
+            String loginDoctor = database.Database.doctorAuth(userName.getText(), password.getText());
+            if (loginDoctor.equals(userName.getText()))
+                loader.setLocation(getClass().getClassLoader().getResource("ui/doctor/doctorHomePage.fxml"));
+            else{
+                userName.clear();
+                password.clear();
+                errorLabel.setText(loginDoctor);
+                errorLabel.setTextFill(Color.RED);
+            }
         }
         else if (roleChooser == 3){
             System.out.println("Entered Receptionist");
-            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
-            System.out.println( loader.getLocation() );
+            String loginReceptionist = database.Database.registrationAuth(userName.getText(), password.getText());
+            if (loginReceptionist.equals(userName.getText()))
+                loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            else{
+                userName.clear();
+                password.clear();
+                errorLabel.setText(loginReceptionist);
+                errorLabel.setTextFill(Color.RED);
+            }
         }
         else{
             errorLabel.setText("Please select a role to log in!");
@@ -94,37 +109,12 @@ public class AuthController {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-
-            if (isMatch()){
-                app_stage.setScene(scene);
-                app_stage.setResizable(false);
-                app_stage.show();
-            }
-            else{
-                userName.clear();
-                password.clear();
-                errorLabel.setText("Username or password is wrong. Try Again!");
-                errorLabel.setTextFill(Color.RED);
-            }
+            app_stage.setScene(scene);
+            app_stage.setResizable(false);
+            app_stage.show();
         }catch (RuntimeException r){
             System.out.println("Role is not selected!");
         }
 
-    }
-
-    private boolean isMatch() {
-        boolean check;
-        System.out.println("username: " + userName.getText() + "\npassword: "
-                + password.getText());
-
-        if (userName.getText().equals("admin") & password.getText().equals("123")) {
-            System.out.println("Successful");
-            check = true;
-        }
-        else {
-            System.out.println("Not Successful");
-            check = false;
-        }
-        return check;
     }
 }

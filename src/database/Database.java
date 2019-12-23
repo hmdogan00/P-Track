@@ -245,7 +245,7 @@ public class Database {
         }
         return patientAppointment;
     }
-    public static String doctorAuth(String user_name, String password, String role) throws SQLException {
+    public static String doctorAuth(String user_name, String password) throws SQLException {
         Connection myConn = connection();
         String userName = "";
         String userPassword = "";
@@ -269,7 +269,7 @@ public class Database {
         return user_name;
     }
 
-    public static String registrationAuth(String user_name, String password, String role) throws SQLException {
+    public static String registrationAuth(String user_name, String password) throws SQLException {
         Connection myConn = connection();
         String userName = "";
         String userPassword = "";
