@@ -245,4 +245,52 @@ public class Database {
         }
         return patientAppointment;
     }
+    public static String doctorAuth(String user_name, String password, String role) throws SQLException {
+        Connection myConn = connection();
+        String userName = "";
+        String userPassword = "";
+        String userRole = "";
+        String sql1 = "SELECT * FROM users WHERE user_name = '" + user_name + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs1 = myStmt.executeQuery(sql1);
+        while(rs1.next()){
+            userName = rs1.getString("user_name");
+            userRole = rs1.getString("role");
+            userPassword = rs1.getString("password");
+        }
+        if(user_name.equals("") && !userRole.equals("doctor")){
+            return "User name or the role does not match.";
+        }
+        else{
+            if(!userPassword.equals(password)){
+                return "Password does not match with username.";
+            }
+        }
+        return user_name;
+    }
+
+    public static String registrationAuth(String user_name, String password, String role) throws SQLException {
+        Connection myConn = connection();
+        String userName = "";
+        String userPassword = "";
+        String userRole = "";
+        String sql1 = "SELECT * FROM users WHERE user_name = '" + user_name + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs1 = myStmt.executeQuery(sql1);
+        while(rs1.next()){
+            userName = rs1.getString("user_name");
+            userRole = rs1.getString("role");
+            userPassword = rs1.getString("password");
+        }
+        if(user_name.equals("") && !userRole.equals("registration")){
+            return "User name or the role does not match.";
+        }
+        else{
+            if(!userPassword.equals(password)){
+                return "Password does not match with username.";
+            }
+        }
+        return user_name;
+    }
+
 }
