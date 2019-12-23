@@ -1,4 +1,5 @@
 package database;
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -208,15 +209,27 @@ public class Database {
      return appointmentOrder;
     }
 
-    public static void addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
+    public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
-        String sql = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
-        PreparedStatement myStmt = myConn.prepareStatement(sql);
-        myStmt.setInt(1, p_key);
-        myStmt.setInt(2,d_key);
-        myStmt.setString(3,date);
-        myStmt.setString(4,time);
-        myStmt.executeUpdate();
+        Boolean flag = true;
+        String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            if(rs.getString("doctor_id").equals("" + d_key) || rs.getString("patient_id").equals("" + p_key)){
+                flag = false;
+            }
+        }
+        if (flag) {
+            String sql1 = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
+            PreparedStatement myStmt1 = myConn.prepareStatement(sql1);
+            myStmt1.setInt(1, p_key);
+            myStmt1.setInt(2, d_key);
+            myStmt1.setString(3, date);
+            myStmt1.setString(4, time);
+            myStmt1.executeUpdate();
+        }
+        return flag;
     }
     public static ArrayList doctorsAppointment(int d_id) throws SQLException {
         ArrayList<String> doctorsAppointment = new ArrayList<>();
@@ -240,12 +253,53 @@ public class Database {
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
             patientAppointment.add(rs.getString("doctor_id"));
-            System.out.println(rs.getString("doctor_id"));
             patientAppointment.add(rs.getString("date"));
-            System.out.println(rs.getString("date"));
             patientAppointment.add(rs.getString("time"));
-            System.out.println(rs.getString("time"));
         }
         return patientAppointment;
     }
+    public static String doctorAuth(String user_name, String password) throws SQLException {
+        Connection myConn = connection();
+        String userName = "";
+        String userPassword = "";
+        String userRole = "";
+        String sql1 = "SELECT * FROM users WHERE user_name = '" + user_name + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs1 = myStmt.executeQuery(sql1);
+        while(rs1.next()){
+            userName = rs1.getString("user_name");
+            userRole = rs1.getString("role");
+            userPassword = rs1.getString("password");
+        }
+        if(user_name.equals("") || !userRole.equals("doctor")){
+            return "User name or the role does not match.";
+        }
+        if(!userPassword.equals(password)){
+            return "Password does not match with username.";
+        }
+        return user_name;
+    }
+
+    public static String registrationAuth(String user_name, String password) throws SQLException {
+        Connection myConn = connection();
+        String userName = "";
+        String userPassword = "";
+        String userRole = "";
+        String sql1 = "SELECT * FROM users WHERE user_name = '" + user_name + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs1 = myStmt.executeQuery(sql1);
+        while(rs1.next()){
+            userName = rs1.getString("user_name");
+            userRole = rs1.getString("role");
+            userPassword = rs1.getString("password");
+        }
+        if(user_name.equals("") || !userRole.equals("registration")){
+            return "User name or the role does not match.";
+        }
+        if(!userPassword.equals(password)){
+            return "Password does not match with username.";
+        }
+        return user_name;
+    }
+
 }
