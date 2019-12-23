@@ -24,15 +24,13 @@ public class PatientDetailsController {
         detailedNameLabel.setText(infoList.get(0));
         detailedIDLabel.setText(infoList.get(1));
         detailedGenderLabel.setText(infoList.get(2));
-        patientSurname.setText(infoList.get(3));
-        detailedBirthDateLabel.setText(infoList.get(4));
-        detailedBloodTypeLabel.setText(infoList.get(5));
+        detailedBirthDateLabel.setText(infoList.get(3));
+        detailedBloodTypeLabel.setText(infoList.get(4));
         detailedAddressLabel.setText(infoList.get(5));
-        detailedCityLabel.setText(infoList.get(5));
-        detailedPhoneNumber.setText(infoList.get(6));
-        detailedInsurance.setText(infoList.get(7));
-        detailedEmergencyContactName.setText(infoList.get(8));
-        emergencyContactSurname.setText(infoList.get(9));
+        detailedCityLabel.setText(infoList.get(6));
+        detailedPhoneNumber.setText(infoList.get(7));
+        detailedInsurance.setText(infoList.get(8));
+        detailedEmergencyContactName.setText(infoList.get(9));
         detailedEmergencyContactPhoneNumber.setText(infoList.get(10));
     }
 
@@ -42,8 +40,6 @@ public class PatientDetailsController {
     private Label detailedIDLabel;
     @FXML
     private Label detailedGenderLabel;
-    @FXML
-    private Label patientSurname;
     @FXML
     private Label detailedBloodTypeLabel;
     @FXML
@@ -58,8 +54,6 @@ public class PatientDetailsController {
     private Label detailedInsurance;
     @FXML
     private Label detailedEmergencyContactName;
-    @FXML
-    private Label emergencyContactSurname;
     @FXML
     private Label detailedEmergencyContactPhoneNumber;
     @FXML
