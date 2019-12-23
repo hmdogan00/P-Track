@@ -46,6 +46,7 @@ public class AddAppointmentController {
         /// if doctor is available
         if ( classes.Receptionist.addAppointment(patient,doctor,cost,time) > 0 )
         {
+ System.out.println
 
         }
 
