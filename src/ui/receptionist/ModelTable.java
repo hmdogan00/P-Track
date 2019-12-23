@@ -52,7 +52,5 @@ public class ModelTable {
 
     public String getBloodType() {return bloodType;}
 
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
-    }
+    public void setBloodType(String bloodType) {this.bloodType = bloodType;}
 }

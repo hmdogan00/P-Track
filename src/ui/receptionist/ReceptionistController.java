@@ -192,7 +192,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button addNewPatientButton;
 
-    //Table View Variables
+    //Patient Table View Variables
     @FXML
     private TableView<ModelTable> patientTable;
 
@@ -215,7 +215,23 @@ public class ReceptionistController implements Initializable {
     private TableColumn<ModelTable,String> colBloodType;
 
     @FXML
-    private TextField filterName;
+    private TextField filterPatientName;
+
+    //Patient Table View Variables
+    @FXML
+    private TableView<DoctorTable> doctorTable;
+
+    @FXML
+    private TableColumn<DoctorTable,String> colDoctorName;
+
+    @FXML
+    private TableColumn<DoctorTable,String> colDoctorDepartment;
+
+    @FXML
+    private TableColumn<DoctorTable,String> colDoctorRoom;
+
+    @FXML
+    private TextField filterDoctorName;
 
     //variables
 
@@ -263,8 +279,8 @@ public class ReceptionistController implements Initializable {
         }catch (IOException exception){}
     }
 
-    @FXML
-    public void getData(){
+    //database for patients
+    public void getPatientData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
@@ -304,8 +320,6 @@ public class ReceptionistController implements Initializable {
             });
             patientTable.getColumns().add(col_changeInfo);
 
-
-
             while (rs.next()) {
                 obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
                         rs.getString("citizenship_id"), rs.getString("insurance"),
@@ -323,11 +337,11 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(obList);
     }
 
-    public void getFilteredData(){
+    public void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
             Connection con = Database.connection();
-            String nameFilter = filterName.getText();
+            String nameFilter = filterPatientName.getText();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs.next()) {
@@ -340,22 +354,107 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(listFiltered);
     }
 
+    //database for doctors
+    public void getDoctorData(){
+        ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
+
+            //add appointment button to a column
+            /*TableColumn<ModelTable, Boolean> col_addApp = new TableColumn<>();
+            col_addApp.setSortable(false);
+            col_addApp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_addApp.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonAddApp(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_addApp);
+
+            //change info button to a column
+            TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
+            col_changeInfo.setSortable(false);
+            col_changeInfo.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_changeInfo.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonChangeInfo(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_changeInfo);*/
+
+            while (rs2.next()) {
+                obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
+                        rs2.getString("room_number") ));
+            }
+        }catch (SQLException ex){}
+
+        colDoctorName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colDoctorDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
+        colDoctorRoom.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+
+        doctorTable.setItems(obList2);
+    }
+
+    public void getFilteredDoctorData(){
+        ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
+        try{
+            Connection con = Database.connection();
+            String nameFilter = filterDoctorName.getText();
+            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
+
+            while (rs2.next()) {
+                listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
+                        rs2.getString("room_number") ));
+            }
+        }catch (SQLException ex){}
+
+        doctorTable.setItems(listFiltered2);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
         System.out.println("All data is uploaded");
-        getData();
+        getPatientData();
+        getDoctorData();
         patientTable.refresh();
+        doctorTable.refresh();
     }
 
+    //Patient Name Filter
     @FXML
-    private void findNameFromList(ActionEvent e) throws InvocationTargetException {
-        if (filterName.getText().equals("")) {
-            getData();
+    private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
+        if (filterPatientName.getText().equals("")) {
+            getPatientData();
             System.out.println("ali baba");
         }
         else
-            getFilteredData();
+            getFilteredPatientData();
         patientTable.refresh();
+    }
+
+    //Patient Name Filter
+    @FXML
+    private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
+        if (filterDoctorName.getText().equals("")) {
+            getDoctorData();
+            System.out.println("Welcome 2019 2");
+        }
+        else
+            getFilteredDoctorData();
+        doctorTable.refresh();
     }
 
     //inner classes to add buttons to Table
