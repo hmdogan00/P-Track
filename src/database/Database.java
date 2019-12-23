@@ -1,7 +1,4 @@
 package database;
-
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -49,7 +46,7 @@ public class Database {
         myStmt.setString(9, address);
         myStmt.setString(10, "" + phoneNumber);
 
-        int rowsAffected = myStmt.executeUpdate();
+       myStmt.executeUpdate();
     }
 
     //Method to find patient key number on table
@@ -77,7 +74,7 @@ public class Database {
         myStmt.setString(4, emergency_name);
         myStmt.setString(5, "" + emergency_number);
         myStmt.setString(6, "" + p_key);
-        int rowsAffected = myStmt.executeUpdate();
+        myStmt.executeUpdate();
     }
 
     //Patient info with specific key value
@@ -200,4 +197,30 @@ public class Database {
      }
      return appointmentOrder;
     }
+
+    public static void addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
+        Connection myConn = connection();
+        String sql = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
+        PreparedStatement myStmt = myConn.prepareStatement(sql);
+        myStmt.setInt(1, p_key);
+        myStmt.setInt(2,d_key);
+        myStmt.setString(3,date);
+        myStmt.setString(4,time);
+        myStmt.executeUpdate();
+    }
+    public static ArrayList doctorsAppointment(int d_id) throws SQLException {
+        ArrayList<String> doctorsAppointment = new ArrayList<>();
+        Connection myConn = connection();
+        String sql ="SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' ORDER BY time ASC" ;
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            doctorsAppointment.add(rs.getString("patient_id"));
+            doctorsAppointment.add(rs.getString("date"));
+            doctorsAppointment.add(rs.getString("time"));
+        }
+        return doctorsAppointment;
+    }
+
+
 }
