@@ -1,5 +1,6 @@
 package ui.receptionist;
 
+import classes.Patient;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
 
+import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
@@ -215,6 +217,9 @@ public class ReceptionistController implements Initializable {
     private TableColumn<ModelTable,String> colBloodType;
 
     @FXML
+    private TableColumn<ModelTable,String> colAddAppointment;
+
+    @FXML
     private TextField filterPatientName;
 
     //Patient Table View Variables
@@ -286,23 +291,6 @@ public class ReceptionistController implements Initializable {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
-            //add appointment button to a column
-            TableColumn<ModelTable, Boolean> col_addApp = new TableColumn<>();
-            col_addApp.setSortable(false);
-            col_addApp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_addApp.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonAddApp(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_addApp);
-
             //patient details button to a column
             TableColumn<ModelTable, Boolean> col_details = new TableColumn<>();
             col_details.setSortable(false);
@@ -350,6 +338,36 @@ public class ReceptionistController implements Initializable {
         colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
         colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
+
+        //Add Appointment Button Adder
+        Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
+            //make table cell with button
+            final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button addAppointmentButton = new Button("Add Appointment");
+                        addAppointmentButton.setOnAction(event -> {
+                            ModelTable p = getTableView().getItems().get(getIndex());
+                            loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setContentText("click click bum" + p.getName());
+                            alert.show();
+                        });
+                        setGraphic(addAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell;
+        };
+        colAddAppointment.setCellFactory(cellFactory);
 
         patientTable.setItems(obList);
     }
@@ -545,6 +563,7 @@ public class ReceptionistController implements Initializable {
         }
     }
 
+    //Change Info Button Creator
     private class ButtonChangeInfo extends TableCell<ModelTable, Boolean>{
         final Button changeInfoButton = new Button("Change Info");
         ButtonChangeInfo(final TableView<ModelTable> tblView){

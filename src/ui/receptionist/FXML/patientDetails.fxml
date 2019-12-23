@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -25,7 +26,7 @@
       </ToolBar>
       <HBox maxWidth="-Infinity" prefHeight="39.0" prefWidth="780.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="48.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="113.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
@@ -35,19 +36,32 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No:" wrappingWidth="41.50390625">
+            <Region prefHeight="37.0" prefWidth="83.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No:" wrappingWidth="54.50390625">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
             </Text>
-            <Label fx:id="detailedIDLabel" prefHeight="39.0" prefWidth="113.0" text="Label" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
+            <Label fx:id="detailedIDLabel" prefHeight="37.0" prefWidth="126.0" text="Label" />
+            <Region prefHeight="37.0" prefWidth="7.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="61.767578125">
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="8.0" top="10.0" />
+                  <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Text>
             <Label fx:id="detailedGenderLabel" prefHeight="39.0" prefWidth="140.0" text="Label" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:">
+         </children>
+      </HBox>
+      <HBox maxWidth="-Infinity" prefHeight="46.0" prefWidth="750.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate:" wrappingWidth="65.328125">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <Label fx:id="detailedBirthDateLabel" prefHeight="39.0" prefWidth="111.0" text="Label" />
+            <Region prefHeight="40.0" prefWidth="122.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:" wrappingWidth="77.783203125">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -55,41 +69,33 @@
             <Label fx:id="detailedBloodTypeLabel" prefHeight="39.0" prefWidth="82.0" text="Label" />
          </children>
       </HBox>
-      <HBox maxWidth="-Infinity" prefHeight="39.0" prefWidth="802.0">
+      <HBox maxWidth="-Infinity" prefHeight="47.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate:" wrappingWidth="71.328125">
-               <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
-               </HBox.margin>
-            </Text>
-            <Label fx:id="detailedBirthDateLabel" prefHeight="39.0" prefWidth="111.0" text="Label" />
-         </children>
-      </HBox>
-      <HBox maxWidth="-Infinity" prefHeight="40.0" prefWidth="816.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="70.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="70.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                </HBox.margin>
             </Text>
-            <Label fx:id="detailedAddressLabel" prefHeight="40.0" prefWidth="251.0" text="Label" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City" wrappingWidth="38.208984375">
+            <Label fx:id="detailedAddressLabel" prefHeight="40.0" prefWidth="224.0" text="Label" />
+            <Region prefHeight="41.0" prefWidth="0.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="38.208984375">
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Text>
             <Label fx:id="detailedCityLabel" prefHeight="40.0" prefWidth="182.0" text="Label" />
          </children>
       </HBox>
-      <HBox maxWidth="-Infinity" prefHeight="65.0" prefWidth="750.0">
+      <HBox maxWidth="-Infinity" prefHeight="50.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No." wrappingWidth="70.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="70.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                </HBox.margin>
             </Text>
-            <Label fx:id="detailedPhoneNumber" prefHeight="39.0" prefWidth="253.0" text="Label" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="57.13671875">
+            <Label fx:id="detailedPhoneNumber" prefHeight="39.0" prefWidth="230.0" text="Label" />
+            <Region prefHeight="45.0" prefWidth="0.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="76.13671875">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -111,18 +117,21 @@
             </ToolBar>
             <HBox prefHeight="55.0" prefWidth="750.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="70.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="113.0">
                      <HBox.margin>
                         <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                      </HBox.margin>
                   </Text>
-                  <Label fx:id="detailedEmergencyContactName" prefHeight="31.0" prefWidth="252.0" text="Label" />
+                  <Label fx:id="detailedEmergencyContactName" layoutX="10.0" layoutY="20.0" prefHeight="31.0" prefWidth="252.0" text="Label">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="1.0" prefWidth="750.0" />
             <HBox prefHeight="31.0" prefWidth="750.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No." wrappingWidth="70.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="70.0">
                      <HBox.margin>
                         <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                      </HBox.margin>
@@ -138,7 +147,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" text="Button">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#pageClose" prefHeight="36.0" prefWidth="51.0" text="Back">
          <VBox.margin>
             <Insets bottom="10.0" left="680.0" />
          </VBox.margin>
