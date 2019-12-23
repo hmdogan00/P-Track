@@ -303,6 +303,23 @@ public class ReceptionistController implements Initializable {
             });
             patientTable.getColumns().add(col_addApp);
 
+            //patient details button to a column
+            TableColumn<ModelTable, Boolean> col_details = new TableColumn<>();
+            col_details.setSortable(false);
+            col_details.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_details.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonDetails(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_details);
+
             //change info button to a column
             TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
             col_changeInfo.setSortable(false);
@@ -474,6 +491,30 @@ public class ReceptionistController implements Initializable {
             super.updateItem(check, empty);
             if (!empty)
                 setGraphic(addAppointmentButton);
+            else{
+                setGraphic(null);
+                setText("");
+            }
+        }
+    }
+
+    //details button for patients
+    private class ButtonDetails extends TableCell<ModelTable, Boolean>{
+        final Button detailsButton = new Button("Details");
+        ButtonDetails(final TableView<ModelTable> tblView){
+            detailsButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean check, boolean empty){
+            super.updateItem(check, empty);
+            if (!empty)
+                setGraphic(detailsButton);
             else{
                 setGraphic(null);
                 setText("");
