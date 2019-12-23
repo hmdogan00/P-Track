@@ -1,13 +1,14 @@
 package database;
 
 import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
 
-        }
+    }
 
     //Connection method including connection details
     public static Connection connection() throws SQLException {
@@ -23,59 +24,59 @@ public class Database {
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String search = "Mert";
-        String sql = "SELECT * FROM patient WHERE name LIKE '" + search + "' " ;
+        String sql = "SELECT * FROM patient WHERE name LIKE '" + search + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
 
-        while(rs.next()) {
+        while (rs.next()) {
             System.out.println(rs.getString("name"));
         }
     }
 
     //Method to add new patient to database
     public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
-                                  int phoneNumber, String insurance, String emergency_name, int emergency_number ) throws SQLException{
+                                  int phoneNumber, String insurance, String emergency_name, int emergency_number) throws SQLException {
         Connection myConn = connection();
         String sql = "INSERT INTO patient(name,birth_date,citizenship_id,insurance,gender,blood_type,emergency_name,emergency_number,patient_address,patient_phoneNumber) VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement myStmt = myConn.prepareStatement(sql);
-        myStmt.setString(1,name);
-        myStmt.setString(2,birth_date);
-        myStmt.setString(3,"" + Id);
-        myStmt.setString(4,insurance);
-        myStmt.setString(5,sex);
-        myStmt.setString(6,blood_type);
-        myStmt.setString(7,emergency_name);
+        myStmt.setString(1, name);
+        myStmt.setString(2, birth_date);
+        myStmt.setString(3, "" + Id);
+        myStmt.setString(4, insurance);
+        myStmt.setString(5, sex);
+        myStmt.setString(6, blood_type);
+        myStmt.setString(7, emergency_name);
         myStmt.setString(8, "" + emergency_number);
-        myStmt.setString(9,address);
-        myStmt.setString(10,"" + phoneNumber);
+        myStmt.setString(9, address);
+        myStmt.setString(10, "" + phoneNumber);
 
         int rowsAffected = myStmt.executeUpdate();
     }
 
     //Method to find patient key number on table
-    public static int findPatientKey (String p_name) throws SQLException {
+    public static int findPatientKey(String p_name) throws SQLException {
         int patient_key = 0;
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT patient_id FROM patient WHERE name = '" + p_name + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
-        while(rs.next()){
+        while (rs.next()) {
             patient_key = rs.getInt("patient_id");
         }
         return patient_key;
     }
 
     //Method to update information of patient
-    public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException{
+    public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException {
         Connection myConn = connection();
-        String sql ="UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
+        String sql = "UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
 
         PreparedStatement myStmt = myConn.prepareStatement(sql);
         myStmt.setString(1, p_address);
-        myStmt.setString(2,"" + patient_phone);
+        myStmt.setString(2, "" + patient_phone);
         myStmt.setString(3, insurance);
         myStmt.setString(4, emergency_name);
-        myStmt.setString(5,"" + emergency_number);
-        myStmt.setString(6,"" + p_key);
+        myStmt.setString(5, "" + emergency_number);
+        myStmt.setString(6, "" + p_key);
         int rowsAffected = myStmt.executeUpdate();
     }
 
@@ -115,20 +116,20 @@ public class Database {
     }
 
     //Method for finding doctor key value
-    public static int findDoctorKey (String doctor_name) throws SQLException {
+    public static int findDoctorKey(String doctor_name) throws SQLException {
         int doctor_key = 0;
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT doctor_id FROM doctor WHERE name = '" + doctor_name + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
-        while(rs.next()){
+        while (rs.next()) {
             doctor_key = rs.getInt("doctor_id");
         }
         return doctor_key;
     }
 
     //Method for getting doctor details
-    public static ArrayList<String> doctorDetails (int doctorKey) throws SQLException {
+    public static ArrayList<String> doctorDetails(int doctorKey) throws SQLException {
         String doctorName = "";
         String doctorDepartment = "";
         String doctor_roomNumber = "";
@@ -139,7 +140,7 @@ public class Database {
         String sql = "SELECT * FROM doctor WHERE doctor_id = '" + doctorKey + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
 
-        while(rs.next()){
+        while (rs.next()) {
             doctorName = rs.getString("name");
             doctorDepartment = rs.getString("department");
             doctor_roomNumber = rs.getString("room_number");
@@ -153,6 +154,50 @@ public class Database {
         return doctorInformation;
     }
 
+    //Local date returning method
+    public static String date() throws SQLException {
+        String date = "";
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        String sql = "SET time_zone = '+03:00'; ";
+        ResultSet rs = myStmt.executeQuery(sql);
+        sql = "SELECT CURRENT_DATE()";
+        ResultSet rs1 = myStmt.executeQuery(sql);
+        while (rs1.next()) {
+            date = (rs1.getString("CURRENT_DATE()"));
+        }
+        return date;
+    }
 
+    //Local time returning method
+    public static String time() throws SQLException {
+        String time = "";
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        String sql = "SET time_zone = '+03:00'; ";
+        ResultSet rs = myStmt.executeQuery(sql);
+        sql = "SELECT CURRENT_TIME()";
+        ResultSet rs2 = myStmt.executeQuery(sql);
 
+        while(rs2.next()){
+            time = rs2.getString("CURRENT_TIME()");
+        }
+        return time;
+    }
+
+    //Upcoming appointment creating method
+    public static ArrayList appointmentOrder () throws SQLException{
+     ArrayList<String> appointmentOrder = new ArrayList<>();
+     Connection myConn = connection();
+     Statement myStmt = myConn.createStatement();
+     String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' ORDER BY time ASC";
+     ResultSet rs = myStmt.executeQuery(sql);
+
+     while(rs.next()){
+         appointmentOrder.add(rs.getString("patient_id"));
+         appointmentOrder.add(rs.getString("doctor_id"));
+         appointmentOrder.add(rs.getString("time"));
+     }
+     return appointmentOrder;
+    }
 }

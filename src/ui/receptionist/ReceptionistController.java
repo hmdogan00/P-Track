@@ -402,38 +402,40 @@ public class ReceptionistController implements Initializable {
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             //add appointment button to a column
-            /*TableColumn<ModelTable, Boolean> col_addApp = new TableColumn<>();
-            col_addApp.setSortable(false);
-            col_addApp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+            TableColumn<DoctorTable, Boolean> col_addDocDet = new TableColumn<>();
+            col_addDocDet.setSortable(false);
+            col_addDocDet.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DoctorTable, Boolean>, ObservableValue<Boolean>>(){
                 @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<DoctorTable, Boolean> p){
                     return new SimpleBooleanProperty(p.getValue() != null);
                 }
             });
-            col_addApp.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+            col_addDocDet.setCellFactory(new Callback<TableColumn<DoctorTable, Boolean>, TableCell<DoctorTable, Boolean>>(){
                 @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonAddApp(patientTable);
+                public TableCell<DoctorTable, Boolean> call(TableColumn<DoctorTable, Boolean> p){
+                    return new ButtonDoctorDetails(doctorTable);
                 }
             });
-            patientTable.getColumns().add(col_addApp);
+            doctorTable.getColumns().add(col_addDocDet);
 
-            //change info button to a column
-            TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
-            col_changeInfo.setSortable(false);
-            col_changeInfo.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_changeInfo.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonChangeInfo(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_changeInfo);*/
+            while (rs2.next()) {
+                obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
+                        rs2.getString("room_number") ));
+            }
+        }catch (SQLException ex){}
+
+        colDoctorName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colDoctorDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
+        colDoctorRoom.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+
+        doctorTable.setItems(obList2);
+    }
+
+    public void getDoctorsData(){
+        ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
                 obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
@@ -489,7 +491,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterDoctorName.getText().equals("")) {
-            getDoctorData();
+            getDoctorsData();
             System.out.println("Welcome 2019 2");
         }
         else
@@ -569,5 +571,28 @@ public class ReceptionistController implements Initializable {
         }
     }
 
+    //details button for doctors
+    private class ButtonDoctorDetails extends TableCell<DoctorTable, Boolean>{
+        final Button detailsButton = new Button("Details");
+        ButtonDoctorDetails(final TableView<DoctorTable> tblView){
+            detailsButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Doctor Details");
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean check, boolean empty){
+            super.updateItem(check, empty);
+            if (!empty)
+                setGraphic(detailsButton);
+            else{
+                setGraphic(null);
+                setText("");
+            }
+        }
+    }
 
 }
