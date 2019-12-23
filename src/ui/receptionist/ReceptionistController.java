@@ -354,6 +354,29 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(obList);
     }
 
+    public void getPatientsData(){
+        ObservableList<ModelTable> obList = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
+
+            while (rs.next()) {
+                obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
+                        rs.getString("citizenship_id"), rs.getString("insurance"),
+                        rs.getString("gender"), rs.getString("blood_type")));
+            }
+        }catch (SQLException ex){}
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
+        colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+        colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
+
+        patientTable.setItems(obList);
+    }
+
     public void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
@@ -454,7 +477,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterPatientName.getText().equals("")) {
-            getPatientData();
+            getPatientsData();
             System.out.println("ali baba");
         }
         else
