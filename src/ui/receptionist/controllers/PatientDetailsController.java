@@ -24,14 +24,14 @@ public class PatientDetailsController {
         detailedNameLabel.setText(infoList.get(0));
         detailedIDLabel.setText(infoList.get(1));
         detailedGenderLabel.setText(infoList.get(2));
-        detailedBloodTypeLabel.setText(infoList.get(3));
-        detailedBirthDateLabel.setText(infoList.get(4));
+        detailedBirthDateLabel.setText(infoList.get(3));
+        detailedBloodTypeLabel.setText(infoList.get(4));
         detailedAddressLabel.setText(infoList.get(5));
-        detailedCityLabel.setText(infoList.get(5));
-        detailedInsurance.setText(infoList.get(6));
+        detailedCityLabel.setText(infoList.get(6));
         detailedPhoneNumber.setText(infoList.get(7));
-        detailedEmergencyContactName.setText(infoList.get(8));
-        detailedEmergencyContactPhoneNumber.setText(infoList.get(9));
+        detailedInsurance.setText(infoList.get(8));
+        detailedEmergencyContactName.setText(infoList.get(9));
+        detailedEmergencyContactPhoneNumber.setText(infoList.get(10));
     }
 
     @FXML
