@@ -72,7 +72,7 @@ public class AuthController {
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 1){
             System.out.println("Entered Patient");
-            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
             System.out.println( loader.getLocation() );
         }
         else if (roleChooser == 2){
