@@ -233,7 +233,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private TextField filterDoctorName;
 
-    //variables
+    //variabless
 
     //constructor
     public ReceptionistController(){}
@@ -545,6 +545,7 @@ public class ReceptionistController implements Initializable {
         }
     }
 
+    //Change Info Button Creator
     private class ButtonChangeInfo extends TableCell<ModelTable, Boolean>{
         final Button changeInfoButton = new Button("Change Info");
         ButtonChangeInfo(final TableView<ModelTable> tblView){

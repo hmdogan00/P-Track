@@ -1340,7 +1340,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1360,7 +1360,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1380,7 +1380,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <opaqueInsets>
                                                                                 <Insets />
                                                                             </opaqueInsets>
@@ -1410,7 +1410,7 @@
                                                                         </Button>
                                                                     </right>
                                                    <center>
-                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1423,7 +1423,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
