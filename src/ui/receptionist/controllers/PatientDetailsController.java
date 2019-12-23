@@ -2,10 +2,14 @@ package ui.receptionist.controllers;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -52,4 +56,12 @@ public class PatientDetailsController {
     private Label detailedEmergencyContactName;
     @FXML
     private Label detailedEmergencyContactPhoneNumber;
+    @FXML
+    private Button backButton;
+
+    @FXML private void pageClose(ActionEvent c)
+    {
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
+    }
 }

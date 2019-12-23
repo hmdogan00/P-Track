@@ -138,7 +138,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" text="Button">
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#pageClose" text="Back">
          <VBox.margin>
             <Insets bottom="10.0" left="680.0" />
          </VBox.margin>
