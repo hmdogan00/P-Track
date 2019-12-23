@@ -71,19 +71,13 @@
       </HBox>
       <HBox maxWidth="-Infinity" prefHeight="47.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="70.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address/City:" wrappingWidth="98.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                </HBox.margin>
             </Text>
             <Label fx:id="detailedAddressLabel" prefHeight="40.0" prefWidth="224.0" text="Label" />
             <Region prefHeight="41.0" prefWidth="0.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="38.208984375">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-            </Text>
-            <Label fx:id="detailedCityLabel" prefHeight="40.0" prefWidth="182.0" text="Label" />
          </children>
       </HBox>
       <HBox maxWidth="-Infinity" prefHeight="50.0" prefWidth="750.0">

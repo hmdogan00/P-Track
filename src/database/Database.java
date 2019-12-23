@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
-
     }
 
     //Connection method including connection details
@@ -50,11 +49,11 @@ public class Database {
     }
 
     //Method to find patient key number on table
-    public static int findPatientKey(String p_name) throws SQLException {
+    public static int findPatientKey(String id) throws SQLException {
         int patient_key = 0;
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT patient_id FROM patient WHERE name = '" + p_name + "' ";
+        String sql = "SELECT patient_id FROM patient WHERE citizenship_id = '" + id + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
         while (rs.next()) {
             patient_key = rs.getInt("patient_id");
@@ -77,9 +76,18 @@ public class Database {
         myStmt.executeUpdate();
     }
 
-    //Patient info with specific key value
+    //Patient information with specific key value
     public static ArrayList<String> patientDetails(int p_key) throws SQLException {
-        String name, id, gender, blood, birth_date, address, insurance, phone_number, emergency_name, emergency_number;
+        String name = "" ;
+        String id = "";
+        String gender = "";
+        String blood = "";
+        String birth_date = "";
+        String address = "";
+        String insurance = "";
+        String phone_number = "";
+        String emergency_name = "";
+        String emergency_number = "";
 
         ArrayList<String> patient_info = new ArrayList<>();
 
@@ -87,16 +95,18 @@ public class Database {
         String sql = " SELECT * FROM patient WHERE patient_id = '" + p_key + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
-        name = rs.getString("name");
-        id = rs.getString("citizenship_id");
-        gender = rs.getString("gender");
-        blood = rs.getString("blood_type");
-        birth_date = rs.getString("birth_date");
-        address = rs.getString("patient_address");
-        insurance = rs.getString("insurance");
-        phone_number = rs.getString("patient_phoneNumber");
-        emergency_name = rs.getString("emergency_name");
-        emergency_number = rs.getString("emergency_number");
+        while(rs.next()) {
+            name = rs.getString("name");
+            id = rs.getString("citizenship_id");
+            gender = rs.getString("gender");
+            blood = rs.getString("blood_type");
+            birth_date = rs.getString("birth_date");
+            address = rs.getString("patient_address");
+            insurance = rs.getString("insurance");
+            phone_number = rs.getString("patient_phoneNumber");
+            emergency_name = rs.getString("emergency_name");
+            emergency_number = rs.getString("emergency_number");
+        }
 
         patient_info.add(name);
         patient_info.add(id);
@@ -222,5 +232,20 @@ public class Database {
         return doctorsAppointment;
     }
 
-
+    public static ArrayList patientAppointment(int p_id)throws SQLException{
+        ArrayList<String> patientAppointment = new ArrayList<>();
+        Connection myConn = connection();
+        String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' AND patient_id ='" + p_id + "'  ORDER BY time ASC";;
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            patientAppointment.add(rs.getString("doctor_id"));
+            System.out.println(rs.getString("doctor_id"));
+            patientAppointment.add(rs.getString("date"));
+            System.out.println(rs.getString("date"));
+            patientAppointment.add(rs.getString("time"));
+            System.out.println(rs.getString("time"));
+        }
+        return patientAppointment;
+    }
 }

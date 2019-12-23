@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
+import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
@@ -220,6 +221,12 @@ public class ReceptionistController implements Initializable {
     private TableColumn<ModelTable,String> colAddAppointment;
 
     @FXML
+    private TableColumn<ModelTable,String> colDetails;
+
+    @FXML
+    private TableColumn<ModelTable,String> colChangeInfo;
+
+    @FXML
     private TextField filterPatientName;
 
     //Patient Table View Variables
@@ -271,7 +278,7 @@ public class ReceptionistController implements Initializable {
         app_stage.show();
     }
 
-    private void loadWindow(String location, String title){
+    public void loadWindow(String location, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
             Stage newStage = new Stage(StageStyle.DECORATED);
@@ -290,40 +297,6 @@ public class ReceptionistController implements Initializable {
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
-
-            //patient details button to a column
-            TableColumn<ModelTable, Boolean> col_details = new TableColumn<>();
-            col_details.setSortable(false);
-            col_details.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_details.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonDetails(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_details);
-
-            //change info button to a column
-            TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
-            col_changeInfo.setSortable(false);
-            col_changeInfo.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_changeInfo.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonChangeInfo(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_changeInfo);
 
             while (rs.next()) {
                 obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
@@ -368,6 +341,67 @@ public class ReceptionistController implements Initializable {
             return cell;
         };
         colAddAppointment.setCellFactory(cellFactory);
+
+        //Add Appointment Button Adder
+        Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory1 = (param) -> {
+            //make table cell with button
+            final TableCell<ModelTable, String> cell1 = new TableCell<ModelTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button addAppointmentButton = new Button("Patient Details");
+                        addAppointmentButton.setOnAction(event -> {
+                            ModelTable p = getTableView().getItems().get(getIndex());
+
+                            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setContentText("click click bum" + p.getName());
+                            alert.show();
+                        });
+                        setGraphic(addAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell1;
+        };
+        colDetails.setCellFactory(cellFactory1);
+
+        //Add Appointment Button Adder
+        Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory2 = (param) -> {
+            //make table cell with button
+            final TableCell<ModelTable, String> cell2 = new TableCell<ModelTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button addAppointmentButton = new Button("Change Patient Info");
+                        addAppointmentButton.setOnAction(event -> {
+                            ModelTable p = getTableView().getItems().get(getIndex());
+                            loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setContentText("click click bum" + p.getName());
+                            alert.show();
+                        });
+                        setGraphic(addAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell2;
+        };
+        colChangeInfo.setCellFactory(cellFactory2);
 
         patientTable.setItems(obList);
     }
