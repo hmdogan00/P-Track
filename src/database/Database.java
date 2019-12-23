@@ -1,11 +1,12 @@
 package database;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
-        System.out.print(findPatientKey("Mert Yıldırım"));
+
         }
 
     //Connection method including connection details
@@ -29,6 +30,7 @@ public class Database {
             System.out.println(rs.getString("name"));
         }
     }
+
     //Method to add new patient to database
     public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
                                   int phoneNumber, String insurance, String emergency_name, int emergency_number ) throws SQLException{
@@ -111,6 +113,46 @@ public class Database {
 
         return patient_info;
     }
+
+    //Method for finding doctor key value
+    public static int findDoctorKey (String doctor_name) throws SQLException {
+        int doctor_key = 0;
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        String sql = "SELECT doctor_id FROM doctor WHERE name = '" + doctor_name + "' ";
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            doctor_key = rs.getInt("doctor_id");
+        }
+        return doctor_key;
+    }
+
+    //Method for getting doctor details
+    public static ArrayList<String> doctorDetails (int doctorKey) throws SQLException {
+        String doctorName = "";
+        String doctorDepartment = "";
+        String doctor_roomNumber = "";
+        String doctor_number = "";
+        ArrayList<String> doctorInformation = new ArrayList<>();
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        String sql = "SELECT * FROM doctor WHERE doctor_id = '" + doctorKey + "' ";
+        ResultSet rs = myStmt.executeQuery(sql);
+
+        while(rs.next()){
+            doctorName = rs.getString("name");
+            doctorDepartment = rs.getString("department");
+            doctor_roomNumber = rs.getString("room_number");
+            doctor_number = rs.getString("phone_number");
+        }
+        doctorInformation.add(doctorName);
+        doctorInformation.add(doctorDepartment);
+        doctorInformation.add(doctor_roomNumber);
+        doctorInformation.add(doctor_number);
+
+        return doctorInformation;
+    }
+
 
 
 }
