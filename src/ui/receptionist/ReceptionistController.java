@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
+import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
@@ -297,23 +298,6 @@ public class ReceptionistController implements Initializable {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
-            //patient details button to a column
-            /*TableColumn<ModelTable, Boolean> col_details = new TableColumn<>();
-            col_details.setSortable(false);
-            col_details.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_details.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonDetails(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_details);*/
-
             while (rs.next()) {
                 obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
                         rs.getString("citizenship_id"), rs.getString("insurance"),
@@ -373,7 +357,8 @@ public class ReceptionistController implements Initializable {
                         final Button addAppointmentButton = new Button("Patient Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
-                            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+
+                            //loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
 
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setContentText("click click bum" + p.getName());
