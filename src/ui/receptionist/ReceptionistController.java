@@ -1,8 +1,5 @@
 package ui.receptionist;
 
-import classes.Patient;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +17,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
-import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
@@ -29,6 +25,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ReceptionistController implements Initializable {
@@ -246,9 +243,9 @@ public class ReceptionistController implements Initializable {
     private TextField filterDoctorName;
 
     //variables
-
+    ModelTable p;
     //constructor
-    public ReceptionistController(){}
+    public ReceptionistController() {}
 
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
@@ -312,7 +309,7 @@ public class ReceptionistController implements Initializable {
         colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
-        //Add Appointment Button Adder
+        //Adding Appointment Button
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
@@ -326,7 +323,8 @@ public class ReceptionistController implements Initializable {
                     else{
                         final Button addAppointmentButton = new Button("Add Appointment");
                         addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                            p = getTableView().getItems().get(getIndex());
+
                             loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
 
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -342,7 +340,7 @@ public class ReceptionistController implements Initializable {
         };
         colAddAppointment.setCellFactory(cellFactory);
 
-        //Add Appointment Button Adder
+        //adding patient details button
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory1 = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell1 = new TableCell<ModelTable, String>(){
@@ -351,7 +349,6 @@ public class ReceptionistController implements Initializable {
                     super.updateItem(item, empty);
                     if (empty){
                         setGraphic(null);
-                        setText(null);
                     }
                     else{
                         final Button addAppointmentButton = new Button("Patient Details");
@@ -365,15 +362,15 @@ public class ReceptionistController implements Initializable {
                             alert.show();
                         });
                         setGraphic(addAppointmentButton);
-                        setText(null);
                     }
+                    setText(null);
                 }
             };
             return cell1;
         };
         colDetails.setCellFactory(cellFactory1);
 
-        //Add Appointment Button Adder
+        //Adding change patient info button
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory2 = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell2 = new TableCell<ModelTable, String>(){
@@ -620,6 +617,5 @@ public class ReceptionistController implements Initializable {
             }
         }
     }
-
 
 }
