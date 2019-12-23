@@ -49,6 +49,7 @@ public class PatientController {
     @FXML
     private void patientLogOut(ActionEvent a) throws IOException {
         System.out.println("Logged out from Patient panel!");
+        // System.out.println();
 
         //back to auth scene
         FXMLLoader loader = new FXMLLoader();
