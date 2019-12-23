@@ -22,8 +22,6 @@ import java.util.ResourceBundle;
 public class PatientDetailsController implements Initializable {
 
     public PatientDetailsController() {
-
-
     }
 
     public void update( String patientName ) throws SQLException {
