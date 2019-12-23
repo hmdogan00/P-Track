@@ -1,14 +1,9 @@
 package database;
-
-import javax.sound.midi.SysexMessage;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
-        patientDetails(1);
-
-
     }
 
     //Connection method including connection details
@@ -54,11 +49,11 @@ public class Database {
     }
 
     //Method to find patient key number on table
-    public static int findPatientKey(String p_name) throws SQLException {
+    public static int findPatientKey(String id) throws SQLException {
         int patient_key = 0;
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT patient_id FROM patient WHERE name = '" + p_name + "' ";
+        String sql = "SELECT patient_id FROM patient WHERE citizenship_id = '" + id + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
         while (rs.next()) {
             patient_key = rs.getInt("patient_id");

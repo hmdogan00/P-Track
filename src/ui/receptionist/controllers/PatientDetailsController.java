@@ -36,11 +36,10 @@ public class PatientDetailsController implements Initializable {
         detailedBirthDateLabel.setText(infoList.get(3));
         detailedBloodTypeLabel.setText(infoList.get(4));
         detailedAddressLabel.setText(infoList.get(5));
-        detailedCityLabel.setText(infoList.get(6));
-        detailedPhoneNumber.setText(infoList.get(7));
-        detailedInsurance.setText(infoList.get(8));
-        detailedEmergencyContactName.setText(infoList.get(9));
-        detailedEmergencyContactPhoneNumber.setText(infoList.get(10));
+        detailedPhoneNumber.setText(infoList.get(6));
+        detailedInsurance.setText(infoList.get(7));
+        detailedEmergencyContactName.setText(infoList.get(8));
+        detailedEmergencyContactPhoneNumber.setText(infoList.get(9));
     }
 
     public void setDetailedNameLabel(Label detailedNameLabel) {
@@ -99,8 +98,6 @@ public class PatientDetailsController implements Initializable {
     private Label detailedBirthDateLabel;
     @FXML
     private Label detailedAddressLabel;
-    @FXML
-    private Label detailedCityLabel;
     @FXML
     private Label detailedPhoneNumber;
     @FXML
