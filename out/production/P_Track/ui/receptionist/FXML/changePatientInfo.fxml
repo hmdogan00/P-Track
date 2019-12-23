@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
@@ -17,8 +19,8 @@
    <children>
       <ToolBar prefHeight="0.0" prefWidth="750.0" stylesheets="@../../../theme.css">
          <items>
-            <Region prefHeight="40.0" prefWidth="253.0" />
-            <Text fill="#fffffb" strokeType="OUTSIDE" strokeWidth="0.0" text="PATIENT DETAILS" textAlignment="CENTER">
+            <Region prefHeight="40.0" prefWidth="218.0" />
+            <Text fill="#fffffb" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE PATIENT INFORMATION" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -32,7 +34,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </Text>
-            <Label fx:id="patientName" text="Label">
+            <Label fx:id="patientNameLabel" text="Label">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -93,18 +95,18 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="changeAddress">
+            <TextField fx:id="changeAddress" prefHeight="31.0" prefWidth="432.0">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
             </TextField>
-            <Region prefHeight="200.0" prefWidth="200.0" />
+            <Region prefHeight="38.0" prefWidth="13.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="49.6220703125">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="changeCity">
+            <TextField fx:id="changeCity" prefHeight="31.0" prefWidth="176.0">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
@@ -123,17 +125,18 @@
                   <Insets top="5.0" />
                </HBox.margin>
             </TextField>
-            <Region prefHeight="38.0" prefWidth="187.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="75.6943359375">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Text>
-            <TextField fx:id="changeInsurance">
+            <Region prefHeight="38.0" prefWidth="17.0" />
+            <MenuButton fx:id="changeInsurance" mnemonicParsing="false" text="Insurance">
+              <items>
+                <MenuItem mnemonicParsing="false" text="SGK" />
+                <MenuItem mnemonicParsing="false" text="Private" />
+                  <MenuItem mnemonicParsing="false" text="BAĞKUR" />
+              </items>
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
-            </TextField>
+            </MenuButton>
+            <Region prefHeight="38.0" prefWidth="187.0" />
          </children>
       </HBox>
       <VBox prefHeight="217.0" prefWidth="727.0">
@@ -141,7 +144,7 @@
             <ToolBar prefHeight="63.0" prefWidth="750.0" stylesheets="@../../../theme.css">
                <items>
                   <Region prefHeight="54.0" prefWidth="237.0" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EMERGENCY CONTACT" wrappingWidth="225.8291015625">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE EMERGENCY CONTACT" wrappingWidth="296.8291015625">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -150,12 +153,23 @@
             </ToolBar>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="116.2705078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="57.2705078125">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Text>
                   <TextField fx:id="changeEmergencyName">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Region prefHeight="200.0" prefWidth="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname:" wrappingWidth="74.80908203125">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="changeEmergencySurname">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
@@ -184,7 +198,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Region prefHeight="38.0" prefWidth="684.0" />
-            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="Back">
+            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="Save">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
