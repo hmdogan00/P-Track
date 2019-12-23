@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
+        System.out.print(findPatientKey("Mert Yıldırım"));
         }
 
     //Connection method including connection details
@@ -21,7 +22,7 @@ public class Database {
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String search = "Mert";
-        String sql = "SELECT * FROM patient WHERE name LIKE '%" + search + "%' " ;
+        String sql = "SELECT * FROM patient WHERE name LIKE '" + search + "' " ;
         ResultSet rs = myStmt.executeQuery(sql);
 
         while(rs.next()) {
@@ -49,12 +50,16 @@ public class Database {
     }
 
     //Method to find patient key number on table
-    public static String findPatientKey (String p_name) throws SQLException {
+    public static int findPatientKey (String p_name) throws SQLException {
+        int patient_key = 0;
         Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
-        String sql = "SELECT patient_id FROM patient WHERE name = " + p_name;
+        String sql = "SELECT patient_id FROM patient WHERE name = '" + p_name + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
-        return rs.getString("patient_id");
+        while(rs.next()){
+            patient_key = rs.getInt("patient_id");
+        }
+        return patient_key;
     }
 
     //Method to update information of patient
