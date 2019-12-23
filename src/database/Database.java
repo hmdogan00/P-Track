@@ -1,4 +1,5 @@
 package database;
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -208,15 +209,28 @@ public class Database {
      return appointmentOrder;
     }
 
-    public static void addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
+    public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
-        String sql = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
-        PreparedStatement myStmt = myConn.prepareStatement(sql);
-        myStmt.setInt(1, p_key);
-        myStmt.setInt(2,d_key);
-        myStmt.setString(3,date);
-        myStmt.setString(4,time);
-        myStmt.executeUpdate();
+        Boolean flag = true;
+        String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            if(rs.getString("time") == time &&
+                    (rs.getString("doctor_id") ==  "" + d_key || rs.getString("patient_id") == "" + p_key)){
+                flag = false;
+            }
+        }
+        if (flag) {
+            String sql1 = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
+            PreparedStatement myStmt1 = myConn.prepareStatement(sql1);
+            myStmt1.setInt(1, p_key);
+            myStmt1.setInt(2, d_key);
+            myStmt1.setString(3, date);
+            myStmt1.setString(4, time);
+            myStmt1.executeUpdate();
+        }
+        return flag;
     }
     public static ArrayList doctorsAppointment(int d_id) throws SQLException {
         ArrayList<String> doctorsAppointment = new ArrayList<>();
