@@ -258,13 +258,11 @@ public class Database {
             userRole = rs1.getString("role");
             userPassword = rs1.getString("password");
         }
-        if(user_name.equals("") && !userRole.equals("doctor")){
+        if(user_name.equals("") || !userRole.equals("doctor")){
             return "User name or the role does not match.";
         }
-        else{
-            if(!userPassword.equals(password)){
-                return "Password does not match with username.";
-            }
+        if(!userPassword.equals(password)){
+            return "Password does not match with username.";
         }
         return user_name;
     }
@@ -282,13 +280,11 @@ public class Database {
             userRole = rs1.getString("role");
             userPassword = rs1.getString("password");
         }
-        if(user_name.equals("") && !userRole.equals("registration")){
+        if(user_name.equals("") || !userRole.equals("registration")){
             return "User name or the role does not match.";
         }
-        else{
-            if(!userPassword.equals(password)){
-                return "Password does not match with username.";
-            }
+        if(!userPassword.equals(password)){
+            return "Password does not match with username.";
         }
         return user_name;
     }
