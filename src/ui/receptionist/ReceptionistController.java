@@ -233,7 +233,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private TextField filterDoctorName;
 
-    //variables
+    //variabless
 
     //constructor
     public ReceptionistController(){}
