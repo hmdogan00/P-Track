@@ -77,7 +77,7 @@ public class AuthController {
         }
         else if (roleChooser == 2){
             System.out.println("Entered Doctor");
-            loader.setLocation(getClass().getClassLoader().getResource("ui/receptionist/receptionistHomePage.fxml"));
+            loader.setLocation(getClass().getClassLoader().getResource("ui/doctor/doctorHomePage.fxml"));
             System.out.println( loader.getLocation() );
         }
         else if (roleChooser == 3){
