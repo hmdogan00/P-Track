@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
+import ui.receptionist.controllers.ControllerMainClass;
+import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
 import java.io.IOException;
@@ -28,7 +30,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ReceptionistController implements Initializable {
+public class ReceptionistController extends ControllerMainClass implements Initializable {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -243,9 +245,12 @@ public class ReceptionistController implements Initializable {
     private TextField filterDoctorName;
 
     //variables
-    ModelTable p;
+
     //constructor
-    public ReceptionistController() {}
+    public ReceptionistController()
+    {
+        super.patientId = "";
+    }
 
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
@@ -323,7 +328,7 @@ public class ReceptionistController implements Initializable {
                     else{
                         final Button addAppointmentButton = new Button("Add Appointment");
                         addAppointmentButton.setOnAction(event -> {
-                            p = getTableView().getItems().get(getIndex());
+                            ModelTable p = getTableView().getItems().get(getIndex());
 
                             loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
 
@@ -354,12 +359,15 @@ public class ReceptionistController implements Initializable {
                         final Button addAppointmentButton = new Button("Patient Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
+                            ReceptionistController.super.patientId = p.getId();
+                            System.out.println("patID: " + ReceptionistController.super.patientId);
 
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+                            /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setContentText("click click bum" + p.getName());
-                            alert.show();
+                            alert.show();*/
                         });
                         setGraphic(addAppointmentButton);
                     }

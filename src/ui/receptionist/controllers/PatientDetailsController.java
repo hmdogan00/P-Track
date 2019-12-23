@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class PatientDetailsController implements Initializable {
+public class PatientDetailsController extends ControllerMainClass implements Initializable{
 
     @FXML
     private Label detailedNameLabel;
@@ -50,6 +50,8 @@ public class PatientDetailsController implements Initializable {
     public void update( String id ) throws SQLException
     {
         int patientKey = database.Database.findPatientKey(id);
+        System.out.println("++++" + id);
+        System.out.println(patientKey);
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         System.out.println(infoList.toString());
         detailedNameLabel.setText(infoList.get(0));
@@ -64,20 +66,18 @@ public class PatientDetailsController implements Initializable {
         detailedEmergencyContactPhoneNumber.setText(infoList.get(9));
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-        try {
-            update( "" );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML private void pageClose(ActionEvent c)
     {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            update( super.patientId );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
