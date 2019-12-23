@@ -266,7 +266,7 @@ public class ReceptionistController implements Initializable {
         app_stage.show();
     }
 
-    private void loadWindow(String location, String title){
+    public void loadWindow(String location, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
             Stage newStage = new Stage(StageStyle.DECORATED);

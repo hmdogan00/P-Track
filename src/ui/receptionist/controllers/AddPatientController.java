@@ -157,7 +157,8 @@ public class AddPatientController {
             database.Database.addPatient(addName.getText() + " " + addSurname.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ dateValue(),
                     addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
                     insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
-            ((Node)(e.getSource())).getScene().getWindow().hide();
+            Stage stage = (Stage) savingButton.getScene().getWindow();
+            stage.close();
         }
     }
 
