@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.ReceptionistController">
+<AnchorPane prefHeight="750.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.ReceptionistController">
     <children>
         <JFXTabPane prefHeight="750.0" prefWidth="1008.0" stylesheets="@../../theme.css">
             <tabs>
@@ -734,22 +734,6 @@
                                                         <Insets left="15.0" right="15.0" />
                                                     </HBox.margin>
                                                 </Separator>
-                                                <Button mnemonicParsing="false" text="Add Appointment(eklenecek)">
-                                                    <font>
-                                                        <Font size="10.0" />
-                                                    </font>
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="Change Patient Info (Eklenecek)">
-                                                    <font>
-                                                        <Font size="10.0" />
-                                                    </font>
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" top="5.0" />
-                                       </HBox.margin>
-                                                </Button>
                                             </children>
                                             <VBox.margin>
                                                 <Insets left="2.0" top="4.0" />
@@ -1356,7 +1340,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1376,7 +1360,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1396,7 +1380,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <opaqueInsets>
                                                                                 <Insets />
                                                                             </opaqueInsets>
@@ -1418,13 +1402,6 @@
                                                         <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
-                                                                    <left>
-                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
-                                                                            <cursor>
-                                                                                <Cursor fx:constant="HAND" />
-                                                                            </cursor>
-                                                                        </Button>
-                                                                    </left>
                                                                     <right>
                                                                         <Button fx:id="registerButton41" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Register" BorderPane.alignment="CENTER">
                                                                             <cursor>
@@ -1432,6 +1409,13 @@
                                                                             </cursor>
                                                                         </Button>
                                                                     </right>
+                                                   <center>
+                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                            <cursor>
+                                                                                <Cursor fx:constant="HAND" />
+                                                                            </cursor>
+                                                                        </Button>
+                                                   </center>
                                                                 </JFXToolbar>
                                                             </items>
                                                         </SplitPane>
@@ -1439,7 +1423,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="30.0" prefWidth="100.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1513,9 +1497,7 @@
                             <TableColumn prefWidth="168.0" text="Name" />
                             <TableColumn prefWidth="168.0" text="Room Number" />
                               <TableColumn prefWidth="168.0" text="Department" />
-                              <TableColumn prefWidth="168.0" text="Calendar" />
                               <TableColumn prefWidth="168.0" text="Availability" />
-                              <TableColumn prefWidth="168.0" text="Work Status" />
                           </columns>
                         </TableView>
                         <VBox prefHeight="367.0" prefWidth="1008.0">
@@ -1537,8 +1519,7 @@
                </content></Tab>
             </tabs>
         </JFXTabPane>
-        <Separator layoutX="1006.0" orientation="VERTICAL" prefHeight="750.0" prefWidth="8.0" />
-        <ToolBar layoutX="874.0" maxHeight="50.0" prefHeight="50.0" prefWidth="209.0" stylesheets="@../../theme.css">
+        <ToolBar layoutX="789.0" maxHeight="50.0" prefHeight="50.0" prefWidth="219.0" stylesheets="@../../theme.css">
             <items>
                 <AnchorPane prefHeight="10.0" prefWidth="114.0" stylesheets="@../../theme.css">
                     <children>
