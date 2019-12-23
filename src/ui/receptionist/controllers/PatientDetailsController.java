@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 public class PatientDetailsController implements Initializable {
 
     public PatientDetailsController() {
+
+
+
     }
 
     public void update( String patientName ) throws SQLException {
@@ -62,10 +65,6 @@ public class PatientDetailsController implements Initializable {
 
     public void setDetailedAddressLabel(Label detailedAddressLabel) {
         this.detailedAddressLabel = detailedAddressLabel;
-    }
-
-    public void setDetailedCityLabel(Label detailedCityLabel) {
-        this.detailedCityLabel = detailedCityLabel;
     }
 
     public void setDetailedPhoneNumber(Label detailedPhoneNumber) {
