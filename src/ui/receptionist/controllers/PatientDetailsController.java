@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class PatientDetailsController {
 
+    public PatientDetailsController(){}
+
     public PatientDetailsController( String patientName ) throws SQLException {
         int patientKey = database.Database.findPatientKey(patientName);
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
@@ -50,7 +52,4 @@ public class PatientDetailsController {
     private Label detailedEmergencyContactName;
     @FXML
     private Label detailedEmergencyContactPhoneNumber;
-
-
-
-    }
+}

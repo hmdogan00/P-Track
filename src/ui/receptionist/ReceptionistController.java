@@ -522,6 +522,7 @@ public class ReceptionistController implements Initializable {
         }
     }
 
+    //Change Info Button Creator
     private class ButtonChangeInfo extends TableCell<ModelTable, Boolean>{
         final Button changeInfoButton = new Button("Change Info");
         ButtonChangeInfo(final TableView<ModelTable> tblView){
