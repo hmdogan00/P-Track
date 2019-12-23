@@ -216,8 +216,7 @@ public class Database {
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
-            if(rs.getString("time") == time &&
-                    (rs.getString("doctor_id") ==  "" + d_key || rs.getString("patient_id") == "" + p_key)){
+            if(rs.getString("doctor_id").equals("" + d_key) || rs.getString("patient_id").equals("" + p_key)){
                 flag = false;
             }
         }
