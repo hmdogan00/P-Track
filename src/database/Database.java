@@ -240,11 +240,8 @@ public class Database {
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
             patientAppointment.add(rs.getString("doctor_id"));
-            System.out.println(rs.getString("doctor_id"));
             patientAppointment.add(rs.getString("date"));
-            System.out.println(rs.getString("date"));
             patientAppointment.add(rs.getString("time"));
-            System.out.println(rs.getString("time"));
         }
         return patientAppointment;
     }
