@@ -303,6 +303,23 @@ public class ReceptionistController implements Initializable {
             });
             patientTable.getColumns().add(col_addApp);
 
+            //patient details button to a column
+            TableColumn<ModelTable, Boolean> col_details = new TableColumn<>();
+            col_details.setSortable(false);
+            col_details.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
+                @Override
+                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
+                    return new SimpleBooleanProperty(p.getValue() != null);
+                }
+            });
+            col_details.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
+                @Override
+                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
+                    return new ButtonDetails(patientTable);
+                }
+            });
+            patientTable.getColumns().add(col_details);
+
             //change info button to a column
             TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
             col_changeInfo.setSortable(false);
@@ -319,6 +336,29 @@ public class ReceptionistController implements Initializable {
                 }
             });
             patientTable.getColumns().add(col_changeInfo);
+
+            while (rs.next()) {
+                obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
+                        rs.getString("citizenship_id"), rs.getString("insurance"),
+                        rs.getString("gender"), rs.getString("blood_type")));
+            }
+        }catch (SQLException ex){}
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
+        colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
+        colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
+
+        patientTable.setItems(obList);
+    }
+
+    public void getPatientsData(){
+        ObservableList<ModelTable> obList = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
                 obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
@@ -437,7 +477,7 @@ public class ReceptionistController implements Initializable {
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterPatientName.getText().equals("")) {
-            getPatientData();
+            getPatientsData();
             System.out.println("ali baba");
         }
         else
@@ -474,6 +514,30 @@ public class ReceptionistController implements Initializable {
             super.updateItem(check, empty);
             if (!empty)
                 setGraphic(addAppointmentButton);
+            else{
+                setGraphic(null);
+                setText("");
+            }
+        }
+    }
+
+    //details button for patients
+    private class ButtonDetails extends TableCell<ModelTable, Boolean>{
+        final Button detailsButton = new Button("Details");
+        ButtonDetails(final TableView<ModelTable> tblView){
+            detailsButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean check, boolean empty){
+            super.updateItem(check, empty);
+            if (!empty)
+                setGraphic(detailsButton);
             else{
                 setGraphic(null);
                 setText("");
