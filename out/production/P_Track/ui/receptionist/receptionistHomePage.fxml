@@ -747,6 +747,9 @@
                                                 <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
                                                 <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
                                                 <TableColumn fx:id="colInsurance" editable="false" prefWidth="94.0" resizable="false" text="Insurance" />
+                                    <TableColumn fx:id="colAddAppointment" prefWidth="138.0" />
+                                    <TableColumn fx:id="colDetails" prefWidth="92.0" />
+                                    <TableColumn fx:id="colChangeInfo" prefWidth="87.0" />
                                             </columns>
                                         </TableView>
                                     </children>
