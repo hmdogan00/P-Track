@@ -84,7 +84,7 @@ public class Database {
         ArrayList<String> patient_info = new ArrayList<>();
 
         Connection myConn = connection();
-        String sql = " SELECT * FROM patient WHERE patient_id = " + p_key;
+        String sql = " SELECT * FROM patient WHERE patient_id = '" + p_key + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         name = rs.getString("name");
