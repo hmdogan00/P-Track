@@ -49,12 +49,12 @@ public class Database {
     }
 
     //Method to find patient key number on table
-    public static void patientKey (String p_name) throws SQLException {
+    public static String patientKey (String p_name) throws SQLException {
         Connection myConn = connection();
-        String sql = "SELECT patient_id FROM patient WHERE name = ?";
-        PreparedStatement myStmt = myConn.prepareStatement(sql);
-        myStmt.setString(1,p_name);
-        int rowsAfected = myStmt.executeUpdate();
+        Statement myStmt = myConn.createStatement();
+        String sql = "SELECT patient_id FROM patient WHERE name = " + p_name;
+        ResultSet rs = myStmt.executeQuery(sql);
+        return rs.getString("patient_id");
     }
 
     //Method to update information of patient
