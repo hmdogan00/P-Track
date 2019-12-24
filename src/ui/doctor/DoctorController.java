@@ -70,6 +70,10 @@ public class DoctorController extends MasterController implements Initializable 
 
     }
 
+    private void getPatientData(){
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
