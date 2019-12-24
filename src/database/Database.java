@@ -350,4 +350,19 @@ public class Database {
         }
         return doctorList;
     }
+
+    public static String patientAuth(String id) throws SQLException {
+        Connection myConn = connection();
+        String sql = "SELECT * FROM patient WHERE citizenship_id = '" + id + "' " ;
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        String name = "";
+        while(rs.next()){
+            name = rs.getString("name");
+        }
+        if(name.equals("")){
+            return "Patient does not exist.";
+        }
+        return "" + id;
+    }
 }
