@@ -16,8 +16,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import ui.MasterController;
 
-public class PatientController implements Initializable {
+public class PatientController extends MasterController implements Initializable {
 
     @FXML
     Button patientLogOutButton;
