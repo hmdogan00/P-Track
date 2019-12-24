@@ -274,6 +274,7 @@ public class Database {
                 doctorAppointments.add(rs.getString("patient_phoneNumber"));
             }
         }
+        //aa
         return doctorAppointments;
     }
 
