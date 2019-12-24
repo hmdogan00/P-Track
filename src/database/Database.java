@@ -213,14 +213,14 @@ public class Database {
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
         int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
-        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
+        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
         Boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         System.out.println(2);
         while(rs.next()){
-            if(date.equals(date()) && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key) && (currentTime == appointmentTime || appointmentTime <= currentTime +15))){
+            if((rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key) && (currentTime == appointmentTime || appointmentTime <= currentTime +15))){
                 flag = false;
             }
         }
