@@ -78,8 +78,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button detailsButton1;
 
-    @FXML
-    private Button registerButton1;
 
     //Recent Patient 2
     @FXML
@@ -106,8 +104,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button detailsButton2;
 
-    @FXML
-    private Button registerButton2;
 
     //Recent Patient 3
     @FXML
@@ -134,8 +130,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button detailsButton3;
 
-    @FXML
-    private Button registerButton3;
 
     //Recent Patient 4
     @FXML
@@ -162,8 +156,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button detailsButton4;
 
-    @FXML
-    private Button registerButton4;
 
     //Recent Patient 5
     @FXML
@@ -190,8 +182,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private Button detailsButton5;
 
-    @FXML
-    private Button registerButton5;
 
     //add new patient
     @FXML
