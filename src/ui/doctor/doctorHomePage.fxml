@@ -59,12 +59,12 @@
          <children>
             <HBox prefHeight="1.0" prefWidth="1001.0">
                <children>
-                  <TextField promptText="Filter By Name">
+                  <TextField fx:id="filterTextField" promptText="Filter By Name">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Filter">
+                  <Button fx:id="filterButton" mnemonicParsing="false" text="Filter">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
@@ -82,9 +82,10 @@
             </Text>
             <TableView prefHeight="421.0" prefWidth="981.0">
               <columns>
-                <TableColumn prefWidth="144.0" text="Name" />
-                <TableColumn prefWidth="175.0" text="Last Appointment" />
-                  <TableColumn prefWidth="151.0" text="Phone No." />
+                <TableColumn fx:id="colUpName" prefWidth="144.0" text="Name" />
+                <TableColumn fx:id="colLastApp" prefWidth="175.0" text="Last Appointment" />
+                  <TableColumn fx:id="colPhoneNo" prefWidth="151.0" text="Phone No." />
+                  <TableColumn fx:id="colAddPrescription" prefWidth="118.0" />
               </columns>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="5.0" />
