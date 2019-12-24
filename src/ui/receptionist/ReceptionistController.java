@@ -532,5 +532,4 @@ public class ReceptionistController extends MasterController implements Initiali
             getFilteredDoctorData();
         doctorTable.refresh();
     }
-
 }
