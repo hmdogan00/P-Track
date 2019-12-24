@@ -249,7 +249,6 @@ public class ReceptionistController implements Initializable {
     ModelTable p;
     //constructor
     public ReceptionistController() {}
-
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
@@ -514,6 +513,13 @@ public class ReceptionistController implements Initializable {
         System.out.println("All data is uploaded");
         getPatientData();
         getDoctorData();
+        try {
+            timeLabel.setText(Database.time());
+            dateLabel.setText(Database.date());
+            receptionistUsernameLabel.setText(Database.getUserName());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         patientTable.refresh();
         doctorTable.refresh();
     }
