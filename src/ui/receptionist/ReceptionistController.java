@@ -403,11 +403,27 @@ public class ReceptionistController implements Initializable {
                         final Button addAppointmentButton = new Button("Change Patient Info");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
+                            PrintWriter outFile = null;
+                            File file = new File("outFile.txt");
+                            try {
+                                file.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+
+                                outFile = new PrintWriter(file);
+                            } catch (FileNotFoundException fileE) {
+                                System.out.println("patladık mugi");
+                            }
+
+                            //write the patient id in a different txt file
+                            outFile.println(p.getId());
+                            System.out.println(outFile);
+                            outFile.close();
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setContentText("click click bum" + p.getName());
-                            alert.show();
+
                         });
                         setGraphic(addAppointmentButton);
                         setText(null);

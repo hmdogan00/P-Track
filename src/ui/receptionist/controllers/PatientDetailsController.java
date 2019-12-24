@@ -77,8 +77,8 @@ public class PatientDetailsController implements Initializable {
         detailedBirthDateLabel.setText(infoList.get(4));
         detailedBloodTypeLabel.setText(infoList.get(3));
         detailedAddressLabel.setText(infoList.get(5));
-        detailedPhoneNumber.setText(infoList.get(6));
-        detailedInsurance.setText(infoList.get(7));
+        detailedPhoneNumber.setText(infoList.get(7));
+        detailedInsurance.setText(infoList.get(6));
         detailedEmergencyContactName.setText(infoList.get(8));
         detailedEmergencyContactPhoneNumber.setText(infoList.get(9));
     }
