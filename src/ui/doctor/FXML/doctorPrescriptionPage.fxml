@@ -49,9 +49,9 @@
          </font>
       </Label>
       <Button fx:id="printPrescription" layoutX="533.0" layoutY="81.0" mnemonicParsing="false" text="Print" />
-      <Button fx:id="savePrescription" layoutX="112.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleSavePrescription" text="Save" />
-      <Button fx:id="backToDoctorPage" layoutX="533.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleBackToDoctorPage" text="Back" />
-      <ImageView disable="true" fitHeight="33.0" fitWidth="41.0" focusTraversable="true" layoutX="486.0" layoutY="77.0" nodeOrientation="INHERIT" preserveRatio="true">
+      <Button fx:id="savePrescription" layoutX="534.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleSavePrescription" text="Save" />
+      <Button fx:id="backToDoctorPage" layoutX="112.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleBackToDoctorPage" text="Back" />
+      <ImageView disable="true" fitHeight="26.0" fitWidth="32.0" focusTraversable="true" layoutX="494.0" layoutY="80.0" nodeOrientation="INHERIT" preserveRatio="true">
          <image>
             <Image url="@../../../../out/production/P_Track/ui/icons/images.png" />
          </image>

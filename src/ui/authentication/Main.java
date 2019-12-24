@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 
 /**
@@ -22,9 +23,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-      /**  Media media = new Media("https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3");
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        MediaPlayer.setAutoPlay(true);*/
+       String musicFile = "Vivaldi_Sonata_eminor_.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         Parent root = FXMLLoader.load(getClass().getResource("authentication.fxml"));
         primaryStage.setTitle("P-Track: Patient Management System");
         Image icon = new Image("ui/icons/hospital.png");
