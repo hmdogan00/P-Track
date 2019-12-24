@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Database {
     public static void main(String[] args) throws SQLException {
+        System.out.println(date());
     }
 
     //Connection method including connection details
@@ -210,13 +211,14 @@ public class Database {
 
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
-        int minute = Integer.parseInt(time.substring(2));
+        int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(2));
+        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(2));
         Boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
-            if(minute % 15 != 0 && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key))){
+            if(date.equals(date()) && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key) && (currentTime == appointmentTime || appointmentTime <= currentTime +15))){
                 flag = false;
             }
         }
