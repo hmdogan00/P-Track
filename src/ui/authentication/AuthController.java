@@ -16,8 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseAdapter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -81,11 +80,26 @@ public class AuthController implements Initializable {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent e) throws IOException, SQLException {
+    private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 0){
             System.out.println("Entered Patient");
+            PrintWriter outFile = null;
+            File file = new File("outFile.txt");
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
 
+                outFile = new PrintWriter(file);
+            } catch (FileNotFoundException fileE) {}
+
+            //write the patient id in a different txt file
+            outFile.println(citizenshipIDField.getText());
+            System.out.println(outFile);
+            outFile.close();
             loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
         }
         else if (roleChooser == 2){
@@ -120,7 +134,7 @@ public class AuthController implements Initializable {
         try {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(scene);
             app_stage.setResizable(false);
             app_stage.show();
