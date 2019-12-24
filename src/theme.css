@@ -1,5 +1,6 @@
 * {
     -fx-primary : #0078D7;
+    -fx-secondary : #34465d;
 }
 
 .tab{
@@ -16,6 +17,6 @@
     -fx-background-color: -fx-primary;
 }
 
-.JFX.tool-bar{
-    -fx-background-color: -fx-primary;
+.jfx-hamburger StackPane{
+    -fx-background-color: -fx-secondary;
 }

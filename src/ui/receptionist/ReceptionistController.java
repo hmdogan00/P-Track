@@ -277,7 +277,7 @@ public class ReceptionistController implements Initializable {
         app_stage.show();
     }
 
-    public void loadWindow(String location, String title){
+    private void loadWindow(String location, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
             Stage newStage = new Stage(StageStyle.DECORATED);
@@ -291,7 +291,7 @@ public class ReceptionistController implements Initializable {
     }
 
     //database for patients
-    public void getPatientData(){
+    private void getPatientData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
@@ -433,7 +433,7 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(obList);
     }
 
-    public void getPatientsData(){
+    private void getPatientsData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
@@ -455,7 +455,7 @@ public class ReceptionistController implements Initializable {
         patientTable.setItems(obList);
     }
 
-    public void getFilteredPatientData(){
+    private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
             Connection con = Database.connection();
@@ -473,7 +473,7 @@ public class ReceptionistController implements Initializable {
     }
 
     //database for doctors
-    public void getDoctorData(){
+    private void getDoctorData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
@@ -492,7 +492,7 @@ public class ReceptionistController implements Initializable {
         doctorTable.setItems(obList2);
     }
 
-    public void getFilteredDoctorData(){
+    private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
             Connection con = Database.connection();
