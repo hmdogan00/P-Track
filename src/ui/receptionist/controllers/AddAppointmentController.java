@@ -103,6 +103,7 @@ public class AddAppointmentController implements Initializable {
     }
     @FXML public void saveAppointment(ActionEvent e) throws SQLException
     {
+        //blabal
         String patName = patientName.getText() + " " + patientSurname.getText();
         int patientId = Database.findPatientKey( patName );
         String docName = doctorName.getText() + " " + doctorSurname.getText();
