@@ -604,7 +604,7 @@
                                                         <Font name="System Bold" size="15.0" />
                                                     </font>
                                                 </Text>
-                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="24.0" layoutY="37.0" prefHeight="15.0" prefWidth="104.0" text="numberOfAppointments">
+                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="24.0" layoutY="37.0" prefHeight="16.0" prefWidth="130.0" text="numberOfAppointments">
                                                     <font>
                                                         <Font size="11.0" />
                                                     </font>
@@ -728,9 +728,9 @@
                                     <TableColumn fx:id="colID" prefWidth="124.0" text="Citizenhip ID" />
                                                 <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
                                                 <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
-                                    <TableColumn fx:id="colAddAppointment" prefWidth="138.0" />
-                                    <TableColumn fx:id="colDetails" prefWidth="92.0" />
-                                    <TableColumn fx:id="colChangeInfo" prefWidth="87.0" />
+                                    <TableColumn fx:id="colAddAppointment" prefWidth="147.0" />
+                                    <TableColumn fx:id="colDetails" prefWidth="128.0" />
+                                    <TableColumn fx:id="colChangeInfo" prefWidth="136.0" />
                                             </columns>
                                         </TableView>
                                     </children>
