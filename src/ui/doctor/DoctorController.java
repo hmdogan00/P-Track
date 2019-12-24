@@ -73,7 +73,7 @@ public class DoctorController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             doctorUserName.setText(Database.getUserName());
-            doctorRoom.setText(Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(3));
+            doctorRoom.setText("Room No:" + Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(2));
         } catch (SQLException e) {
             e.printStackTrace();
         }
