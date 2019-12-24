@@ -19,14 +19,13 @@ import java.util.Scanner;
 
 public class AddAppointmentController implements Initializable {
 
-    ObservableList<String> hourList = FXCollections.observableArrayList("08","09","10","11","12","13","14","15","16","17");
-    ObservableList<String> minuteList = FXCollections.observableArrayList("00","15","30","45");
-
     @FXML
     TextField patientName;
 
     @FXML
     TextField patientSurname;
+
+    String patientdbId;
 
     @FXML
     TextField doctorName;
@@ -45,6 +44,10 @@ public class AddAppointmentController implements Initializable {
 
     @FXML
     MenuItem hour08, hour09, hour10, hour11, hour12, hour13, hour14, hour15, hour16, minute00, minute15, minute30, minute45;
+
+    public AddAppointmentController(){
+        patientdbId = "";
+    }
 
     @FXML public void hourChosen8( ActionEvent e){
         hourButton.setText("08");
@@ -103,9 +106,10 @@ public class AddAppointmentController implements Initializable {
     }
     @FXML public void saveAppointment(ActionEvent e) throws SQLException
     {
-        //blabal
         String patName = patientName.getText() + " " + patientSurname.getText();
-        int patientId = Database.findPatientKey( patName );
+
+        int patientId = Database.findPatientKey( patientdbId );
+        System.out.println(patientId);
         String docName = doctorName.getText() + " " + doctorSurname.getText();
         int docId = Database.findDoctorKey( docName );
         if ( Database.doctorAvailability( docId ))
@@ -156,6 +160,7 @@ public class AddAppointmentController implements Initializable {
 
         patientName.setText(firstName);
         patientSurname.setText(lastName);
+        patientdbId = infoList.get(1);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
