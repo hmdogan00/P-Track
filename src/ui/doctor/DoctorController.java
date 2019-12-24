@@ -98,9 +98,9 @@ public class DoctorController extends MasterController implements Initializable 
         upcomingTable.setItems(obList3);
 
 
-        Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
+        Callback<TableColumn<UpcomingTable, String>,TableCell<UpcomingTable, String>> cellFactory = (param) -> {
             //make table cell with button
-            final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
+            final TableCell<UpcomingTable, String> cell = new TableCell<UpcomingTable, String>(){
                 @Override
                 public void updateItem(String item, boolean empty){
                     super.updateItem(item, empty);
@@ -109,26 +109,9 @@ public class DoctorController extends MasterController implements Initializable 
                         setText(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Add Appointment");
+                        final Button addAppointmentButton = new Button("Set Prescription");
                         addAppointmentButton.setOnAction(event -> {
-                            p = getTableView().getItems().get(getIndex());
-                            PrintWriter outFile = null;
-                            File file = new File("outFile.txt");
-                            try {
-                                file.createNewFile();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            try {
-
-                                outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {}
-
-                            //write the patient id in a different txt file
-                            outFile.println(p.getId());
-                            System.out.println(outFile);
-                            outFile.close();
-                            loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
+                            loadWindow("ui/doctor/FXML/doctorPrescriptionPage.fxml", "Set Prescription");
                         });
                         setGraphic(addAppointmentButton);
                         setText(null);
@@ -137,7 +120,7 @@ public class DoctorController extends MasterController implements Initializable 
             };
             return cell;
         };
-        colAddAppointment.setCellFactory(cellFactory);
+        colAddPrescription.setCellFactory(cellFactory);
     }
 
 
