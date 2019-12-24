@@ -1,11 +1,16 @@
 package ui.receptionist.controllers;
 
 import com.jfoenix.controls.JFXTimePicker;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.*;
 
 public class AddAppointmentController {
+
+    ObservableList<String> hourList = FXCollections.observableArrayList("08","09","10","11","12","13","14","15","16","17");
+    ObservableList<String> minuteList = FXCollections.observableArrayList("00","15","30","45");
 
     @FXML
     TextField patientName;
@@ -18,7 +23,9 @@ public class AddAppointmentController {
     @FXML
     DatePicker appointmentDate;
     @FXML
-    JFXTimePicker appointmentTime;
+    ChoiceBox hourChoice;
+    @FXML
+    ChoiceBox minuteChoice;
     @FXML
     Button saveAppointmentButton;
 
@@ -31,13 +38,11 @@ public class AddAppointmentController {
         return day+"/"+ month+"/"+ year;
     }
 
-    public String timeValue(){
-        String time = String.valueOf(appointmentTime.getValue() + " ");
-        String hour = time.substring(0,2);
-        String minute = time.substring(3,5);
-
-        return hour + "/" + minute;
-    }
+   @FXML
+   private void initialize(){
+        hourChoice.setItems(hourList);
+        minuteChoice.setItems(minuteList);
+   }
     @FXML
     public void saveAppointment(ActionEvent e){
 /*
