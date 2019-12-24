@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
+import ui.MasterController;
 import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class ReceptionistController implements Initializable {
+public class ReceptionistController extends MasterController implements Initializable {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -264,19 +265,6 @@ public class ReceptionistController implements Initializable {
         app_stage.setScene(scene);
         app_stage.setResizable(false);
         app_stage.show();
-    }
-
-    private void loadWindow(String location, String title){
-        try {
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
-            Stage newStage = new Stage(StageStyle.DECORATED);
-            newStage.setTitle(title);
-            Image icon = new Image("ui/icons/hospital.png");
-            newStage.getIcons().add(icon);
-            newStage.setScene(new Scene(parent));
-            newStage.setResizable(false);
-            newStage.show();
-        }catch (IOException exception){}
     }
 
     //database for patients

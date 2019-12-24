@@ -1400,7 +1400,7 @@
                               </Separator>
                            </children>
                         </HBox>
-                        <TableView fx:id="doctorTable" prefHeight="272.0" prefWidth="1008.0">
+                        <TableView fx:id="doctorTable" prefHeight="700.0" prefWidth="1008.0">
                           <columns>
                             <TableColumn fx:id="colDoctorName" prefWidth="168.0" text="Name" />
                               <TableColumn fx:id="colDoctorDepartment" prefWidth="168.0" text="Department" />
@@ -1409,33 +1409,14 @@
                               <TableColumn prefWidth="134.0" text="Phone Number" />
                           </columns>
                         </TableView>
-                        <VBox prefHeight="367.0" prefWidth="1008.0">
-                           <children>
-                              <ToolBar prefHeight="15.0" prefWidth="1014.0">
-                                 <items>
-                                    <AnchorPane prefHeight="22.0" prefWidth="369.0" />
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="AVAILABILITY CALENDAR" textAlignment="CENTER" wrappingWidth="300.0">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </items>
-                              </ToolBar>
-                           </children>
-                        </VBox>
                      </children>
                   </VBox>
                </content></Tab>
             </tabs>
         </JFXTabPane>
-        <ToolBar layoutX="677.0" maxHeight="50.0" prefHeight="50.0" prefWidth="331.0" stylesheets="@../../theme.css">
+        <ToolBar layoutX="745.0" maxHeight="50.0" prefHeight="50.0" prefWidth="263.0" stylesheets="@../../theme.css">
             <items>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME:">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Text>
-            <Label fx:id="receptionistUsernameLabel" prefHeight="36.0" prefWidth="123.0" text="Username" textFill="WHITE">
+            <Label fx:id="receptionistUsernameLabel" prefHeight="36.0" prefWidth="159.0" text="Username" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

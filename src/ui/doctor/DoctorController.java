@@ -11,9 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import ui.receptionist.ModelTable;
+import ui.MasterController;
+import ui.receptionist.DoctorTable;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,28 +22,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DoctorController implements Initializable {
+public class DoctorController extends MasterController implements Initializable {
 
     @FXML
-    private Button logoutButton;
-
-    //Upcoming Patient Table
+    Button logoutButton;
     @FXML
-    private TableView<UpcomingTable> upcomingPatientTable;
-
+    private Label doctorUserName;
     @FXML
-    private TableColumn<UpcomingTable, String> colUpName;
-
+    private Label doctorRoom;
     @FXML
-    private TableColumn<UpcomingTable, String> colLastApp;
-
+    private Button filterButton;
     @FXML
-    private TableColumn<UpcomingTable, String> colPhoneNo;
-
+    private TextField filterDoctorName;
     @FXML
-    private TableColumn<UpcomingTable, String> colAddPrescription;
-
-
+    private TableView<DoctorTable> doctorTable;
     @FXML
     private void logoutDoctor(ActionEvent e) throws IOException{
         System.out.println("Logged out from Doctor panel!");
@@ -58,29 +50,33 @@ public class DoctorController implements Initializable {
         app_stage.setResizable(false);
         app_stage.show();
     }
-
-    private void getUpcomingPatient() throws SQLException {
-        ObservableList<UpcomingTable> obList = FXCollections.observableArrayList();
-        int doctor_key = Database.findDoctorKey(Database.getUserName());
-        try {
+    @FXML
+    private void getFilteredData(){
+        ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
+        try{
             Connection con = Database.connection();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM appointment WHERE doctor_id = '" + doctor_key + "' ORDER BY time ASC");
+            String nameFilter = filterDoctorName.getText();
+            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
-            while (rs.next()) {
-                obList.add(new UpcomingTable(rs.getString("name"), rs.getString("last_appointment"),
-                        rs.getString("phone_no")));
+            while (rs2.next()) {
+                listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
+                        rs2.getString("room_number") ));
             }
         }catch (SQLException ex){}
 
-        colUpName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colLastApp.setCellValueFactory(new PropertyValueFactory<>("lastAppointment"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        doctorTable.setItems(listFiltered2);
+    }
+    private void getUpcomingPatient(){
 
-        upcomingPatientTable.setItems(obList);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            doctorUserName.setText(Database.getUserName());
+            doctorRoom.setText("Room No:" + Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(2));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
