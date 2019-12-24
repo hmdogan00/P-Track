@@ -32,21 +32,25 @@ import java.util.ResourceBundle;
 public class DoctorController extends MasterController implements Initializable {
 
     @FXML
-    Button logoutButton;
+    private Button logoutButton;
+
     @FXML
     private Label doctorUserName;
+
     @FXML
     private Label doctorRoom;
+
     @FXML
     private Button filterButton;
+
     @FXML
     private TextField filterDoctorName;
+
     @FXML
     private TableView<UpcomingTable> upcomingTable;
 
     @FXML
-    private TableColumn<UpcomingTable, String> colName, colLastAppointment, colPhoneNo, colAddPrescription;
-
+    private TableColumn<UpcomingTable, String> colName, colAppDate, colAppTime, colPhoneNo, colAddPrescription;
 
     @FXML
     private void logoutDoctor(ActionEvent e) throws IOException{
@@ -62,42 +66,26 @@ public class DoctorController extends MasterController implements Initializable 
         app_stage.setResizable(false);
         app_stage.show();
     }
-    private void getUpcomingPatient(){
-
-    }
 
     private void getPatientData() throws SQLException {
-        /*int doctorId = Database.findDoctorKey(Database.getUserName());
-        ArrayList doctorsAppointedPatients = Database.doctorsAppointedPatients(doctorId);
-        ArrayList doctorAppointments = Database.doctorAppointments(doctorId);
-        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
-
-        for(int i = 0; i < 5; i++) {
-            obList3.add(new UpcomingTable("a","b","c"));
-        }
-
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colLastAppointment.setCellValueFactory(new PropertyValueFactory<>("lastAppointment"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
-
-        upcomingTable.setItems(obList3);*/
+        int doctorId = Database.findDoctorKey(Database.getUserName());
         ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
-                obList3.add(new UpcomingTable( rs.getString("name"), "b", "c"));
+                obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
+                        rs.getString("time"), rs.getString("patient_phoneNumber")));
             }
         }catch (SQLException ex){}
 
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colLastAppointment.setCellValueFactory(new PropertyValueFactory<>("lastAppointment"));
+        colAppDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
+        colAppTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
         colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
-        upcomingTable.setItems(obList3);
-
-
+        //Add Prescription Button
         Callback<TableColumn<UpcomingTable, String>,TableCell<UpcomingTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<UpcomingTable, String> cell = new TableCell<UpcomingTable, String>(){
@@ -121,10 +109,9 @@ public class DoctorController extends MasterController implements Initializable 
             return cell;
         };
         colAddPrescription.setCellFactory(cellFactory);
+
+        upcomingTable.setItems(obList3);
     }
-
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
