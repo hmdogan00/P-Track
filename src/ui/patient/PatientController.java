@@ -1,3 +1,6 @@
+/**
+ * this control class shows patient scene
+ */
 package ui.patient;
 
 import com.jfoenix.transitions.template.JFXAnimationTemplateAction;
@@ -55,12 +58,20 @@ public class PatientController extends MasterController implements Initializable
     @FXML
     private TableView appointmentsView;
 
+    /**
+     * a constructor creates new patient controller class
+     */
     public PatientController(){}
 
+    /**
+     * a method which listens the log out button from patient scene
+     * @param a the action which is pressing log out button
+     * @throws IOException
+     */
     @FXML
     private void patientLogOut(ActionEvent a) throws IOException {
+        // controling the method
         System.out.println("Logged out from Patient panel!");
-        // System.out.println();
 
         //back to auth scene
         FXMLLoader loader = new FXMLLoader();
@@ -74,9 +85,18 @@ public class PatientController extends MasterController implements Initializable
         app_stage.show();
     }
 
+    /**
+     * updates the labels of the patient scene according to that specific patient
+     * @throws SQLException
+     */
     private void update() throws SQLException{
+        // finding patient key
         int patientKey = database.Database.findPatientKey(Database.getUserName());
+
+        // adding the details of patient to a string infoList
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
+
+        // setting these details to labels
         topBarPatientName.setText(infoList.get(0));
         patientNameLabel.setText(infoList.get(0));
         patientID.setText(infoList.get(1));
@@ -87,6 +107,11 @@ public class PatientController extends MasterController implements Initializable
         patientPhoneNumber.setText(infoList.get(7));
     }
 
+    /**
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {

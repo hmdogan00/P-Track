@@ -116,14 +116,14 @@
             </VBox>
             <AnchorPane prefHeight="355.0" prefWidth="346.0">
                <children>
-                  <Text layoutX="116.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Appointments" textAlignment="RIGHT" wrappingWidth="345.99999459832907">
+                  <Text layoutX="186.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Appointments" textAlignment="CENTER" wrappingWidth="345.99999459832907">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
                   <AnchorPane layoutX="7.0" layoutY="41.0" prefHeight="346.0" prefWidth="486.0">
                      <children>
-                        <TableView fx:id="appointmentsView" layoutX="68.0" prefHeight="537.0" prefWidth="551.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="-133.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="appointmentsView" layoutX="60.0" layoutY="-11.0" prefHeight="537.0" prefWidth="551.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="-125.0" AnchorPane.topAnchor="-11.0">
                           <columns>
                             <TableColumn prefWidth="210.0" text="Doctor Name" />
                               <TableColumn prefWidth="179.0" text="Doctor Department" />
