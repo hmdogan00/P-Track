@@ -83,8 +83,9 @@ public class AuthController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent e) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
-        if (roleChooser == 1){
+        if (roleChooser == 0){
             System.out.println("Entered Patient");
+
             loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
             System.out.println( loader.getLocation() );
         }
