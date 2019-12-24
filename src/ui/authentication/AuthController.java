@@ -16,8 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseAdapter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -26,6 +25,9 @@ import java.util.ResourceBundle;
 public class AuthController implements Initializable {
     @FXML
     private Label errorLabel;
+
+    @FXML
+    private Label errorLabel1;
 
     @FXML
     private Button loginButton;
@@ -81,14 +83,29 @@ public class AuthController implements Initializable {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent e) throws IOException, SQLException {
+    private void enterPatientButton(ActionEvent event) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 0){
-            System.out.println("Entered Patient");
-
-            loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
+            String loginPatient = database.Database.patientAuth(citizenshipIDField.getId());
+            if (loginPatient == citizenshipIDField.getText())
+                loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
+            else{
+                citizenshipIDField.clear();
+                errorLabel1.setText(loginPatient);
+                errorLabel1.setTextFill(Color.RED);
+            }
         }
-        else if (roleChooser == 2){
+        else{
+            errorLabel1.setText("Please enter a citizen id number");
+            errorLabel1.setTextFill(Color.RED);
+        }
+    }
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader();
+
+        if (roleChooser == 2){
             System.out.println("Entered Doctor");
             String loginDoctor = database.Database.doctorAuth(userName.getText(), password.getText());
             if (loginDoctor.equals(userName.getText()))
@@ -120,7 +137,7 @@ public class AuthController implements Initializable {
         try {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
-            Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(scene);
             app_stage.setResizable(false);
             app_stage.show();
