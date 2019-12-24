@@ -23,7 +23,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-       String musicFile = "Vivaldi_Sonata_eminor_.mp3";
+       String musicFile = "Vivaldi_Sonata_eminor_";
         Media sound = new Media(new File(musicFile).toURI().toString());
 
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
