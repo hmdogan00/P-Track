@@ -302,4 +302,18 @@ public class Database {
         return user_name;
     }
 
+    public static boolean doctorAvailability(int d_id) throws SQLException {
+        Connection myConn = connection();
+        boolean flag = true;
+        String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' " ;
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            if(rs.getString("date").equals(date()) && rs.getString("time").equals(time())){
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
 }

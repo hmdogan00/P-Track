@@ -40,7 +40,7 @@ public class AddAppointmentController {
     }
     @FXML
     public void saveAppointment(ActionEvent e){
-/**
+/*
         /// if doctor is available
         if ( classes.Receptionist.addAppointment(patient,doctor,cost,time) > 0 )
         {
@@ -52,7 +52,6 @@ public class AddAppointmentController {
         {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Doctor is unavailable\n Please select another doctor",ButtonType.OK);
             alert.showAndWait();
-        }
-*/
+        }*/
     }
 }
