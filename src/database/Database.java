@@ -3,6 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
+    private static String userName2;
     public static void main(String[] args) throws SQLException {
         System.out.println(date());
     }
@@ -301,6 +302,7 @@ public class Database {
         if(!userPassword.equals(password)){
             return "Password does not match with username.";
         }
+        userName2 = user_name;
         return user_name;
     }
 
@@ -317,5 +319,8 @@ public class Database {
         }
         return flag;
     }
-
+    public static String getUserName()
+    {
+        return userName2;
+    }
 }
