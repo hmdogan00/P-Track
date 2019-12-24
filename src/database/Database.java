@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Database {
     private static String userName2;
     public static void main(String[] args) throws SQLException {
-        System.out.println(addAppointment(1,2,"2019-12-23","18:30"));
     }
 
     //Connection method including connection details
@@ -217,7 +216,7 @@ public class Database {
         int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
         int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
         Boolean flag = true;
-        String sql = "SELECT * FROM appointment WHERE patient_id = '" + p_key + "' AND doctor_id ='" + d_key + "'";
+        String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_key + "'";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
@@ -225,7 +224,13 @@ public class Database {
             String docDate = rs.getString("date");
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
             int dateValue = Integer.parseInt(docDate.substring(8)) * 1000000 + Integer.parseInt(docDate.substring(5,7)) * 10000 + Integer.parseInt(docDate.substring(0,4));
-            if((dateValue == appointmentDate && timeValue == appointmentTime) && (appointmentDate < currentDate && appointmentTime < currentTime)){
+            if((dateValue == appointmentDate && timeValue == appointmentTime)){
+                flag = false;
+            }
+            if(appointmentDate < currentDate ){
+                flag = false;
+            }
+            else if(appointmentTime < currentTime && appointmentDate == currentDate){
                 flag = false;
             }
         }
