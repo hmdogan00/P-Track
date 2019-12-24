@@ -23,11 +23,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-       String musicFile = "Vivaldi_Sonata_eminor_";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        Media media = new Media("file:///Movies/test.mp3"); //replace /Movies/test.mp3 with your file
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
         Parent root = FXMLLoader.load(getClass().getResource("authentication.fxml"));
         primaryStage.setTitle("P-Track: Patient Management System");
         Image icon = new Image("ui/icons/hospital.png");
