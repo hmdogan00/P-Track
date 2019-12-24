@@ -261,39 +261,6 @@ public class Database {
         return doctorsAppointedPatients;
     }
 
-    public static ArrayList doctorAppointments(int d_id) throws SQLException {
-        ArrayList<String> doctorAppointments = new ArrayList<>();
-        ArrayList<String> doctorAppointedPatients = doctorsAppointedPatients(d_id);
-        Connection myConn = connection();
-        Statement myStmt = myConn.createStatement();
-        for(int i = 0; i < doctorAppointedPatients.size(); i= i+3){
-            String p_id = doctorAppointedPatients.get(i);
-            String sql = "SELECT * FROM patient WHERE patient_id = '" + p_id + "'";
-            ResultSet rs = myStmt.executeQuery(sql);
-            while(rs.next()){
-                doctorAppointments.add(rs.getString("name"));
-                doctorAppointments.add(rs.getString("patient_phoneNumber"));
-                doctorAppointments.add("");
-            }
-        }
-        //aa
-        return doctorAppointments;
-    }
-
-    public static ArrayList patientAppointment(int p_id)throws SQLException{
-        ArrayList<String> patientAppointment = new ArrayList<>();
-        Connection myConn = connection();
-        String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' AND patient_id ='" + p_id + "'  ORDER BY time ASC";
-        Statement myStmt = myConn.createStatement();
-        ResultSet rs = myStmt.executeQuery(sql);
-        while(rs.next()){
-            patientAppointment.add(rs.getString("doctor_id"));
-            patientAppointment.add(rs.getString("date"));
-            patientAppointment.add(rs.getString("time"));
-        }
-        return patientAppointment;
-    }
-
     public static String doctorAuth(String user_name, String password) throws SQLException {
         Connection myConn = connection();
         String userName = "";

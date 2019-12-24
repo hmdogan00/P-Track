@@ -72,7 +72,7 @@ public class DoctorController extends MasterController implements Initializable 
         ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' ORDER BY `date` DESC");
 
             while (rs.next()) {
                 obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
@@ -118,6 +118,7 @@ public class DoctorController extends MasterController implements Initializable 
         try {
             doctorUserName.setText(Database.getUserName());
             doctorRoom.setText("Room No:" + Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(2));
+            getPatientData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
