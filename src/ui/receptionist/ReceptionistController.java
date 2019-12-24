@@ -17,11 +17,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import database.Database;
 import javafx.util.Callback;
-import ui.receptionist.controllers.ControllerMainClass;
 import ui.receptionist.controllers.PatientDetailsController;
 
 import javax.swing.text.StyledEditorKit;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
@@ -29,8 +31,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
-public class ReceptionistController extends ControllerMainClass implements Initializable {
+public class ReceptionistController implements Initializable {
     //Dashboard
     @FXML
     private Label receptionistUsernameLabel;
@@ -245,12 +248,9 @@ public class ReceptionistController extends ControllerMainClass implements Initi
     private TextField filterDoctorName;
 
     //variables
-
+    ModelTable p;
     //constructor
-    public ReceptionistController()
-    {
-        super.patientId = "";
-    }
+    public ReceptionistController() {}
 
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
@@ -328,7 +328,7 @@ public class ReceptionistController extends ControllerMainClass implements Initi
                     else{
                         final Button addAppointmentButton = new Button("Add Appointment");
                         addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                            p = getTableView().getItems().get(getIndex());
 
                             loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
 
@@ -359,15 +359,25 @@ public class ReceptionistController extends ControllerMainClass implements Initi
                         final Button addAppointmentButton = new Button("Patient Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
-                            ReceptionistController.super.patientId = p.getId();
-                            System.out.println("patID: " + ReceptionistController.super.patientId);
+                            PrintWriter outFile = null;
+                            File file = new File("outFile.txt");
+                            try {
+                                file.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
 
+                                outFile = new PrintWriter(file);
+                            } catch (FileNotFoundException fileE) {
+                                System.out.println("patladık mugi");
+                            }
+
+                            //write the patient id in a different txt file
+                            outFile.println(p.getId());
+                           System.out.println(outFile);
+                           outFile.close();
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-
-
-                            /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setContentText("click click bum" + p.getName());
-                            alert.show();*/
                         });
                         setGraphic(addAppointmentButton);
                     }
