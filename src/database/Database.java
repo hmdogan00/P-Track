@@ -218,6 +218,7 @@ public class Database {
         String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
+        System.out.println(1);
         while(rs.next()){
             if(date.equals(date()) && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key) && (currentTime == appointmentTime || appointmentTime <= currentTime +15))){
                 flag = false;
