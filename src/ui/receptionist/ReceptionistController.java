@@ -238,6 +238,7 @@ public class ReceptionistController extends MasterController implements Initiali
 
     //variables
     ModelTable p;
+
     //constructor
     public ReceptionistController() {}
     @FXML
@@ -249,7 +250,7 @@ public class ReceptionistController extends MasterController implements Initiali
     @FXML
     private void openPatientDetails(ActionEvent e) throws IOException{
         System.out.println("Patient details opened!");
-        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details"); //title can be change to "Bora Fatih Kazancı's Details etc."
+        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
     }
 
     @FXML
