@@ -302,7 +302,7 @@ public class Database {
         return user_name;
     }
 
-    public static boolean doctorAvalibility(int d_id) throws SQLException {
+    public static boolean doctorAvailability(int d_id) throws SQLException {
         Connection myConn = connection();
         boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' " ;

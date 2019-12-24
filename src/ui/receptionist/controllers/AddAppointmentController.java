@@ -18,6 +18,8 @@ public class AddAppointmentController {
     @FXML
     DatePicker appointmentDate;
     @FXML
+    JFXTimePicker appointmentTime;
+    @FXML
     Button saveAppointmentButton;
 
     public String dateValue(){
@@ -29,13 +31,13 @@ public class AddAppointmentController {
         return day+"/"+ month+"/"+ year;
     }
 
-    /*public String timeValue(){
+    public String timeValue(){
         String time = String.valueOf(appointmentTime.getValue() + " ");
         String hour = time.substring(0,2);
         String minute = time.substring(3,5);
 
         return hour + "/" + minute;
-    }*/
+    }
     @FXML
     public void saveAppointment(ActionEvent e){
 /*
