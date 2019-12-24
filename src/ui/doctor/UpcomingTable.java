@@ -1,28 +1,19 @@
 package ui.doctor;
 
 public class UpcomingTable {
-    String name, lastAppointment, phoneNo;
+    String name, appDate, appTime, phoneNo;
 
-    public UpcomingTable(String name, String lastAppointment, String phoneNo){
+    public UpcomingTable(String name, String appDate, String appTime, String phoneNo){
         this.name = name;
-        this.lastAppointment = lastAppointment;
+        this.appDate = appDate;
+        this.appTime = appTime;
         this.phoneNo = phoneNo;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastAppointment() {
-        return lastAppointment;
-    }
-
-    public void setLastAppointment(String lastAppointment) {
-        this.lastAppointment = lastAppointment;
     }
 
     public String getPhoneNo() {
@@ -31,5 +22,21 @@ public class UpcomingTable {
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    public String getAppDate() {
+        return appDate;
+    }
+
+    public void setAppDate(String appDate) {
+        this.appDate = appDate;
+    }
+
+    public String getAppTime() {
+        return appTime;
+    }
+
+    public void setAppTime(String appTime) {
+        this.appTime = appTime;
     }
 }

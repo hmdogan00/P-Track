@@ -246,6 +246,7 @@ public class Database {
         }
         return flag;
     }
+
     public static ArrayList doctorsAppointedPatients(int d_id) throws SQLException {
         ArrayList<String> doctorsAppointedPatients = new ArrayList<>();
         Connection myConn = connection();
@@ -272,12 +273,12 @@ public class Database {
             while(rs.next()){
                 doctorAppointments.add(rs.getString("name"));
                 doctorAppointments.add(rs.getString("patient_phoneNumber"));
+                doctorAppointments.add("");
             }
         }
         //aa
         return doctorAppointments;
     }
-
 
     public static ArrayList patientAppointment(int p_id)throws SQLException{
         ArrayList<String> patientAppointment = new ArrayList<>();
@@ -292,6 +293,7 @@ public class Database {
         }
         return patientAppointment;
     }
+
     public static String doctorAuth(String user_name, String password) throws SQLException {
         Connection myConn = connection();
         String userName = "";
@@ -351,6 +353,7 @@ public class Database {
         }
         return flag;
     }
+
     public static String getUserName()
     {
         return userName2;
