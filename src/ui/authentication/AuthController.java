@@ -3,6 +3,7 @@ package ui.authentication;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
+import database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,9 +87,22 @@ public class AuthController implements Initializable {
     private void enterPatientButton(ActionEvent event) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 0){
-            String loginPatient = database.Database.patientAuth(citizenshipIDField.getId());
-            if (loginPatient == citizenshipIDField.getText())
+            System.out.println(citizenshipIDField.getText());
+            String loginPatient = Database.patientAuth( citizenshipIDField.getText() );
+            if (loginPatient.equals(citizenshipIDField.getText())) {
                 loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
+                try {
+                    Parent parent = loader.load();
+                    Scene scene = new Scene(parent);
+                    Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    app_stage.setScene(scene);
+                    app_stage.setResizable(false);
+                    app_stage.show();
+                }catch (RuntimeException r){
+                    System.out.println("Role is not selected!");
+                }
+
+            }
             else{
                 citizenshipIDField.clear();
                 errorLabel1.setText(loginPatient);

@@ -109,16 +109,16 @@ public class Database {
             emergency_number = rs.getString("emergency_number");
         }
 
-        patient_info.add(name);
-        patient_info.add(id);
-        patient_info.add(gender);
-        patient_info.add(blood);
-        patient_info.add(birth_date);
-        patient_info.add(address);
-        patient_info.add(insurance);
-        patient_info.add(phone_number);
-        patient_info.add(emergency_name);
-        patient_info.add(emergency_number);
+        patient_info.add(name);//0
+        patient_info.add(id);//1
+        patient_info.add(gender);//2
+        patient_info.add(blood);//3
+        patient_info.add(birth_date);//4
+        patient_info.add(address);//5
+        patient_info.add(insurance);//6
+        patient_info.add(phone_number);//7
+        patient_info.add(emergency_name);//8
+        patient_info.add(emergency_number);//9
 
         return patient_info;
     }
@@ -382,6 +382,7 @@ public class Database {
         if(name.equals("")){
             return "Patient does not exist.";
         }
+        userName2 = id;
         return "" + id;
     }
 }

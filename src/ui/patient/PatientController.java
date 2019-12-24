@@ -1,6 +1,7 @@
 package ui.patient;
 
 import com.jfoenix.transitions.template.JFXAnimationTemplateAction;
+import database.Database;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,23 +26,34 @@ import ui.MasterController;
 public class PatientController extends MasterController implements Initializable {
 
     @FXML
-    Button patientLogOutButton;
+    private Button patientLogOutButton;
+
     @FXML
-    Label patientNameLabel;
+    private Label patientNameLabel;
+
     @FXML
-    Label patientID;
+    private Label patientID;
+
     @FXML
-    Label patientGender;
+    private Label patientGender;
+
     @FXML
-    Label patientBloodType;
+    private Label patientBloodType;
+
     @FXML
-    Label patientAddress;
+    private TextArea patientAddress;
+
     @FXML
-    Label patientPhoneNumber;
+    private Label patientInsurance;
+
     @FXML
-    Label topBarPatientName;
+    private Label patientPhoneNumber;
+
     @FXML
-    TableView appointmentsView;
+    private Label topBarPatientName;
+
+    @FXML
+    private TableView appointmentsView;
 
     public PatientController(){}
 
@@ -62,28 +74,16 @@ public class PatientController extends MasterController implements Initializable
         app_stage.show();
     }
 
-    public void update() throws SQLException{
-        File file = null;
-        Scanner scan = null;
-        try {
-            file = new File("outFile.txt");
-            String path = file.getAbsolutePath();
-            scan = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Could not access file. Please try again.");
-            alert.show();
-        }
-        String id = scan.next();
-        scan.close();
-        int patientKey = database.Database.findPatientKey(id);
+    private void update() throws SQLException{
+        int patientKey = database.Database.findPatientKey(Database.getUserName());
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         topBarPatientName.setText(infoList.get(0));
         patientNameLabel.setText(infoList.get(0));
         patientID.setText(infoList.get(1));
         patientGender.setText(infoList.get(2));
-        patientBloodType.setText(infoList.get(4));
-        patientAddress.setText(infoList.get(5) + "/" + infoList.get(6));
+        patientBloodType.setText(infoList.get(3));
+        patientAddress.setText(infoList.get(5));
+        patientInsurance.setText(infoList.get(6));
         patientPhoneNumber.setText(infoList.get(7));
     }
 
