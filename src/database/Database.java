@@ -309,7 +309,7 @@ public class Database {
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
-            if(rs.getString(date()).equals(date()) && rs.getString(time()).equals(time())){
+            if(rs.getString("date").equals(date()) && rs.getString("time").equals(time())){
                 flag = false;
             }
         }
