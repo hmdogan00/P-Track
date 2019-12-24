@@ -9,11 +9,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 
@@ -58,7 +62,20 @@ public class PatientController implements Initializable {
     }
 
     public void update() throws SQLException{
-        int patientKey = database.Database.findPatientKey("0");
+        File file = null;
+        Scanner scan = null;
+        try {
+            file = new File("outFile.txt");
+            String path = file.getAbsolutePath();
+            scan = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Could not access file. Please try again.");
+            alert.show();
+        }
+        String id = scan.next();
+        scan.close();
+        int patientKey = database.Database.findPatientKey(id);
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         topBarPatientName.setText(infoList.get(0));
         patientNameLabel.setText(infoList.get(0));
