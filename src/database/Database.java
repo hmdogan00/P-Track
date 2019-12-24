@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Database {
     private static String userName2;
     public static void main(String[] args) throws SQLException {
-        System.out.println(date());
+        System.out.println(addAppointment(1,2,"2019-12-23","18:30"));
     }
 
     //Connection method including connection details
@@ -217,7 +217,7 @@ public class Database {
         int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
         int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
         Boolean flag = true;
-        String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_key + "' ";
+        String sql = "SELECT * FROM appointment WHERE patient_id = '" + p_key + "' AND doctor_id ='" + d_key + "'";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
@@ -225,19 +225,6 @@ public class Database {
             String docDate = rs.getString("date");
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
             int dateValue = Integer.parseInt(docDate.substring(8)) * 1000000 + Integer.parseInt(docDate.substring(5,7)) * 10000 + Integer.parseInt(docDate.substring(0,4));
-            if((dateValue == appointmentDate && timeValue == appointmentTime) && (appointmentDate < currentDate && appointmentTime < currentTime)){
-                flag = false;
-            }
-        }
-
-        String sql1 = "SELECT * FROM appointment WHERE patient_id = '" + p_key + "' ";
-        Statement myStmt1 = myConn.createStatement();
-        ResultSet rs1 = myStmt1.executeQuery(sql1);
-        while(rs.next()){
-            String patientTime = rs.getString("time");
-            String patientDate = rs.getString("date");
-            int timeValue = Integer.parseInt(patientTime.substring(0,2)) * 100 + Integer.parseInt(patientTime.substring(3));
-            int dateValue = Integer.parseInt(patientDate.substring(8)) * 1000000 + Integer.parseInt(patientDate.substring(5,7)) * 10000 + Integer.parseInt(patientDate.substring(0,4));
             if((dateValue == appointmentDate && timeValue == appointmentTime) && (appointmentDate < currentDate && appointmentTime < currentTime)){
                 flag = false;
             }
@@ -252,7 +239,6 @@ public class Database {
             myStmt2.setString(4, time);
             myStmt2.executeUpdate();
         }
-        //aa
         return flag;
     }
     public static ArrayList doctorsAppointment(int d_id) throws SQLException {
@@ -272,7 +258,7 @@ public class Database {
     public static ArrayList patientAppointment(int p_id)throws SQLException{
         ArrayList<String> patientAppointment = new ArrayList<>();
         Connection myConn = connection();
-        String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' AND patient_id ='" + p_id + "'  ORDER BY time ASC";;
+        String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' AND patient_id ='" + p_id + "'  ORDER BY time ASC";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
