@@ -516,6 +516,7 @@ public class ReceptionistController implements Initializable {
         try {
             timeLabel.setText(Database.time());
             dateLabel.setText(Database.date());
+            receptionistUsernameLabel.setText(Database.getUserName());
         } catch (SQLException e) {
             e.printStackTrace();
         }
