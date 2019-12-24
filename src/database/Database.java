@@ -212,27 +212,47 @@ public class Database {
 
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
+        int appointmentDate = Integer.parseInt(date.substring(8)) * 1000000 + Integer.parseInt(date.substring(5,7)) * 10000 + Integer.parseInt(date.substring(0,4));
+        int currentDate = Integer.parseInt(date().substring(8)) * 1000000 + Integer.parseInt(date().substring(5,7)) * 10000 + Integer.parseInt(date().substring(0,4));
         int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
-        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
+        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
         Boolean flag = true;
-        String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
+        String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_key + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
-        System.out.println(2);
         while(rs.next()){
-            if(date.equals(date()) && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key) && (currentTime == appointmentTime || appointmentTime <= currentTime +15))){
+            String docTime = rs.getString("time");
+            String docDate = rs.getString("date");
+            int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
+            int dateValue = Integer.parseInt(docDate.substring(8)) * 1000000 + Integer.parseInt(docDate.substring(5,7)) * 10000 + Integer.parseInt(docDate.substring(0,4));
+            if((dateValue == appointmentDate && timeValue == appointmentTime) && (appointmentDate < currentDate && appointmentTime < currentTime)){
                 flag = false;
             }
         }
-        if (flag) {
-            String sql1 = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
-            PreparedStatement myStmt1 = myConn.prepareStatement(sql1);
-            myStmt1.setInt(1, p_key);
-            myStmt1.setInt(2, d_key);
-            myStmt1.setString(3, date);
-            myStmt1.setString(4, time);
-            myStmt1.executeUpdate();
+
+        String sql1 = "SELECT * FROM appointment WHERE patient_id = '" + p_key + "' ";
+        Statement myStmt1 = myConn.createStatement();
+        ResultSet rs1 = myStmt1.executeQuery(sql1);
+        while(rs.next()){
+            String patientTime = rs.getString("time");
+            String patientDate = rs.getString("date");
+            int timeValue = Integer.parseInt(patientTime.substring(0,2)) * 100 + Integer.parseInt(patientTime.substring(3));
+            int dateValue = Integer.parseInt(patientDate.substring(8)) * 1000000 + Integer.parseInt(patientDate.substring(5,7)) * 10000 + Integer.parseInt(patientDate.substring(0,4));
+            if((dateValue == appointmentDate && timeValue == appointmentTime) && (appointmentDate < currentDate && appointmentTime < currentTime)){
+                flag = false;
+            }
         }
+
+        if (flag) {
+            String sql2 = "INSERT INTO appointment(patient_id,doctor_id,date,time) VALUES(?,?,?,?)";
+            PreparedStatement myStmt2 = myConn.prepareStatement(sql2);
+            myStmt2.setInt(1, p_key);
+            myStmt2.setInt(2, d_key);
+            myStmt2.setString(3, date);
+            myStmt2.setString(4, time);
+            myStmt2.executeUpdate();
+        }
+        //aa
         return flag;
     }
     public static ArrayList doctorsAppointment(int d_id) throws SQLException {
@@ -323,5 +343,19 @@ public class Database {
     public static String getUserName()
     {
         return userName2;
+    }
+
+    public static ArrayList getDoctorName() throws SQLException {
+        Connection myConn = connection();
+        ArrayList<String> doctorList = new ArrayList<>();
+        String sql = "SELECT * FROM doctor";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            String dName = rs.getString("name") + "<" + rs.getString("department") + ">";
+            doctorList.add(dName);
+            System.out.println(dName);
+        }
+        return doctorList;
     }
 }

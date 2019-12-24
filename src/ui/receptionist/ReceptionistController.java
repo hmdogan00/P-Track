@@ -325,12 +325,23 @@ public class ReceptionistController implements Initializable {
                         final Button addAppointmentButton = new Button("Add Appointment");
                         addAppointmentButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
+                            PrintWriter outFile = null;
+                            File file = new File("outFile.txt");
+                            try {
+                                file.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
 
+                                outFile = new PrintWriter(file);
+                            } catch (FileNotFoundException fileE) {}
+
+                            //write the patient id in a different txt file
+                            outFile.println(p.getId());
+                            System.out.println(outFile);
+                            outFile.close();
                             loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
-
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setContentText("click click bum" + p.getName());
-                            alert.show();
                         });
                         setGraphic(addAppointmentButton);
                         setText(null);
@@ -365,9 +376,7 @@ public class ReceptionistController implements Initializable {
                             try {
 
                                 outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {
-                                System.out.println("patladık mugi");
-                            }
+                            } catch (FileNotFoundException fileE) {}
 
                             //write the patient id in a different txt file
                             outFile.println(p.getId());
@@ -409,9 +418,7 @@ public class ReceptionistController implements Initializable {
                             try {
 
                                 outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {
-                                System.out.println("patladık mugi");
-                            }
+                            } catch (FileNotFoundException fileE) {}
 
                             //write the patient id in a different txt file
                             outFile.println(p.getId());
