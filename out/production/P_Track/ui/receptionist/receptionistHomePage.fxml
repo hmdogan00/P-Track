@@ -1471,6 +1471,7 @@
                               <TableColumn fx:id="colDoctorDepartment" prefWidth="168.0" text="Department" />
                             <TableColumn fx:id="colDoctorRoom" prefWidth="168.0" text="Room Number" />
                               <TableColumn prefWidth="168.0" text="Availability" />
+                              <TableColumn prefWidth="134.0" text="Phone Number" />
                           </columns>
                         </TableView>
                         <VBox prefHeight="367.0" prefWidth="1008.0">
@@ -1492,17 +1493,18 @@
                </content></Tab>
             </tabs>
         </JFXTabPane>
-        <ToolBar layoutX="789.0" maxHeight="50.0" prefHeight="50.0" prefWidth="219.0" stylesheets="@../../theme.css">
+        <ToolBar layoutX="677.0" maxHeight="50.0" prefHeight="50.0" prefWidth="331.0" stylesheets="@../../theme.css">
             <items>
-                <AnchorPane prefHeight="10.0" prefWidth="114.0" stylesheets="@../../theme.css">
-                    <children>
-                        <Label fx:id="receptionistUsernameLabel" prefHeight="36.0" prefWidth="114.0" text="Username">
-                            <font>
-                                <Font name="System Bold" size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+            <Label fx:id="receptionistUsernameLabel" prefHeight="36.0" prefWidth="123.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
                 <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutReceptionist" prefHeight="9.0" prefWidth="73.0" text="Logout">
                     <cursor>
                         <Cursor fx:constant="HAND" />
