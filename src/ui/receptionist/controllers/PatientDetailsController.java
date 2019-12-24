@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -18,6 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 
 public class PatientDetailsController implements Initializable {
@@ -47,8 +50,14 @@ public class PatientDetailsController implements Initializable {
 
     public PatientDetailsController(){}
 
-    public void update( String id ) throws SQLException
-    {
+    public void update( ) throws SQLException, FileNotFoundException {
+        File file = new File("outFile.txt");
+        String path = file.getAbsolutePath();
+        Scanner scan = new Scanner(file);
+        String id = scan.next();
+        scan.close();
+        file.delete();
+
         int patientKey = database.Database.findPatientKey(id);
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         System.out.println(infoList.toString());
@@ -68,8 +77,8 @@ public class PatientDetailsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources)
     {
         try {
-            update( "" );
-        } catch (SQLException e) {
+            update();
+        } catch (SQLException | FileNotFoundException e) {
             e.printStackTrace();
         }
     }
