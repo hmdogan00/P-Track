@@ -1,13 +1,18 @@
 package ui.receptionist.controllers;
+import com.jfoenix.transitions.template.JFXAnimationTemplateAction;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 
-public class ChangePatientInfoController {
+public class ChangePatientInfoController implements Initializable {
 
     @FXML
     private Label patientNameLabel;
@@ -71,5 +76,10 @@ public class ChangePatientInfoController {
 
         if (alert.getResult() == ButtonType.YES) {
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

@@ -5,6 +5,7 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import java.awt.*;
@@ -50,10 +51,19 @@ public class PatientDetailsController implements Initializable {
 
     public PatientDetailsController(){}
 
-    public void update( ) throws SQLException, FileNotFoundException {
-        File file = new File("outFile.txt");
-        String path = file.getAbsolutePath();
-        Scanner scan = new Scanner(file);
+    public void update( ) throws SQLException{
+        File file = null;
+        Scanner scan = null;
+        try {
+            file = new File("outFile.txt");
+            String path = file.getAbsolutePath();
+            scan = new Scanner(file);
+        }catch( FileNotFoundException e)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Could not access database. Please try again.");
+            alert.show();
+        }
         String id = scan.next();
         scan.close();
         file.delete();
@@ -78,7 +88,7 @@ public class PatientDetailsController implements Initializable {
     {
         try {
             update();
-        } catch (SQLException | FileNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
