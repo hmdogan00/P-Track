@@ -75,7 +75,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Text>
-            <TableView prefHeight="421.0" prefWidth="981.0">
+            <TableView prefHeight="607.0" prefWidth="981.0">
               <columns>
                 <TableColumn prefWidth="144.0" text="Name" />
                 <TableColumn prefWidth="175.0" text="Last Appointment" />
