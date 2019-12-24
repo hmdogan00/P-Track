@@ -173,15 +173,28 @@ public class AddAppointmentController implements Initializable {
      * @param e listens the save button
      * @throws SQLException
      */
-    @FXML public void saveAppointment(ActionEvent e) throws SQLException {
+    @FXML public void saveAppointment(ActionEvent e) throws SQLException
+    {
+        // combining patient name and surname for database
         String patName = patientName.getText() + " " + patientSurname.getText();
+
+        // finding patient key which is patient's ID
         int patientId = Database.findPatientKey( patientdbId );
         System.out.println(patientId);
+
+        // combining doctor name and surname for database
         String docName = doctorName.getText() + " " + doctorSurname.getText();
+
+        // finding doctor key which is doctor's ID
         int docId = Database.findDoctorKey( docName );
+
+        // if doctor is available
         if ( Database.doctorAvailability( docId ))
         {
+            // adding appointment
             boolean trial = Database.addAppointment(patientId, docId, dateValue(), timeValue() );
+
+            // if it is successful showing an alert message
             if (trial)
             {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -189,6 +202,7 @@ public class AddAppointmentController implements Initializable {
                 alert.show();
                 Stage stage = (Stage) saveAppointmentButton.getScene().getWindow(); stage.close();
             }
+            // else wait for another input
             else
                 {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -196,12 +210,18 @@ public class AddAppointmentController implements Initializable {
                     alert.show();
                 }
         }
+        // if doctor is not available
         else
             { Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Doctor is not available at given time. Please choose a different time.");
             alert.show();
             }
     }
+
+    /**
+     *
+     * @throws SQLException
+     */
     public void update( ) throws SQLException {
         File file = null;
         Scanner scan = null;

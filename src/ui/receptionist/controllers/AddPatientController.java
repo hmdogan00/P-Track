@@ -1,23 +1,14 @@
+/**
+ * this class controls and shows add patient scene for receptionist
+ */
 package ui.receptionist.controllers;
-import classes.Receptionist;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import ui.receptionist.ReceptionistController;
-
-import java.awt.*;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.sql.Date;
 import java.sql.SQLException;
 
 public class AddPatientController {
@@ -54,89 +45,83 @@ public class AddPatientController {
 
     //variables
     private String photoFile; //fotograf için
-    private int sexChooser = 0;
-    private int bloodTypeChooser = 0;
-    private int insuranceChooser = 0;
 
-    //constructor
+    /**
+     * a constructor creates add Patient controller class
+     */
     public AddPatientController(){}
 
+    /**
+     * if male is chosen from the sexMenu
+     * @param e listens the menu button
+     */
     @FXML
     private void sexMaleChoice(ActionEvent e){
         sexMenu.setText("Male");
-        sexChooser = 1;
     }
 
+    /**
+     * if female is chosen from the sexMenu
+     * @param e listenes the menu button
+     */
     @FXML
     private void sexFemaleChoice(ActionEvent e){
         sexMenu.setText("Female");
-        sexChooser = 2;
     }
 
     @FXML
     private void aRHpositiveChoice(ActionEvent e){
         bloodTypeMenu.setText("A RH+");
-        bloodTypeChooser = 1;
     }
 
     @FXML
     private void aRHnegativeChoice(ActionEvent e){
         bloodTypeMenu.setText("A RH-");
-        bloodTypeChooser = 2;
     }
 
     @FXML
     private void bRHpositiveChoice(ActionEvent e){
         bloodTypeMenu.setText("B RH+");
-        bloodTypeChooser = 3;
     }
 
     @FXML
     private void bRHnegativeChoice(ActionEvent e){
         bloodTypeMenu.setText("B RH-");
-        bloodTypeChooser = 4;
     }
 
     @FXML
     private void abRHpositiveChoice(ActionEvent e){
         bloodTypeMenu.setText("AB RH+");
-        bloodTypeChooser = 5;
     }
 
     @FXML
     private void abRHnegativeChoice(ActionEvent e){
         bloodTypeMenu.setText("AB RH-");
-        bloodTypeChooser = 6;
     }
 
     @FXML
     private void zeroRHpositiveChoice(ActionEvent e){
         bloodTypeMenu.setText("0 RH+");
-        bloodTypeChooser = 7;
     }
 
     @FXML
     private void zeroRHnegativeChoice(ActionEvent e){
         bloodTypeMenu.setText("0 RH-");
-        bloodTypeChooser = 8;
     }
 
     @FXML
     private void sgkChoice(ActionEvent e) {
         insuranceMenu.setText("SGK");
-        insuranceChooser = 1;
     }
 
     @FXML
     private void bagkurChoice(ActionEvent e) {
         insuranceMenu.setText("BAGKUR");
-        insuranceChooser = 2;
     }
 
     @FXML
     private void privateChoice(ActionEvent e) {
         insuranceMenu.setText("PRIVATE");
-        insuranceChooser = 3;
     }
 
     public String dateValue(){
