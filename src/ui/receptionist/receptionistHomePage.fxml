@@ -597,39 +597,29 @@
                                 </VBox>
                                 <Group layoutX="169.0" layoutY="5.0">
                                     <children>
-                                        <ImageView fitHeight="134.0" fitWidth="231.0">
-                                            <image>
-                                                <Image url="@../icons/rectangle.png" />
-                                            </image>
-                                        </ImageView>
                                         <AnchorPane layoutX="9.0" layoutY="31.0" prefHeight="72.0" prefWidth="213.0">
                                             <children>
-                                                <ImageView fitHeight="31.0" fitWidth="26.0" layoutX="178.0" layoutY="21.0">
-                                                    <image>
-                                                        <Image url="@../icons/tag-black-shape.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <Text layoutX="4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL APPOINTMENTS" wrappingWidth="187.0">
+                                                <Text layoutX="24.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL APPOINTMENTS" wrappingWidth="187.0">
                                                     <font>
                                                         <Font name="System Bold" size="15.0" />
                                                     </font>
                                                 </Text>
-                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="14.0" layoutY="37.0" prefHeight="23.0" prefWidth="138.0" text="numberOfAppointments">
+                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="24.0" layoutY="37.0" prefHeight="15.0" prefWidth="104.0" text="numberOfAppointments">
                                                     <font>
                                                         <Font size="11.0" />
                                                     </font>
                                                 </Label>
+                                    <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="200.0" layoutY="1.0">
+                                       <image>
+                                          <Image url="@../icons/agenda.png" />
+                                       </image>
+                                    </ImageView>
                                             </children>
                                         </AnchorPane>
                                     </children>
                                 </Group>
                                 <Group layoutX="567.0" layoutY="5.0">
                                     <children>
-                                        <ImageView fitHeight="134.0" fitWidth="231.0">
-                                            <image>
-                                                <Image url="@../icons/rectangle.png" />
-                                            </image>
-                                        </ImageView>
                                         <AnchorPane layoutX="9.0" layoutY="31.0" prefHeight="72.0" prefWidth="213.0">
                                             <children>
                                                 <Text layoutX="24.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME &amp; DATE" wrappingWidth="114.0">
@@ -637,28 +627,28 @@
                                                         <Font name="System Bold" size="15.0" />
                                                     </font>
                                                 </Text>
-                                                <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="148.0" layoutY="11.0">
-                                                    <image>
-                                                        <Image url="@../icons/calendar.png" />
-                                                    </image>
-                                                </ImageView>
-                                                <Label fx:id="timeLabel" layoutX="24.0" layoutY="29.0" prefHeight="15.0" prefWidth="104.0" text="time -&gt; 16:47">
+                                                <Label fx:id="timeLabel" layoutX="21.0" layoutY="30.0" prefHeight="15.0" prefWidth="104.0" text="16:47">
                                                     <font>
                                                         <Font size="11.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="dateLabel" layoutX="24.0" layoutY="51.0" prefHeight="15.0" prefWidth="97.0" text="date -&gt; 9.12.2019">
+                                                <Label fx:id="dateLabel" layoutX="24.0" layoutY="51.0" prefHeight="15.0" prefWidth="97.0" text="9.12.2019">
                                                     <font>
                                                         <Font size="11.0" />
                                                     </font>
                                                 </Label>
+                                    <ImageView fitHeight="80.0" fitWidth="73.0" layoutX="138.0" layoutY="2.0">
+                                       <image>
+                                          <Image url="@../icons/calendar.png" />
+                                       </image>
+                                    </ImageView>
                                             </children>
                                         </AnchorPane>
                                     </children>
                                 </Group>
-                                <VBox layoutX="3.0" layoutY="118.0" prefHeight="255.0" prefWidth="1008.0">
+                                <VBox layoutX="3.0" layoutY="166.0" prefHeight="207.0" prefWidth="1008.0">
                                     <children>
-                              <ToolBar prefHeight="21.0" prefWidth="1008.0">
+                              <ToolBar prefHeight="18.0" prefWidth="1008.0">
                                  <items>
                                     <AnchorPane prefHeight="25.0" prefWidth="351.0" />
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTES" textAlignment="CENTER" wrappingWidth="300.0">
@@ -726,14 +716,6 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                                 </Button>
-                                                <Separator orientation="VERTICAL" prefHeight="200.0">
-                                                    <opaqueInsets>
-                                                        <Insets />
-                                                    </opaqueInsets>
-                                                    <HBox.margin>
-                                                        <Insets left="15.0" right="15.0" />
-                                                    </HBox.margin>
-                                                </Separator>
                                             </children>
                                             <VBox.margin>
                                                 <Insets left="2.0" top="4.0" />
@@ -746,7 +728,6 @@
                                     <TableColumn fx:id="colID" prefWidth="124.0" text="Citizenhip ID" />
                                                 <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
                                                 <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
-                                                <TableColumn fx:id="colInsurance" editable="false" prefWidth="94.0" resizable="false" text="Insurance" />
                                     <TableColumn fx:id="colAddAppointment" prefWidth="138.0" />
                                     <TableColumn fx:id="colDetails" prefWidth="92.0" />
                                     <TableColumn fx:id="colChangeInfo" prefWidth="87.0" />
@@ -1478,14 +1459,6 @@
                                  </HBox.margin>
                               </Button>
                               <Separator orientation="VERTICAL" prefHeight="200.0">
-                                 <HBox.margin>
-                                    <Insets left="15.0" right="15.0" />
-                                 </HBox.margin>
-                              </Separator>
-                              <Separator orientation="VERTICAL" prefHeight="200.0">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
                                  <HBox.margin>
                                     <Insets left="15.0" right="15.0" />
                                  </HBox.margin>

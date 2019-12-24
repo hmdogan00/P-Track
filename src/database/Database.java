@@ -1,5 +1,4 @@
 package database;
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -211,12 +210,13 @@ public class Database {
 
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
+        int minute = Integer.parseInt(time.substring(2));
         Boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
-            if(rs.getString("doctor_id").equals("" + d_key) || rs.getString("patient_id").equals("" + p_key)){
+            if(minute % 15 != 0 && (rs.getString("doctor_id").equals("" + d_key) && rs.getString("patient_id").equals("" + p_key))){
                 flag = false;
             }
         }
@@ -293,13 +293,27 @@ public class Database {
             userRole = rs1.getString("role");
             userPassword = rs1.getString("password");
         }
-        if(user_name.equals("") || !userRole.equals("registration")){
+        if(user_name.equals("") || !userRole.equals("receptionist")){
             return "User name or the role does not match.";
         }
         if(!userPassword.equals(password)){
             return "Password does not match with username.";
         }
         return user_name;
+    }
+
+    public static boolean doctorAvailability(int d_id) throws SQLException {
+        Connection myConn = connection();
+        boolean flag = true;
+        String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' " ;
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        while(rs.next()){
+            if(rs.getString("date").equals(date()) && rs.getString("time").equals(time())){
+                flag = false;
+            }
+        }
+        return flag;
     }
 
 }

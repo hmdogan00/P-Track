@@ -210,8 +210,6 @@ public class ReceptionistController implements Initializable {
     @FXML
     private TableColumn<ModelTable,String> colID;
 
-    @FXML
-    private TableColumn<ModelTable,String> colInsurance;
 
     @FXML
     private TableColumn<ModelTable,String> colSex;
@@ -310,7 +308,6 @@ public class ReceptionistController implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
         colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
@@ -403,11 +400,27 @@ public class ReceptionistController implements Initializable {
                         final Button addAppointmentButton = new Button("Change Patient Info");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
+                            PrintWriter outFile = null;
+                            File file = new File("outFile.txt");
+                            try {
+                                file.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+
+                                outFile = new PrintWriter(file);
+                            } catch (FileNotFoundException fileE) {
+                                System.out.println("patladık mugi");
+                            }
+
+                            //write the patient id in a different txt file
+                            outFile.println(p.getId());
+                            System.out.println(outFile);
+                            outFile.close();
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
 
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setContentText("click click bum" + p.getName());
-                            alert.show();
+
                         });
                         setGraphic(addAppointmentButton);
                         setText(null);
@@ -437,7 +450,6 @@ public class ReceptionistController implements Initializable {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colInsurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
         colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
@@ -467,40 +479,6 @@ public class ReceptionistController implements Initializable {
         try {
             Connection con = Database.connection();
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
-
-            //add appointment button to a column
-            /*TableColumn<ModelTable, Boolean> col_addApp = new TableColumn<>();
-            col_addApp.setSortable(false);
-            col_addApp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_addApp.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonAddApp(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_addApp);
-
-            //change info button to a column
-            TableColumn<ModelTable, Boolean> col_changeInfo = new TableColumn<>();
-            col_changeInfo.setSortable(false);
-            col_changeInfo.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ModelTable, Boolean>, ObservableValue<Boolean>>(){
-                @Override
-                public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ModelTable, Boolean> p){
-                    return new SimpleBooleanProperty(p.getValue() != null);
-                }
-            });
-            col_changeInfo.setCellFactory(new Callback<TableColumn<ModelTable, Boolean>, TableCell<ModelTable, Boolean>>(){
-                @Override
-                public TableCell<ModelTable, Boolean> call(TableColumn<ModelTable, Boolean> p){
-                    return new ButtonChangeInfo(patientTable);
-                }
-            });
-            patientTable.getColumns().add(col_changeInfo);*/
 
             while (rs2.next()) {
                 obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
@@ -562,78 +540,6 @@ public class ReceptionistController implements Initializable {
         else
             getFilteredDoctorData();
         doctorTable.refresh();
-    }
-
-    //inner classes to add buttons to Table
-    private class ButtonAddApp extends TableCell<ModelTable, Boolean>{
-        final Button addAppointmentButton = new Button("Add Appointment");
-        ButtonAddApp(final TableView<ModelTable> tblView){
-            addAppointmentButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean check, boolean empty){
-            super.updateItem(check, empty);
-            if (!empty)
-                setGraphic(addAppointmentButton);
-            else{
-                setGraphic(null);
-                setText("");
-            }
-        }
-    }
-
-    //details button for patients
-    private class ButtonDetails extends TableCell<ModelTable, Boolean>{
-        final Button detailsButton = new Button("Details");
-        ButtonDetails(final TableView<ModelTable> tblView){
-            detailsButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean check, boolean empty){
-            super.updateItem(check, empty);
-            if (!empty)
-                setGraphic(detailsButton);
-            else{
-                setGraphic(null);
-                setText("");
-            }
-        }
-    }
-
-    //Change Info Button Creator
-    private class ButtonChangeInfo extends TableCell<ModelTable, Boolean>{
-        final Button changeInfoButton = new Button("Change Info");
-        ButtonChangeInfo(final TableView<ModelTable> tblView){
-            changeInfoButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(Boolean check, boolean empty){
-            super.updateItem(check, empty);
-            if (!empty)
-                setGraphic(changeInfoButton);
-            else{
-                setGraphic(null);
-                setText("");
-            }
-        }
     }
 
 }
