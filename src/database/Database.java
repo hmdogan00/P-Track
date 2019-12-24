@@ -252,6 +252,7 @@ public class Database {
             myStmt2.setString(4, time);
             myStmt2.executeUpdate();
         }
+        //aa
         return flag;
     }
     public static ArrayList doctorsAppointment(int d_id) throws SQLException {
