@@ -40,7 +40,7 @@ public class DoctorController implements Initializable {
     }
 
     private void getUpcomingPatient(){
-
+//
     }
 
     @Override
