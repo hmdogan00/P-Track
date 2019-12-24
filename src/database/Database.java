@@ -212,8 +212,8 @@ public class Database {
 
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         Connection myConn = connection();
-        int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(2));
-        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(2));
+        int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
+        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
         Boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE time = '" + time + "' ";
         Statement myStmt = myConn.createStatement();
