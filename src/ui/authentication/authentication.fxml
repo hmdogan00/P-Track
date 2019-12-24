@@ -117,7 +117,7 @@
                                       </VBox.margin>
                                   </Line>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                  <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Username">
+                                  <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="190.0" promptText="Username">
                                       <font>
                                           <Font size="15.0" />
                                       </font>
@@ -125,7 +125,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                       </VBox.margin>
                                   </TextField>
-                                  <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Password">
+                                  <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="190.0" promptText="Password">
                                       <font>
                                           <Font size="15.0" />
                                       </font>

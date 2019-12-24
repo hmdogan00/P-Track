@@ -87,7 +87,6 @@ public class AuthController implements Initializable {
             System.out.println("Entered Patient");
 
             loader.setLocation(getClass().getClassLoader().getResource("ui/patient/patientScene.fxml"));
-            System.out.println( loader.getLocation() );
         }
         else if (roleChooser == 2){
             System.out.println("Entered Doctor");
@@ -133,13 +132,6 @@ public class AuthController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*HamburgerSlideCloseTransition transition = new HamburgerSlideCloseTransition(settingsHamburger);
-        transition.setRate(-1);
-        settingsHamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
-            transition.setRate(transition.getRate() * -1);
-            transition.play();
-        });*/
-
         HamburgerBasicCloseTransition transition1 = new HamburgerBasicCloseTransition(settingsHamburger);
         transition1.setRate(-1);
         settingsHamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
