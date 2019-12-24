@@ -33,23 +33,18 @@
                </font>
             </Text>
             <Region prefHeight="45.0" prefWidth="130.0" />
-            <Label text="RoomNo" textFill="WHITE">
+            <Label fx:id="doctorRoom" prefHeight="30.0" prefWidth="213.0" text="RoomNo" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ToolBar prefHeight="45.0" prefWidth="451.0">
+            <Label fx:id="doctorUserName" prefHeight="30.0" prefWidth="224.0" text="USERNAME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ToolBar prefHeight="45.0" prefWidth="94.0">
               <items>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME:">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" wrappingWidth="238.0234375">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Text>
                 <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutDoctor" text="Logout" />
               </items>
             </ToolBar>
