@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.controllers.ChangePatientInfoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.controllers.ChangePatientInfoController">
    <children>
       <ToolBar prefHeight="0.0" prefWidth="750.0" stylesheets="@../../../theme.css">
          <items>
@@ -28,7 +28,7 @@
       </ToolBar>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="117.2705078125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="143.2705078125">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -64,7 +64,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate:" wrappingWidth="74.662109375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Birthdate:" wrappingWidth="90.662109375">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -89,7 +89,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="66.3818359375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Address:" wrappingWidth="112.3818359375">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
@@ -100,26 +100,16 @@
                </HBox.margin>
             </TextField>
             <Region prefHeight="38.0" prefWidth="13.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City: " wrappingWidth="49.6220703125">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Text>
-            <TextField fx:id="changeCity" prefHeight="31.0" prefWidth="176.0">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="79.38232421875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="79.38232421875">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="changePatientPhone">
+            <TextField fx:id="changePatientPhone" prefHeight="25.0" prefWidth="182.0">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
@@ -138,9 +128,9 @@
             <Region prefHeight="38.0" prefWidth="187.0" />
          </children>
       </HBox>
-      <VBox prefHeight="217.0" prefWidth="727.0">
+      <VBox prefHeight="217.0" prefWidth="750.0">
          <children>
-            <ToolBar prefHeight="63.0" prefWidth="750.0" stylesheets="@../../../theme.css">
+            <ToolBar prefHeight="40.0" prefWidth="750.0" stylesheets="@../../../theme.css">
                <items>
                   <Region prefHeight="54.0" prefWidth="237.0" />
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE EMERGENCY CONTACT" wrappingWidth="296.8291015625">
@@ -152,7 +142,7 @@
             </ToolBar>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="57.2705078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="103.2705078125">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -163,21 +153,11 @@
                      </HBox.margin>
                   </TextField>
                   <Region prefHeight="200.0" prefWidth="200.0" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Surname:" wrappingWidth="74.80908203125">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Text>
-                  <TextField fx:id="changeEmergencySurname">
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </TextField>
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="78.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="82.38232421875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="82.38232421875">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
