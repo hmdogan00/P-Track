@@ -268,7 +268,6 @@ public class ReceptionistController implements Initializable {
         //back to auth scene
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
-        System.out.println( loader.getLocation() );
         Parent parent = loader.load();
         Scene scene = new Scene(parent);
         Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
