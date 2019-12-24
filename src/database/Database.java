@@ -272,6 +272,7 @@ public class Database {
             while(rs.next()){
                 doctorAppointments.add(rs.getString("name"));
                 doctorAppointments.add(rs.getString("patient_phoneNumber"));
+                doctorAppointments.add("");
             }
         }
         //aa

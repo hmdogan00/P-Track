@@ -11,15 +11,22 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import ui.MasterController;
 import ui.receptionist.DoctorTable;
+import ui.receptionist.ModelTable;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DoctorController extends MasterController implements Initializable {
@@ -35,7 +42,12 @@ public class DoctorController extends MasterController implements Initializable 
     @FXML
     private TextField filterDoctorName;
     @FXML
-    private TableView<DoctorTable> doctorTable;
+    private TableView<UpcomingTable> upcomingTable;
+
+    @FXML
+    private TableColumn<UpcomingTable, String> colName, colLastAppointment, colPhoneNo, colAddPrescription;
+
+
     @FXML
     private void logoutDoctor(ActionEvent e) throws IOException{
         System.out.println("Logged out from Doctor panel!");
@@ -50,29 +62,86 @@ public class DoctorController extends MasterController implements Initializable 
         app_stage.setResizable(false);
         app_stage.show();
     }
-    @FXML
-    private void getFilteredData(){
-        ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
-        try{
-            Connection con = Database.connection();
-            String nameFilter = filterDoctorName.getText();
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
-
-            while (rs2.next()) {
-                listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number") ));
-            }
-        }catch (SQLException ex){}
-
-        doctorTable.setItems(listFiltered2);
-    }
     private void getUpcomingPatient(){
 
     }
 
-    private void getPatientData(){
+    private void getPatientData() throws SQLException {
+        /*int doctorId = Database.findDoctorKey(Database.getUserName());
+        ArrayList doctorsAppointedPatients = Database.doctorsAppointedPatients(doctorId);
+        ArrayList doctorAppointments = Database.doctorAppointments(doctorId);
+        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
 
+        for(int i = 0; i < 5; i++) {
+            obList3.add(new UpcomingTable("a","b","c"));
+        }
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colLastAppointment.setCellValueFactory(new PropertyValueFactory<>("lastAppointment"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+
+        upcomingTable.setItems(obList3);*/
+        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
+
+            while (rs.next()) {
+                obList3.add(new UpcomingTable( rs.getString("name"), "b", "c"));
+            }
+        }catch (SQLException ex){}
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colLastAppointment.setCellValueFactory(new PropertyValueFactory<>("lastAppointment"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+
+        upcomingTable.setItems(obList3);
+
+
+        Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
+            //make table cell with button
+            final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button addAppointmentButton = new Button("Add Appointment");
+                        addAppointmentButton.setOnAction(event -> {
+                            p = getTableView().getItems().get(getIndex());
+                            PrintWriter outFile = null;
+                            File file = new File("outFile.txt");
+                            try {
+                                file.createNewFile();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+
+                                outFile = new PrintWriter(file);
+                            } catch (FileNotFoundException fileE) {}
+
+                            //write the patient id in a different txt file
+                            outFile.println(p.getId());
+                            System.out.println(outFile);
+                            outFile.close();
+                            loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
+                        });
+                        setGraphic(addAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell;
+        };
+        colAddAppointment.setCellFactory(cellFactory);
     }
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
