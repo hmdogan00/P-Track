@@ -246,19 +246,38 @@ public class Database {
         }
         return flag;
     }
-    public static ArrayList doctorsAppointment(int d_id) throws SQLException {
-        ArrayList<String> doctorsAppointment = new ArrayList<>();
+    public static ArrayList doctorsAppointedPatients(int d_id) throws SQLException {
+        ArrayList<String> doctorsAppointedPatients = new ArrayList<>();
         Connection myConn = connection();
         String sql ="SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' ORDER BY time ASC" ;
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
-            doctorsAppointment.add(rs.getString("patient_id"));
-            doctorsAppointment.add(rs.getString("date"));
-            doctorsAppointment.add(rs.getString("time"));
+            doctorsAppointedPatients.add(rs.getString("patient_id"));
+            doctorsAppointedPatients.add(rs.getString("date"));
+            doctorsAppointedPatients.add(rs.getString("time"));
         }
-        return doctorsAppointment;
+        return doctorsAppointedPatients;
     }
+
+    public static ArrayList doctorAppointments(int d_id) throws SQLException {
+        ArrayList<String> doctorAppointments = new ArrayList<>();
+        ArrayList<String> doctorAppointedPatients = doctorsAppointedPatients(d_id);
+        Connection myConn = connection();
+        Statement myStmt = myConn.createStatement();
+        for(int i = 0; i < doctorAppointedPatients.size(); i= i+3){
+            String p_id = doctorAppointedPatients.get(i);
+            String sql = "SELECT * FROM patient WHERE patient_id = '" + p_id + "'";
+            ResultSet rs = myStmt.executeQuery(sql);
+            while(rs.next()){
+                doctorAppointments.add(rs.getString("name"));
+                doctorAppointments.add(rs.getString("patient_phoneNumber"));
+            }
+        }
+        //aa
+        return doctorAppointments;
+    }
+
 
     public static ArrayList patientAppointment(int p_id)throws SQLException{
         ArrayList<String> patientAppointment = new ArrayList<>();
