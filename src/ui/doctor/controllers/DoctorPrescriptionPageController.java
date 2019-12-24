@@ -29,27 +29,7 @@ public class DoctorPrescriptionPageController {
     public DoctorPrescriptionPageController(){}
 
     @FXML
-    public void handleDoctorLogout(ActionEvent e) throws IOException {
-        System.out.println("Logged out from Doctor panel!");
-
-        //back to auth scene
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
-        System.out.println( loader.getLocation() );
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        app_stage.setScene(scene);
-        app_stage.setResizable(false);
-        app_stage.show();
-
-
-    }
-
-    @FXML
-    public void handleSavePrescription(ActionEvent e){
-
-    }
+    public void handleSavePrescription(ActionEvent e){}
 
     @FXML
     public void handleBackToDoctorPage(ActionEvent e){
