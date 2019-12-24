@@ -54,12 +54,12 @@
          <children>
             <HBox prefHeight="1.0" prefWidth="1001.0">
                <children>
-                  <TextField promptText="Filter By Name">
+                  <TextField fx:id="filterDoctorName" promptText="Filter By Name">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Filter">
+                  <Button fx:id="filterButton" mnemonicParsing="false" text="Filter">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>

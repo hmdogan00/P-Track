@@ -29,7 +29,9 @@ public class DoctorPrescriptionPageController {
     public DoctorPrescriptionPageController(){}
 
     @FXML
-    public void handleSavePrescription(ActionEvent e){}
+    public void handleSavePrescription(ActionEvent e){
+
+    }
 
     @FXML
     public void handleBackToDoctorPage(ActionEvent e){
