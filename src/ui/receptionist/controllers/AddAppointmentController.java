@@ -7,8 +7,6 @@ import javafx.event.*;
 
 public class AddAppointmentController {
 
-    public AddAppointmentController(){}
-
     @FXML
     TextField patientName;
     @FXML

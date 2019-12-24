@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
 public class ChangePatientInfoController implements Initializable {
 
@@ -87,6 +88,8 @@ public class ChangePatientInfoController implements Initializable {
 
             int patientKey = database.Database.findPatientKey(id);
             Database.updatePatient( patientKey, changeAddress.getText(), Integer.parseInt(changePatientPhone.getText()), changeInsurance.getText(), changeEmergencyName.getText(), Integer.parseInt(changeEmergencyPhone.getText()) );
+            Stage stage = (Stage) saveButton.getScene().getWindow();
+            stage.close();
         }
     }
 
