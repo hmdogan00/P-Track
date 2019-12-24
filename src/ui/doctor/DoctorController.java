@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import ui.MasterController;
 import ui.receptionist.DoctorTable;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DoctorController implements Initializable {
+public class DoctorController extends MasterController implements Initializable {
 
     @FXML
     Button logoutButton;
