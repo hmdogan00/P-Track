@@ -501,32 +501,32 @@ public class ReceptionistController extends MasterController implements Initiali
 
         //write the patient id in a different txt file
         outFile.println(printItem);
-        System.out.println(outFile);
         outFile.close();
     }
 
-    /*private void recentDetails(){
-        int appListSize = 0;
-        try {
-            appListSize = Database.appointmentOrder().size();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private void recentDetails1(ActionEvent event){
+        if (!idNoLabel1.getText().isEmpty()) {
+            int appListSize = 0;
 
-        if (appListSize != 0) {
             try {
-                idNoLabel1.setText(Database.appointmentOrder().get(0));
-
-
-
-                //accessing patient details
-
+                appListSize = Database.appointmentOrder().size();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
+            if (appListSize != 0) {
+                try {
+                    idNoLabel1.setText((String)Database.appointmentOrder().get(0));
+                    idCarry(idNoLabel1.getText());
+                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }
         }
-    }*/
+    }
 
     private void pushRecentApp(){
         //recent1 patient push to 2
