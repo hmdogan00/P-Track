@@ -115,6 +115,7 @@ public class PatientController extends MasterController implements Initializable
         patientGender.setText(infoList.get(2));
         patientBloodType.setText(infoList.get(3));
         patientAddress.setText(infoList.get(5));
+        patientAddress.setEditable(false);
         patientInsurance.setText(infoList.get(6));
         patientPhoneNumber.setText(infoList.get(7));
     }
