@@ -14,11 +14,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.controllers.ChangePatientInfoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="837.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.receptionist.controllers.ChangePatientInfoController">
    <children>
       <ToolBar prefHeight="0.0" prefWidth="750.0" stylesheets="@../../../theme.css">
          <items>
-            <Region prefHeight="40.0" prefWidth="218.0" />
+            <Region prefHeight="40.0" prefWidth="246.0" />
             <Text fill="#fffffb" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE PATIENT INFORMATION" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="19.0" />
@@ -49,7 +49,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </Label>
-            <Region prefHeight="43.0" prefWidth="108.0" />
+            <Region prefHeight="50.0" prefWidth="139.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="57.767578125">
                <HBox.margin>
                   <Insets top="10.0" />
@@ -89,12 +89,12 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Address:" wrappingWidth="79.3818359375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Address:" wrappingWidth="70.3818359375">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
             </Text>
-            <TextField fx:id="changeAddress" prefHeight="31.0" prefWidth="416.0">
+            <TextField fx:id="changeAddress" prefHeight="31.0" prefWidth="464.0">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
@@ -133,7 +133,7 @@
             <ToolBar prefHeight="40.0" prefWidth="750.0" stylesheets="@../../../theme.css">
                <items>
                   <Region prefHeight="54.0" prefWidth="237.0" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE EMERGENCY CONTACT" wrappingWidth="296.8291015625">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CHANGE EMERGENCY CONTACT" textAlignment="CENTER" wrappingWidth="296.8291015625">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -142,12 +142,12 @@
             </ToolBar>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="178.2705078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="123.2705078125">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="changeEmergencyName" prefHeight="25.0" prefWidth="149.0">
+                  <TextField fx:id="changeEmergencyName">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
@@ -176,7 +176,7 @@
       <Separator prefHeight="0.0" prefWidth="750.0" />
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Region prefHeight="38.0" prefWidth="684.0" />
+            <Region prefHeight="51.0" prefWidth="756.0" />
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#savePatientInfo" prefHeight="31.0" prefWidth="51.0" text="Save">
                <HBox.margin>
                   <Insets />

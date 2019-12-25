@@ -341,7 +341,7 @@ public class ReceptionistController extends MasterController implements Initiali
                         setGraphic(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Patient Details");
+                        final Button addAppointmentButton = new Button("Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
                             PrintWriter outFile = null;
@@ -383,7 +383,7 @@ public class ReceptionistController extends MasterController implements Initiali
                         setText(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Change Patient Info");
+                        final Button addAppointmentButton = new Button("Change Info");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
                             PrintWriter outFile = null;
@@ -532,5 +532,4 @@ public class ReceptionistController extends MasterController implements Initiali
             getFilteredDoctorData();
         doctorTable.refresh();
     }
-
 }

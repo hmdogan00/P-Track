@@ -11,31 +11,47 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import ui.MasterController;
 import ui.receptionist.DoctorTable;
+import ui.receptionist.ModelTable;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DoctorController extends MasterController implements Initializable {
 
     @FXML
-    Button logoutButton;
+    private Button logoutButton;
+
     @FXML
     private Label doctorUserName;
+
     @FXML
     private Label doctorRoom;
+
     @FXML
     private Button filterButton;
+
     @FXML
     private TextField filterDoctorName;
+
     @FXML
-    private TableView<DoctorTable> doctorTable;
+    private TableView<UpcomingTable> upcomingTable;
+
+    @FXML
+    private TableColumn<UpcomingTable, String> colName, colAppDate, colAppTime, colPhoneNo, colAddPrescription;
+
     @FXML
     private void logoutDoctor(ActionEvent e) throws IOException{
         System.out.println("Logged out from Doctor panel!");
@@ -50,28 +66,51 @@ public class DoctorController extends MasterController implements Initializable 
         app_stage.setResizable(false);
         app_stage.show();
     }
-    @FXML
-    private void getFilteredData(){
-        ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
-        try{
-            Connection con = Database.connection();
-            String nameFilter = filterDoctorName.getText();
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
-            while (rs2.next()) {
-                listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number") ));
+    private void getPatientData() throws SQLException {
+        int doctorId = Database.findDoctorKey(Database.getUserName());
+        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' ORDER BY `date` DESC");
+
+            while (rs.next()) {
+                obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
+                        rs.getString("time"), rs.getString("patient_phoneNumber")));
             }
         }catch (SQLException ex){}
 
-        doctorTable.setItems(listFiltered2);
-    }
-    private void getUpcomingPatient(){
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAppDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
+        colAppTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
-    }
+        //Add Prescription Button
+        Callback<TableColumn<UpcomingTable, String>,TableCell<UpcomingTable, String>> cellFactory = (param) -> {
+            //make table cell with button
+            final TableCell<UpcomingTable, String> cell = new TableCell<UpcomingTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button addAppointmentButton = new Button("Set Prescription");
+                        addAppointmentButton.setOnAction(event -> {
+                            loadWindow("ui/doctor/FXML/doctorPrescriptionPage.fxml", "Set Prescription");
+                        });
+                        setGraphic(addAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell;
+        };
+        colAddPrescription.setCellFactory(cellFactory);
 
-    private void getPatientData(){
-
+        upcomingTable.setItems(obList3);
     }
 
     @Override
@@ -79,6 +118,7 @@ public class DoctorController extends MasterController implements Initializable 
         try {
             doctorUserName.setText(Database.getUserName());
             doctorRoom.setText("Room No:" + Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(2));
+            getPatientData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
