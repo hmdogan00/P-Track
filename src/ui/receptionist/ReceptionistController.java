@@ -170,7 +170,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getPatientData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
@@ -275,7 +275,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getPatientsData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
@@ -297,7 +297,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             String nameFilter = filterPatientName.getText();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
 
@@ -316,7 +316,7 @@ public class ReceptionistController extends MasterController implements Initiali
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
@@ -344,7 +344,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             String nameFilter = filterDoctorName.getText();
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
