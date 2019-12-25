@@ -1,10 +1,12 @@
+/*
+the class controls the change patient info in receptionist home page
+ */
 package ui.receptionist.controllers;
-import com.jfoenix.transitions.template.JFXAnimationTemplateAction;
+
 import database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -12,65 +14,63 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class ChangePatientInfoController implements Initializable {
 
     @FXML
-    private Label patientNameLabel;
+    private Label patientNameLabel,patientId,patientGender,patientBirthdate,bloodType;
+
     @FXML
-    private Label patientId;
-    @FXML
-    private Label patientGender;
-    @FXML
-    private Label patientBirthdate;
-    @FXML
-    private Label bloodType;
-    @FXML
-    private TextField changeAddress;
-    @FXML
-    private TextField changeCity;
-    @FXML
-    private TextField changePatientPhone;
-    @FXML
-    private MenuButton changeInsurance;
-    @FXML
-    private TextField changeEmergencyName;
-    @FXML
-    private TextField changeEmergencySurname;
-    @FXML
-    private TextField changeEmergencyPhone;
+    private TextField changeAddress,changeCity,changePatientPhone,changeInsurance,changeEmergencyName,changeEmergencyPhone;
+
     @FXML
     private Button saveButton;
 
-    private int insuranceChooser = 0;
-
+    /**
+     * default constructor
+     */
     public ChangePatientInfoController(){}
+
+    /**
+     * sets textfield to SGK
+     * @param e gives action to textField
+     */
     @FXML
     private void sgkChoice(ActionEvent e) {
         changeInsurance.setText("SGK");
-        insuranceChooser = 1;
     }
 
+    /**
+     * sets textfield to BAGKUR
+     * @param e gives action to textField
+     */
     @FXML
     private void bagkurChoice(ActionEvent e) {
         changeInsurance.setText("BAGKUR");
-        insuranceChooser = 2;
     }
-
+    /**
+     * sets textfield to PRIVATE
+     * @param e gives action to textField
+     */
     @FXML
     private void privateChoice(ActionEvent e) {
         changeInsurance.setText("PRIVATE");
-        insuranceChooser = 3;
     }
 
+    /**
+     * saves changed patient info
+     * @param e gives action to save button
+     * @throws SQLException
+     */
     @FXML
     private void savePatientInfo(ActionEvent e) throws SQLException {
+        // showing an alert message
         Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure ?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
 
+        // if yes button is pressed save changed patient details
         if (alert.getResult() == ButtonType.YES) {
             File file = null;
             Scanner scan = null;
@@ -86,13 +86,20 @@ public class ChangePatientInfoController implements Initializable {
             String id = scan.next();
             scan.close();
 
+            // finding patient key
             int patientKey = database.Database.findPatientKey(id);
+
+            // updating the patient information in database
             Database.updatePatient( patientKey, changeAddress.getText(), Integer.parseInt(changePatientPhone.getText()), changeInsurance.getText(), changeEmergencyName.getText(), Integer.parseInt(changeEmergencyPhone.getText()) );
             Stage stage = (Stage) saveButton.getScene().getWindow();
             stage.close();
         }
     }
 
+    /**
+     * setting labes according to that specific patient
+     * @throws SQLException
+     */
     public void update( ) throws SQLException {
         File file = null;
         Scanner scan = null;
@@ -108,7 +115,10 @@ public class ChangePatientInfoController implements Initializable {
         String id = scan.next();
         scan.close();
 
+        // finding patient key
         int patientKey = database.Database.findPatientKey(id);
+
+        // getting the details from database and sets the labels accordingly
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
         System.out.println(infoList.toString());
         patientNameLabel.setText(infoList.get(0));
@@ -123,6 +133,11 @@ public class ChangePatientInfoController implements Initializable {
         changeEmergencyPhone.setText(infoList.get(9));
     }
 
+    /**
+     * initializes the  change patient information page
+     * @param location the location of the page
+     * @param resources needed soureces of the page
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
