@@ -56,5 +56,4 @@ public class MasterController {
         app_stage.setResizable(false);
         app_stage.show();
     }
-
 }

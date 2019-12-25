@@ -54,7 +54,6 @@ public class DoctorController extends MasterController implements Initializable 
      * gets the paients data for showing in the doctor page
      * @throws SQLException
      */
-
     private void getPatientData() throws SQLException {
         // finding that doctor ID by database
         int doctorId = Database.findDoctorKey(Database.getUserName());
