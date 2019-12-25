@@ -4,11 +4,16 @@ import java.util.ArrayList;
 
 public class Database {
     private static String userName2;
+
     public static void main(String[] args) throws SQLException {
         System.out.println(doctorAvailability(1));
     }
 
-    //Connection method including connection details
+    /**
+     * Makes connection to database with username and password.
+     * @return made connection.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static Connection connection() throws SQLException {
         String url = "jdbc:mysql://db-mysql-fra1-50385-do-user-6846837-0.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED";
         String user = "doadmin";
@@ -17,20 +22,22 @@ public class Database {
         return myConn;
     }
 
-    //Test Method
-    public static void test() throws SQLException {
-        Connection myConn = connection();
-        Statement myStmt = myConn.createStatement();
-        String search = "Mert";
-        String sql = "SELECT * FROM patient WHERE name LIKE '" + search + "' ";
-        ResultSet rs = myStmt.executeQuery(sql);
-
-        while (rs.next()) {
-            System.out.println(rs.getString("name"));
-        }
-    }
-
     //Method to add new patient to database
+
+    /**
+     * Adds patient to the patient list.
+     * @param name name of the patient
+     * @param Id citizenship id of the patient.
+     * @param sex sex of the patient.
+     * @param blood_type blood type of the patient.
+     * @param birth_date birth date of the patient.
+     * @param address address of the patient
+     * @param phoneNumber phone number of the patient.
+     * @param insurance insurance type of the patient.
+     * @param emergency_name name of the emergency contact of the patient.
+     * @param emergency_number phone number of the emergency contact of the patient.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
                                   int phoneNumber, String insurance, String emergency_name, int emergency_number) throws SQLException {
         Connection myConn = connection();
@@ -51,6 +58,13 @@ public class Database {
     }
 
     //Method to find patient key number on table
+
+    /**
+     * Finds database key of the patient with given id.
+     * @param id id of the patient.
+     * @return key of the patient.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static int findPatientKey(String id) throws SQLException {
         int patient_key = 0;
         Connection myConn = connection();
@@ -64,6 +78,16 @@ public class Database {
     }
 
     //Method to update information of patient
+    /**
+     * Updates patients according to given info.
+     * @param p_key database key of the patient to be updated.
+     * @param p_address address of the patient.
+     * @param patient_phone phone number of the patient.
+     * @param insurance insurance type of the patient.
+     * @param emergency_name emergency contact's name.
+     * @param emergency_number emergency contact's phone number.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException {
         Connection myConn = connection();
         String sql = "UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
@@ -79,6 +103,13 @@ public class Database {
     }
 
     //Patient information with specific key value
+
+    /**
+     * Gives an arrayList containing all info of patient.
+     * @param p_key database key of the patient.
+     * @return an arraylist with patient infos.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static ArrayList<String> patientDetails(int p_key) throws SQLException {
         String name = "" ;
         String id = "";
@@ -123,7 +154,7 @@ public class Database {
 
         return patient_info;
     }
-
+//
     //Method for finding doctor key value
     public static int findDoctorKey(String doctor_name) throws SQLException {
         int doctor_key = 0;

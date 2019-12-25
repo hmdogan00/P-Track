@@ -42,7 +42,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="savePrescription" layoutX="534.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleSavePrescription" text="Save" />
       <Button fx:id="backToDoctorPage" layoutX="112.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleBackToDoctorPage" text="Back" />
    </children>
 </AnchorPane>

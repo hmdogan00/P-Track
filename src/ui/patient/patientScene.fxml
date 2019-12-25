@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.patient.PatientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1188.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.patient.PatientController">
    <children>
       <HBox layoutY="90.0" prefHeight="355.0" prefWidth="663.0">
          <children>
@@ -116,18 +116,20 @@
             </VBox>
             <AnchorPane prefHeight="355.0" prefWidth="346.0">
                <children>
-                  <Text layoutX="186.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Appointments" textAlignment="CENTER" wrappingWidth="345.99999459832907">
+                  <Text layoutX="186.0" layoutY="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Appointments" textAlignment="CENTER" wrappingWidth="581.9999945983291">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <AnchorPane layoutX="7.0" layoutY="41.0" prefHeight="346.0" prefWidth="486.0">
+                  <AnchorPane layoutX="7.0" layoutY="41.0" prefHeight="545.0" prefWidth="486.0">
                      <children>
-                        <TableView fx:id="appointmentsView" layoutX="60.0" layoutY="-11.0" prefHeight="537.0" prefWidth="551.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="-125.0" AnchorPane.topAnchor="-11.0">
+                        <TableView fx:id="appointmentsView" layoutX="60.0" layoutY="-11.0" prefHeight="534.0" prefWidth="779.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="-353.0" AnchorPane.topAnchor="-11.0">
                           <columns>
-                            <TableColumn prefWidth="210.0" text="Doctor Name" />
-                              <TableColumn prefWidth="179.0" text="Doctor Department" />
-                              <TableColumn minWidth="7.0" prefWidth="161.0" text="Appointment Time" />
+                            <TableColumn fx:id="colDocName" prefWidth="210.0" text="Doctor Name" />
+                              <TableColumn fx:id="colDocDepartment" prefWidth="179.0" text="Doctor Department" />
+                              <TableColumn fx:id="colAppointmentDate" minWidth="0.0" prefWidth="163.0" text="Appointment Date" />
+                              <TableColumn fx:id="colAppointmentTime" minWidth="7.0" prefWidth="131.0" text="Appointment Time" />
+                              <TableColumn fx:id="colDocRoom" prefWidth="95.0" text="Room" />
                           </columns>
                         </TableView>
                         <Separator layoutX="34.0" layoutY="-56.0" orientation="VERTICAL" prefHeight="601.0" prefWidth="11.0" />
@@ -137,9 +139,9 @@
             </AnchorPane>
          </children>
       </HBox>
-      <ToolBar layoutX="-6.0" prefHeight="83.0" prefWidth="967.0" stylesheets="@../../theme.css">
+      <ToolBar layoutX="-6.0" prefHeight="83.0" prefWidth="1198.0" stylesheets="@../../theme.css">
          <items>
-            <AnchorPane prefHeight="69.0" prefWidth="830.0">
+            <AnchorPane prefHeight="73.0" prefWidth="1074.0">
                <children>
                   <Label fx:id="topBarPatientName" layoutX="98.0" layoutY="14.0" prefHeight="41.0" prefWidth="252.0" textFill="WHITE">
                      <font>
