@@ -77,6 +77,9 @@ public class PatientController extends MasterController implements Initializable
     @FXML
     private  TableColumn<DoctorsTable, String> colAppointmentTime;
 
+    @FXML
+    private TableColumn<DoctorsTable, String> colDocRoom;
+
     /**
      * a constructor creates new patient controller class
      */
@@ -104,16 +107,20 @@ public class PatientController extends MasterController implements Initializable
         app_stage.show();
     }
 
+    /**
+     * Gets appointments of the patient who entered to the application.
+     * @throws SQLException
+     */
     private void getDoctorData() throws SQLException {
         int patientId = Database.findPatientKey(Database.getUserName());
         ObservableList<DoctorsTable> obList3 = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
-            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' ORDER BY `date` DESC");
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`patient_id` , doctor.`name`, doctor.`department`, appointment.`date`, appointment.`time`, doctor.`room_number` FROM patient, doctor, appointment WHERE appointment.`patient_id` = patient.`patient_id` AND appointment.`doctor_id` = doctor.`doctor_id` AND patient.`patient_id` = '"+ patientId  +"' ORDER BY `date` DESC");
 
             while (rs.next()) {
-                obList3.add(new DoctorsTable(rs.getString("name"), rs.getString("date"),
-                        rs.getString("time"), rs.getString("patient_phoneNumber")));
+                obList3.add(new DoctorsTable(rs.getString("name"), rs.getString("department"),
+                        rs.getString("date"), rs.getString("time"), rs.getString("room_number")));
             }
         }catch (SQLException ex){}
 
@@ -121,6 +128,7 @@ public class PatientController extends MasterController implements Initializable
         colDocDepartment.setCellValueFactory(new PropertyValueFactory<>("docDepartment"));
         colAppointmentDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
         colAppointmentTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
+        colDocRoom.setCellValueFactory(new PropertyValueFactory<>("docRoom"));
 
         appointmentsView.setItems(obList3);
     }

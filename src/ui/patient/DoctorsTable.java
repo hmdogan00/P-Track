@@ -1,13 +1,14 @@
 package ui.patient;
 
 public class DoctorsTable {
-    String docName, docDepartment, appDate, appTime;
+    String docName, docDepartment, appDate, appTime, docRoom;
 
-    public DoctorsTable(String docName, String docDepartment, String appDate, String appTime) {
+    public DoctorsTable(String docName, String docDepartment, String appDate, String appTime, String docRoom) {
         this.docName = docName;
         this.docDepartment = docDepartment;
         this.appDate = appDate;
         this.appTime = appTime;
+        this.docRoom = docRoom;
     }
 
     public String getDocName() {
@@ -40,5 +41,13 @@ public class DoctorsTable {
 
     public void setAppTime(String appTime) {
         this.appTime = appTime;
+    }
+
+    public String getDocRoom() {
+        return docRoom;
+    }
+
+    public void setDocRoom(String docRoom) {
+        this.docRoom = docRoom;
     }
 }
