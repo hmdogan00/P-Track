@@ -1,3 +1,6 @@
+/**
+ * the class which controls and shows the page for doctors
+ */
 package ui.doctor;
 
 import database.Database;
@@ -15,33 +18,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import ui.MasterController;
-import ui.receptionist.DoctorTable;
-import ui.receptionist.ModelTable;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DoctorController extends MasterController implements Initializable {
 
     @FXML
-    private Button logoutButton;
+    private Button logoutButton,filterButton;
 
     @FXML
-    private Label doctorUserName;
-
-    @FXML
-    private Label doctorRoom;
-
-    @FXML
-    private Button filterButton;
+    private Label doctorUserName,doctorRoom;
 
     @FXML
     private TextField filterDoctorName;
@@ -52,6 +42,11 @@ public class DoctorController extends MasterController implements Initializable 
     @FXML
     private TableColumn<UpcomingTable, String> colName, colAppDate, colAppTime, colPhoneNo, colAddPrescription;
 
+    /**
+     * logs out the doctor page returns to login page
+     * @param e gives action to logout button
+     * @throws IOException
+     */
     @FXML
     private void logoutDoctor(ActionEvent e) throws IOException{
         System.out.println("Logged out from Doctor panel!");
@@ -67,7 +62,13 @@ public class DoctorController extends MasterController implements Initializable 
         app_stage.show();
     }
 
+    /**
+     * gets the paients data for showing in the doctor page
+     * @throws SQLException
+     */
+
     private void getPatientData() throws SQLException {
+        // finding that doctor ID by database
         int doctorId = Database.findDoctorKey(Database.getUserName());
         ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
         try {
@@ -113,6 +114,11 @@ public class DoctorController extends MasterController implements Initializable 
         upcomingTable.setItems(obList3);
     }
 
+    /**
+     * initializes the page and setting labels information according to user
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
