@@ -39,14 +39,13 @@
             <TextField fx:id="patientName" prefHeight="25.0" prefWidth="136.0" />
         </HBox>
         <HBox prefHeight="48.0" prefWidth="296.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctor Name" wrappingWidth="126.23828125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctors List" wrappingWidth="126.23828125">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Text>
-            <TextField fx:id="doctorName" prefHeight="29.0" prefWidth="136.0" />
+         <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
         </HBox>
-      <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
     </VBox>
     <VBox layoutX="304.0" layoutY="79.0" prefHeight="219.0" prefWidth="296.0">
         <AnchorPane prefHeight="36.0" prefWidth="296.0" />
@@ -59,14 +58,7 @@
             <TextField fx:id="patientSurname" prefHeight="25.0" prefWidth="136.0" />
         </HBox>
         <HBox prefHeight="59.0" prefWidth="296.0">
-            <HBox prefHeight="59.0" prefWidth="292.0">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctor Surname" wrappingWidth="141.0">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="doctorSurname" prefHeight="29.0" prefWidth="136.0" />
-            </HBox>
+            <HBox prefHeight="59.0" prefWidth="292.0" />
         </HBox>
     </VBox>
     <HBox layoutX="1.0" layoutY="279.0" prefHeight="91.0" prefWidth="600.0">

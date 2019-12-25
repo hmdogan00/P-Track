@@ -29,13 +29,8 @@ public class AddAppointmentController implements Initializable {
     @FXML
     TextField patientSurname;
 
+    @FXML
     String patientdbId;
-
-    @FXML
-    TextField doctorName;
-
-    @FXML
-    TextField doctorSurname;
 
     @FXML
     DatePicker appointmentDate;
@@ -117,7 +112,7 @@ public class AddAppointmentController implements Initializable {
 
         int patientId = Database.findPatientKey( patientdbId );
         System.out.println(patientId);
-        String docName = doctorName.getText() + " " + doctorSurname.getText();
+        String docName = choiceBox.getValue();
         int docId = Database.findDoctorKey( docName );
         if ( Database.doctorAvailability( docId ))
         {
