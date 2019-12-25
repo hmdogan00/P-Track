@@ -260,7 +260,6 @@ public class Database{
 
      while(rs.next()){
          appointmentOrder.add(rs.getString("patient_id"));
-         System.out.println(rs.getString("patient_id"));
          appointmentOrder.add(rs.getString("doctor_id"));
          appointmentOrder.add(rs.getString("time"));
      }

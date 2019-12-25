@@ -233,7 +233,7 @@ public class ReceptionistController extends MasterController implements Initiali
                     else{
                         final Button addAppointmentButton = new Button("Details");
                         addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                            p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
                         });
@@ -261,7 +261,7 @@ public class ReceptionistController extends MasterController implements Initiali
                     else{
                         final Button addAppointmentButton = new Button("Change Info");
                         addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                            p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
                         });
@@ -397,6 +397,7 @@ public class ReceptionistController extends MasterController implements Initiali
         //loads the patient and doctor data to table
         getPatientData();
         getDoctorData();
+        initializeRecentPatients();
         try {
             timeLabel.setText(Database.time());
             dateLabel.setText(Database.date());
@@ -444,7 +445,7 @@ public class ReceptionistController extends MasterController implements Initiali
      */
     @FXML
     private void recentInDashboard(ActionEvent e){
-        recent1EqualsRecent2();
+        //recent1EqualsRecent2();
 
         int size = 0;
         try {
@@ -456,72 +457,48 @@ public class ReceptionistController extends MasterController implements Initiali
 
         int finalSize = size;
         detailsButton1.setOnAction(event ->{
-            int id1 = 0;
-            int idDoctor1 = 0;
             try {
-                id1 = (int) Database.appointmentOrder().get(finalSize);
-                idDoctor1 = (int)Database.appointmentOrder().get(finalSize);
+                String id1 = (String) Database.appointmentOrder().get(finalSize-3);
 
-                ArrayList<String> infoList = database.Database.patientDetails(id1);
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
 
-                //set recent patient's labels
-                recentPatientLabel1.setText(infoList.get(0));
-                idNoLabel1.setText(infoList.get(1));
-                phoneNumberLabel1.setText(infoList.get(7));
-                passedTimeLabel1.setText(infoList.get(0));
-                passedDateLabel1.setText(infoList.get(0));
-                doctorName1.setText(infoList.get(0));
-                departmentName1.setText(infoList.get(0));
+                idCarry(infoList.get(1));
+                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            String newId1 = "" + id1;
-            idCarry(newId1);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
         detailsButton2.setOnAction(event ->{
-            int id2 = 0;
-            int idDoctor2 = 0;
             try {
-                id2 = (int) Database.appointmentOrder().get(finalSize - 6);
-                idDoctor2 = (int)Database.appointmentOrder().get(finalSize - 5);
+                String id2 = (String) Database.appointmentOrder().get(finalSize - 6);
 
-                ArrayList<String> infoList = database.Database.patientDetails(id2);
+                ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
 
-                //set recent patient's labels
-                recentPatientLabel2.setText(infoList.get(0));
-                idNoLabel2.setText(infoList.get(1));
-                phoneNumberLabel2.setText(infoList.get(7));
-                passedTimeLabel2.setText(infoList.get(0));
-                passedDateLabel2.setText(infoList.get(0));
-                doctorName2.setText(infoList.get(0));
-                departmentName2.setText(infoList.get(0));
+                idCarry(infoList2.get(1));
+                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            String newId2 = "" + id2;
-            idCarry(newId2);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
         detailsButton3.setOnAction(event ->{
-            int id3 = 0;
-            int idDoctor3 = 0;
+            String id3 = "";
+            String idDoctor3 = "";
             try {
-                id3 = (int) Database.appointmentOrder().get(finalSize - 9);
-                idDoctor3 = (int)Database.appointmentOrder().get(finalSize - 8);
+                id3 = (String) Database.appointmentOrder().get(finalSize - 9);
+                idDoctor3 = (String)Database.appointmentOrder().get(finalSize - 8);
+                passedTimeLabel3.setText((String)Database.appointmentOrder().get(finalSize-7));
 
-                ArrayList<String> infoList = database.Database.patientDetails(id3);
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id3));
+                ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor3));
 
                 //set recent patient's labels
                 recentPatientLabel3.setText(infoList.get(0));
                 idNoLabel3.setText(infoList.get(1));
                 phoneNumberLabel3.setText(infoList.get(7));
-                passedTimeLabel3.setText(infoList.get(0));
-                passedDateLabel3.setText(infoList.get(0));
-                doctorName3.setText(infoList.get(0));
-                departmentName3.setText(infoList.get(0));
+                doctorName3.setText(doctorList.get(0));
+                departmentName3.setText(doctorList.get(1));
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -531,22 +508,22 @@ public class ReceptionistController extends MasterController implements Initiali
         });
 
         detailsButton4.setOnAction(event ->{
-            int id4 = 0;
-            int idDoctor4 = 0;
+            String id4 = "";
+            String idDoctor4 = "";
             try {
-                id4 = (int) Database.appointmentOrder().get(finalSize - 12);
-                idDoctor4 = (int)Database.appointmentOrder().get(finalSize - 11);
+                id4 = (String) Database.appointmentOrder().get(finalSize - 12);
+                idDoctor4 = (String)Database.appointmentOrder().get(finalSize - 11);
+                passedTimeLabel1.setText((String)Database.appointmentOrder().get(finalSize-13));
 
-                ArrayList<String> infoList = database.Database.patientDetails(id4);
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id4));
+                ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor4));
 
                 //set recent patient's labels
                 recentPatientLabel4.setText(infoList.get(0));
                 idNoLabel4.setText(infoList.get(1));
                 phoneNumberLabel4.setText(infoList.get(7));
-                passedTimeLabel4.setText(infoList.get(0));
-                passedDateLabel4.setText(infoList.get(0));
-                doctorName4.setText(infoList.get(0));
-                departmentName4.setText(infoList.get(0));
+                doctorName4.setText(doctorList.get(0));
+                departmentName4.setText(doctorList.get(1));
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -556,22 +533,22 @@ public class ReceptionistController extends MasterController implements Initiali
         });
 
         detailsButton5.setOnAction(event ->{
-            int id5 = 0;
-            int idDoctor5 = 0;
+            String id5 = "";
+            String idDoctor5 = "";
             try {
-                id5 = (int) Database.appointmentOrder().get(finalSize - 15);
-                idDoctor5 = (int)Database.appointmentOrder().get(finalSize - 14);
+                id5 = (String) Database.appointmentOrder().get(finalSize - 15);
+                idDoctor5 = (String)Database.appointmentOrder().get(finalSize - 14);
+                passedTimeLabel5.setText((String)Database.appointmentOrder().get(finalSize-13));
 
-                ArrayList<String> infoList = database.Database.patientDetails(id5);
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id5));
+                ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor5));
 
                 //set recent patient's labels
                 recentPatientLabel5.setText(infoList.get(0));
                 idNoLabel5.setText(infoList.get(1));
                 phoneNumberLabel5.setText(infoList.get(7));
-                passedTimeLabel5.setText(infoList.get(0));
-                passedDateLabel5.setText(infoList.get(0));
-                doctorName5.setText(infoList.get(0));
-                departmentName5.setText(infoList.get(0));
+                doctorName5.setText(doctorList.get(0));
+                departmentName5.setText(doctorList.get(1));
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -579,6 +556,60 @@ public class ReceptionistController extends MasterController implements Initiali
             idCarry(newId5);
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
+    }
+
+    private void initializeRecentPatients(){
+        int size = 0;
+        try {
+            size = Database.appointmentOrder().size();
+            System.out.println(size);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            //initialize recent patient1
+            String id1 = (String) Database.appointmentOrder().get(size-3);
+            String idDoctor1 = (String)Database.appointmentOrder().get(size-2);
+            passedTimeLabel1.setText((String)Database.appointmentOrder().get(size-1));
+            ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
+            ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor1));
+
+            recentPatientLabel1.setText(infoList.get(0));
+            idNoLabel1.setText(infoList.get(1));
+            phoneNumberLabel1.setText(infoList.get(7));
+            doctorName1.setText(doctorList.get(0));
+            departmentName1.setText(doctorList.get(1));
+
+            //initialize recent patient2
+            String id2 = (String) Database.appointmentOrder().get(size - 6);
+            String idDoctor2 = (String)Database.appointmentOrder().get(size - 5);
+            passedTimeLabel2.setText((String)Database.appointmentOrder().get(size-4));
+            ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
+            ArrayList<String> doctorList2 = database.Database.doctorDetails(Integer.parseInt(idDoctor2));
+
+            recentPatientLabel2.setText(infoList2.get(0));
+            idNoLabel2.setText(infoList2.get(1));
+            phoneNumberLabel2.setText(infoList2.get(7));
+            doctorName2.setText(doctorList2.get(0));
+            departmentName2.setText(doctorList2.get(1));
+
+
+            String id3 = (String) Database.appointmentOrder().get(size - 9);
+            String idDoctor3 = (String)Database.appointmentOrder().get(size - 8);
+            passedTimeLabel3.setText((String)Database.appointmentOrder().get(size-7));
+            ArrayList<String> infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
+            ArrayList<String> doctorList3 = database.Database.doctorDetails(Integer.parseInt(idDoctor3));
+
+            recentPatientLabel3.setText(infoList3.get(0));
+            idNoLabel3.setText(infoList3.get(1));
+            phoneNumberLabel3.setText(infoList3.get(7));
+            doctorName3.setText(doctorList3.get(0));
+            departmentName3.setText(doctorList3.get(1));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**

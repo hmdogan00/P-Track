@@ -1294,7 +1294,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" prefHeight="99.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="99.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
@@ -1306,13 +1306,13 @@
                                                         <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
-                                                                    <left>
-                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="83.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
+                                                   <right>
+                                                                        <Button fx:id="detailsButton21" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="83.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
                                                                         </Button>
-                                                                    </left>
+                                                   </right>
                                                                 </JFXToolbar>
                                                             </items>
                                                         </SplitPane>
@@ -1320,7 +1320,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="51.0" prefWidth="207.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton31" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="51.0" prefWidth="207.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <opaqueInsets>
                                                                                 <Insets />
                                                                             </opaqueInsets>
@@ -1335,13 +1335,13 @@
                                                         <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
-                                                   <center>
-                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="54.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
+                                                   <right>
+                                                                        <Button fx:id="detailsButton41" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="54.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
                                                                         </Button>
-                                                   </center>
+                                                   </right>
                                                                 </JFXToolbar>
                                                             </items>
                                                         </SplitPane>
@@ -1349,7 +1349,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="60.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton51" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="60.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>

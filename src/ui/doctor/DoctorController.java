@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import ui.MasterController;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -55,23 +56,7 @@ public class DoctorController extends MasterController implements Initializable 
      * @throws SQLException
      */
     private void getPatientData() throws SQLException {
-        // finding that doctor ID by database
-        int doctorId = Database.findDoctorKey(Database.getUserName());
-        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
-        try {
-            Connection con = Database.myConn;
-            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
-
-            while (rs.next()) {
-                obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
-                        rs.getString("time"), rs.getString("patient_phoneNumber")));
-            }
-        }catch (SQLException ex){}
-
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAppDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
-        colAppTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+        getPatientsData();
 
         //Add Prescription Button
         Callback<TableColumn<UpcomingTable, String>,TableCell<UpcomingTable, String>> cellFactory = (param) -> {
@@ -97,8 +82,55 @@ public class DoctorController extends MasterController implements Initializable 
             return cell;
         };
         colAddPrescription.setCellFactory(cellFactory);
+    }
+
+    private void getPatientsData() throws SQLException {
+        int doctorId = Database.findDoctorKey(Database.getUserName());
+        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.myConn;
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
+
+            while (rs.next()) {
+                obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
+                        rs.getString("time"), rs.getString("patient_phoneNumber")));
+            }
+        }catch (SQLException ex){}
+
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAppDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
+        colAppTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
         upcomingTable.setItems(obList3);
+    }
+
+    private void getFilteredPatientDataByOrder() throws SQLException {
+        int doctorId = Database.findDoctorKey(Database.getUserName());
+        String patientNameFilter = filterDoctorName.getText();
+        ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.myConn;
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC AND patient.'name' LIKE '%" + patientNameFilter + "%' ");
+
+            while (rs.next()) {
+                obList3.add(new UpcomingTable(rs.getString("name"), rs.getString("date"),
+                        rs.getString("time"), rs.getString("patient_phoneNumber")));
+            }
+        }catch (SQLException ex){}
+
+        upcomingTable.setItems(obList3);
+    }
+
+    @FXML
+    private void findUpcomingPatientFromList(ActionEvent e) throws SQLException {
+        if (filterDoctorName.getText().equals("")) {
+            getPatientData();
+            System.out.println("Empty filter");
+        }
+        else
+            getFilteredPatientDataByOrder();
+        upcomingTable.refresh();
     }
 
     /**
