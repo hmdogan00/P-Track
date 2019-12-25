@@ -108,8 +108,6 @@ public class AddAppointmentController implements Initializable {
     }
     @FXML public void saveAppointment(ActionEvent e) throws SQLException
     {
-        String patName = patientName.getText() + " " + patientSurname.getText();
-
         int patientId = Database.findPatientKey( patientdbId );
         System.out.println(patientId);
         String docName = choiceBox.getValue();
@@ -178,7 +176,7 @@ public class AddAppointmentController implements Initializable {
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
-                observerList.add(new String(rs2.getString("name")));
+                observerList.add(rs2.getString("name") + " - " + rs2.getString("department"));
             }
         }catch (SQLException ex){}
         choiceBox.getItems().addAll(observerList);
