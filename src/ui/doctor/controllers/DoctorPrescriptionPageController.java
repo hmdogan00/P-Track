@@ -26,7 +26,7 @@ public class DoctorPrescriptionPageController {
 
     /**
      * goes back to the doctor page from prescription page
-     * @param e listens the back button
+     * @param e gives action the back button
      */
     @FXML
     public void handleBackToDoctorPage(ActionEvent e){
