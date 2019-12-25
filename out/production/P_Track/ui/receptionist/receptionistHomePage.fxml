@@ -696,11 +696,11 @@
                                                 <TableColumn fx:id="colName" editable="false" minWidth="20.0" prefWidth="150.0" resizable="false" text="Name" />
                                                 <TableColumn fx:id="colBirthDate" editable="false" minWidth="20.0" prefWidth="114.0" resizable="false" text="Birthdate" />
                                     <TableColumn fx:id="colID" prefWidth="124.0" text="Citizenhip ID" />
-                                                <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="78.0" resizable="false" text="Sex" />
-                                                <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="130.0" resizable="false" text="Blood Type" />
-                                    <TableColumn fx:id="colAddAppointment" prefWidth="147.0" />
-                                    <TableColumn fx:id="colDetails" prefWidth="128.0" />
-                                    <TableColumn fx:id="colChangeInfo" prefWidth="136.0" />
+                                                <TableColumn fx:id="colSex" editable="false" minWidth="0.0" prefWidth="103.0" resizable="false" text="Gender" />
+                                                <TableColumn fx:id="colBloodType" editable="false" minWidth="3.0" prefWidth="119.0" resizable="false" text="Blood Type" />
+                                    <TableColumn fx:id="colAddAppointment" prefWidth="169.0" />
+                                    <TableColumn fx:id="colDetails" prefWidth="89.0" />
+                                    <TableColumn fx:id="colChangeInfo" prefWidth="116.0" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -1355,7 +1355,7 @@
                                                                             </cursor>
                                                                         </Button>
                                                                     </left>
-                                                                </JFXToolbar >
+                                                                </JFXToolbar>
                                                             </items>
                                                         </SplitPane>
                                                     </children>

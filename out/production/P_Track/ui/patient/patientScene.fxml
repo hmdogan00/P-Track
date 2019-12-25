@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.patient.PatientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.patient.PatientController">
    <children>
       <HBox layoutY="90.0" prefHeight="355.0" prefWidth="663.0">
          <children>
@@ -25,7 +26,7 @@
                               <AnchorPane layoutX="14.0" layoutY="8.0" prefHeight="32.0" prefWidth="92.0" />
                               <Text layoutX="106.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Details" wrappingWidth="108.00000408291817">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="System Bold" size="15.0" />
                                  </font>
                               </Text>
                            </children>
@@ -34,54 +35,40 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="43.0" prefWidth="317.0">
                      <children>
-                        <Label layoutX="11.0" prefHeight="40.0" prefWidth="130.0" text="Name and Surname">
+                        <Label layoutX="14.0" layoutY="8.0" prefHeight="40.0" prefWidth="130.0" text="Name and Surname">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="patientNameLabel" layoutX="157.0" layoutY="8.0" prefHeight="25.0" prefWidth="102.0" text="Label">
+                        <Label fx:id="patientNameLabel" layoutX="192.0" layoutY="8.0" prefHeight="48.0" prefWidth="137.0" text="Label">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="59.0" prefWidth="322.0">
+                  <AnchorPane prefHeight="59.0" prefWidth="322.0" />
+                  <AnchorPane layoutY="5.0" prefHeight="48.0" prefWidth="303.0">
                      <children>
-                        <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizenship ID" wrappingWidth="102.00000295042992">
+                        <Text layoutX="14.0" layoutY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Citizenship ID" wrappingWidth="102.00000295042992">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Label fx:id="patientID" layoutX="157.0" layoutY="21.0" prefHeight="17.0" prefWidth="81.0" text="Label">
+                        <Label fx:id="patientID" layoutX="192.0" layoutY="-16.0" prefHeight="32.0" prefWidth="137.0" text="Label">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="48.0" prefWidth="303.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="92.00000181794167">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="patientGender" layoutX="159.0" layoutY="15.0" prefHeight="17.0" prefWidth="92.0" text="Label">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
+                     </children></AnchorPane>
                   <AnchorPane prefHeight="59.0" prefWidth="317.0">
                      <children>
-                        <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type" wrappingWidth="80.99999621510506">
+                        <Text layoutX="14.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="92.00000181794167">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Label fx:id="patientBloodType" layoutX="157.0" layoutY="21.0" prefHeight="17.0" prefWidth="92.0" text="Label">
+                        <Label fx:id="patientGender" layoutX="192.0" layoutY="27.0" prefHeight="32.0" prefWidth="130.0" text="Label">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -90,69 +77,78 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="49.0" prefWidth="317.0">
                      <children>
-                        <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="92.00000181794167">
+                        <Text layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="92.00000181794167">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Label fx:id="patientAddress" layoutX="157.0" layoutY="11.0" prefHeight="25.0" prefWidth="81.0" text="Label">
+                        <Label fx:id="patientPhoneNumber" layoutX="192.0" layoutY="118.0" prefHeight="32.0" prefWidth="130.0" text="Label">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="64.0" prefWidth="317.0">
-                     <children>
-                        <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" wrappingWidth="92.00000181794167">
+                        <Text layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type" wrappingWidth="80.99999621510506">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Text>
-                        <Label fx:id="patientPhoneNumber" layoutX="157.0" layoutY="14.0" prefHeight="32.0" prefWidth="92.0" text="Label">
+                        <Label fx:id="patientBloodType" layoutX="192.0" layoutY="47.0" prefHeight="32.0" prefWidth="130.0" text="Label">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
+                        <Text layoutX="14.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="92.00000181794167">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance" />
+                        <Label fx:id="patientInsurance" layoutX="192.0" layoutY="172.0" prefHeight="32.0" prefWidth="130.0" text="Label">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="patientAddress" layoutX="115.0" layoutY="242.0" prefHeight="48.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane prefHeight="64.0" prefWidth="317.0" />
                </children>
             </VBox>
             <AnchorPane prefHeight="355.0" prefWidth="346.0">
                <children>
-                  <Text layoutX="88.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upcoming Appointments" textAlignment="CENTER" wrappingWidth="169.13671715185046">
+                  <Text layoutX="186.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Appointments" textAlignment="CENTER" wrappingWidth="345.99999459832907">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Separator layoutY="-9.0" orientation="VERTICAL" prefHeight="359.0" prefWidth="10.0" />
-                  <AnchorPane layoutX="7.0" layoutY="41.0" prefHeight="300.0" prefWidth="332.0">
+                  <AnchorPane layoutX="7.0" layoutY="41.0" prefHeight="346.0" prefWidth="486.0">
                      <children>
-                        <TableView fx:id="appointmentsView" layoutX="8.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="appointmentsView" layoutX="68.0" prefHeight="537.0" prefWidth="551.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="-133.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="85.0" text="Doctor Name" />
-                              <TableColumn prefWidth="124.0" text="Doctor Department" />
-                              <TableColumn minWidth="7.0" prefWidth="122.0" text="Appointment Time" />
+                            <TableColumn prefWidth="210.0" text="Doctor Name" />
+                              <TableColumn prefWidth="179.0" text="Doctor Department" />
+                              <TableColumn minWidth="7.0" prefWidth="161.0" text="Appointment Time" />
                           </columns>
                         </TableView>
+                        <Separator layoutX="34.0" layoutY="-56.0" orientation="VERTICAL" prefHeight="601.0" prefWidth="11.0" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </HBox>
-      <ToolBar layoutX="-66.0" prefHeight="79.0" prefWidth="729.0" stylesheets="@../../theme.css">
+      <ToolBar layoutX="-6.0" prefHeight="83.0" prefWidth="967.0" stylesheets="@../../theme.css">
          <items>
-            <AnchorPane prefHeight="69.0" prefWidth="641.0">
+            <AnchorPane prefHeight="69.0" prefWidth="830.0">
                <children>
-                  <Label fx:id="topBarPatientName" layoutX="98.0" layoutY="14.0" prefHeight="41.0" prefWidth="115.0" textFill="WHITE">
+                  <Label fx:id="topBarPatientName" layoutX="98.0" layoutY="14.0" prefHeight="41.0" prefWidth="252.0" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="patientLogOutButton" mnemonicParsing="false" onAction="#patientLogOut" text="LogOut" />
+            <Button fx:id="patientLogOutButton" mnemonicParsing="false" onAction="#patientLogOut" prefHeight="31.0" prefWidth="91.0" text="Logout" />
          </items>
       </ToolBar>
    </children>
