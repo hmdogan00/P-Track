@@ -5,6 +5,8 @@ package ui.patient;
 
 import com.jfoenix.transitions.template.JFXAnimationTemplateAction;
 import database.Database;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,19 +14,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import javafx.event.ActionEvent;
+import javafx.util.Callback;
 import ui.MasterController;
+import ui.doctor.UpcomingTable;
 
 public class PatientController extends MasterController implements Initializable {
 
@@ -56,7 +63,22 @@ public class PatientController extends MasterController implements Initializable
     private Label topBarPatientName;
 
     @FXML
-    private TableView appointmentsView;
+    private TableView<DoctorsTable> appointmentsView;
+
+    @FXML
+    private TableColumn<DoctorsTable, String> colDocName;
+
+    @FXML
+    private TableColumn<DoctorsTable, String> colDocDepartment;
+
+    @FXML
+    private TableColumn<DoctorsTable, String> colAppointmentDate;
+
+    @FXML
+    private  TableColumn<DoctorsTable, String> colAppointmentTime;
+
+    @FXML
+    private TableColumn<DoctorsTable, String> colDocRoom;
 
     /**
      * a constructor creates new patient controller class
@@ -83,6 +105,32 @@ public class PatientController extends MasterController implements Initializable
         app_stage.setScene(scene);
         app_stage.setResizable(false);
         app_stage.show();
+    }
+
+    /**
+     * Gets appointments of the patient who entered to the application.
+     * @throws SQLException
+     */
+    private void getDoctorData() throws SQLException {
+        int patientId = Database.findPatientKey(Database.getUserName());
+        ObservableList<DoctorsTable> obList3 = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`patient_id` , doctor.`name`, doctor.`department`, appointment.`date`, appointment.`time`, doctor.`room_number` FROM patient, doctor, appointment WHERE appointment.`patient_id` = patient.`patient_id` AND appointment.`doctor_id` = doctor.`doctor_id` AND patient.`patient_id` = '"+ patientId  +"' ORDER BY `date` DESC");
+
+            while (rs.next()) {
+                obList3.add(new DoctorsTable(rs.getString("name"), rs.getString("department"),
+                        rs.getString("date"), rs.getString("time"), rs.getString("room_number")));
+            }
+        }catch (SQLException ex){}
+
+        colDocName.setCellValueFactory(new PropertyValueFactory<>("docName"));
+        colDocDepartment.setCellValueFactory(new PropertyValueFactory<>("docDepartment"));
+        colAppointmentDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
+        colAppointmentTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
+        colDocRoom.setCellValueFactory(new PropertyValueFactory<>("docRoom"));
+
+        appointmentsView.setItems(obList3);
     }
 
     /**
@@ -116,6 +164,7 @@ public class PatientController extends MasterController implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         try {
             update();
+            getDoctorData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
