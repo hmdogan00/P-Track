@@ -103,8 +103,8 @@ public class DoctorController extends MasterController implements Initializable 
 
     /**
      * initializes the page and setting labels information according to user
-     * @param location
-     * @param resources
+     * @param location the location of that page
+     * @param resources sources for that page
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
