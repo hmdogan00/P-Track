@@ -145,20 +145,38 @@ public class ReceptionistController extends MasterController implements Initiali
     //variables
     ModelTable p;
 
-    //constructor
+    /**
+     * Default constructor
+     */
     public ReceptionistController() {}
+
+    /**
+     * Opens add patient fxml file
+     * @param e takes button as an action
+     * @throws IOException
+     */
     @FXML
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
         loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
     }
 
+    /**
+     * Open patient details fxml file
+     * @param e takes button as an action
+     * @throws IOException
+     */
     @FXML
     private void openPatientDetails(ActionEvent e) throws IOException{
         System.out.println("Patient details opened!");
         loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
     }
 
+    /**
+     * Quits from receptionist page
+     * @param e takes button as an action
+     * @throws IOException
+     */
     @FXML
     private void logoutReceptionist(ActionEvent e) throws IOException {
         System.out.println("Logged out from Receptionist panel!");
@@ -167,24 +185,11 @@ public class ReceptionistController extends MasterController implements Initiali
         authLoader(e);
     }
 
+    /**
+     * Gets patient data from database and adds 3 dynamic table view button
+     */
     private void getPatientData(){
-        ObservableList<ModelTable> obList = FXCollections.observableArrayList();
-        try {
-            Connection con = Database.myConn;
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
-
-            while (rs.next()) {
-                obList.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
-                        rs.getString("citizenship_id"), rs.getString("insurance"),
-                        rs.getString("gender"), rs.getString("blood_type")));
-            }
-        }catch (SQLException ex){}
-
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
-        colID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colSex.setCellValueFactory(new PropertyValueFactory<>("sex"));
-        colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
+        getPatientsData();
 
         //Adding Appointment Button
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
@@ -268,10 +273,11 @@ public class ReceptionistController extends MasterController implements Initiali
         };
         //add button to the table
         colChangeInfo.setCellFactory(cellFactory2);
-
-        patientTable.setItems(obList);
     }
 
+    /**
+     * Gets patient data from database and adds 3 dynamic table view button
+     */
     private void getPatientsData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
@@ -381,6 +387,7 @@ public class ReceptionistController extends MasterController implements Initiali
             timeLabel.setText(Database.time());
             dateLabel.setText(Database.date());
             receptionistUsernameLabel.setText(Database.getUserName());
+            numberOfAppointmentsLabel.setText("" + Database.totalAppointments());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -412,7 +419,7 @@ public class ReceptionistController extends MasterController implements Initiali
 
     @FXML
     private void recentInDashboard(ActionEvent e){
-        recent1EqualsRecent2();
+        /*recent1EqualsRecent2();
 
         int size = 0;
         try {
@@ -546,7 +553,7 @@ public class ReceptionistController extends MasterController implements Initiali
             String newId5 = "" + id5;
             idCarry(newId5);
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-        });
+        });*/
     }
 
     private void recent1EqualsRecent2(){
