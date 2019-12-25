@@ -574,9 +574,9 @@
                                                         <Font name="System Bold" size="15.0" />
                                                     </font>
                                                 </Text>
-                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="24.0" layoutY="37.0" prefHeight="16.0" prefWidth="130.0" text="numberOfAppointments">
+                                                <Label fx:id="numberOfAppointmentsLabel" layoutX="24.0" layoutY="37.0" prefHeight="34.0" prefWidth="167.0" text="numberOfAppointments">
                                                     <font>
-                                                        <Font size="11.0" />
+                                                        <Font size="23.0" />
                                                     </font>
                                                 </Label>
                                     <ImageView fitHeight="71.0" fitWidth="73.0" layoutX="200.0" layoutY="1.0">
@@ -599,12 +599,12 @@
                                                 </Text>
                                                 <Label fx:id="timeLabel" layoutX="21.0" layoutY="30.0" prefHeight="15.0" prefWidth="104.0" text="16:47">
                                                     <font>
-                                                        <Font size="11.0" />
+                                                        <Font size="16.0" />
                                                     </font>
                                                 </Label>
                                                 <Label fx:id="dateLabel" layoutX="24.0" layoutY="51.0" prefHeight="15.0" prefWidth="97.0" text="9.12.2019">
                                                     <font>
-                                                        <Font size="11.0" />
+                                                        <Font size="16.0" />
                                                     </font>
                                                 </Label>
                                     <ImageView fitHeight="80.0" fitWidth="73.0" layoutX="138.0" layoutY="2.0">

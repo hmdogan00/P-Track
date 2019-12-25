@@ -440,12 +440,11 @@ public class ReceptionistController extends MasterController implements Initiali
     }
 
     /**
-     * finds doctor name from list
-     * @param e
+     *
      */
     @FXML
     private void recentInDashboard(ActionEvent e){
-        /*recent1EqualsRecent2();
+        recent1EqualsRecent2();
 
         int size = 0;
         try {
@@ -579,12 +578,11 @@ public class ReceptionistController extends MasterController implements Initiali
             String newId5 = "" + id5;
             idCarry(newId5);
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-        });*/
+        });
     }
 
     /**
-     * finds doctor name from list
-     * @param e
+     *
      */
     private void recent1EqualsRecent2(){
         //names
