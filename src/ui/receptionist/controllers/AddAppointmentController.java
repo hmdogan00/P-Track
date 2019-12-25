@@ -8,10 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.event.*;
 import javafx.stage.Stage;
+import ui.receptionist.DoctorTable;
+import ui.receptionist.ModelTable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -44,6 +48,9 @@ public class AddAppointmentController implements Initializable {
 
     @FXML
     MenuItem hour08, hour09, hour10, hour11, hour12, hour13, hour14, hour15, hour16, minute00, minute15, minute30, minute45;
+
+    @FXML
+    private ChoiceBox<String> choiceBox;
 
     public AddAppointmentController(){
         patientdbId = "";
@@ -169,5 +176,16 @@ public class AddAppointmentController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        ObservableList<String> observerList = FXCollections.observableArrayList();
+        try {
+            Connection con = Database.connection();
+            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
+
+            while (rs2.next()) {
+                observerList.add(new String(rs2.getString("name")));
+            }
+        }catch (SQLException ex){}
+        choiceBox.getItems().addAll(observerList);
     }
 }
