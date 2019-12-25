@@ -293,7 +293,7 @@ public class AddAppointmentController implements Initializable {
         // setting the choice box for doctorslist from the database information
         ObservableList<String> observerList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {

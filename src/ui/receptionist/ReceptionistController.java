@@ -170,7 +170,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getPatientData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
@@ -275,7 +275,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getPatientsData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient");
 
             while (rs.next()) {
@@ -297,7 +297,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             String nameFilter = filterPatientName.getText();
             ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
 
@@ -316,7 +316,7 @@ public class ReceptionistController extends MasterController implements Initiali
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
         try {
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
@@ -344,7 +344,7 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
-            Connection con = Database.connection();
+            Connection con = Database.myConn;
             String nameFilter = filterDoctorName.getText();
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
@@ -412,9 +412,12 @@ public class ReceptionistController extends MasterController implements Initiali
 
     @FXML
     private void recentInDashboard(ActionEvent e){
+        recent1EqualsRecent2();
+
         int size = 0;
         try {
             size = Database.appointmentOrder().size();
+            System.out.println(size);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -424,8 +427,8 @@ public class ReceptionistController extends MasterController implements Initiali
             int id1 = 0;
             int idDoctor1 = 0;
             try {
-                id1 = (int) Database.appointmentOrder().get(finalSize - 3);
-                idDoctor1 = (int)Database.appointmentOrder().get(finalSize - 2);
+                id1 = (int) Database.appointmentOrder().get(finalSize);
+                idDoctor1 = (int)Database.appointmentOrder().get(finalSize);
 
                 ArrayList<String> infoList = database.Database.patientDetails(id1);
 
@@ -562,7 +565,46 @@ public class ReceptionistController extends MasterController implements Initiali
         idNoLabel51 = idNoLabel5;
 
         //phone numbers
+        phoneNumberLabel11 = phoneNumberLabel1;
+        phoneNumberLabel21 = phoneNumberLabel2;
+        phoneNumberLabel31 = phoneNumberLabel3;
+        phoneNumberLabel41 = phoneNumberLabel4;
+        phoneNumberLabel51 = phoneNumberLabel5;
 
+        //passed times
+        passedTimeLabel11 = passedTimeLabel1;
+        passedTimeLabel21 = passedTimeLabel2;
+        passedTimeLabel31 = passedTimeLabel3;
+        passedTimeLabel41 = passedTimeLabel4;
+        passedTimeLabel51 = passedTimeLabel5;
+
+        //passed dates
+        passedDateLabel11 = passedDateLabel1;
+        passedDateLabel21 = passedDateLabel2;
+        passedDateLabel31 = passedDateLabel3;
+        passedDateLabel41 = passedDateLabel4;
+        passedDateLabel51 = passedDateLabel5;
+
+        //doctor names
+        doctorName11 = doctorName1;
+        doctorName21 = doctorName2;
+        doctorName31 = doctorName3;
+        doctorName41 = doctorName4;
+        doctorName51 = doctorName5;
+
+        //doctor departments
+        departmentName11 = departmentName1;
+        departmentName21 = departmentName2;
+        departmentName31 = departmentName3;
+        departmentName41 = departmentName4;
+        departmentName51 = departmentName5;
+
+        //button names
+        detailsButton11 = detailsButton1;
+        detailsButton21 = detailsButton2;
+        detailsButton31 = detailsButton3;
+        detailsButton41 = detailsButton4;
+        detailsButton51 = detailsButton5;
     }
 
 }
