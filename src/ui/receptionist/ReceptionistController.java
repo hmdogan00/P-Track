@@ -1,5 +1,6 @@
 package ui.receptionist;
 
+import com.mysql.cj.result.SqlDateValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -344,23 +345,7 @@ public class ReceptionistController extends MasterController implements Initiali
                         final Button addAppointmentButton = new Button("Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
-                            PrintWriter outFile = null;
-                            File file = new File("outFile.txt");
-                            try {
-                                file.createNewFile();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            try {
-
-                                outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {}
-
-                            //write the patient id in a different txt file
-                            outFile.println(p.getId());
-                           System.out.println(outFile);
-                           outFile.close();
-                            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                            patientDetailsButton(p.getId());
                         });
                         setGraphic(addAppointmentButton);
                     }
@@ -531,5 +516,85 @@ public class ReceptionistController extends MasterController implements Initiali
         else
             getFilteredDoctorData();
         doctorTable.refresh();
+    }
+
+    private void patientDetailsButton(String printItem){
+        PrintWriter outFile = null;
+        File file = new File("outFile.txt");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            outFile = new PrintWriter(file);
+        } catch (FileNotFoundException fileE) {}
+
+        //write the patient id in a different txt file
+        outFile.println(printItem);
+        System.out.println(outFile);
+        outFile.close();
+        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+    }
+
+    /*private void recentDetails(){
+        int appListSize = 0;
+        try {
+            appListSize = Database.appointmentOrder().size();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (appListSize != 0) {
+            try {
+                idNoLabel1.setText(Database.appointmentOrder().get(0));
+
+
+
+                //accessing patient details
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }*/
+
+    private void pushRecentApp(){
+        //recent1 patient push to 2
+        recentPatientLabel2.setText(recentPatientLabel1.getText());
+        idNoLabel2.setText(idNoLabel1.getText());
+        passedTimeLabel2.setText(passedTimeLabel1.getText());
+        passedDateLabel2.setText(passedDateLabel1.getText());
+        phoneNumberLabel2.setText(phoneNumberLabel1.getText());
+        doctorName2.setText(doctorName1.getText());
+        departmentName2.setText(departmentName1.getText());
+
+        //recent2 patient push to 3
+        recentPatientLabel3.setText(recentPatientLabel2.getText());
+        idNoLabel3.setText(idNoLabel2.getText());
+        passedTimeLabel3.setText(passedTimeLabel2.getText());
+        passedDateLabel3.setText(passedDateLabel2.getText());
+        phoneNumberLabel3.setText(phoneNumberLabel2.getText());
+        doctorName3.setText(doctorName2.getText());
+        departmentName3.setText(departmentName2.getText());
+
+        //recent3 patient push to 4
+        recentPatientLabel4.setText(recentPatientLabel3.getText());
+        idNoLabel4.setText(idNoLabel3.getText());
+        passedTimeLabel4.setText(passedTimeLabel3.getText());
+        passedDateLabel4.setText(passedDateLabel3.getText());
+        phoneNumberLabel4.setText(phoneNumberLabel3.getText());
+        doctorName4.setText(doctorName3.getText());
+        departmentName4.setText(departmentName3.getText());
+
+        //recent4 patient push to 5
+        recentPatientLabel5.setText(recentPatientLabel4.getText());
+        idNoLabel5.setText(idNoLabel4.getText());
+        passedTimeLabel5.setText(passedTimeLabel4.getText());
+        passedDateLabel5.setText(passedDateLabel4.getText());
+        phoneNumberLabel5.setText(phoneNumberLabel4.getText());
+        doctorName5.setText(doctorName4.getText());
+        departmentName5.setText(departmentName4.getText());
     }
 }
