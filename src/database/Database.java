@@ -4,9 +4,18 @@ import java.util.ArrayList;
 
 public class Database {
     private static String userName2;
+    public static Connection myConn;
+
+    static {
+        try {
+            myConn = connection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws SQLException {
-        System.out.println(doctorAvailability(1));
+        System.out.println(appointmentOrder().size());
     }
 
     /**
@@ -40,7 +49,6 @@ public class Database {
      */
     public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
                                   int phoneNumber, String insurance, String emergency_name, int emergency_number) throws SQLException {
-        Connection myConn = connection();
         String sql = "INSERT INTO patient(name,birth_date,citizenship_id,insurance,gender,blood_type,emergency_name,emergency_number,patient_address,patient_phoneNumber) VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement myStmt = myConn.prepareStatement(sql);
         myStmt.setString(1, name);
@@ -67,7 +75,6 @@ public class Database {
      */
     public static int findPatientKey(String id) throws SQLException {
         int patient_key = 0;
-        Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT patient_id FROM patient WHERE citizenship_id = '" + id + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
@@ -89,7 +96,6 @@ public class Database {
      * @throws SQLException in case of an error in sql database.
      */
     public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException {
-        Connection myConn = connection();
         String sql = "UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
 
         PreparedStatement myStmt = myConn.prepareStatement(sql);
@@ -124,7 +130,6 @@ public class Database {
 
         ArrayList<String> patient_info = new ArrayList<>();
 
-        Connection myConn = connection();
         String sql = " SELECT * FROM patient WHERE patient_id = '" + p_key + "' ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
@@ -158,7 +163,6 @@ public class Database {
     //Method for finding doctor key value
     public static int findDoctorKey(String doctor_name) throws SQLException {
         int doctor_key = 0;
-        Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT doctor_id FROM doctor WHERE name = '" + doctor_name + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
@@ -175,7 +179,6 @@ public class Database {
         String doctor_roomNumber = "";
         String doctor_number = "";
         ArrayList<String> doctorInformation = new ArrayList<>();
-        Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SELECT * FROM doctor WHERE doctor_id = '" + doctorKey + "' ";
         ResultSet rs = myStmt.executeQuery(sql);
@@ -197,7 +200,6 @@ public class Database {
     //Local date returning method
     public static String date() throws SQLException {
         String date = "";
-        Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SET time_zone = '+03:00'; ";
         ResultSet rs = myStmt.executeQuery(sql);
@@ -212,7 +214,6 @@ public class Database {
     //Local time returning method
     public static String time() throws SQLException {
         String time = "";
-        Connection myConn = connection();
         Statement myStmt = myConn.createStatement();
         String sql = "SET time_zone = '+03:00'; ";
         ResultSet rs = myStmt.executeQuery(sql);
@@ -228,13 +229,13 @@ public class Database {
     //Upcoming appointment creating method
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
-     Connection myConn = connection();
      Statement myStmt = myConn.createStatement();
-     String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >='" + time() + "' ORDER BY time ASC";
+     String sql = "SELECT * FROM appointment WHERE date = '"+ date() +"' AND time >= '"+ time() +"' ORDER BY date DESC";
      ResultSet rs = myStmt.executeQuery(sql);
 
      while(rs.next()){
          appointmentOrder.add(rs.getString("patient_id"));
+         System.out.println(rs.getString("patient_id"));
          appointmentOrder.add(rs.getString("doctor_id"));
          appointmentOrder.add(rs.getString("time"));
      }
@@ -242,7 +243,6 @@ public class Database {
     }
 
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
-        Connection myConn = connection();
         int appointmentDate = Integer.parseInt(date.substring(8)) * 1000000 + Integer.parseInt(date.substring(5,7)) * 10000 + Integer.parseInt(date.substring(0,4));
         int currentDate = Integer.parseInt(date().substring(8)) * 1000000 + Integer.parseInt(date().substring(5,7)) * 10000 + Integer.parseInt(date().substring(0,4));
         int appointmentTime = Integer.parseInt(time.substring(0,2)) * 100 + Integer.parseInt(time.substring(3));
@@ -279,22 +279,7 @@ public class Database {
         return flag;
     }
 
-    public static ArrayList doctorsAppointedPatients(int d_id) throws SQLException {
-        ArrayList<String> doctorsAppointedPatients = new ArrayList<>();
-        Connection myConn = connection();
-        String sql ="SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' ORDER BY time ASC" ;
-        Statement myStmt = myConn.createStatement();
-        ResultSet rs = myStmt.executeQuery(sql);
-        while(rs.next()){
-            doctorsAppointedPatients.add(rs.getString("patient_id"));
-            doctorsAppointedPatients.add(rs.getString("date"));
-            doctorsAppointedPatients.add(rs.getString("time"));
-        }
-        return doctorsAppointedPatients;
-    }
-
     public static String doctorAuth(String user_name, String password) throws SQLException {
-        Connection myConn = connection();
         String userName = "";
         String userPassword = "";
         String userRole = "";
@@ -317,7 +302,6 @@ public class Database {
     }
 
     public static String registrationAuth(String user_name, String password) throws SQLException {
-        Connection myConn = connection();
         String userName = "";
         String userPassword = "";
         String userRole = "";
@@ -340,7 +324,6 @@ public class Database {
     }
 
     public static boolean doctorAvailability(int d_id) throws SQLException {
-        Connection myConn = connection();
         boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' AND date = '" + date() +" ' " ;
         Statement myStmt = myConn.createStatement();
@@ -363,7 +346,6 @@ public class Database {
     }
 
     public static ArrayList getDoctorName() throws SQLException {
-        Connection myConn = connection();
         ArrayList<String> doctorList = new ArrayList<>();
         String sql = "SELECT * FROM doctor";
         Statement myStmt = myConn.createStatement();
@@ -377,7 +359,6 @@ public class Database {
     }
 
     public static String patientAuth(String id) throws SQLException {
-        Connection myConn = connection();
         String sql = "SELECT * FROM patient WHERE citizenship_id = '" + id + "' " ;
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
