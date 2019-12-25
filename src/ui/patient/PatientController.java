@@ -66,15 +66,7 @@ public class PatientController extends MasterController implements Initializable
         System.out.println("Logged out from Patient panel!");
 
         //back to auth scene
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
-        System.out.println( loader.getLocation() );
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) a.getSource()).getScene().getWindow();
-        app_stage.setScene(scene);
-        app_stage.setResizable(false);
-        app_stage.show();
+        authLoader(a);
     }
 
     /**
