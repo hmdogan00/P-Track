@@ -50,7 +50,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Line>
-                              <TextField fx:id="citizenshipIDField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="190.0" promptText="Citizenship ID">
+                              <TextField fx:id="citizenshipIDField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterPatientButton" prefHeight="30.0" prefWidth="190.0" promptText="Citizenship ID">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

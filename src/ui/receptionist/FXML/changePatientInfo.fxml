@@ -28,93 +28,130 @@
       </ToolBar>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="143.2705078125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="125.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="patientNameLabel" text="Label">
+            <Label fx:id="patientNameLabel" prefHeight="21.0" prefWidth="290.0" text="Label">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Region prefHeight="49.0" prefWidth="155.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No:" wrappingWidth="48.8798828125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No:" wrappingWidth="65.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="patientId" text="Label">
+            <Label fx:id="patientId" prefHeight="21.0" prefWidth="162.0" text="Label">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Region prefHeight="50.0" prefWidth="139.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="57.767578125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="65.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="patientGender" text="Label">
+            <Label fx:id="patientGender" prefHeight="21.0" prefWidth="85.0" text="Label">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Birthdate:" wrappingWidth="90.662109375">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Text>
-            <Label fx:id="patientBirthdate" text="Label">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Label>
-            <Region prefHeight="38.0" prefWidth="196.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:" wrappingWidth="86.783203125">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Text>
-            <Label fx:id="bloodType" layoutX="74.0" layoutY="20.0" text="Label">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Address:" wrappingWidth="70.3818359375">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Birthdate:" wrappingWidth="125.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <TextField fx:id="changeAddress" prefHeight="31.0" prefWidth="464.0">
+            <Label fx:id="patientBirthdate" prefHeight="21.0" prefWidth="288.0" text="Label">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:" wrappingWidth="85.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="bloodType" layoutX="74.0" layoutY="20.0" prefHeight="21.0" prefWidth="100.0" text="Label">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Address:" wrappingWidth="85.0">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="changeAddress" prefHeight="31.0" prefWidth="740.0">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
             </TextField>
-            <Region prefHeight="38.0" prefWidth="13.0" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="79.38232421875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="85.0">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
             <TextField fx:id="changePatientPhone" prefHeight="25.0" prefWidth="182.0">
                <HBox.margin>
-                  <Insets top="5.0" />
+                  <Insets right="25.0" top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </TextField>
-            <Region prefHeight="38.0" prefWidth="17.0" />
             <MenuButton fx:id="changeInsurance" mnemonicParsing="false" text="Insurance">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#sgkChoice" text="SGK" />
@@ -124,8 +161,10 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </MenuButton>
-            <Region prefHeight="38.0" prefWidth="187.0" />
          </children>
       </HBox>
       <VBox prefHeight="217.0" prefWidth="750.0">
@@ -142,33 +181,42 @@
             </ToolBar>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="123.2705078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Name/Surname:" wrappingWidth="125.0">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <TextField fx:id="changeEmergencyName">
+                  <TextField fx:id="changeEmergencyName" prefHeight="31.0" prefWidth="236.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
-                  <Region prefHeight="200.0" prefWidth="200.0" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="78.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="82.38232421875">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Phone No:" wrappingWidth="125.0">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                   <TextField fx:id="changeEmergencyPhone">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
-                  <Region prefHeight="49.0" prefWidth="152.0" />
-                  <Region prefHeight="49.0" prefWidth="152.0" />
                </children>
             </HBox>
          </children>
