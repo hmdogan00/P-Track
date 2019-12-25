@@ -68,21 +68,33 @@ public class DoctorsTable {
     }
 
     /**
-     *
-     * @return
+     * gets appointment time
+     * @return appointment time.
      */
     public String getAppTime() {
         return appTime;
     }
 
+    /**
+     * sets appointment time
+     * @param appTime time to be set.
+     */
     public void setAppTime(String appTime) {
         this.appTime = appTime;
     }
 
+    /**
+     * gets doctor room.
+     * @return doctor's room.
+     */
     public String getDocRoom() {
         return docRoom;
     }
 
+    /**
+     * sets doctor room
+     * @param docRoom room to be set.
+     */
     public void setDocRoom(String docRoom) {
         this.docRoom = docRoom;
     }
