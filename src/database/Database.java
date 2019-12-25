@@ -441,4 +441,21 @@ public class Database {
         userName2 = id;
         return "" + id;
     }
+
+
+    /**
+     * Counts the recent days appointments
+     * @return appointment count.
+     * @throws SQLException in case of an error in sql database.
+     */
+    public static int totalAppointments() throws SQLException{
+        String sql = "SELECT * FROM appointment WHERE date = '"+date()+"' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        int count = 0;
+        while(rs.next()){
+            count++;
+        }
+        return count;
+    }
 }
