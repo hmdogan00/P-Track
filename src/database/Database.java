@@ -255,7 +255,7 @@ public class Database{
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
      Statement myStmt = myConn.createStatement();
-     String sql = "SELECT * FROM appointment WHERE date >= '"+ date() +"' AND time >= '"+ time() +"' ORDER BY date DESC";
+     String sql = "SELECT * FROM appointment";
      ResultSet rs = myStmt.executeQuery(sql);
 
      while(rs.next()){
@@ -410,7 +410,7 @@ public class Database{
      */
     public static ArrayList getDoctorName() throws SQLException {
         ArrayList<String> doctorList = new ArrayList<>();
-        String sql = "SELECT * FROM doctor";
+        String sql = "SELECT * FROM appointment WHERE date >= '2019-12-25' AND time >= '09:00' ORDER BY date DESC ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
