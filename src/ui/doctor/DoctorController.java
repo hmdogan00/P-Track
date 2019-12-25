@@ -8,14 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import ui.MasterController;
 import java.io.IOException;
@@ -52,21 +47,13 @@ public class DoctorController extends MasterController implements Initializable 
         System.out.println("Logged out from Doctor panel!");
 
         //back to auth scene
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        app_stage.setScene(scene);
-        app_stage.setResizable(false);
-        app_stage.show();
+        authLoader(e);
     }
 
     /**
      * gets the paients data for showing in the doctor page
      * @throws SQLException
      */
-
     private void getPatientData() throws SQLException {
         // finding that doctor ID by database
         int doctorId = Database.findDoctorKey(Database.getUserName());
@@ -116,8 +103,8 @@ public class DoctorController extends MasterController implements Initializable 
 
     /**
      * initializes the page and setting labels information according to user
-     * @param location
-     * @param resources
+     * @param location the location of that page
+     * @param resources sources for that page
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
