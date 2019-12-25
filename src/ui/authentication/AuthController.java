@@ -104,6 +104,7 @@ public class AuthController {
     private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
 
+        //if role is doctor enters doctor
         if (roleChooser == 1){
             System.out.println("Entered Doctor");
             String loginDoctor = database.Database.doctorAuth(userName.getText(), password.getText());
@@ -116,6 +117,7 @@ public class AuthController {
                 errorLabel.setTextFill(Color.RED);
             }
         }
+        //if role is receptionist enters receptionist
         else if (roleChooser == 2){
             System.out.println("Entered Receptionist");
             String loginReceptionist = database.Database.registrationAuth(userName.getText(), password.getText());
@@ -128,11 +130,12 @@ public class AuthController {
                 errorLabel.setTextFill(Color.RED);
             }
         }
+        //role select error
         else{
             errorLabel.setText("Please select a role to log in!");
             errorLabel.setTextFill(Color.RED);
         }
-
+        //page loader
         try {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
