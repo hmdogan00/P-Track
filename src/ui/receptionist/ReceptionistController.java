@@ -420,6 +420,7 @@ public class ReceptionistController extends MasterController implements Initiali
     //database for doctors
     private void getDoctorData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
+        String text = "";
         try {
             Connection con = Database.connection();
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
@@ -427,26 +428,22 @@ public class ReceptionistController extends MasterController implements Initiali
             while (rs2.next()) {
                 int id = rs2.getInt("doctor_id");
                 boolean availability = Database.doctorAvailability(id);
-                String text;
                 if ( availability )
-                {
                     text = "Available";
-                }
                 else
-                {
                     text = "Not Available";
-                }
 
                 obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number"), text ,rs2.getInt("phone_number") ));
+                        rs2.getString("room_number"), text ,rs2.getString("phone_number") ));
             }
         }catch (SQLException ex){}
 
         colDoctorName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDoctorDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
         colDoctorRoom.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-        colAvailability.setCellValueFactory(new PropertyValueFactory<>("text"));
-        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
+        colAvailability.setCellValueFactory( new PropertyValueFactory<>("availability"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+
         doctorTable.setItems(obList2);
     }
 
@@ -471,7 +468,7 @@ public class ReceptionistController extends MasterController implements Initiali
                 }
 
                 listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number"), text ,rs2.getInt("phone_number") ));
+                        rs2.getString("room_number"), text ,rs2.getString("phone_number") ));
             }
         }catch (SQLException ex){}
 

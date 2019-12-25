@@ -2,9 +2,9 @@ package ui.receptionist;
 
 public class DoctorTable {
     String name, department, roomNumber, availability;
-    int phoneNo;
+    String phoneNo;
 
-    public DoctorTable(String name, String department, String roomNumber, String availability, int phoneNo){
+    public DoctorTable(String name, String department, String roomNumber, String availability, String phoneNo){
         this.name = name;
         this.department = department;
         this.roomNumber = roomNumber;
@@ -45,11 +45,11 @@ public class DoctorTable {
         this.availability = availability;
     }
 
-    public int getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
 
