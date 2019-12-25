@@ -24,10 +24,10 @@ import java.util.Scanner;
 public class AddAppointmentController implements Initializable {
 
     @FXML
-    TextField patientName;
+    Label patientName;
 
     @FXML
-    TextField patientSurname;
+    Label patientSurname;
 
     @FXML
     String patientdbId;
