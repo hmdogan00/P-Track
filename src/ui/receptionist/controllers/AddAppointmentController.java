@@ -290,7 +290,7 @@ public class AddAppointmentController implements Initializable {
             e.printStackTrace();
         }
 
-        // setting the choice box for doctorslist from the database information
+        // setting the choice box for doctor's list from the database information
         ObservableList<String> observerList = FXCollections.observableArrayList();
         try {
             Connection con = Database.myConn;
