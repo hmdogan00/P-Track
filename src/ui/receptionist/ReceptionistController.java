@@ -160,21 +160,13 @@ public class ReceptionistController extends MasterController implements Initiali
     }
 
     @FXML
-    private void logoutReceptionist(ActionEvent e) throws IOException{
+    private void logoutReceptionist(ActionEvent e) throws IOException {
         System.out.println("Logged out from Receptionist panel!");
 
         //back to auth scene
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        app_stage.setScene(scene);
-        app_stage.setResizable(false);
-        app_stage.show();
+        authLoader(e);
     }
 
-    //database for patients
     private void getPatientData(){
         ObservableList<ModelTable> obList = FXCollections.observableArrayList();
         try {
@@ -219,6 +211,7 @@ public class ReceptionistController extends MasterController implements Initiali
             };
             return cell;
         };
+        //add button to the table
         colAddAppointment.setCellFactory(cellFactory);
 
         //adding patient details button
@@ -245,6 +238,7 @@ public class ReceptionistController extends MasterController implements Initiali
             };
             return cell1;
         };
+        //add button to the table
         colDetails.setCellFactory(cellFactory1);
 
         //Adding change patient info button
@@ -272,6 +266,7 @@ public class ReceptionistController extends MasterController implements Initiali
             };
             return cell2;
         };
+        //add button to the table
         colChangeInfo.setCellFactory(cellFactory2);
 
         patientTable.setItems(obList);
@@ -354,6 +349,7 @@ public class ReceptionistController extends MasterController implements Initiali
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs2.next()) {
+                //sets availability of doctor
                 int id = rs2.getInt("doctor_id");
                 boolean availability = Database.doctorAvailability(id);
                 String text;
@@ -377,6 +373,8 @@ public class ReceptionistController extends MasterController implements Initiali
     @Override
     public void initialize(URL location, ResourceBundle resources){
         System.out.println("All data is uploaded");
+
+        //loads the patient and doctor data to table
         getPatientData();
         getDoctorData();
         try {
@@ -390,45 +388,26 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.refresh();
     }
 
-    //Patient Name Filter
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterPatientName.getText().equals("")) {
             getPatientsData();
-            System.out.println("ali baba");
+            System.out.println("Empty filter");
         }
         else
             getFilteredPatientData();
         patientTable.refresh();
     }
 
-    //Patient Name Filter
     @FXML
     private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterDoctorName.getText().equals("")) {
             getDoctorData();
-            System.out.println("Welcome 2019 2");
+            System.out.println("Empty filter");
         }
         else
             getFilteredDoctorData();
         doctorTable.refresh();
-    }
-
-    private void idCarry(String printItem){
-        PrintWriter outFile = null;
-        File file = new File("outFile.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            outFile = new PrintWriter(file);
-        } catch (FileNotFoundException fileE) {}
-
-        //write the patient id in a different txt file
-        outFile.println(printItem);
-        outFile.close();
     }
 
     @FXML
@@ -441,7 +420,7 @@ public class ReceptionistController extends MasterController implements Initiali
         }
 
         int finalSize = size;
-        detailsButton1.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
+        detailsButton1.setOnAction(event ->{
             int id1 = 0;
             int idDoctor1 = 0;
             try {
@@ -466,7 +445,7 @@ public class ReceptionistController extends MasterController implements Initiali
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
-        detailsButton2.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
+        detailsButton2.setOnAction(event ->{
             int id2 = 0;
             int idDoctor2 = 0;
             try {
@@ -491,7 +470,7 @@ public class ReceptionistController extends MasterController implements Initiali
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
-        detailsButton3.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
+        detailsButton3.setOnAction(event ->{
             int id3 = 0;
             int idDoctor3 = 0;
             try {
@@ -516,7 +495,7 @@ public class ReceptionistController extends MasterController implements Initiali
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
-        detailsButton4.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
+        detailsButton4.setOnAction(event ->{
             int id4 = 0;
             int idDoctor4 = 0;
             try {
@@ -541,7 +520,7 @@ public class ReceptionistController extends MasterController implements Initiali
             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
         });
 
-        detailsButton5.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
+        detailsButton5.setOnAction(event ->{
             int id5 = 0;
             int idDoctor5 = 0;
             try {
@@ -586,65 +565,4 @@ public class ReceptionistController extends MasterController implements Initiali
 
     }
 
-    /*@FXML
-    private void recentDetails1(ActionEvent event){
-        if (!idNoLabel1.getText().isEmpty()) {
-            int appListSize = 0;
-
-            try {
-                appListSize = Database.appointmentOrder().size();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            if (appListSize != 0) {
-                try {
-                    idNoLabel1.setText((String)Database.appointmentOrder().get(0));
-                    idCarry(idNoLabel1.getText());
-                    loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-    }*/
-
-    /*private void pushRecentApp(){
-        //recent1 patient push to 2
-        recentPatientLabel2.setText(recentPatientLabel1.getText());
-        idNoLabel2.setText(idNoLabel1.getText());
-        passedTimeLabel2.setText(passedTimeLabel1.getText());
-        passedDateLabel2.setText(passedDateLabel1.getText());
-        phoneNumberLabel2.setText(phoneNumberLabel1.getText());
-        doctorName2.setText(doctorName1.getText());
-        departmentName2.setText(departmentName1.getText());
-
-        //recent2 patient push to 3
-        recentPatientLabel3.setText(recentPatientLabel2.getText());
-        idNoLabel3.setText(idNoLabel2.getText());
-        passedTimeLabel3.setText(passedTimeLabel2.getText());
-        passedDateLabel3.setText(passedDateLabel2.getText());
-        phoneNumberLabel3.setText(phoneNumberLabel2.getText());
-        doctorName3.setText(doctorName2.getText());
-        departmentName3.setText(departmentName2.getText());
-
-        //recent3 patient push to 4
-        recentPatientLabel4.setText(recentPatientLabel3.getText());
-        idNoLabel4.setText(idNoLabel3.getText());
-        passedTimeLabel4.setText(passedTimeLabel3.getText());
-        passedDateLabel4.setText(passedDateLabel3.getText());
-        phoneNumberLabel4.setText(phoneNumberLabel3.getText());
-        doctorName4.setText(doctorName3.getText());
-        departmentName4.setText(departmentName3.getText());
-
-        //recent4 patient push to 5
-        recentPatientLabel5.setText(recentPatientLabel4.getText());
-        idNoLabel5.setText(idNoLabel4.getText());
-        passedTimeLabel5.setText(passedTimeLabel4.getText());
-        passedDateLabel5.setText(passedDateLabel4.getText());
-        phoneNumberLabel5.setText(phoneNumberLabel4.getText());
-        doctorName5.setText(doctorName4.getText());
-        departmentName5.setText(departmentName4.getText());
-    }*/
 }
