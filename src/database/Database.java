@@ -161,6 +161,13 @@ public class Database {
     }
 //
     //Method for finding doctor key value
+
+    /**
+     * Gets doctor key of the database.
+     * @param doctor_name name of the doctor.
+     * @return ket of the specified doctor
+     * @throws SQLException in case of an error in sql database.
+     */
     public static int findDoctorKey(String doctor_name) throws SQLException {
         int doctor_key = 0;
         Statement myStmt = myConn.createStatement();
@@ -198,6 +205,12 @@ public class Database {
     }
 
     //Local date returning method
+
+    /**
+     * gets date according to database server, because we can.
+     * @return current date in string form
+     * @throws SQLException in case of an error in sql database.
+     */
     public static String date() throws SQLException {
         String date = "";
         Statement myStmt = myConn.createStatement();
@@ -212,6 +225,12 @@ public class Database {
     }
 
     //Local time returning method
+
+    /**
+     * gets time according to database server
+     * @return current time in string format.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static String time() throws SQLException {
         String time = "";
         Statement myStmt = myConn.createStatement();
@@ -227,6 +246,12 @@ public class Database {
     }
 
     //Upcoming appointment creating method
+
+    /**
+     * Gets ordered appointments according to date and time.
+     * @return ordered appointments in an arrayList.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
      Statement myStmt = myConn.createStatement();
@@ -242,6 +267,15 @@ public class Database {
      return appointmentOrder;
     }
 
+    /**
+     * Adds appointment to database.
+     * @param p_key patient key of the patient.
+     * @param d_key doctor key of the patient.
+     * @param date appointment date
+     * @param time appointment time
+     * @return true if successful, false if otherwise.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static boolean addAppointment(int p_key, int d_key, String date, String time) throws SQLException {
         int appointmentDate = Integer.parseInt(date.substring(8)) * 1000000 + Integer.parseInt(date.substring(5,7)) * 10000 + Integer.parseInt(date.substring(0,4));
         int currentDate = Integer.parseInt(date().substring(8)) * 1000000 + Integer.parseInt(date().substring(5,7)) * 10000 + Integer.parseInt(date().substring(0,4));
@@ -279,6 +313,13 @@ public class Database {
         return flag;
     }
 
+    /**
+     * Authorization of doctor usernames in the login page.
+     * @param user_name user name of doctor.
+     * @param password password of doctor.
+     * @return error if false credentials, user name if true.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static String doctorAuth(String user_name, String password) throws SQLException {
         String userName = "";
         String userPassword = "";
@@ -301,6 +342,13 @@ public class Database {
         return user_name;
     }
 
+    /**
+     * Authorization of registration usernames in the login page.
+     * @param user_name user name of registration.
+     * @param password password of registration.
+     * @return error if false credentials, user name if true.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static String registrationAuth(String user_name, String password) throws SQLException {
         String userName = "";
         String userPassword = "";
@@ -323,6 +371,12 @@ public class Database {
         return user_name;
     }
 
+    /**
+     * Checks availability of doctor in the current time.
+     * @param d_id doctor to be checked.
+     * @return true if available, false if otherwise.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static boolean doctorAvailability(int d_id) throws SQLException {
         boolean flag = true;
         String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' AND date = '" + date() +" ' " ;
@@ -340,11 +394,20 @@ public class Database {
         return flag;
     }
 
+    /**
+     * return username of the logged in user.
+     * @return user name of the loggeed in user.
+     */
     public static String getUserName()
     {
         return userName2;
     }
 
+    /**
+     * returns doctors names' in an arrayList.
+     * @return doctors name in an arrayList.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static ArrayList getDoctorName() throws SQLException {
         ArrayList<String> doctorList = new ArrayList<>();
         String sql = "SELECT * FROM doctor";
@@ -358,6 +421,12 @@ public class Database {
         return doctorList;
     }
 
+    /**
+     * Checks id's of the patients and grants enter if there is one with the given id.
+     * @param id given id to be checked.
+     * @return id if correct, error message if otherwise.
+     * @throws SQLException in case of an error in sql database.
+     */
     public static String patientAuth(String id) throws SQLException {
         String sql = "SELECT * FROM patient WHERE citizenship_id = '" + id + "' " ;
         Statement myStmt = myConn.createStatement();
@@ -371,5 +440,22 @@ public class Database {
         }
         userName2 = id;
         return "" + id;
+    }
+
+
+    /**
+     * Counts the recent days appointments
+     * @return appointment count.
+     * @throws SQLException in case of an error in sql database.
+     */
+    public static int totalAppointments() throws SQLException{
+        String sql = "SELECT * FROM appointment WHERE date = '"+date()+"' ";
+        Statement myStmt = myConn.createStatement();
+        ResultSet rs = myStmt.executeQuery(sql);
+        int count = 0;
+        while(rs.next()){
+            count++;
+        }
+        return count;
     }
 }
