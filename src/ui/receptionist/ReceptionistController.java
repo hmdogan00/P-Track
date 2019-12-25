@@ -413,7 +413,7 @@ public class ReceptionistController extends MasterController implements Initiali
 
     /**
      * finds patient name from list
-     * @param e
+     * @param e takes button as an action
      */
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
@@ -428,7 +428,7 @@ public class ReceptionistController extends MasterController implements Initiali
 
     /**
      * finds doctor name from list
-     * @param e
+     * @param e takes button as an action
      */
     @FXML
     private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
@@ -442,7 +442,8 @@ public class ReceptionistController extends MasterController implements Initiali
     }
 
     /**
-     *
+     * Opens details pages for recent patients from detail button
+     * @param e takes button as an action
      */
     @FXML
     private void recentInDashboard(ActionEvent e){
@@ -458,69 +459,107 @@ public class ReceptionistController extends MasterController implements Initiali
 
         int finalSize = size;
         detailsButton1.setOnAction(event ->{
-            try {
-                String id1 = (String) Database.appointmentOrder().get(finalSize-3);
+            getButtonAction(1, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
-
-                idCarry(infoList.get(1));
-                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+        detailsButton11.setOnAction(event -> {
+            getButtonAction(1, finalSize);
         });
 
         detailsButton2.setOnAction(event ->{
-            try {
-                String id2 = (String) Database.appointmentOrder().get(finalSize - 6);
+            getButtonAction(2, finalSize);
+        });
 
-                ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
-
-                idCarry(infoList2.get(1));
-                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+        detailsButton21.setOnAction(event -> {
+            getButtonAction(2, finalSize);
         });
 
         detailsButton3.setOnAction(event ->{
-            try {
-                String id3 = (String) Database.appointmentOrder().get(finalSize - 9);
+            getButtonAction(3, finalSize);
+        });
 
-                ArrayList<String> infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
-
-                idCarry(infoList3.get(1));
-                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+        detailsButton31.setOnAction(event -> {
+            getButtonAction(3, finalSize);
         });
 
         detailsButton4.setOnAction(event ->{
-            try {
-                String id4 = (String) Database.appointmentOrder().get(finalSize - 12);
+            getButtonAction(4, finalSize);
+        });
 
-                ArrayList<String> infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
-
-                idCarry(infoList4.get(1));
-                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+        detailsButton41.setOnAction(event -> {
+            getButtonAction(4, finalSize);
         });
 
         detailsButton5.setOnAction(event ->{
+            getButtonAction(5, finalSize);
+        });
+
+        detailsButton51.setOnAction(event -> {
+            getButtonAction(5, finalSize);
+        });
+    }
+
+    /**
+     * From button no it takes different patient's details
+     * @param buttonNo for the define which button clicked
+     * @param arraySize places the given array's size
+     */
+    private void getButtonAction(int buttonNo, int arraySize){
+        if (buttonNo == 1){
+            ArrayList<String> infoList = null;
             try {
-                String id5 = (String) Database.appointmentOrder().get(finalSize - 15);
-
-                ArrayList<String> infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
-
-                idCarry(infoList5.get(1));
-                loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+                String id1 = (String) Database.appointmentOrder().get(arraySize - 3);
+                infoList = database.Database.patientDetails(Integer.parseInt(id1));
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-        });
+            idCarry(infoList.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 2){
+            ArrayList<String> infoList2 = null;
+            try {
+                String id2 = (String) Database.appointmentOrder().get(arraySize - 6);
+                infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList2.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 3){
+            ArrayList<String> infoList3 = null;
+            try {
+                String id3 = (String) Database.appointmentOrder().get(arraySize - 9);
+                infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList3.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 4){
+            ArrayList<String> infoList4 = null;
+            try {
+                String id4 = (String) Database.appointmentOrder().get(arraySize - 12);
+                infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList4.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 5){
+            ArrayList<String> infoList5 = null;
+            try {
+                String id5 = (String) Database.appointmentOrder().get(arraySize - 15);
+                infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList5.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
     }
 
     private void initializeRecentPatients(){
@@ -602,7 +641,7 @@ public class ReceptionistController extends MasterController implements Initiali
     }
 
     /**
-     *
+     * Defines recent patients in patient board from dashboard
      */
     private void recent1EqualsRecent2(){
         //names
@@ -653,13 +692,5 @@ public class ReceptionistController extends MasterController implements Initiali
         departmentName31.setText(departmentName3.getText());;
         departmentName41.setText(departmentName4.getText());;
         departmentName51.setText(departmentName5.getText());;
-
-        //button names
-        detailsButton11 = detailsButton1;
-        detailsButton21 = detailsButton2;
-        detailsButton31 = detailsButton3;
-        detailsButton41 = detailsButton4;
-        detailsButton51 = detailsButton5;
     }
-
 }
