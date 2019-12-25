@@ -67,7 +67,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#abRHpositiveChoice" text="AB Rh+" />
                   <MenuItem mnemonicParsing="false" onAction="#abRHnegativeChoice" text="AB Rh-" />
                   <MenuItem mnemonicParsing="false" onAction="#zeroRHpositiveChoice" text="0 Rh+" />
-                  <MenuItem mnemonicParsing="false" onAction="#zeroRHnegativeChoice" text="0 Rh+" />
+                  <MenuItem mnemonicParsing="false" onAction="#zeroRHnegativeChoice" text="0 Rh-" />
                </items>
                <HBox.margin>
                   <Insets bottom="4.0" right="10.0" top="4.0" />
