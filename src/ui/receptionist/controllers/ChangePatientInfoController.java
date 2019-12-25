@@ -23,7 +23,10 @@ public class ChangePatientInfoController implements Initializable {
     private Label patientNameLabel,patientId,patientGender,patientBirthdate,bloodType;
 
     @FXML
-    private TextField changeAddress,changeCity,changePatientPhone,changeInsurance,changeEmergencyName,changeEmergencyPhone;
+    private TextField changeAddress,changeCity,changePatientPhone,changeEmergencyName,changeEmergencyPhone;
+
+    @FXML
+    private MenuButton changeInsurance;
 
     @FXML
     private Button saveButton;
@@ -65,7 +68,7 @@ public class ChangePatientInfoController implements Initializable {
      * @throws SQLException
      */
     @FXML
-    private void savePatientInfo(ActionEvent e) throws SQLException {
+    public void savePatientInfo(ActionEvent e) throws SQLException {
         // showing an alert message
         Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure ?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
