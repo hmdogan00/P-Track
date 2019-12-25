@@ -1,4 +1,4 @@
-/**
+/*
  * the class which controls and shows the page for doctors
  */
 package ui.doctor;

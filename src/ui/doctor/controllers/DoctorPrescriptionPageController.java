@@ -1,4 +1,4 @@
-/**
+/*
  * class which controls the prescription page for doctors
  */
 package ui.doctor.controllers;
