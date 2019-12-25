@@ -415,6 +415,7 @@ public class ReceptionistController extends MasterController implements Initiali
         int size = 0;
         try {
             size = Database.appointmentOrder().size();
+            System.out.println(size);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -424,8 +425,8 @@ public class ReceptionistController extends MasterController implements Initiali
             int id1 = 0;
             int idDoctor1 = 0;
             try {
-                id1 = (int) Database.appointmentOrder().get(finalSize - 3);
-                idDoctor1 = (int)Database.appointmentOrder().get(finalSize - 2);
+                id1 = (int) Database.appointmentOrder().get(finalSize);
+                idDoctor1 = (int)Database.appointmentOrder().get(finalSize);
 
                 ArrayList<String> infoList = database.Database.patientDetails(id1);
 
