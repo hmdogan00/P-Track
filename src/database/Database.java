@@ -154,7 +154,7 @@ public class Database {
 
         return patient_info;
     }
-
+//
     //Method for finding doctor key value
     public static int findDoctorKey(String doctor_name) throws SQLException {
         int doctor_key = 0;
