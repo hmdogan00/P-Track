@@ -16,6 +16,11 @@ import java.io.PrintWriter;
 
 public class MasterController {
 
+    /**
+     * Loads the window by given location and title
+     * @param location of the given file
+     * @param title of the stage
+     */
     public void loadWindow(String location, String title){
         try {
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource(location));
@@ -29,6 +34,10 @@ public class MasterController {
         }catch (IOException exception){}
     }
 
+    /**
+     * Takes a string item to print write
+     * @param printItem string that want to carry by text file
+     */
     public void idCarry(String printItem){
         PrintWriter outFile = null;
         File file = new File("outFile.txt");
@@ -46,6 +55,11 @@ public class MasterController {
         outFile.close();
     }
 
+    /**
+     * When pressed logout button loads auth screen
+     * @param e action when pressed button
+     * @throws IOException
+     */
     public void authLoader(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("ui/authentication/authentication.fxml"));
