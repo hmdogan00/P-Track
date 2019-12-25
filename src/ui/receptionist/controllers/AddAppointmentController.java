@@ -29,7 +29,6 @@ public class AddAppointmentController implements Initializable {
     @FXML
     Label patientSurname;
 
-    @FXML
     String patientdbId;
 
     @FXML
@@ -106,11 +105,16 @@ public class AddAppointmentController implements Initializable {
         String minute = minuteButton.getText();
         return hour + ":" + minute;
     }
+
     @FXML public void saveAppointment(ActionEvent e) throws SQLException
     {
         int patientId = Database.findPatientKey( patientdbId );
         System.out.println(patientId);
-        String docName = choiceBox.getValue();
+
+        String fullString = choiceBox.getValue();
+        int index = fullString.indexOf('-');
+        String docName = fullString.substring(0, index - 1);
+        System.out.println(docName);
         int docId = Database.findDoctorKey( docName );
         if ( Database.doctorAvailability( docId ))
         {
@@ -135,6 +139,7 @@ public class AddAppointmentController implements Initializable {
             alert.show();
             }
     }
+
     public void update( ) throws SQLException {
         File file = null;
         Scanner scan = null;
@@ -162,6 +167,7 @@ public class AddAppointmentController implements Initializable {
         patientSurname.setText(lastName);
         patientdbId = infoList.get(1);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
