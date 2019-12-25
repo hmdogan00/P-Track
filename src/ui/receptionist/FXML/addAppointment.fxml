@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,7 +35,7 @@
                     <Font size="16.0" />
                 </font>
             </Text>
-            <TextField fx:id="patientName" prefHeight="25.0" prefWidth="136.0" />
+         <Label fx:id="patientName" prefHeight="27.0" prefWidth="168.0" text="Label" />
         </HBox>
         <HBox prefHeight="48.0" prefWidth="296.0">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctors List" wrappingWidth="126.23828125">
@@ -55,7 +54,7 @@
                     <Font size="16.0" />
                 </font>
             </Text>
-            <TextField fx:id="patientSurname" prefHeight="25.0" prefWidth="136.0" />
+         <Label fx:id="patientSurname" prefHeight="30.0" prefWidth="147.0" text="Label" />
         </HBox>
         <HBox prefHeight="59.0" prefWidth="296.0">
             <HBox prefHeight="59.0" prefWidth="292.0" />

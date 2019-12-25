@@ -1405,8 +1405,8 @@
                             <TableColumn fx:id="colDoctorName" prefWidth="168.0" text="Name" />
                               <TableColumn fx:id="colDoctorDepartment" prefWidth="168.0" text="Department" />
                             <TableColumn fx:id="colDoctorRoom" prefWidth="168.0" text="Room Number" />
-                              <TableColumn prefWidth="168.0" text="Availability" />
-                              <TableColumn prefWidth="134.0" text="Phone Number" />
+                              <TableColumn fx:id="colAvailability" prefWidth="168.0" text="Availability" />
+                              <TableColumn fx:id="colPhoneNo" prefWidth="134.0" text="Phone Number" />
                           </columns>
                         </TableView>
                      </children>
