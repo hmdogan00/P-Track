@@ -235,6 +235,12 @@ public class ReceptionistController extends MasterController implements Initiali
     private TableColumn<DoctorTable,String> colDoctorRoom;
 
     @FXML
+    private TableColumn<DoctorTable, String> colAvailability;
+
+    @FXML
+    private TableColumn<DoctorTable, Integer> colPhoneNo;
+
+    @FXML
     private TextField filterDoctorName;
 
     //variables
@@ -419,15 +425,28 @@ public class ReceptionistController extends MasterController implements Initiali
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
+                int id = rs2.getInt("doctor_id");
+                boolean availability = Database.doctorAvailability(id);
+                String text;
+                if ( availability )
+                {
+                    text = "Available";
+                }
+                else
+                {
+                    text = "Not Available";
+                }
+
                 obList2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number") ));
+                        rs2.getString("room_number"), text ,rs2.getInt("phone_number") ));
             }
         }catch (SQLException ex){}
 
         colDoctorName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colDoctorDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
         colDoctorRoom.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-
+        colAvailability.setCellValueFactory(new PropertyValueFactory<>("text"));
+        colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phone_number"));
         doctorTable.setItems(obList2);
     }
 
@@ -439,8 +458,20 @@ public class ReceptionistController extends MasterController implements Initiali
             ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs2.next()) {
+                int id = rs2.getInt("doctor_id");
+                boolean availability = Database.doctorAvailability(id);
+                String text;
+                if ( availability )
+                {
+                    text = "Available";
+                }
+                else
+                {
+                    text = "Not Available";
+                }
+
                 listFiltered2.add(new DoctorTable(rs2.getString("name"), rs2.getString("department"),
-                        rs2.getString("room_number") ));
+                        rs2.getString("room_number"), text ,rs2.getInt("phone_number") ));
             }
         }catch (SQLException ex){}
 

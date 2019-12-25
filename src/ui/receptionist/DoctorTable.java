@@ -1,12 +1,16 @@
 package ui.receptionist;
 
 public class DoctorTable {
-    String name, department, roomNumber;
+    String name, department, roomNumber, availability;
+    int phoneNo;
 
-    public DoctorTable(String name, String department, String roomNumber){
+    public DoctorTable(String name, String department, String roomNumber, String availability, int phoneNo){
         this.name = name;
         this.department = department;
         this.roomNumber = roomNumber;
+        this.availability = availability;
+        this.phoneNo = phoneNo;
+
     }
 
     public String getName() {
@@ -32,4 +36,22 @@ public class DoctorTable {
     public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+
+    public int getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(int phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+
 }
