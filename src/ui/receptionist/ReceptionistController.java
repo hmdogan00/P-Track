@@ -304,22 +304,7 @@ public class ReceptionistController extends MasterController implements Initiali
                         final Button addAppointmentButton = new Button("Add Appointment");
                         addAppointmentButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
-                            PrintWriter outFile = null;
-                            File file = new File("outFile.txt");
-                            try {
-                                file.createNewFile();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            try {
-
-                                outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {}
-
-                            //write the patient id in a different txt file
-                            outFile.println(p.getId());
-                            System.out.println(outFile);
-                            outFile.close();
+                            idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/addAppointment.fxml", "Add Appointment");
                         });
                         setGraphic(addAppointmentButton);
@@ -345,7 +330,8 @@ public class ReceptionistController extends MasterController implements Initiali
                         final Button addAppointmentButton = new Button("Details");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
-                            patientDetailsButton(p.getId());
+                            idCarry(p.getId());
+                            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
                         });
                         setGraphic(addAppointmentButton);
                     }
@@ -371,25 +357,8 @@ public class ReceptionistController extends MasterController implements Initiali
                         final Button addAppointmentButton = new Button("Change Info");
                         addAppointmentButton.setOnAction(event -> {
                             ModelTable p = getTableView().getItems().get(getIndex());
-                            PrintWriter outFile = null;
-                            File file = new File("outFile.txt");
-                            try {
-                                file.createNewFile();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            try {
-
-                                outFile = new PrintWriter(file);
-                            } catch (FileNotFoundException fileE) {}
-
-                            //write the patient id in a different txt file
-                            outFile.println(p.getId());
-                            System.out.println(outFile);
-                            outFile.close();
+                            idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
-
-
                         });
                         setGraphic(addAppointmentButton);
                         setText(null);
@@ -518,7 +487,7 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.refresh();
     }
 
-    private void patientDetailsButton(String printItem){
+    private void idCarry(String printItem){
         PrintWriter outFile = null;
         File file = new File("outFile.txt");
         try {
@@ -534,7 +503,6 @@ public class ReceptionistController extends MasterController implements Initiali
         outFile.println(printItem);
         System.out.println(outFile);
         outFile.close();
-        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
     }
 
     /*private void recentDetails(){
