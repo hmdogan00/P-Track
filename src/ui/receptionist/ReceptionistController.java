@@ -192,6 +192,7 @@ public class ReceptionistController extends MasterController implements Initiali
         getPatientsData();
 
         //Adding Appointment Button
+
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
@@ -300,6 +301,9 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.setItems(obList);
     }
 
+    /**
+     * Gets filtered patient data from database and adds 3 dynamic table view button
+     */
     private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
@@ -317,7 +321,9 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.setItems(listFiltered);
     }
 
-    //database for doctors
+    /**
+     * Gets doctor data from database and adds 1 dynamic table view button
+     */
     private void getDoctorData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
@@ -347,6 +353,9 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.setItems(obList2);
     }
 
+    /**
+     * Gets filtered doctor data from database and adds 1 dynamic table view button
+     */
     private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
@@ -376,6 +385,11 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.setItems(listFiltered2);
     }
 
+
+    /**
+     * Initialize the screen
+     * @param location, resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources){
         System.out.println("All data is uploaded");
@@ -395,6 +409,10 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.refresh();
     }
 
+    /**
+     * finds patient name from list
+     * @param e
+     */
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterPatientName.getText().equals("")) {
@@ -406,6 +424,10 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.refresh();
     }
 
+    /**
+     * finds doctor name from list
+     * @param e
+     */
     @FXML
     private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
         if (filterDoctorName.getText().equals("")) {
@@ -417,6 +439,10 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.refresh();
     }
 
+    /**
+     * finds doctor name from list
+     * @param e
+     */
     @FXML
     private void recentInDashboard(ActionEvent e){
         /*recent1EqualsRecent2();
@@ -556,6 +582,10 @@ public class ReceptionistController extends MasterController implements Initiali
         });*/
     }
 
+    /**
+     * finds doctor name from list
+     * @param e
+     */
     private void recent1EqualsRecent2(){
         //names
         recentPatientLabel11 = recentPatientLabel1;
