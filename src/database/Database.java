@@ -2,7 +2,7 @@ package database;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Database {
+public class Database{
     private static String userName2;
     public static Connection myConn;
 
@@ -255,7 +255,7 @@ public class Database {
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
      Statement myStmt = myConn.createStatement();
-     String sql = "SELECT * FROM appointment WHERE date = '"+ date() +"' AND time >= '"+ time() +"' ORDER BY date DESC";
+     String sql = "SELECT * FROM appointment WHERE date >= '"+ date() +"' AND time >= '"+ time() +"' ORDER BY date DESC";
      ResultSet rs = myStmt.executeQuery(sql);
 
      while(rs.next()){
