@@ -1,34 +1,22 @@
 package ui.authentication;
 
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
-import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseAdapter;
 import java.io.*;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class AuthController implements Initializable {
+public class AuthController {
     @FXML
-    private Label errorLabel;
-
-    @FXML
-    private Label errorLabel1;
+    private Label errorLabel, errorLabel1;
 
     @FXML
     private Button loginButton;
@@ -37,53 +25,46 @@ public class AuthController implements Initializable {
     private MenuButton roleMenu;
 
     @FXML
-    private MenuItem patientSec;
+    private MenuItem patientSec, doctorSec, receptionistSec;
 
     @FXML
-    private MenuItem doctorSec;
-
-    @FXML
-    private MenuItem receptionistSec;
-
-    @FXML
-    private TextField userName;
+    private TextField userName, citizenshipIDField;
 
     @FXML
     private PasswordField password;
-
-    @FXML
-    private TextField citizenshipIDField;
-
-    @FXML
-    private JFXHamburger settingsHamburger;
 
     //variables
     private int roleChooser = 0;
 
     //constructor
-    public AuthController(){
+    public AuthController(){}
 
-    }
-
+    //methods
     @FXML
-    private void patientChoice(ActionEvent e){
-        roleMenu.setText("Patient");
+    /**
+     * Sets roleChooser 1 to get an action
+     * @param e changes the menu item text when it's selected
+     */
+    private void doctorChoice(ActionEvent e){
+        roleMenu.setText("Doctor");
         roleChooser = 1;
     }
 
     @FXML
-    private void doctorChoice(ActionEvent e){
-        roleMenu.setText("Doctor");
+    /**
+     * Sets roleChooser 2 to get an action
+     * @param e changes the menu item text when it's selected
+     */
+    private void receptionistChoice(ActionEvent e){
+        roleMenu.setText("Receptionist");
         roleChooser = 2;
     }
 
     @FXML
-    private void receptionistChoice(ActionEvent e){
-        roleMenu.setText("Receptionist");
-        roleChooser = 3;
-    }
-
-    @FXML
+    /**
+     * Controls the patient's login button
+     * @param event gives action to a button
+     */
     private void enterPatientButton(ActionEvent event) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         if (roleChooser == 0){
@@ -116,10 +97,15 @@ public class AuthController implements Initializable {
     }
 
     @FXML
+    /**
+     * Controls the hospital staff's login button
+     * @param event gives action to a button
+     */
     private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
 
-        if (roleChooser == 2){
+        //if role is doctor enters doctor
+        if (roleChooser == 1){
             System.out.println("Entered Doctor");
             String loginDoctor = database.Database.doctorAuth(userName.getText(), password.getText());
             if (loginDoctor.equals(userName.getText()))
@@ -131,7 +117,8 @@ public class AuthController implements Initializable {
                 errorLabel.setTextFill(Color.RED);
             }
         }
-        else if (roleChooser == 3){
+        //if role is receptionist enters receptionist
+        else if (roleChooser == 2){
             System.out.println("Entered Receptionist");
             String loginReceptionist = database.Database.registrationAuth(userName.getText(), password.getText());
             if (loginReceptionist.equals(userName.getText()))
@@ -143,11 +130,12 @@ public class AuthController implements Initializable {
                 errorLabel.setTextFill(Color.RED);
             }
         }
+        //role select error
         else{
             errorLabel.setText("Please select a role to log in!");
             errorLabel.setTextFill(Color.RED);
         }
-
+        //page loader
         try {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
@@ -158,16 +146,5 @@ public class AuthController implements Initializable {
         }catch (RuntimeException r){
             System.out.println("Role is not selected!");
         }
-
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        HamburgerBasicCloseTransition transition1 = new HamburgerBasicCloseTransition(settingsHamburger);
-        transition1.setRate(-1);
-        settingsHamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) ->{
-            transition1.setRate(transition1.getRate() * -1);
-            transition1.play();
-        });
     }
 }

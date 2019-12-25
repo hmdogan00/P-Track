@@ -1,26 +1,27 @@
-package ui.authentication;
-
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
-
-
 /**
  *
  * To see beyond authentication ui, username: admin password: 123 role: receptionist.
  * Logout button works.
  * Add Patient button works.
  */
+package ui.authentication;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
+
+
 
 public class Main extends Application {
-
+    /**
+     * starts the application and loads the login page
+     * @param primaryStage the stage which will be shown firstly
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("authentication.fxml"));

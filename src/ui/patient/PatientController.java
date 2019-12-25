@@ -39,46 +39,16 @@ public class PatientController extends MasterController implements Initializable
     private Button patientLogOutButton;
 
     @FXML
-    private Label patientNameLabel;
-
-    @FXML
-    private Label patientID;
-
-    @FXML
-    private Label patientGender;
-
-    @FXML
-    private Label patientBloodType;
+    private Label patientNameLabel, patientID, patientGender, patientBloodType, patientInsurance, patientPhoneNumber, topBarPatientName;
 
     @FXML
     private TextArea patientAddress;
 
     @FXML
-    private Label patientInsurance;
-
-    @FXML
-    private Label patientPhoneNumber;
-
-    @FXML
-    private Label topBarPatientName;
-
-    @FXML
     private TableView<DoctorsTable> appointmentsView;
 
     @FXML
-    private TableColumn<DoctorsTable, String> colDocName;
-
-    @FXML
-    private TableColumn<DoctorsTable, String> colDocDepartment;
-
-    @FXML
-    private TableColumn<DoctorsTable, String> colAppointmentDate;
-
-    @FXML
-    private  TableColumn<DoctorsTable, String> colAppointmentTime;
-
-    @FXML
-    private TableColumn<DoctorsTable, String> colDocRoom;
+    private TableColumn<DoctorsTable, String> colDocName, colDocDepartment, colAppointmentDate, colAppointmentTime, colDocRoom;
 
     /**
      * a constructor creates new patient controller class
@@ -92,7 +62,7 @@ public class PatientController extends MasterController implements Initializable
      */
     @FXML
     private void patientLogOut(ActionEvent a) throws IOException {
-        // controling the method
+        //controlling the method
         System.out.println("Logged out from Patient panel!");
 
         //back to auth scene
@@ -112,12 +82,14 @@ public class PatientController extends MasterController implements Initializable
      * @throws SQLException
      */
     private void getDoctorData() throws SQLException {
+        //takes appointment data to table view
         int patientId = Database.findPatientKey(Database.getUserName());
         ObservableList<DoctorsTable> obList3 = FXCollections.observableArrayList();
         try {
             Connection con = Database.connection();
             ResultSet rs = con.createStatement().executeQuery("SELECT patient.`patient_id` , doctor.`name`, doctor.`department`, appointment.`date`, appointment.`time`, doctor.`room_number` FROM patient, doctor, appointment WHERE appointment.`patient_id` = patient.`patient_id` AND appointment.`doctor_id` = doctor.`doctor_id` AND patient.`patient_id` = '"+ patientId  +"' ORDER BY `date` DESC");
 
+            //adds columns to a list
             while (rs.next()) {
                 obList3.add(new DoctorsTable(rs.getString("name"), rs.getString("department"),
                         rs.getString("date"), rs.getString("time"), rs.getString("room_number")));
@@ -138,13 +110,13 @@ public class PatientController extends MasterController implements Initializable
      * @throws SQLException
      */
     private void update() throws SQLException{
-        // finding patient key
+        // finds patient key
         int patientKey = database.Database.findPatientKey(Database.getUserName());
 
-        // adding the details of patient to a string infoList
+        // adds the details of patient to a string infoList
         ArrayList<String> infoList = database.Database.patientDetails(patientKey);
 
-        // setting these details to labels
+        // sets these details to labels
         topBarPatientName.setText(infoList.get(0));
         patientNameLabel.setText(infoList.get(0));
         patientID.setText(infoList.get(1));
@@ -156,7 +128,7 @@ public class PatientController extends MasterController implements Initializable
     }
 
     /**
-     *
+     * Puts all data in table view when the screen opened
      * @param location
      * @param resources
      */

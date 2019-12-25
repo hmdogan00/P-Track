@@ -48,13 +48,13 @@
     </VBox>
     <VBox layoutX="304.0" layoutY="79.0" prefHeight="219.0" prefWidth="296.0">
         <AnchorPane prefHeight="36.0" prefWidth="296.0" />
-        <HBox prefHeight="76.0" prefWidth="296.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Surname" textAlignment="CENTER" wrappingWidth="141.375">
+        <HBox prefHeight="71.0" prefWidth="296.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Surname" textAlignment="CENTER" wrappingWidth="169.375">
                 <font>
                     <Font size="16.0" />
                 </font>
             </Text>
-         <Label fx:id="patientSurname" prefHeight="30.0" prefWidth="147.0" text="Label" />
+         <Label fx:id="patientSurname" prefHeight="20.0" prefWidth="157.0" text="Label" />
         </HBox>
         <HBox prefHeight="59.0" prefWidth="296.0">
             <HBox prefHeight="59.0" prefWidth="292.0" />
