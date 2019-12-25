@@ -38,7 +38,7 @@
          <Label fx:id="patientName" prefHeight="27.0" prefWidth="168.0" text="Label" />
         </HBox>
         <HBox prefHeight="48.0" prefWidth="296.0">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctors List" wrappingWidth="126.23828125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   Doctors' List" wrappingWidth="126.23828125">
                 <font>
                     <Font size="16.0" />
                 </font>
