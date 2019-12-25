@@ -316,7 +316,6 @@ public class Database {
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
             String docTime = rs.getString("time");
-            System.out.println(docTime);
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
             int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
 
