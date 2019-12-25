@@ -507,7 +507,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" onAction="#recentDetails1" prefHeight="106.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton1" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="106.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -1294,7 +1294,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="99.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton11" mnemonicParsing="false" prefHeight="99.0" prefWidth="209.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor>
