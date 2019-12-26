@@ -178,9 +178,9 @@ public class AddPatientController {
 
         // if user presses button yes save the patient to database
         if (alert.getResult() == ButtonType.YES) {
-            database.Database.addPatient(addName.getText() + " " + addSurname.getText(),Integer.parseInt(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ dateValue(),
-                    addAddress.getText() + " " + addCity.getText(),Integer.parseInt(addPatientPhonenumber.getText()),
-                    insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), Integer.parseInt(addEmergencyNo.getText()));
+            database.Database.addPatient(addName.getText() + " " + addSurname.getText(),Long.parseLong(addID.getText()),sexMenu.getText(),bloodTypeMenu.getText(),""+ dateValue(),
+                    addAddress.getText() + " " + addCity.getText(),addPatientPhonenumber.getText(),
+                    insuranceMenu.getText(),addEmergencyName.getText() + " " + addEmergencySurname.getText(), addEmergencyNo.getText());
             Stage stage = (Stage) savingButton.getScene().getWindow();
             stage.close();
         }

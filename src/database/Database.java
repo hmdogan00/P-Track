@@ -46,8 +46,8 @@ public class Database{
      * @param emergency_number phone number of the emergency contact of the patient.
      * @throws SQLException in case of an error in sql database.
      */
-    public static void addPatient(String name, int Id, String sex, String blood_type, String birth_date, String address,
-                                  int phoneNumber, String insurance, String emergency_name, int emergency_number) throws SQLException {
+    public static void addPatient(String name, long Id, String sex, String blood_type, String birth_date, String address,
+                                  String phoneNumber, String insurance, String emergency_name, String emergency_number) throws SQLException {
         String sql = "INSERT INTO patient(name,birth_date,citizenship_id,insurance,gender,blood_type,emergency_name,emergency_number,patient_address,patient_phoneNumber) VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement myStmt = myConn.prepareStatement(sql);
         myStmt.setString(1, name);
