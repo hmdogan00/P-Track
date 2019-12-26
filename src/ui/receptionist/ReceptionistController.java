@@ -1,7 +1,5 @@
 package ui.receptionist;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +9,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import database.Database;
 import javafx.util.Callback;
-import javafx.util.Duration;
 import ui.MasterController;
 
 import java.io.IOException;
@@ -20,11 +17,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javax.swing.Timer;
 
 public class ReceptionistController extends MasterController implements Initializable {
     //Dashboard
@@ -123,24 +117,19 @@ public class ReceptionistController extends MasterController implements Initiali
     @FXML
     private TextField filterPatientName;
 
-    //Patient Table View Variables
+    //Doctor Table View Variables
     @FXML
     private TableView<DoctorTable> doctorTable;
 
     @FXML
-    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom;
-
-    @FXML
-    private TableColumn<DoctorTable, String> colAvailability;
-
-    @FXML
-    private TableColumn<DoctorTable, Integer> colPhoneNo;
+    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom, colCheckApp, colAvailability, colPhoneNo;
 
     @FXML
     private TextField filterDoctorName;
 
     //variables
-    ModelTable p;
+    private ModelTable p;
+    private DoctorTable d;
 
     /**
      * Default constructor
@@ -156,17 +145,6 @@ public class ReceptionistController extends MasterController implements Initiali
     private void openAddPatient(ActionEvent e) throws IOException{
         System.out.println("Add patient opened!");
         loadWindow("ui/receptionist/FXML/addPatientScene.fxml", "Add New Patient");
-    }
-
-    /**
-     * Open patient details fxml file
-     * @param e takes button as an action
-     * @throws IOException
-     */
-    @FXML
-    private void openPatientDetails(ActionEvent e) throws IOException{
-        System.out.println("Patient details opened!");
-        loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
     }
 
     /**
@@ -189,7 +167,6 @@ public class ReceptionistController extends MasterController implements Initiali
         getPatientsData();
 
         //Adding Appointment Button
-
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
@@ -228,13 +205,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setGraphic(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Details");
-                        addAppointmentButton.setOnAction(event -> {
+                        final Button patientDetailsButton = new Button("Details");
+                        patientDetailsButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(patientDetailsButton);
                     }
                     setText(null);
                 }
@@ -256,13 +233,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setText(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Change Info");
-                        addAppointmentButton.setOnAction(event -> {
+                        final Button changePatientInfoButton = new Button("Change Info");
+                        changePatientInfoButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(changePatientInfoButton);
                         setText(null);
                     }
                 }
@@ -305,9 +282,8 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
-            Connection con = Database.myConn;
             String nameFilter = filterPatientName.getText();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
+            ResultSet rs = myConn.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs.next()) {
                 listFiltered.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
@@ -324,11 +300,46 @@ public class ReceptionistController extends MasterController implements Initiali
      * Gets doctor data from database and adds 1 dynamic table view button
      */
     private void getDoctorData(){
+        getDoctorsData();
+
+        //Check Appointment Button
+        Callback<TableColumn<DoctorTable, String>,TableCell<DoctorTable, String>> cellFactory3 = (param) -> {
+            //make table cell with button
+            final TableCell<DoctorTable, String> cell3 = new TableCell<DoctorTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button currentAppointmentButton = new Button("Current Appointments");
+                        currentAppointmentButton.setOnAction(event -> {
+                            d = getTableView().getItems().get(getIndex());
+                            idCarry(d.getName());
+                            loadWindow("ui/receptionist/FXML/doctorAppointments.fxml", "Current Appointments");
+                            System.out.println("aaaaaliii");
+                        });
+                        setGraphic(currentAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell3;
+        };
+        //add button to the table
+        colCheckApp.setCellFactory(cellFactory3);
+    }
+
+    /**
+     * Gets the all data of the hospital doctors
+     */
+    private void getDoctorsData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
         try {
-            Connection con = Database.myConn;
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
+            ResultSet rs2 = myConn.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
                 int id = rs2.getInt("doctor_id");
@@ -359,9 +370,8 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
-            Connection con = Database.myConn;
             String nameFilter = filterDoctorName.getText();
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
+            ResultSet rs2 = myConn.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs2.next()) {
                 //sets availability of doctor
@@ -393,13 +403,12 @@ public class ReceptionistController extends MasterController implements Initiali
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        System.out.println("All data is uploaded");
-
         //loads the patient and doctor data to table
         getPatientData();
         getDoctorData();
         initializeRecentPatients();
         recent1EqualsRecent2();
+        System.out.println("All data is uploaded");
         try {
             timeLabel.setText(Database.time());
             dateLabel.setText(Database.date());
@@ -411,19 +420,6 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.refresh();
         doctorTable.refresh();
     }
-
-    /*private void refreshPage(){
-        long endtime;
-        DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        final Timeline timeline = new Timeline(){
-            new KeyFrame(
-                    Duration.millis(500), event ->{
-                        final long diff =
-            }
-            )
-        }
-
-    }*/
 
     /**
      * finds patient name from list
@@ -472,45 +468,51 @@ public class ReceptionistController extends MasterController implements Initiali
         }
 
         int finalSize = size;
-        detailsButton1.setOnAction(event ->{
-            getButtonAction(1, finalSize);
-        });
+        if (finalSize >= 3) {
+            detailsButton1.setOnAction(event -> {
+                getButtonAction(1, finalSize);
+            });
 
-        detailsButton11.setOnAction(event -> {
-            getButtonAction(1, finalSize);
-        });
+            detailsButton11.setOnAction(event -> {
+                getButtonAction(1, finalSize);
+            });
+        }
+        if (finalSize >= 6) {
+            detailsButton2.setOnAction(event -> {
+                getButtonAction(2, finalSize);
+            });
 
-        detailsButton2.setOnAction(event ->{
-            getButtonAction(2, finalSize);
-        });
+            detailsButton21.setOnAction(event -> {
+                getButtonAction(2, finalSize);
+            });
+        }
+        if (finalSize >= 9) {
+            detailsButton3.setOnAction(event -> {
+                getButtonAction(3, finalSize);
+            });
 
-        detailsButton21.setOnAction(event -> {
-            getButtonAction(2, finalSize);
-        });
+            detailsButton31.setOnAction(event -> {
+                getButtonAction(3, finalSize);
+            });
+        }
+        if (finalSize >= 12) {
+            detailsButton4.setOnAction(event -> {
+                getButtonAction(4, finalSize);
+            });
 
-        detailsButton3.setOnAction(event ->{
-            getButtonAction(3, finalSize);
-        });
+            detailsButton41.setOnAction(event -> {
+                getButtonAction(4, finalSize);
+            });
+        }
+        if (finalSize >= 15) {
+            detailsButton5.setOnAction(event -> {
+                getButtonAction(5, finalSize);
+            });
 
-        detailsButton31.setOnAction(event -> {
-            getButtonAction(3, finalSize);
-        });
-
-        detailsButton4.setOnAction(event ->{
-            getButtonAction(4, finalSize);
-        });
-
-        detailsButton41.setOnAction(event -> {
-            getButtonAction(4, finalSize);
-        });
-
-        detailsButton5.setOnAction(event ->{
-            getButtonAction(5, finalSize);
-        });
-
-        detailsButton51.setOnAction(event -> {
-            getButtonAction(5, finalSize);
-        });
+            detailsButton51.setOnAction(event -> {
+                getButtonAction(5, finalSize);
+            });
+        }
     }
 
     /**

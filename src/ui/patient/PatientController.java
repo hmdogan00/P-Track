@@ -78,8 +78,7 @@ public class PatientController extends MasterController implements Initializable
         int patientId = Database.findPatientKey(Database.getUserName());
         ObservableList<DoctorsTable> obList3 = FXCollections.observableArrayList();
         try {
-            Connection con = Database.myConn;
-            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`patient_id` , doctor.`name`, doctor.`department`, appointment.`date`, appointment.`time`, doctor.`room_number` FROM patient, doctor, appointment WHERE appointment.`patient_id` = patient.`patient_id` AND appointment.`doctor_id` = doctor.`doctor_id` AND patient.`patient_id` = '"+ patientId  +"' ORDER BY `date` DESC");
+            ResultSet rs = myConn.createStatement().executeQuery("SELECT patient.`patient_id` , doctor.`name`, doctor.`department`, appointment.`date`, appointment.`time`, doctor.`room_number` FROM patient, doctor, appointment WHERE appointment.`patient_id` = patient.`patient_id` AND appointment.`doctor_id` = doctor.`doctor_id` AND patient.`patient_id` = '"+ patientId  +"' ORDER BY `date` DESC");
 
             //adds columns to a list
             while (rs.next()) {
