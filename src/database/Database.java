@@ -255,7 +255,7 @@ public class Database{
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
      Statement myStmt = myConn.createStatement();
-     String sql = "SELECT * FROM appointment";
+     String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >= '" + time() + "' ORDER BY  time DESC";
      ResultSet rs = myStmt.executeQuery(sql);
 
      while(rs.next()){
@@ -386,7 +386,7 @@ public class Database{
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
             int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
 
-            if(rs.getString("date").equals(date()) && (rs.getString("time").equals(time())) || timeValue + 15 > currentTime ){
+            if((rs.getString("time").equals(time())) || timeValue + 15 > currentTime ){
                 flag = false;
             }
         }
