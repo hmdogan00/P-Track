@@ -1,5 +1,6 @@
 package ui;
 
+import database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MasterController {
+public class MasterController extends Database {
 
     /**
      * Loads the window by given location and title

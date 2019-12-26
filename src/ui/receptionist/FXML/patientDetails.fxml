@@ -26,75 +26,141 @@
       </ToolBar>
       <HBox maxWidth="-Infinity" prefHeight="39.0" prefWidth="780.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="113.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="115.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedNameLabel" prefHeight="40.0" prefWidth="104.0" text="Label">
+            <Label fx:id="detailedNameLabel" prefHeight="36.0" prefWidth="206.0" text="Label">
                <HBox.margin>
-                  <Insets />
+                  <Insets top="4.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Region prefHeight="37.0" prefWidth="83.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID No:" wrappingWidth="54.50390625">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedIDLabel" prefHeight="37.0" prefWidth="126.0" text="Label" />
-            <Region prefHeight="37.0" prefWidth="7.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="61.767578125">
+            <Label fx:id="detailedIDLabel" prefHeight="36.0" prefWidth="155.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
+                  <Insets top="4.0" />
+               </HBox.margin></Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" wrappingWidth="65.0">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedGenderLabel" prefHeight="39.0" prefWidth="140.0" text="Label" />
+            <Label fx:id="detailedGenderLabel" prefHeight="36.0" prefWidth="76.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="4.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox maxWidth="-Infinity" prefHeight="46.0" prefWidth="750.0" VBox.vgrow="ALWAYS">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate:" wrappingWidth="65.328125">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birthdate:" wrappingWidth="115.0">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedBirthDateLabel" prefHeight="39.0" prefWidth="111.0" text="Label" />
-            <Region prefHeight="40.0" prefWidth="122.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:" wrappingWidth="77.783203125">
+            <Label fx:id="detailedBirthDateLabel" prefHeight="38.0" prefWidth="202.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
+               </HBox.margin></Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Type:" wrappingWidth="85.0">
+               <HBox.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedBloodTypeLabel" prefHeight="39.0" prefWidth="82.0" text="Label" />
+            <Label fx:id="detailedBloodTypeLabel" prefHeight="39.0" prefWidth="82.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox maxWidth="-Infinity" prefHeight="47.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address/City:" wrappingWidth="98.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address/City:" wrappingWidth="115.0">
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedAddressLabel" prefHeight="40.0" prefWidth="224.0" text="Label" />
+            <Label fx:id="detailedAddressLabel" prefHeight="40.0" prefWidth="606.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin></Label>
             <Region prefHeight="41.0" prefWidth="0.0" />
          </children>
       </HBox>
       <HBox maxWidth="-Infinity" prefHeight="50.0" prefWidth="750.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="70.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="115.0">
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedPhoneNumber" prefHeight="39.0" prefWidth="230.0" text="Label" />
+            <Label fx:id="detailedPhoneNumber" prefHeight="39.0" prefWidth="207.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin></Label>
             <Region prefHeight="45.0" prefWidth="0.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="76.13671875">
                <HBox.margin>
-                  <Insets bottom="6.0" left="6.0" right="10.0" top="10.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Text>
-            <Label fx:id="detailedInsurance" prefHeight="39.0" prefWidth="304.0" text="Label" />
+            <Label fx:id="detailedInsurance" prefHeight="39.0" prefWidth="304.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <VBox prefHeight="161.0" prefWidth="750.0">
@@ -109,28 +175,40 @@
                   </Text>
                </items>
             </ToolBar>
-            <HBox prefHeight="55.0" prefWidth="750.0">
+            <HBox prefHeight="48.0" prefWidth="750.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="113.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name/Surname:" wrappingWidth="115.0">
                      <HBox.margin>
-                        <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="15.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="detailedEmergencyContactName" layoutX="10.0" layoutY="20.0" prefHeight="31.0" prefWidth="252.0" text="Label">
+                  <Label fx:id="detailedEmergencyContactName" layoutX="10.0" layoutY="20.0" prefHeight="31.0" prefWidth="528.0" text="Label">
                      <HBox.margin>
-                        <Insets top="3.0" />
-                     </HBox.margin></Label>
+                        <Insets bottom="8.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
                </children>
             </HBox>
             <HBox prefHeight="1.0" prefWidth="750.0" />
             <HBox prefHeight="31.0" prefWidth="750.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="70.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone No:" wrappingWidth="115.0">
                      <HBox.margin>
                         <Insets bottom="6.0" left="6.0" right="6.0" top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
-                  <Label fx:id="detailedEmergencyContactPhoneNumber" prefHeight="40.0" prefWidth="159.0" text="Label" />
+                  <Label fx:id="detailedEmergencyContactPhoneNumber" prefHeight="34.0" prefWidth="256.0" text="Label">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
                </children>
             </HBox>
             <Separator prefHeight="0.0" prefWidth="750.0" />

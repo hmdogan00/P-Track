@@ -2,18 +2,16 @@
  * this class controls and shows add patient scene for receptionist
  */
 package ui.receptionist.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.sql.SQLException;
 
 public class AddPatientController {
-
-    private ImageView photoView; //fotograf için
     @FXML
     private TextField addName,addID,addSurname,addAddress,addCity,addPatientPhonenumber,addEmergencyName,addEmergencySurname,addEmergencyNo;
 
@@ -27,7 +25,6 @@ public class AddPatientController {
     private MenuButton sexMenu,bloodTypeMenu,insuranceMenu;
 
     //variables
-    private String photoFile; //fotograf için
 
     /**
      * a constructor creates add Patient controller class
@@ -184,23 +181,4 @@ public class AddPatientController {
             stage.close();
         }
     }
-
-
-
-    /*@FXML
-    private void choosePictureFile(ActionEvent e) throws MalformedURLException {
-        FileChooser pictureChooser = new FileChooser();
-        pictureChooser.setTitle("Choose patient's picture!");
-        pictureChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files",
-                        "*.png", "*.jpg"));
-        File file = pictureChooser.showOpenDialog(new Stage());
-
-        if (file != null){
-            photoFile = file.toURI().toURL().toString();
-            Image image = new Image(photoFile);
-            photoView.setImage(image);
-        }
-    }
-}*/
 }

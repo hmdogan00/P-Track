@@ -1,33 +1,30 @@
 package ui.receptionist;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import database.Database;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import ui.MasterController;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javax.swing.Timer;
 
 public class ReceptionistController extends MasterController implements Initializable {
     //Dashboard
@@ -126,24 +123,19 @@ public class ReceptionistController extends MasterController implements Initiali
     @FXML
     private TextField filterPatientName;
 
-    //Patient Table View Variables
+    //Doctor Table View Variables
     @FXML
     private TableView<DoctorTable> doctorTable;
 
     @FXML
-    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom;
-
-    @FXML
-    private TableColumn<DoctorTable, String> colAvailability;
-
-    @FXML
-    private TableColumn<DoctorTable, Integer> colPhoneNo;
+    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom, colCheckApp, colAvailability, colPhoneNo;
 
     @FXML
     private TextField filterDoctorName;
 
     //variables
-    ModelTable p;
+    private ModelTable p;
+    private DoctorTable d;
 
     /**
      * Default constructor
@@ -192,7 +184,6 @@ public class ReceptionistController extends MasterController implements Initiali
         getPatientsData();
 
         //Adding Appointment Button
-
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
@@ -231,13 +222,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setGraphic(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Details");
-                        addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                        final Button patientDetailsButton = new Button("Details");
+                        patientDetailsButton.setOnAction(event -> {
+                            p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(patientDetailsButton);
                     }
                     setText(null);
                 }
@@ -259,13 +250,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setText(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Change Info");
-                        addAppointmentButton.setOnAction(event -> {
-                            ModelTable p = getTableView().getItems().get(getIndex());
+                        final Button changePatientInfoButton = new Button("Change Info");
+                        changePatientInfoButton.setOnAction(event -> {
+                            p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(changePatientInfoButton);
                         setText(null);
                     }
                 }
@@ -299,6 +290,7 @@ public class ReceptionistController extends MasterController implements Initiali
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
         patientTable.setItems(obList);
+        patientTable.refresh();
     }
 
     /**
@@ -307,9 +299,8 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredPatientData(){
         ObservableList<ModelTable> listFiltered = FXCollections.observableArrayList();
         try{
-            Connection con = Database.myConn;
             String nameFilter = filterPatientName.getText();
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
+            ResultSet rs = myConn.createStatement().executeQuery("SELECT * FROM patient WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs.next()) {
                 listFiltered.add(new ModelTable(rs.getString("name"), rs.getString("birth_date"),
@@ -319,17 +310,50 @@ public class ReceptionistController extends MasterController implements Initiali
         }catch (SQLException ex){}
 
         patientTable.setItems(listFiltered);
+        patientTable.refresh();
     }
 
     /**
      * Gets doctor data from database and adds 1 dynamic table view button
      */
     private void getDoctorData(){
+        getDoctorsData();
+
+        //Check Appointment Button
+        Callback<TableColumn<DoctorTable, String>,TableCell<DoctorTable, String>> cellFactory3 = (param) -> {
+            //make table cell with button
+            final TableCell<DoctorTable, String> cell3 = new TableCell<DoctorTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button currentAppointmentButton = new Button("Current Appointments");
+                        currentAppointmentButton.setOnAction(event -> {
+                            d = getTableView().getItems().get(getIndex());
+                            idCarry(d.getName());
+                            loadWindow("ui/receptionist/FXML/doctorAppointments.fxml", "Current Appointments");
+                            System.out.println("aaaaaliii");
+                        });
+                        setGraphic(currentAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell3;
+        };
+        //add button to the table
+        colCheckApp.setCellFactory(cellFactory3);
+    }
+
+    private void getDoctorsData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
         try {
-            Connection con = Database.myConn;
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
+            ResultSet rs2 = myConn.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
                 int id = rs2.getInt("doctor_id");
@@ -351,6 +375,7 @@ public class ReceptionistController extends MasterController implements Initiali
         colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
         doctorTable.setItems(obList2);
+        doctorTable.refresh();
     }
 
     /**
@@ -359,9 +384,8 @@ public class ReceptionistController extends MasterController implements Initiali
     private void getFilteredDoctorData(){
         ObservableList<DoctorTable> listFiltered2 = FXCollections.observableArrayList();
         try{
-            Connection con = Database.myConn;
             String nameFilter = filterDoctorName.getText();
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
+            ResultSet rs2 = myConn.createStatement().executeQuery("SELECT * FROM doctor WHERE name LIKE '%" + nameFilter + "%' ");
 
             while (rs2.next()) {
                 //sets availability of doctor
@@ -383,6 +407,7 @@ public class ReceptionistController extends MasterController implements Initiali
         }catch (SQLException ex){}
 
         doctorTable.setItems(listFiltered2);
+        doctorTable.refresh();
     }
 
 
@@ -392,11 +417,12 @@ public class ReceptionistController extends MasterController implements Initiali
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        System.out.println("All data is uploaded");
-
         //loads the patient and doctor data to table
         getPatientData();
         getDoctorData();
+        initializeRecentPatients();
+        recent1EqualsRecent2();
+        System.out.println("All data is uploaded");
         try {
             timeLabel.setText(Database.time());
             dateLabel.setText(Database.date());
@@ -409,9 +435,22 @@ public class ReceptionistController extends MasterController implements Initiali
         doctorTable.refresh();
     }
 
+    /*private void refreshPage(){
+        long endtime;
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        final Timeline timeline = new Timeline(){
+            new KeyFrame(
+                    Duration.millis(500), event ->{
+                        final long diff =
+            }
+            )
+        }
+
+    }*/
+
     /**
      * finds patient name from list
-     * @param e
+     * @param e takes button as an action
      */
     @FXML
     private void findPatientNameFromList(ActionEvent e) throws InvocationTargetException {
@@ -426,7 +465,7 @@ public class ReceptionistController extends MasterController implements Initiali
 
     /**
      * finds doctor name from list
-     * @param e
+     * @param e takes button as an action
      */
     @FXML
     private void findDoctorNameFromList(ActionEvent e) throws InvocationTargetException {
@@ -440,12 +479,12 @@ public class ReceptionistController extends MasterController implements Initiali
     }
 
     /**
-     * finds doctor name from list
-     * @param e
+     * Opens details pages for recent patients from detail button
+     * @param e takes button as an action
      */
     @FXML
     private void recentInDashboard(ActionEvent e){
-        /*recent1EqualsRecent2();
+        recent1EqualsRecent2();
 
         int size = 0;
         try {
@@ -457,191 +496,247 @@ public class ReceptionistController extends MasterController implements Initiali
 
         int finalSize = size;
         detailsButton1.setOnAction(event ->{
-            int id1 = 0;
-            int idDoctor1 = 0;
-            try {
-                id1 = (int) Database.appointmentOrder().get(finalSize);
-                idDoctor1 = (int)Database.appointmentOrder().get(finalSize);
+            getButtonAction(1, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(id1);
-
-                //set recent patient's labels
-                recentPatientLabel1.setText(infoList.get(0));
-                idNoLabel1.setText(infoList.get(1));
-                phoneNumberLabel1.setText(infoList.get(7));
-                passedTimeLabel1.setText(infoList.get(0));
-                passedDateLabel1.setText(infoList.get(0));
-                doctorName1.setText(infoList.get(0));
-                departmentName1.setText(infoList.get(0));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            String newId1 = "" + id1;
-            idCarry(newId1);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        detailsButton11.setOnAction(event -> {
+            getButtonAction(1, finalSize);
         });
 
         detailsButton2.setOnAction(event ->{
-            int id2 = 0;
-            int idDoctor2 = 0;
-            try {
-                id2 = (int) Database.appointmentOrder().get(finalSize - 6);
-                idDoctor2 = (int)Database.appointmentOrder().get(finalSize - 5);
+            getButtonAction(2, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(id2);
-
-                //set recent patient's labels
-                recentPatientLabel2.setText(infoList.get(0));
-                idNoLabel2.setText(infoList.get(1));
-                phoneNumberLabel2.setText(infoList.get(7));
-                passedTimeLabel2.setText(infoList.get(0));
-                passedDateLabel2.setText(infoList.get(0));
-                doctorName2.setText(infoList.get(0));
-                departmentName2.setText(infoList.get(0));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            String newId2 = "" + id2;
-            idCarry(newId2);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        detailsButton21.setOnAction(event -> {
+            getButtonAction(2, finalSize);
         });
 
         detailsButton3.setOnAction(event ->{
-            int id3 = 0;
-            int idDoctor3 = 0;
-            try {
-                id3 = (int) Database.appointmentOrder().get(finalSize - 9);
-                idDoctor3 = (int)Database.appointmentOrder().get(finalSize - 8);
+            getButtonAction(3, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(id3);
-
-                //set recent patient's labels
-                recentPatientLabel3.setText(infoList.get(0));
-                idNoLabel3.setText(infoList.get(1));
-                phoneNumberLabel3.setText(infoList.get(7));
-                passedTimeLabel3.setText(infoList.get(0));
-                passedDateLabel3.setText(infoList.get(0));
-                doctorName3.setText(infoList.get(0));
-                departmentName3.setText(infoList.get(0));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            String newId3 = "" + id3;
-            idCarry(newId3);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        detailsButton31.setOnAction(event -> {
+            getButtonAction(3, finalSize);
         });
 
         detailsButton4.setOnAction(event ->{
-            int id4 = 0;
-            int idDoctor4 = 0;
-            try {
-                id4 = (int) Database.appointmentOrder().get(finalSize - 12);
-                idDoctor4 = (int)Database.appointmentOrder().get(finalSize - 11);
+            getButtonAction(4, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(id4);
-
-                //set recent patient's labels
-                recentPatientLabel4.setText(infoList.get(0));
-                idNoLabel4.setText(infoList.get(1));
-                phoneNumberLabel4.setText(infoList.get(7));
-                passedTimeLabel4.setText(infoList.get(0));
-                passedDateLabel4.setText(infoList.get(0));
-                doctorName4.setText(infoList.get(0));
-                departmentName4.setText(infoList.get(0));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            String newId4 = "" + id4;
-            idCarry(newId4);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        detailsButton41.setOnAction(event -> {
+            getButtonAction(4, finalSize);
         });
 
         detailsButton5.setOnAction(event ->{
-            int id5 = 0;
-            int idDoctor5 = 0;
-            try {
-                id5 = (int) Database.appointmentOrder().get(finalSize - 15);
-                idDoctor5 = (int)Database.appointmentOrder().get(finalSize - 14);
+            getButtonAction(5, finalSize);
+        });
 
-                ArrayList<String> infoList = database.Database.patientDetails(id5);
-
-                //set recent patient's labels
-                recentPatientLabel5.setText(infoList.get(0));
-                idNoLabel5.setText(infoList.get(1));
-                phoneNumberLabel5.setText(infoList.get(7));
-                passedTimeLabel5.setText(infoList.get(0));
-                passedDateLabel5.setText(infoList.get(0));
-                doctorName5.setText(infoList.get(0));
-                departmentName5.setText(infoList.get(0));
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-            String newId5 = "" + id5;
-            idCarry(newId5);
-            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
-        });*/
+        detailsButton51.setOnAction(event -> {
+            getButtonAction(5, finalSize);
+        });
     }
 
     /**
-     * finds doctor name from list
-     * @param e
+     * From button no it takes different patient's details
+     * @param buttonNo for the define which button clicked
+     * @param arraySize places the given array's size
+     */
+    private void getButtonAction(int buttonNo, int arraySize){
+        if (buttonNo == 1){
+            ArrayList<String> infoList = null;
+            try {
+                String id1 = (String) Database.appointmentOrder().get(arraySize - 3);
+                infoList = database.Database.patientDetails(Integer.parseInt(id1));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 2){
+            ArrayList<String> infoList2 = null;
+            try {
+                String id2 = (String) Database.appointmentOrder().get(arraySize - 6);
+                infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList2.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 3){
+            ArrayList<String> infoList3 = null;
+            try {
+                String id3 = (String) Database.appointmentOrder().get(arraySize - 9);
+                infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList3.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 4){
+            ArrayList<String> infoList4 = null;
+            try {
+                String id4 = (String) Database.appointmentOrder().get(arraySize - 12);
+                infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList4.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+        else if (buttonNo == 5){
+            ArrayList<String> infoList5 = null;
+            try {
+                String id5 = (String) Database.appointmentOrder().get(arraySize - 15);
+                infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            idCarry(infoList5.get(1));
+            loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
+        }
+    }
+
+    /**
+     * Initializes all recent patient data
+     */
+    private void initializeRecentPatients(){
+        int size = 0;
+        try {
+            size = Database.appointmentOrder().size();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            if (size >= 3) {
+                //initialize recent patient1
+                String id1 = (String) Database.appointmentOrder().get(size - 3);
+                String idDoctor1 = (String) Database.appointmentOrder().get(size - 2);
+                passedTimeLabel1.setText((String) Database.appointmentOrder().get(size - 1));
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
+                ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor1));
+
+                recentPatientLabel1.setText(infoList.get(0));
+                idNoLabel1.setText(infoList.get(1));
+                phoneNumberLabel1.setText(infoList.get(7));
+                doctorName1.setText(doctorList.get(0));
+                departmentName1.setText(doctorList.get(1));
+            }
+            if (size >= 6) {
+                //initialize recent patient2
+                String id2 = (String) Database.appointmentOrder().get(size - 6);
+                String idDoctor2 = (String) Database.appointmentOrder().get(size - 5);
+                passedTimeLabel2.setText((String) Database.appointmentOrder().get(size - 4));
+                ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
+                ArrayList<String> doctorList2 = database.Database.doctorDetails(Integer.parseInt(idDoctor2));
+
+                recentPatientLabel2.setText(infoList2.get(0));
+                idNoLabel2.setText(infoList2.get(1));
+                phoneNumberLabel2.setText(infoList2.get(7));
+                doctorName2.setText(doctorList2.get(0));
+                departmentName2.setText(doctorList2.get(1));
+            }
+            if (size >= 9) {
+                //initialize recent patient3
+                String id3 = (String) Database.appointmentOrder().get(size - 9);
+                String idDoctor3 = (String) Database.appointmentOrder().get(size - 8);
+                passedTimeLabel3.setText((String) Database.appointmentOrder().get(size - 7));
+                ArrayList<String> infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
+                ArrayList<String> doctorList3 = database.Database.doctorDetails(Integer.parseInt(idDoctor3));
+
+                recentPatientLabel3.setText(infoList3.get(0));
+                idNoLabel3.setText(infoList3.get(1));
+                phoneNumberLabel3.setText(infoList3.get(7));
+                doctorName3.setText(doctorList3.get(0));
+                departmentName3.setText(doctorList3.get(1));
+            }
+            if (size >= 12) {
+                //initialize recent patient4
+                String id4 = (String) Database.appointmentOrder().get(size - 12);
+                String idDoctor4 = (String) Database.appointmentOrder().get(size - 11);
+                passedTimeLabel4.setText((String) Database.appointmentOrder().get(size - 10));
+                ArrayList<String> infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
+                ArrayList<String> doctorList4 = database.Database.doctorDetails(Integer.parseInt(idDoctor4));
+
+                recentPatientLabel4.setText(infoList4.get(0));
+                idNoLabel4.setText(infoList4.get(1));
+                phoneNumberLabel4.setText(infoList4.get(7));
+                doctorName4.setText(doctorList4.get(0));
+                departmentName4.setText(doctorList4.get(1));
+            }
+            if (size >= 15) {
+                //initialize recent patient5
+                String id5 = (String) Database.appointmentOrder().get(size - 15);
+                String idDoctor5 = (String) Database.appointmentOrder().get(size - 14);
+                passedTimeLabel5.setText((String) Database.appointmentOrder().get(size - 13));
+                ArrayList<String> infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
+                ArrayList<String> doctorList5 = database.Database.doctorDetails(Integer.parseInt(idDoctor5));
+
+                recentPatientLabel5.setText(infoList5.get(0));
+                idNoLabel5.setText(infoList5.get(1));
+                phoneNumberLabel5.setText(infoList5.get(7));
+                doctorName5.setText(doctorList5.get(0));
+                departmentName5.setText(doctorList5.get(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Defines recent patients in patient board from dashboard
      */
     private void recent1EqualsRecent2(){
         //names
-        recentPatientLabel11 = recentPatientLabel1;
-        recentPatientLabel21 = recentPatientLabel2;
-        recentPatientLabel31 = recentPatientLabel3;
-        recentPatientLabel41 = recentPatientLabel4;
-        recentPatientLabel51 = recentPatientLabel5;
+        recentPatientLabel11.setText(recentPatientLabel1.getText());
+        recentPatientLabel21.setText(recentPatientLabel2.getText());
+        recentPatientLabel31.setText(recentPatientLabel3.getText());
+        recentPatientLabel41.setText(recentPatientLabel4.getText());
+        recentPatientLabel51.setText(recentPatientLabel5.getText());
 
         //ids
-        idNoLabel11 = idNoLabel1;
-        idNoLabel21 = idNoLabel2;
-        idNoLabel31 = idNoLabel3;
-        idNoLabel41 = idNoLabel4;
-        idNoLabel51 = idNoLabel5;
+        idNoLabel11.setText(idNoLabel1.getText());
+        idNoLabel21.setText(idNoLabel2.getText());
+        idNoLabel31.setText(idNoLabel3.getText());
+        idNoLabel41.setText(idNoLabel4.getText());
+        idNoLabel51.setText(idNoLabel5.getText());
 
         //phone numbers
-        phoneNumberLabel11 = phoneNumberLabel1;
-        phoneNumberLabel21 = phoneNumberLabel2;
-        phoneNumberLabel31 = phoneNumberLabel3;
-        phoneNumberLabel41 = phoneNumberLabel4;
-        phoneNumberLabel51 = phoneNumberLabel5;
+        phoneNumberLabel11.setText(phoneNumberLabel1.getText());
+        phoneNumberLabel21.setText(phoneNumberLabel2.getText());
+        phoneNumberLabel31.setText(phoneNumberLabel3.getText());
+        phoneNumberLabel41.setText(phoneNumberLabel4.getText());
+        phoneNumberLabel51.setText(phoneNumberLabel5.getText());
 
         //passed times
-        passedTimeLabel11 = passedTimeLabel1;
-        passedTimeLabel21 = passedTimeLabel2;
-        passedTimeLabel31 = passedTimeLabel3;
-        passedTimeLabel41 = passedTimeLabel4;
-        passedTimeLabel51 = passedTimeLabel5;
+        passedTimeLabel11.setText(passedTimeLabel1.getText());
+        passedTimeLabel21.setText(passedTimeLabel2.getText());
+        passedTimeLabel31.setText(passedTimeLabel3.getText());
+        passedTimeLabel41.setText(passedTimeLabel4.getText());
+        passedTimeLabel51.setText(passedTimeLabel5.getText());
 
         //passed dates
-        passedDateLabel11 = passedDateLabel1;
-        passedDateLabel21 = passedDateLabel2;
-        passedDateLabel31 = passedDateLabel3;
-        passedDateLabel41 = passedDateLabel4;
-        passedDateLabel51 = passedDateLabel5;
+        passedDateLabel11.setText(passedDateLabel1.getText());
+        passedDateLabel21.setText(passedDateLabel2.getText());
+        passedDateLabel31.setText(passedDateLabel3.getText());
+        passedDateLabel41.setText(passedDateLabel4.getText());
+        passedDateLabel51.setText(passedDateLabel5.getText());
 
         //doctor names
-        doctorName11 = doctorName1;
-        doctorName21 = doctorName2;
-        doctorName31 = doctorName3;
-        doctorName41 = doctorName4;
-        doctorName51 = doctorName5;
+        doctorName11.setText(doctorName1.getText());
+        doctorName21.setText(doctorName2.getText());
+        doctorName31.setText(doctorName3.getText());
+        doctorName41.setText(doctorName4.getText());
+        doctorName51.setText(doctorName5.getText());
 
         //doctor departments
-        departmentName11 = departmentName1;
-        departmentName21 = departmentName2;
-        departmentName31 = departmentName3;
-        departmentName41 = departmentName4;
-        departmentName51 = departmentName5;
-
-        //button names
-        detailsButton11 = detailsButton1;
-        detailsButton21 = detailsButton2;
-        detailsButton31 = detailsButton3;
-        detailsButton41 = detailsButton4;
-        detailsButton51 = detailsButton5;
+        departmentName11.setText(departmentName1.getText());
+        departmentName21.setText(departmentName2.getText());;
+        departmentName31.setText(departmentName3.getText());;
+        departmentName41.setText(departmentName4.getText());;
+        departmentName51.setText(departmentName5.getText());;
     }
-
 }

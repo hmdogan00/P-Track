@@ -36,15 +36,14 @@ public class PatientDetailsController implements Initializable {
      * setting the patient details information by database
      * @throws SQLException
      */
-    public void update( ) throws SQLException{
+    public void update() throws SQLException{
         File file = null;
         Scanner scan = null;
         try {
             file = new File("outFile.txt");
             String path = file.getAbsolutePath();
             scan = new Scanner(file);
-        }catch( FileNotFoundException e)
-        {
+        }catch( FileNotFoundException e){
             // if database is not reached properly
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Could not access database. Please try again.");

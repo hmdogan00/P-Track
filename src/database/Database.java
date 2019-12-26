@@ -2,7 +2,7 @@ package database;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Database {
+public class Database{
     private static String userName2;
     public static Connection myConn;
 
@@ -95,7 +95,7 @@ public class Database {
      * @param emergency_number emergency contact's phone number.
      * @throws SQLException in case of an error in sql database.
      */
-    public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException {
+    public static void updatePatient(int p_key, String p_address, String patient_phone, String insurance, String emergency_name, String emergency_number) throws SQLException {
         String sql = "UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
 
         PreparedStatement myStmt = myConn.prepareStatement(sql);
@@ -255,12 +255,11 @@ public class Database {
     public static ArrayList appointmentOrder () throws SQLException{
      ArrayList<String> appointmentOrder = new ArrayList<>();
      Statement myStmt = myConn.createStatement();
-     String sql = "SELECT * FROM appointment WHERE date = '"+ date() +"' AND time >= '"+ time() +"' ORDER BY date DESC";
+     String sql = "SELECT * FROM appointment WHERE date = '" + date() + "' AND time >= '" + time() + "' ORDER BY  time DESC";
      ResultSet rs = myStmt.executeQuery(sql);
 
      while(rs.next()){
          appointmentOrder.add(rs.getString("patient_id"));
-         System.out.println(rs.getString("patient_id"));
          appointmentOrder.add(rs.getString("doctor_id"));
          appointmentOrder.add(rs.getString("time"));
      }
@@ -387,7 +386,7 @@ public class Database {
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
             int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
 
-            if(rs.getString("date").equals(date()) && (rs.getString("time").equals(time())) || timeValue + 15 > currentTime ){
+            if((rs.getString("time").equals(time())) || timeValue + 15 > currentTime ){
                 flag = false;
             }
         }
@@ -410,7 +409,7 @@ public class Database {
      */
     public static ArrayList getDoctorName() throws SQLException {
         ArrayList<String> doctorList = new ArrayList<>();
-        String sql = "SELECT * FROM doctor";
+        String sql = "SELECT * FROM appointment WHERE date >= '2019-12-25' AND time >= '09:00' ORDER BY date DESC ";
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
         while(rs.next()){
