@@ -11,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import ui.doctor.UpcomingTable;
+import ui.MasterController;
 import ui.receptionist.DocAppointmentTable;
 
 import java.net.URL;
@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DoctorAppointmentsController implements Initializable {
+public class DoctorAppointmentsController extends MasterController implements Initializable {
     @FXML
     private Label doctorUserName,doctorRoom;
 
@@ -37,8 +37,7 @@ public class DoctorAppointmentsController implements Initializable {
         int doctorId = Database.findDoctorKey(Database.getUserName());
         ObservableList<DocAppointmentTable> obList4 = FXCollections.observableArrayList();
         try {
-            Connection con = Database.myConn;
-            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
+            ResultSet rs = myConn.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
 
             while (rs.next()) {
                 obList4.add(new DocAppointmentTable(rs.getString("name"), rs.getString("date"),
