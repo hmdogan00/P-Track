@@ -349,6 +349,9 @@ public class ReceptionistController extends MasterController implements Initiali
         colCheckApp.setCellFactory(cellFactory3);
     }
 
+    /**
+     * Gets the all data of the hospital doctors
+     */
     private void getDoctorsData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";

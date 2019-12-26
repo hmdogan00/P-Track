@@ -33,6 +33,11 @@ public class DoctorAppointmentsController extends MasterController implements In
     @FXML
     private TableColumn<DocAppointmentTable, String> colName, colAppDate, colAppTime, colPhoneNo;
 
+    /**
+     * Updates the appointments of the doctor
+     * @return name the name of the doctor
+     * @throws SQLException
+     */
     private String update() throws SQLException {
         File file = null;
         Scanner scan = null;
@@ -53,6 +58,10 @@ public class DoctorAppointmentsController extends MasterController implements In
         return name;
     }
 
+    /**
+     * Gets the all patients data
+     * @throws SQLException
+     */
     private void getPatientData() throws SQLException {
         int doctorKey = database.Database.findDoctorKey(update());
 
@@ -74,6 +83,10 @@ public class DoctorAppointmentsController extends MasterController implements In
         docAppointmentTable.setItems(obList4);
     }
 
+    /**
+     * Gets the filtered data in wanted order
+     * @throws SQLException
+     */
     private void getFilteredPatientDataByOrder() throws SQLException {
         int doctorKey = database.Database.findDoctorKey(update());
 
@@ -92,6 +105,11 @@ public class DoctorAppointmentsController extends MasterController implements In
         docAppointmentTable.setItems(obList3);
     }
 
+    /**
+     * filters the patients
+     * @param e finds filtered upcoming patients
+     * @throws SQLException
+     */
     @FXML
     private void findUpcomingPatientFromList(ActionEvent e) throws SQLException {
         if (filterDoctorName.getText().equals("")) {
