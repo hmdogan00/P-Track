@@ -95,7 +95,7 @@ public class Database{
      * @param emergency_number emergency contact's phone number.
      * @throws SQLException in case of an error in sql database.
      */
-    public static void updatePatient(int p_key, String p_address, int patient_phone, String insurance, String emergency_name, int emergency_number) throws SQLException {
+    public static void updatePatient(int p_key, String p_address, String patient_phone, String insurance, String emergency_name, String emergency_number) throws SQLException {
         String sql = "UPDATE patient SET patient_address = ? , patient_phoneNumber = ?, insurance = ?, emergency_name = ?, emergency_number = ? WHERE patient_id = ? ";
 
         PreparedStatement myStmt = myConn.prepareStatement(sql);
