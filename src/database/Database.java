@@ -14,9 +14,6 @@ public class Database{
         }
     }
 
-    public static void main(String[] args) throws SQLException {
-    }
-
     /**
      * Makes connection to database with username and password.
      * @return made connection.
