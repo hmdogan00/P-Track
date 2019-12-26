@@ -147,5 +147,3 @@ public class DoctorController extends MasterController implements Initializable 
         }
     }
 }
-
-

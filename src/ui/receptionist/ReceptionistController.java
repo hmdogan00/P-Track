@@ -434,6 +434,8 @@ public class ReceptionistController extends MasterController implements Initiali
         else
             getFilteredPatientData();
         patientTable.refresh();
+        initializeRecentPatients();
+        recent1EqualsRecent2();
     }
 
     /**
