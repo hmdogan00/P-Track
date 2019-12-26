@@ -24,6 +24,10 @@ public class AddPatientController {
     @FXML
     private MenuButton sexMenu,bloodTypeMenu,insuranceMenu;
 
+    //error labels
+    @FXML
+    private Label errorLabelAddPatient;
+
     //variables
 
     /**
