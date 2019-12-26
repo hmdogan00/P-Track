@@ -1,33 +1,30 @@
 package ui.receptionist;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import database.Database;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import ui.MasterController;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javax.swing.Timer;
 
 public class ReceptionistController extends MasterController implements Initializable {
     //Dashboard
@@ -299,6 +296,7 @@ public class ReceptionistController extends MasterController implements Initiali
         colBloodType.setCellValueFactory(new PropertyValueFactory<>("bloodType"));
 
         patientTable.setItems(obList);
+        patientTable.refresh();
     }
 
     /**
@@ -319,6 +317,7 @@ public class ReceptionistController extends MasterController implements Initiali
         }catch (SQLException ex){}
 
         patientTable.setItems(listFiltered);
+        patientTable.refresh();
     }
 
     /**
@@ -351,6 +350,7 @@ public class ReceptionistController extends MasterController implements Initiali
         colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
         doctorTable.setItems(obList2);
+        doctorTable.refresh();
     }
 
     /**
@@ -383,6 +383,7 @@ public class ReceptionistController extends MasterController implements Initiali
         }catch (SQLException ex){}
 
         doctorTable.setItems(listFiltered2);
+        doctorTable.refresh();
     }
 
 
@@ -410,6 +411,19 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.refresh();
         doctorTable.refresh();
     }
+
+    /*private void refreshPage(){
+        long endtime;
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        final Timeline timeline = new Timeline(){
+            new KeyFrame(
+                    Duration.millis(500), event ->{
+                        final long diff =
+            }
+            )
+        }
+
+    }*/
 
     /**
      * finds patient name from list

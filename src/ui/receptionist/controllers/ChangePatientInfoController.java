@@ -93,7 +93,7 @@ public class ChangePatientInfoController implements Initializable {
             int patientKey = database.Database.findPatientKey(id);
 
             // updating the patient information in database
-            Database.updatePatient( patientKey, changeAddress.getText(), Integer.parseInt(changePatientPhone.getText()), changeInsurance.getText(), changeEmergencyName.getText(), Integer.parseInt(changeEmergencyPhone.getText()) );
+            Database.updatePatient( patientKey, changeAddress.getText(), changePatientPhone.getText(), changeInsurance.getText(), changeEmergencyName.getText(), changeEmergencyPhone.getText());
             Stage stage = (Stage) saveButton.getScene().getWindow();
             stage.close();
         }
