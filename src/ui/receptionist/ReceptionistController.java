@@ -40,35 +40,35 @@ public class ReceptionistController extends MasterController implements Initiali
     //Recent patient in Dashboard
     //Recent Patient 1
     @FXML
-    private Label recentPatientLabel1, idNoLabel1, passedTimeLabel1, phoneNumberLabel1, doctorName1, departmentName1;
+    private Label recentPatientLabel1, idNoLabel1, passedTimeLabel1, passedDateLabel1, phoneNumberLabel1, doctorName1, departmentName1;
 
     @FXML
     private Button detailsButton1;
 
     //Recent Patient 2
     @FXML
-    private Label recentPatientLabel2, idNoLabel2, passedTimeLabel2, phoneNumberLabel2, doctorName2, departmentName2;
+    private Label recentPatientLabel2, idNoLabel2, passedTimeLabel2, passedDateLabel2, phoneNumberLabel2, doctorName2, departmentName2;
 
     @FXML
     private Button detailsButton2;
 
     //Recent Patient 3
     @FXML
-    private Label recentPatientLabel3, idNoLabel3, passedTimeLabel3, phoneNumberLabel3, doctorName3, departmentName3;
+    private Label recentPatientLabel3, idNoLabel3, passedTimeLabel3, passedDateLabel3, phoneNumberLabel3, doctorName3, departmentName3;
 
     @FXML
     private Button detailsButton3;
 
     //Recent Patient 4
     @FXML
-    private Label recentPatientLabel4, idNoLabel4, passedTimeLabel4, phoneNumberLabel4, doctorName4, departmentName4;
+    private Label recentPatientLabel4, idNoLabel4, passedTimeLabel4, passedDateLabel4, phoneNumberLabel4, doctorName4, departmentName4;
 
     @FXML
     private Button detailsButton4;
 
     //Recent Patient 5
     @FXML
-    private Label recentPatientLabel5, idNoLabel5, passedTimeLabel5, phoneNumberLabel5, doctorName5, departmentName5;
+    private Label recentPatientLabel5, idNoLabel5, passedTimeLabel5, passedDateLabel5, phoneNumberLabel5, doctorName5, departmentName5;
 
     @FXML
     private Button detailsButton5;
@@ -76,35 +76,35 @@ public class ReceptionistController extends MasterController implements Initiali
     //Recent Patient in Patient Board
     //Recent 11
     @FXML
-    private Label recentPatientLabel11, idNoLabel11, passedTimeLabel11, phoneNumberLabel11, doctorName11, departmentName11;
+    private Label recentPatientLabel11, idNoLabel11, passedTimeLabel11, passedDateLabel11, phoneNumberLabel11, doctorName11, departmentName11;
 
     @FXML
     private Button detailsButton11;
 
     //Recent21
     @FXML
-    private Label recentPatientLabel21, idNoLabel21, passedTimeLabel21, phoneNumberLabel21, doctorName21, departmentName21;
+    private Label recentPatientLabel21, idNoLabel21, passedTimeLabel21, passedDateLabel21, phoneNumberLabel21, doctorName21, departmentName21;
 
     @FXML
     private Button detailsButton21;
 
     //Recent 31
     @FXML
-    private Label recentPatientLabel31, idNoLabel31, passedTimeLabel31, phoneNumberLabel31, doctorName31, departmentName31;
+    private Label recentPatientLabel31, idNoLabel31, passedTimeLabel31, passedDateLabel31, phoneNumberLabel31, doctorName31, departmentName31;
 
     @FXML
     private Button detailsButton31;
 
     //Recent 41
     @FXML
-    private Label recentPatientLabel41, idNoLabel41, passedTimeLabel41, phoneNumberLabel41, doctorName41, departmentName41;
+    private Label recentPatientLabel41, idNoLabel41, passedTimeLabel41, passedDateLabel41, phoneNumberLabel41, doctorName41, departmentName41;
 
     @FXML
     private Button detailsButton41;
 
     //Recent 51
     @FXML
-    private Label recentPatientLabel51, idNoLabel51, passedTimeLabel51, phoneNumberLabel51, doctorName51, departmentName51;
+    private Label recentPatientLabel51, idNoLabel51, passedTimeLabel51, passedDateLabel51, phoneNumberLabel51, doctorName51, departmentName51;
 
     @FXML
     private Button detailsButton51;
@@ -717,6 +717,13 @@ public class ReceptionistController extends MasterController implements Initiali
         passedTimeLabel31.setText(passedTimeLabel3.getText());
         passedTimeLabel41.setText(passedTimeLabel4.getText());
         passedTimeLabel51.setText(passedTimeLabel5.getText());
+
+        //passed dates
+        passedDateLabel11.setText(passedDateLabel1.getText());
+        passedDateLabel21.setText(passedDateLabel2.getText());
+        passedDateLabel31.setText(passedDateLabel3.getText());
+        passedDateLabel41.setText(passedDateLabel4.getText());
+        passedDateLabel51.setText(passedDateLabel5.getText());
 
         //doctor names
         doctorName11.setText(doctorName1.getText());
