@@ -28,7 +28,6 @@ public class Database{
     }
 
     //Method to add new patient to database
-
     /**
      * Adds patient to the patient list.
      * @param name name of the patient
