@@ -499,7 +499,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="109.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton2" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="109.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -510,7 +510,7 @@
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="80.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton3" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="80.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
@@ -520,19 +520,19 @@
                                                         <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
-                                                                    <left>
-                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="85.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
+                                                   <center>
+                                                                        <Button fx:id="detailsButton4" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="85.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
-                                                                    </left></JFXToolbar>
+                                                   </center></JFXToolbar>
                                                             </items>
                                                         </SplitPane>
                                                         <SplitPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
                                                             <items>
                                                                 <JFXToolbar prefHeight="91.0" prefWidth="149.0">
                                                                     <left>
-                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" onAction="#openPatientDetails" prefHeight="72.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
+                                                                        <Button fx:id="detailsButton5" mnemonicParsing="false" onAction="#recentInDashboard" prefHeight="72.0" prefWidth="208.0" text="Details" BorderPane.alignment="CENTER">
                                                                             <cursor>
                                                                                 <Cursor fx:constant="HAND" />
                                                                             </cursor></Button>
