@@ -562,6 +562,9 @@ public class ReceptionistController extends MasterController implements Initiali
         }
     }
 
+    /**
+     * Initializes all recent patient data
+     */
     private void initializeRecentPatients(){
         int size = 0;
         try {
@@ -571,70 +574,76 @@ public class ReceptionistController extends MasterController implements Initiali
         }
 
         try {
-            //initialize recent patient1
-            String id1 = (String) Database.appointmentOrder().get(size-3);
-            String idDoctor1 = (String)Database.appointmentOrder().get(size-2);
-            passedTimeLabel1.setText((String)Database.appointmentOrder().get(size-1));
-            ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
-            ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor1));
+            if (size >= 3) {
+                //initialize recent patient1
+                String id1 = (String) Database.appointmentOrder().get(size - 3);
+                String idDoctor1 = (String) Database.appointmentOrder().get(size - 2);
+                passedTimeLabel1.setText((String) Database.appointmentOrder().get(size - 1));
+                ArrayList<String> infoList = database.Database.patientDetails(Integer.parseInt(id1));
+                ArrayList<String> doctorList = database.Database.doctorDetails(Integer.parseInt(idDoctor1));
 
-            recentPatientLabel1.setText(infoList.get(0));
-            idNoLabel1.setText(infoList.get(1));
-            phoneNumberLabel1.setText(infoList.get(7));
-            doctorName1.setText(doctorList.get(0));
-            departmentName1.setText(doctorList.get(1));
+                recentPatientLabel1.setText(infoList.get(0));
+                idNoLabel1.setText(infoList.get(1));
+                phoneNumberLabel1.setText(infoList.get(7));
+                doctorName1.setText(doctorList.get(0));
+                departmentName1.setText(doctorList.get(1));
+            }
+            if (size >= 6) {
+                //initialize recent patient2
+                String id2 = (String) Database.appointmentOrder().get(size - 6);
+                String idDoctor2 = (String) Database.appointmentOrder().get(size - 5);
+                passedTimeLabel2.setText((String) Database.appointmentOrder().get(size - 4));
+                ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
+                ArrayList<String> doctorList2 = database.Database.doctorDetails(Integer.parseInt(idDoctor2));
 
-            //initialize recent patient2
-            String id2 = (String) Database.appointmentOrder().get(size - 6);
-            String idDoctor2 = (String)Database.appointmentOrder().get(size - 5);
-            passedTimeLabel2.setText((String)Database.appointmentOrder().get(size-4));
-            ArrayList<String> infoList2 = database.Database.patientDetails(Integer.parseInt(id2));
-            ArrayList<String> doctorList2 = database.Database.doctorDetails(Integer.parseInt(idDoctor2));
+                recentPatientLabel2.setText(infoList2.get(0));
+                idNoLabel2.setText(infoList2.get(1));
+                phoneNumberLabel2.setText(infoList2.get(7));
+                doctorName2.setText(doctorList2.get(0));
+                departmentName2.setText(doctorList2.get(1));
+            }
+            if (size >= 9) {
+                //initialize recent patient3
+                String id3 = (String) Database.appointmentOrder().get(size - 9);
+                String idDoctor3 = (String) Database.appointmentOrder().get(size - 8);
+                passedTimeLabel3.setText((String) Database.appointmentOrder().get(size - 7));
+                ArrayList<String> infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
+                ArrayList<String> doctorList3 = database.Database.doctorDetails(Integer.parseInt(idDoctor3));
 
-            recentPatientLabel2.setText(infoList2.get(0));
-            idNoLabel2.setText(infoList2.get(1));
-            phoneNumberLabel2.setText(infoList2.get(7));
-            doctorName2.setText(doctorList2.get(0));
-            departmentName2.setText(doctorList2.get(1));
+                recentPatientLabel3.setText(infoList3.get(0));
+                idNoLabel3.setText(infoList3.get(1));
+                phoneNumberLabel3.setText(infoList3.get(7));
+                doctorName3.setText(doctorList3.get(0));
+                departmentName3.setText(doctorList3.get(1));
+            }
+            if (size >= 12) {
+                //initialize recent patient4
+                String id4 = (String) Database.appointmentOrder().get(size - 12);
+                String idDoctor4 = (String) Database.appointmentOrder().get(size - 11);
+                passedTimeLabel4.setText((String) Database.appointmentOrder().get(size - 10));
+                ArrayList<String> infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
+                ArrayList<String> doctorList4 = database.Database.doctorDetails(Integer.parseInt(idDoctor4));
 
-            //initialize recent patient3
-            String id3 = (String) Database.appointmentOrder().get(size - 9);
-            String idDoctor3 = (String)Database.appointmentOrder().get(size - 8);
-            passedTimeLabel3.setText((String)Database.appointmentOrder().get(size-7));
-            ArrayList<String> infoList3 = database.Database.patientDetails(Integer.parseInt(id3));
-            ArrayList<String> doctorList3 = database.Database.doctorDetails(Integer.parseInt(idDoctor3));
+                recentPatientLabel4.setText(infoList4.get(0));
+                idNoLabel4.setText(infoList4.get(1));
+                phoneNumberLabel4.setText(infoList4.get(7));
+                doctorName4.setText(doctorList4.get(0));
+                departmentName4.setText(doctorList4.get(1));
+            }
+            if (size >= 15) {
+                //initialize recent patient5
+                String id5 = (String) Database.appointmentOrder().get(size - 15);
+                String idDoctor5 = (String) Database.appointmentOrder().get(size - 14);
+                passedTimeLabel5.setText((String) Database.appointmentOrder().get(size - 13));
+                ArrayList<String> infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
+                ArrayList<String> doctorList5 = database.Database.doctorDetails(Integer.parseInt(idDoctor5));
 
-            recentPatientLabel3.setText(infoList3.get(0));
-            idNoLabel3.setText(infoList3.get(1));
-            phoneNumberLabel3.setText(infoList3.get(7));
-            doctorName3.setText(doctorList3.get(0));
-            departmentName3.setText(doctorList3.get(1));
-
-            //initialize recent patient4
-            String id4 = (String) Database.appointmentOrder().get(size - 12);
-            String idDoctor4 = (String)Database.appointmentOrder().get(size - 11);
-            passedTimeLabel4.setText((String)Database.appointmentOrder().get(size-10));
-            ArrayList<String> infoList4 = database.Database.patientDetails(Integer.parseInt(id4));
-            ArrayList<String> doctorList4 = database.Database.doctorDetails(Integer.parseInt(idDoctor4));
-
-            recentPatientLabel4.setText(infoList4.get(0));
-            idNoLabel4.setText(infoList4.get(1));
-            phoneNumberLabel4.setText(infoList4.get(7));
-            doctorName4.setText(doctorList4.get(0));
-            departmentName4.setText(doctorList4.get(1));
-
-            //initialize recent patient5
-            String id5 = (String) Database.appointmentOrder().get(size - 15);
-            String idDoctor5 = (String)Database.appointmentOrder().get(size - 14);
-            passedTimeLabel5.setText((String)Database.appointmentOrder().get(size-13));
-            ArrayList<String> infoList5 = database.Database.patientDetails(Integer.parseInt(id5));
-            ArrayList<String> doctorList5 = database.Database.doctorDetails(Integer.parseInt(idDoctor5));
-
-            recentPatientLabel5.setText(infoList5.get(0));
-            idNoLabel5.setText(infoList5.get(1));
-            phoneNumberLabel5.setText(infoList5.get(7));
-            doctorName5.setText(doctorList5.get(0));
-            departmentName5.setText(doctorList5.get(1));
+                recentPatientLabel5.setText(infoList5.get(0));
+                idNoLabel5.setText(infoList5.get(1));
+                phoneNumberLabel5.setText(infoList5.get(7));
+                doctorName5.setText(doctorList5.get(0));
+                departmentName5.setText(doctorList5.get(1));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
