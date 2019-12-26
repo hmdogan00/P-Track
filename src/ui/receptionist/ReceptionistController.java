@@ -404,8 +404,11 @@ public class ReceptionistController extends MasterController implements Initiali
     public void initialize(URL location, ResourceBundle resources){
         //loads the patient and doctor data to table
         getPatientData();
+        System.out.println("Patient data is uploaded");
         getDoctorData();
+        System.out.println("Doctor data is uploaded");
         initializeRecentPatients();
+        System.out.println("Recent patient appointment data is uploaded");
         recent1EqualsRecent2();
         System.out.println("All data is uploaded");
         try {
