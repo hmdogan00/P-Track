@@ -319,7 +319,6 @@ public class ReceptionistController extends MasterController implements Initiali
                             d = getTableView().getItems().get(getIndex());
                             idCarry(d.getName());
                             loadWindow("ui/receptionist/FXML/doctorAppointments.fxml", "Current Appointments");
-                            System.out.println("aaaaaliii");
                         });
                         setGraphic(currentAppointmentButton);
                         setText(null);
