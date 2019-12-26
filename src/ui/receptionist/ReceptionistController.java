@@ -123,24 +123,19 @@ public class ReceptionistController extends MasterController implements Initiali
     @FXML
     private TextField filterPatientName;
 
-    //Patient Table View Variables
+    //Doctor Table View Variables
     @FXML
     private TableView<DoctorTable> doctorTable;
 
     @FXML
-    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom;
-
-    @FXML
-    private TableColumn<DoctorTable, String> colAvailability;
-
-    @FXML
-    private TableColumn<DoctorTable, Integer> colPhoneNo;
+    private TableColumn<DoctorTable,String> colDoctorName, colDoctorDepartment, colDoctorRoom, colCheckApp, colAvailability, colPhoneNo;
 
     @FXML
     private TextField filterDoctorName;
 
     //variables
-    ModelTable p;
+    private ModelTable p;
+    private DoctorTable d;
 
     /**
      * Default constructor
@@ -189,7 +184,6 @@ public class ReceptionistController extends MasterController implements Initiali
         getPatientsData();
 
         //Adding Appointment Button
-
         Callback<TableColumn<ModelTable, String>,TableCell<ModelTable, String>> cellFactory = (param) -> {
             //make table cell with button
             final TableCell<ModelTable, String> cell = new TableCell<ModelTable, String>(){
@@ -228,13 +222,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setGraphic(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Details");
-                        addAppointmentButton.setOnAction(event -> {
+                        final Button patientDetailsButton = new Button("Details");
+                        patientDetailsButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/patientDetails.fxml", "Patient Details");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(patientDetailsButton);
                     }
                     setText(null);
                 }
@@ -256,13 +250,13 @@ public class ReceptionistController extends MasterController implements Initiali
                         setText(null);
                     }
                     else{
-                        final Button addAppointmentButton = new Button("Change Info");
-                        addAppointmentButton.setOnAction(event -> {
+                        final Button changePatientInfoButton = new Button("Change Info");
+                        changePatientInfoButton.setOnAction(event -> {
                             p = getTableView().getItems().get(getIndex());
                             idCarry(p.getId());
                             loadWindow("ui/receptionist/FXML/changePatientInfo.fxml", "Change Patient Info");
                         });
-                        setGraphic(addAppointmentButton);
+                        setGraphic(changePatientInfoButton);
                         setText(null);
                     }
                 }
@@ -324,6 +318,38 @@ public class ReceptionistController extends MasterController implements Initiali
      * Gets doctor data from database and adds 1 dynamic table view button
      */
     private void getDoctorData(){
+        getDoctorsData();
+
+        //Check Appointment Button
+        Callback<TableColumn<DoctorTable, String>,TableCell<DoctorTable, String>> cellFactory3 = (param) -> {
+            //make table cell with button
+            final TableCell<DoctorTable, String> cell3 = new TableCell<DoctorTable, String>(){
+                @Override
+                public void updateItem(String item, boolean empty){
+                    super.updateItem(item, empty);
+                    if (empty){
+                        setGraphic(null);
+                        setText(null);
+                    }
+                    else{
+                        final Button currentAppointmentButton = new Button("Current Appointments");
+                        currentAppointmentButton.setOnAction(event -> {
+                            d = getTableView().getItems().get(getIndex());
+                            idCarry(d.getName());
+                            loadWindow("ui/receptionist/FXML/doctorAppointments", "Current Appointments");
+                        });
+                        setGraphic(currentAppointmentButton);
+                        setText(null);
+                    }
+                }
+            };
+            return cell3;
+        };
+        //add button to the table
+        colCheckApp.setCellFactory(cellFactory3);
+    }
+
+    private void getDoctorsData(){
         ObservableList<DoctorTable> obList2 = FXCollections.observableArrayList();
         String text = "";
         try {

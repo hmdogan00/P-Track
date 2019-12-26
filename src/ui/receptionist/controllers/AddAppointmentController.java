@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class AddAppointmentController implements Initializable {
+public class AddAppointmentController extends Database implements Initializable {
 
     @FXML
     private Label patientName,patientSurname;
@@ -293,8 +293,8 @@ public class AddAppointmentController implements Initializable {
         // setting the choice box for doctor's list from the database information
         ObservableList<String> observerList = FXCollections.observableArrayList();
         try {
-            Connection con = Database.myConn;
-            ResultSet rs2 = con.createStatement().executeQuery("SELECT * FROM doctor");
+            //Connection con = Database.myConn;
+            ResultSet rs2 = myConn.createStatement().executeQuery("SELECT * FROM doctor");
 
             while (rs2.next()) {
                 observerList.add(rs2.getString("name") + " - " + rs2.getString("department"));

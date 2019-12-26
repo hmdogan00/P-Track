@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import ui.MasterController;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -52,7 +51,7 @@ public class DoctorController extends MasterController implements Initializable 
     }
 
     /**
-     * gets the paients data for showing in the doctor page
+     * gets the patients data for showing in the doctor page
      * @throws SQLException
      */
     private void getPatientData() throws SQLException {
