@@ -435,6 +435,11 @@ public class ReceptionistController extends MasterController implements Initiali
         patientTable.refresh();
         initializeRecentPatients();
         recent1EqualsRecent2();
+        try {
+            timeLabel.setText(Database.time());
+            dateLabel.setText(Database.date());
+            numberOfAppointmentsLabel.setText("" + Database.totalAppointments());
+        }catch( SQLException ex){}
     }
 
     /**
