@@ -15,7 +15,6 @@ public class Database{
     }
 
     public static void main(String[] args) throws SQLException {
-        System.out.println(appointmentOrder().size());
     }
 
     /**
@@ -381,12 +380,11 @@ public class Database{
         String sql = "SELECT * FROM appointment WHERE doctor_id = '" + d_id + "' AND date = '" + date() +" ' " ;
         Statement myStmt = myConn.createStatement();
         ResultSet rs = myStmt.executeQuery(sql);
+        int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
         while(rs.next()){
             String docTime = rs.getString("time");
             int timeValue = Integer.parseInt(docTime.substring(0,2)) * 100 + Integer.parseInt(docTime.substring(3));
-            int currentTime = Integer.parseInt(time().substring(0,2)) * 100 + Integer.parseInt(time().substring(3,5));
-
-            if((rs.getString("time").equals(time())) || timeValue + 15 > currentTime ){
+            if( currentTime - timeValue <= 15 && currentTime - timeValue >= 0 ){
                 flag = false;
             }
         }

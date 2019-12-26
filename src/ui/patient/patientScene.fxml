@@ -24,10 +24,10 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Details" textAlignment="CENTER" wrappingWidth="384.00000408291817">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="35.0" />
                            </HBox.margin>
                         </Text>
                      </children>

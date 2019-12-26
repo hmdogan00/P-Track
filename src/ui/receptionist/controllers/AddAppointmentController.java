@@ -42,6 +42,10 @@ public class AddAppointmentController extends MasterController implements Initia
     @FXML
     private ChoiceBox<String> choiceBox;
 
+    //error labels
+    @FXML
+    private Label errorLabelAdd;
+
     //variables
     private String patientdbId;
 
