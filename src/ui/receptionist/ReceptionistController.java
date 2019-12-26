@@ -495,45 +495,51 @@ public class ReceptionistController extends MasterController implements Initiali
         }
 
         int finalSize = size;
-        detailsButton1.setOnAction(event ->{
-            getButtonAction(1, finalSize);
-        });
+        if (finalSize >= 3) {
+            detailsButton1.setOnAction(event -> {
+                getButtonAction(1, finalSize);
+            });
 
-        detailsButton11.setOnAction(event -> {
-            getButtonAction(1, finalSize);
-        });
+            detailsButton11.setOnAction(event -> {
+                getButtonAction(1, finalSize);
+            });
+        }
+        if (finalSize >= 6) {
+            detailsButton2.setOnAction(event -> {
+                getButtonAction(2, finalSize);
+            });
 
-        detailsButton2.setOnAction(event ->{
-            getButtonAction(2, finalSize);
-        });
+            detailsButton21.setOnAction(event -> {
+                getButtonAction(2, finalSize);
+            });
+        }
+        if (finalSize >= 9) {
+            detailsButton3.setOnAction(event -> {
+                getButtonAction(3, finalSize);
+            });
 
-        detailsButton21.setOnAction(event -> {
-            getButtonAction(2, finalSize);
-        });
+            detailsButton31.setOnAction(event -> {
+                getButtonAction(3, finalSize);
+            });
+        }
+        if (finalSize >= 12) {
+            detailsButton4.setOnAction(event -> {
+                getButtonAction(4, finalSize);
+            });
 
-        detailsButton3.setOnAction(event ->{
-            getButtonAction(3, finalSize);
-        });
+            detailsButton41.setOnAction(event -> {
+                getButtonAction(4, finalSize);
+            });
+        }
+        if (finalSize >= 15) {
+            detailsButton5.setOnAction(event -> {
+                getButtonAction(5, finalSize);
+            });
 
-        detailsButton31.setOnAction(event -> {
-            getButtonAction(3, finalSize);
-        });
-
-        detailsButton4.setOnAction(event ->{
-            getButtonAction(4, finalSize);
-        });
-
-        detailsButton41.setOnAction(event -> {
-            getButtonAction(4, finalSize);
-        });
-
-        detailsButton5.setOnAction(event ->{
-            getButtonAction(5, finalSize);
-        });
-
-        detailsButton51.setOnAction(event -> {
-            getButtonAction(5, finalSize);
-        });
+            detailsButton51.setOnAction(event -> {
+                getButtonAction(5, finalSize);
+            });
+        }
     }
 
     /**
