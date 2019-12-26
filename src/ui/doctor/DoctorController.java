@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import ui.MasterController;
+import ui.receptionist.DoctorTable;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -36,6 +38,9 @@ public class DoctorController extends MasterController implements Initializable 
 
     @FXML
     private TableColumn<UpcomingTable, String> colName, colAppDate, colAppTime, colPhoneNo, colAddPrescription;
+
+    //variables
+    private UpcomingTable u;
 
     /**
      * logs out the doctor page returns to login page
@@ -71,6 +76,8 @@ public class DoctorController extends MasterController implements Initializable 
                     else{
                         final Button addAppointmentButton = new Button("Set Prescription");
                         addAppointmentButton.setOnAction(event -> {
+                            u = getTableView().getItems().get(getIndex());
+                            idCarry(u.getName());
                             loadWindow("ui/doctor/FXML/doctorPrescriptionPage.fxml", "Set Prescription");
                         });
                         setGraphic(addAppointmentButton);
