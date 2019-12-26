@@ -4,7 +4,7 @@ public class DocAppointmentTable {
     String name, date, time;
     String phoneNo;
 
-    public DocAppointmentTable(String name, String phoneNo, String date, String time){
+    public DocAppointmentTable(String name, String date, String time, String phoneNo){
         this.name = name;
         this.phoneNo = phoneNo;
         this.date = date;

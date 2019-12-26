@@ -139,10 +139,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font></Text>
                                                                                 <Label fx:id="passedDateLabel1" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -182,10 +178,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font></Text>
                                                                                 <Label fx:id="passedDateLabel2" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -225,10 +217,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font></Text>
                                                                                 <Label fx:id="passedDateLabel3" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -268,10 +256,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font></Text>
                                                                                 <Label fx:id="passedDateLabel4" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -311,10 +295,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font></Text>
                                                                                 <Label fx:id="passedDateLabel5" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -818,14 +798,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <HBox.margin>
-                                                                                        <Insets left="2.0" />
-                                                                                    </HBox.margin>
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font>
-                                                                                </Text>
                                                                                 <Label fx:id="passedDateLabel11" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -874,14 +846,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <HBox.margin>
-                                                                                        <Insets left="2.0" />
-                                                                                    </HBox.margin>
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font>
-                                                                                </Text>
                                                                                 <Label fx:id="passedDateLabel21" prefHeight="17.0" prefWidth="117.0">
                                                                                     <padding>
                                                                                         <Insets left="2.0" />
@@ -934,14 +898,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <HBox.margin>
-                                                                                        <Insets left="2.0" />
-                                                                                    </HBox.margin>
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font>
-                                                                                </Text>
                                                                                 <Label fx:id="passedDateLabel31" prefHeight="17.0" prefWidth="117.0">
                                                                                     <padding>
                                                                                         <Insets left="2.0" />
@@ -994,11 +950,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <HBox.margin>
-                                                                                        <Insets left="2.0" />
-                                                                                    </HBox.margin>
-                                                                                </Text>
                                                                                 <Label fx:id="passedDateLabel41" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />
@@ -1047,14 +998,6 @@
                                                                         </HBox>
                                                                         <HBox prefHeight="100.0" prefWidth="200.0">
                                                                             <children>
-                                                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " wrappingWidth="45.0">
-                                                                                    <HBox.margin>
-                                                                                        <Insets left="2.0" />
-                                                                                    </HBox.margin>
-                                                                                    <font>
-                                                                                        <Font size="12.0" />
-                                                                                    </font>
-                                                                                </Text>
                                                                                 <Label fx:id="passedDateLabel51" prefHeight="17.0" prefWidth="117.0">
                                                                                     <font>
                                                                                         <Font size="12.0" />

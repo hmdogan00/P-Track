@@ -6,19 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ui.MasterController;
 import ui.receptionist.DocAppointmentTable;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class DoctorAppointmentsController extends MasterController implements Initializable {
     @FXML
@@ -31,13 +31,34 @@ public class DoctorAppointmentsController extends MasterController implements In
     private TableView<DocAppointmentTable> docAppointmentTable;
 
     @FXML
-    private TableColumn<DocAppointmentTable, String> colName, colAppDate, colAppTime, colPhoneNo, colAddPrescription;
+    private TableColumn<DocAppointmentTable, String> colName, colAppDate, colAppTime, colPhoneNo;
+
+    private String update() throws SQLException {
+        File file = null;
+        Scanner scan = null;
+        try {
+            file = new File("outFile.txt");
+            String path = file.getAbsolutePath();
+            scan = new Scanner(file);
+        }catch( FileNotFoundException e) {
+            // if database is not reached properly
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Could not access database. Please try again.");
+            alert.show();
+        }
+        String name = scan.nextLine();
+        scan.close();
+        //file.delete();
+
+        return name;
+    }
 
     private void getPatientData() throws SQLException {
-        int doctorId = Database.findDoctorKey(Database.getUserName());
+        int doctorKey = database.Database.findDoctorKey(update());
+
         ObservableList<DocAppointmentTable> obList4 = FXCollections.observableArrayList();
         try {
-            ResultSet rs = myConn.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
+            ResultSet rs = myConn.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorKey + "' AND appointment.`date` >= '"+ Database.date() +"' ORDER BY `date` DESC");
 
             while (rs.next()) {
                 obList4.add(new DocAppointmentTable(rs.getString("name"), rs.getString("date"),
@@ -46,20 +67,21 @@ public class DoctorAppointmentsController extends MasterController implements In
         }catch (SQLException ex){}
 
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAppDate.setCellValueFactory(new PropertyValueFactory<>("appDate"));
-        colAppTime.setCellValueFactory(new PropertyValueFactory<>("appTime"));
+        colAppDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colAppTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         colPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
         docAppointmentTable.setItems(obList4);
     }
 
     private void getFilteredPatientDataByOrder() throws SQLException {
-        int doctorId = Database.findDoctorKey(Database.getUserName());
+        int doctorKey = database.Database.findDoctorKey(update());
+
         String patientNameFilter = filterDoctorName.getText();
         ObservableList<DocAppointmentTable> obList3 = FXCollections.observableArrayList();
         try {
             Connection con = Database.myConn;
-            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorId + "' AND appointment.`date` >= '"+ Database.date() +"' AND patient.`name` LIKE '%" + patientNameFilter + "%' ORDER BY `date` DESC ");
+            ResultSet rs = con.createStatement().executeQuery("SELECT patient.`name`, appointment.`date`, appointment.`time`, patient.`patient_phoneNumber` FROM patient, appointment, doctor WHERE appointment.`doctor_id` = doctor.`doctor_id` AND appointment.`patient_id` = patient.`patient_id` AND doctor.`doctor_id`= '" + doctorKey + "' AND appointment.`date` >= '"+ Database.date() +"' AND patient.`name` LIKE '%" + patientNameFilter + "%' ORDER BY `date` DESC ");
 
             while (rs.next()) {
                 obList3.add(new DocAppointmentTable(rs.getString("name"), rs.getString("date"),
@@ -88,10 +110,11 @@ public class DoctorAppointmentsController extends MasterController implements In
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         try {
-            doctorUserName.setText(Database.getUserName());
-            doctorRoom.setText("Room No:" + Database.doctorDetails(Database.findDoctorKey(Database.getUserName())).get(2));
+            update();
             getPatientData();
+            doctorUserName.setText(update());
         } catch (SQLException e) {
             e.printStackTrace();
         }
