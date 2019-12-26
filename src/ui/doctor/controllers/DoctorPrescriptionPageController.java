@@ -20,13 +20,13 @@ import java.util.Scanner;
 public class DoctorPrescriptionPageController implements Initializable {
 
     @FXML
-    Label doctorName,patientName;
+    private Label doctorName,patientName;
 
     @FXML
-    TextArea addPrescription;
+    private TextArea addPrescription;
 
     @FXML
-    Button printPrescription, backToDoctorPage;
+    private Button printPrescription, backToDoctorPage;
 
     /**
      * default constructor

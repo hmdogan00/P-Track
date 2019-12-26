@@ -90,6 +90,10 @@ public class DoctorController extends MasterController implements Initializable 
         colAddPrescription.setCellFactory(cellFactory);
     }
 
+    /**
+     * Gets the data of the patients
+     * @throws SQLException
+     */
     private void getPatientsData() throws SQLException {
         int doctorId = Database.findDoctorKey(Database.getUserName());
         ObservableList<UpcomingTable> obList3 = FXCollections.observableArrayList();
@@ -110,6 +114,10 @@ public class DoctorController extends MasterController implements Initializable 
         upcomingTable.setItems(obList3);
     }
 
+    /**
+     * Gets only the wanted patients data
+     * @throws SQLException
+     */
     private void getFilteredPatientDataByOrder() throws SQLException {
         int doctorId = Database.findDoctorKey(Database.getUserName());
         String patientNameFilter = filterDoctorName.getText();
@@ -127,6 +135,11 @@ public class DoctorController extends MasterController implements Initializable 
         upcomingTable.setItems(obList3);
     }
 
+    /**
+     *  Finds the upcoming patients
+     * @param e gives action to filter button
+     * @throws SQLException
+     */
     @FXML
     private void findUpcomingPatientFromList(ActionEvent e) throws SQLException {
         if (filterDoctorName.getText().equals("")) {
@@ -154,5 +167,3 @@ public class DoctorController extends MasterController implements Initializable 
         }
     }
 }
-
-
