@@ -11,13 +11,13 @@ import javafx.stage.Stage;
 public class DoctorPrescriptionPageController {
 
     @FXML
-    Label doctorName,patientName;
+    private Label doctorName,patientName;
 
     @FXML
-    TextArea addPrescription;
+    private TextArea addPrescription;
 
     @FXML
-    Button printPrescription, backToDoctorPage;
+    private Button printPrescription, backToDoctorPage;
 
     /**
      * default constructor
